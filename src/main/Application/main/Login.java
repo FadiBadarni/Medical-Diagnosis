@@ -1,24 +1,15 @@
 package main;
 
-import javafx.animation.*;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
-import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
@@ -64,11 +55,11 @@ public class Login implements Initializable {
 
     public void returnButton_Click(ActionEvent e) throws IOException {
         slideTransitions transition = new slideTransitions();
-        transition.rightToLeftTransition(parentContainer,returnButton,anchorPane1,anchorPane2);
+        transition.rightToLeftTransition(parentContainer, returnButton, anchorPane1, anchorPane2);
     }
 
     public void registerButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer,"Register.fxml");
+        new fadeTransitions(parentContainer, "Register.fxml");
     }
 
 }

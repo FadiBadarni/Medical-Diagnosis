@@ -1,25 +1,28 @@
 package main;
 
-import javafx.animation.RotateTransition;
-import javafx.animation.TranslateTransition;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.layout.Pane;
-import javafx.scene.shape.Circle;
-import javafx.scene.shape.Line;
-import javafx.stage.Stage;
-import javafx.util.Duration;
+import javafx.scene.layout.StackPane;
+import org.controlsfx.control.action.Action;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
 public class home implements Initializable {
     @FXML
-    private Line line;
+    private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton;
     @FXML
-    private Pane parentContainer;
+    private StackPane parentContainer;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+    public void signOutButton_Click(ActionEvent e)throws IOException{
+        new fadeTransitions(parentContainer, "main.fxml");
     }
 }

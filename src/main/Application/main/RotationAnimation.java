@@ -5,7 +5,6 @@ import javafx.scene.shape.Circle;
 import javafx.util.Duration;
 
 public class RotationAnimation {
-
     public RotationAnimation(Circle c, boolean reverse, int angle, int duration) {
         RotateTransition rt = new RotateTransition(Duration.seconds(duration), c);
         rt.setAutoReverse(reverse);

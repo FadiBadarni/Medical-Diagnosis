@@ -3,27 +3,25 @@ package main;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.security.Key;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -36,18 +34,23 @@ public class Main extends Application implements Initializable {
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private Circle circle1,circle2,circle3;
+    private Circle circle1, circle2, circle3;
 
     @Override
     public void start(Stage stage) throws IOException {
         stg = stage;
         stage.setResizable(false);
+        stage.getIcons().add(new Image("icon.png"));
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add("main.css");
-        stage.setTitle("Welcome");
+        stage.setTitle("Medical Diagnosis Application");
         stage.setScene(scene);
         stage.show();
+        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
+        stg.setX((primScreenBounds.getWidth() - stg.getWidth()) / 3);
+        stg.setY((primScreenBounds.getHeight() - stg.getHeight()) / 3);
+
     }
 
     @Override
@@ -58,6 +61,7 @@ public class Main extends Application implements Initializable {
         new RotationAnimation(circle2, true, 360, 20);
         new RotationAnimation(circle3, true, 360, 25);
     }
+
     private void makeFadeTransition() {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.seconds(1));
@@ -74,7 +78,7 @@ public class Main extends Application implements Initializable {
     }
 
     public void loginButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions(parentContainer,loginButton,anchorPane);
+        new slideTransitions(parentContainer, loginButton, anchorPane);
     }
 
     public void infoButton_Click(ActionEvent e) throws IOException {
@@ -93,14 +97,12 @@ public class Main extends Application implements Initializable {
     }
 
     public void registerButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer,"Register.fxml");
+        new fadeTransitions(parentContainer, "Register.fxml");
     }
 
     public void exitButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
         m.changeScene("home.fxml");
-
     }
-
 
 }

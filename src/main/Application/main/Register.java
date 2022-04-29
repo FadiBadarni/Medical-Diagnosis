@@ -2,12 +2,8 @@ package main;
 
 import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -16,7 +12,6 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Register implements Initializable {
@@ -27,7 +22,6 @@ public class Register implements Initializable {
     private StackPane parentContainer;
     @FXML
     private AnchorPane anchorPane;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -44,9 +38,8 @@ public class Register implements Initializable {
         fadeTransition.play();
     }
 
-    public void returnButton_Click(ActionEvent e) throws IOException{
-        new fadeTransitions(parentContainer,"main.fxml");
+    public void returnButton_Click(ActionEvent e) throws IOException {
+        new fadeTransitions(parentContainer, "main.fxml");
     }
-
 
 }
