@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Register">
+   <children>
+      <AnchorPane fx:id="anchorPane" prefHeight="494.0" prefWidth="574.0" styleClass="registerScreen" stylesheets="@CSS/Register.css">
+         <children>
+            <Label layoutX="101.0" layoutY="131.0" prefHeight="34.0" prefWidth="173.0" text="Create New Account">
+               <font>
+                  <Font name="Consolas Bold Italic" size="16.0" />
+               </font>
+            </Label>
+            <TextField layoutX="26.0" layoutY="179.0" prefHeight="34.0" prefWidth="156.0" promptText="First Name" />
+            <TextField layoutX="192.0" layoutY="179.0" prefHeight="34.0" prefWidth="156.0" promptText="Last Name" />
+            <TextField layoutX="26.0" layoutY="221.0" prefHeight="34.0" prefWidth="156.0" promptText="Identification Number" />
+            <TextField layoutX="192.0" layoutY="223.0" prefHeight="34.0" prefWidth="156.0" promptText="Age" />
+            <TextField layoutX="26.0" layoutY="268.0" prefHeight="34.0" prefWidth="156.0" promptText="Weight (KG)" />
+            <TextField layoutX="192.0" layoutY="268.0" prefHeight="34.0" prefWidth="156.0" promptText="Length (CM)" />
+            <TextField layoutX="26.0" layoutY="314.0" prefHeight="34.0" prefWidth="323.0" promptText="Email" />
+            <Line endX="92.00003051757812" endY="-1.52587890625E-5" layoutX="2.0" layoutY="148.0" startX="27.199981689453125" startY="-1.52587890625E-5" />
+            <Line endX="100.0" layoutX="244.0" layoutY="148.0" startX="27.199981689453125" startY="-1.52587890625E-5" />
+            <ImageView fitHeight="140.0" fitWidth="215.0" layoutX="112.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/addDoctor.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="registerButton" layoutX="132.0" layoutY="367.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="120.0" style="-fx-background-color: #D3D3D3;" text="Register" textFill="#28ae2a">
+               <font>
+                  <Font name="Eras Bold ITC" size="13.0" />
+               </font>
+            </Button>
+            <Line endX="-99.99996948242188" endY="369.5999755859375" layoutX="488.0" layoutY="60.0" startX="-99.99996948242188" startY="-15.199993133544922" />
+            <Circle fill="DODGERBLUE" layoutX="415.0" layoutY="132.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text layoutX="429.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username Should Be 6-8 Characters Maximum Of 2 Digits In Username" wrappingWidth="237.9215087890625" />
+            <Circle fill="DODGERBLUE" layoutX="415.0" layoutY="213.0" radius="6.0" stroke="BLACK" strokeType="INSIDE" />
+            <Text layoutX="429.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Password should be between 8-10 characters and contains atleast one letter and one digit and one special character [@#$]" wrappingWidth="237.9215087890625" />
+            <ImageView fitHeight="160.0" fitWidth="162.0" layoutX="447.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/stethoscope.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="returnButton" layoutX="9.0" layoutY="421.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="36.0" prefWidth="105.0" text="Return" textFill="RED">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
