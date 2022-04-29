@@ -5,10 +5,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.effect.MotionBlur?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,11 +15,12 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Login">
    <children>
-      <AnchorPane fx:id="anchorPane1" prefHeight="332.0" prefWidth="600.0" style="-fx-background-color: #7393B3;">
+      <AnchorPane fx:id="anchorPane1" prefHeight="332.0" prefWidth="600.0" styleClass="loginScreen" stylesheets="@CSS/Login.css">
          <children>
             <ImageView fitHeight="115.0" fitWidth="124.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -33,86 +33,85 @@
                   <Font name="Montserrat Regular" size="14.0" />
                </font>
             </Label>
-            <Button fx:id="registerButton" layoutX="115.0" layoutY="62.0" mnemonicParsing="false" onAction="#registerButton_Click" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: #D3D3D3;" text="Register" textFill="#28ae2a">
+            <Button fx:id="registerButton" layoutX="110.0" layoutY="62.0" mnemonicParsing="false" onAction="#registerButton_Click" prefHeight="41.0" prefWidth="95.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/Login.css" text="Register" textFill="#28ae2a">
                <font>
                   <Font name="Eras Bold ITC" size="13.0" />
                </font>
-               <effect>
-                  <Reflection />
-               </effect>
             </Button>
-            <Button fx:id="returnButton" layoutX="503.0" layoutY="75.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="26.0" prefWidth="82.0" style="-fx-background-color: #D3D3D3;" text="Return" textFill="RED">
+            <Button fx:id="returnButton" layoutX="493.0" layoutY="26.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="26.0" prefWidth="95.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Login.css" text="Return" textFill="RED">
                <font>
                   <Font name="Eras Bold ITC" size="13.0" />
                </font>
-               <effect>
-                  <DropShadow />
-               </effect>
             </Button>
-            <AnchorPane fx:id="anchorPane2" layoutY="129.0" prefHeight="270.0" prefWidth="600.0" style="-fx-background-color: #D3D3D3;">
-               <children>
-                  <ImageView fitHeight="134.0" fitWidth="201.0" layoutX="14.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/doctor.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="66.0" fitWidth="68.0" layoutX="390.0" layoutY="40.0">
-                     <image>
-                        <Image url="@images/login.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="300.0" layoutY="130.0" text="Username" textFill="#7393b3">
-                     <font>
-                        <Font name="Eras Bold ITC" size="14.0" />
-                     </font>
-                     <effect>
-                        <Lighting>
-                           <bumpInput>
-                              <Shadow />
-                           </bumpInput>
-                           <light>
-                              <Light.Distant />
-                           </light>
-                        </Lighting>
-                     </effect>
-                  </Label>
-                  <Label layoutX="302.0" layoutY="161.0" text="Password" textFill="#7393b3">
-                     <font>
-                        <Font name="Eras Bold ITC" size="14.0" />
-                     </font>
-                     <effect>
-                        <Lighting>
-                           <bumpInput>
-                              <Shadow />
-                           </bumpInput>
-                           <light>
-                              <Light.Distant />
-                           </light>
-                        </Lighting>
-                     </effect>
-                  </Label>
-                  <TextField fx:id="username" layoutX="394.0" layoutY="127.0" promptText="Username" />
-                  <PasswordField fx:id="password" layoutX="394.0" layoutY="157.0" promptText="Password" />
-                  <Button fx:id="loginButton" layoutX="378.0" layoutY="223.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="31.0" prefWidth="65.0" style="-fx-background-color: #7393B3;" text="Login">
-                     <font>
-                        <Font name="Eras Bold ITC" size="12.0" />
-                     </font>
-                  </Button>
-                  <Label fx:id="wrongLogin" layoutX="359.0" layoutY="97.0" prefHeight="18.0" prefWidth="130.0" textFill="RED">
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Label>
-                  <Circle fx:id="circle1" fill="#1f93ff00" layoutX="115.0" layoutY="115.0" radius="101.0" stroke="#4b8cc9" strokeType="INSIDE" strokeWidth="10.0" style="-fx-stroke-dash-array: 40;">
-                     <effect>
-                        <Shadow>
-                           <color>
-                              <Color red="0.29411765933036804" green="0.5490196347236633" blue="0.7882353067398071" />
-                           </color>
-                        </Shadow>
-                     </effect></Circle>
-               </children>
-            </AnchorPane>
+            <Line endX="100.0" endY="-1.52587890625E-5" layoutX="506.0" layoutY="74.0" startX="-100.0" strokeWidth="3.0">
+               <effect>
+                  <MotionBlur />
+               </effect>
+            </Line>
+            <Circle fx:id="circle1" fill="#1f93ff00" layoutX="115.0" layoutY="287.0" radius="101.0" stroke="#4b8cc9" strokeType="INSIDE" strokeWidth="10.0" style="-fx-stroke-dash-array: 40;">
+               <effect>
+                  <Shadow>
+                     <color>
+                        <Color red="0.20842105150222778" green="0.2802105247974396" blue="0.34736841917037964" />
+                     </color>
+                  </Shadow>
+               </effect>
+            </Circle>
+            <ImageView fitHeight="134.0" fitWidth="201.0" layoutX="15.0" layoutY="224.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/doctor.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="66.0" fitWidth="68.0" layoutX="431.0" layoutY="119.0">
+               <image>
+                  <Image url="@images/login.png" />
+               </image>
+            </ImageView>
+            <Label layoutX="304.0" layoutY="223.0" text="Username" textFill="#305679">
+               <font>
+                  <Font name="Eras Bold ITC" size="14.0" />
+               </font>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                     </light>
+                  </Lighting>
+               </effect>
+            </Label>
+            <Label layoutX="306.0" layoutY="254.0" text="Password" textFill="#31689c">
+               <font>
+                  <Font name="Eras Bold ITC" size="14.0" />
+               </font>
+               <effect>
+                  <Lighting>
+                     <bumpInput>
+                        <Shadow />
+                     </bumpInput>
+                     <light>
+                     </light>
+                  </Lighting>
+               </effect>
+            </Label>
+            <TextField fx:id="username" layoutX="398.0" layoutY="220.0" promptText="Username" />
+            <PasswordField fx:id="password" layoutX="398.0" layoutY="250.0" promptText="Password" />
+            <Button fx:id="loginButton" layoutX="418.0" layoutY="297.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="33.0" prefWidth="95.0" style="-fx-cursor: hand;" styleClass="loginButton" stylesheets="@CSS/Login.css" text="Login">
+               <font>
+                  <Font name="Eras Bold ITC" size="12.0" />
+               </font>
+            </Button>
+            <Label fx:id="wrongLogin" layoutX="400.0" layoutY="191.0" prefHeight="18.0" prefWidth="130.0">
+               <font>
+                  <Font name="System Bold Italic" size="12.0" />
+               </font>
+            </Label>
+            <Line endX="115.87863159179688" endY="-1.52587890625E-5" layoutX="102.0" layoutY="127.0" startX="-100.0" strokeWidth="3.0">
+               <effect>
+                  <MotionBlur />
+               </effect>
+            </Line>
          </children>
       </AnchorPane>
    </children>

@@ -37,57 +37,46 @@
                            </color>
                         </Shadow>
                      </bumpInput>
-                     <light>
-                        <Light.Distant>
-                           <color>
-                              <Color red="0.14000000059604645" green="0.13019999861717224" blue="0.13019999861717224" opacity="0.49924013018608093" />
-                           </color>
-                        </Light.Distant>
-                     </light>
                   </Lighting>
                </effect>
             </Label>
-            <Button id="loginButton" fx:id="loginButton" layoutX="65.0" layoutY="114.0" mnemonicParsing="false" onAction="#loginButton_Click" prefHeight="34.0" prefWidth="87.0" styleClass="loginButton" stylesheets="@CSS/main.css" text="Log In">
+            <Button id="loginButton" fx:id="loginButton" layoutX="65.0" layoutY="114.0" mnemonicParsing="false" onAction="#loginButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="loginButton" stylesheets="@CSS/main.css" text="Log In">
                <effect>
                   <Lighting>
                      <bumpInput>
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
                      </light>
                   </Lighting>
                </effect></Button>
-            <Button id="registerButton" fx:id="registerButton" layoutX="152.0" layoutY="166.0" mnemonicParsing="false" onAction="#registerButton_Click" prefHeight="34.0" prefWidth="87.0" styleClass="registerButton" stylesheets="@CSS/main.css" text="Register">
+            <Button id="registerButton" fx:id="registerButton" layoutX="152.0" layoutY="166.0" mnemonicParsing="false" onAction="#registerButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/main.css" text="Register">
                <effect>
                   <Lighting>
                      <bumpInput>
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
                      </light>
                   </Lighting>
                </effect></Button>
-            <Button id="infoButton" fx:id="infoButton" layoutX="65.0" layoutY="221.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="34.0" prefWidth="87.0" styleClass="infoButton" stylesheets="@CSS/main.css" text="Info">
+            <Button id="infoButton" fx:id="infoButton" layoutX="65.0" layoutY="221.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="infoButton" stylesheets="@CSS/main.css" text="Info">
                <effect>
                   <Lighting>
                      <bumpInput>
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
                      </light>
                   </Lighting>
                </effect></Button>
-            <Button id="exitButton" fx:id="exitButton" layoutX="152.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="34.0" prefWidth="87.0" styleClass="exitButton" stylesheets="@CSS/main.css" text="Exit">
+            <Button id="exitButton" fx:id="exitButton" layoutX="152.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="exitButton" stylesheets="@CSS/main.css" text="Exit">
                <effect>
                   <Lighting>
                      <bumpInput>
                         <Shadow />
                      </bumpInput>
                      <light>
-                        <Light.Distant />
                      </light>
                   </Lighting>
                </effect>

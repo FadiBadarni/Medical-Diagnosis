@@ -7,6 +7,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.shape.Circle;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
@@ -22,11 +24,19 @@ public class Register implements Initializable {
     private StackPane parentContainer;
     @FXML
     private AnchorPane anchorPane;
+    @FXML
+    private Circle circle1,circle2;
+    @FXML
+    private Rectangle rectangle1,rectangle2;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parentContainer.setOpacity(0);
         makeFadeTransition();
+        new RotationAnimation(circle1, true, 360, 20);
+        new RotationAnimation(circle2, true, 360, 20);
+        new RotationAnimation(rectangle1);
+        new RotationAnimation(rectangle2);
     }
 
     private void makeFadeTransition() {

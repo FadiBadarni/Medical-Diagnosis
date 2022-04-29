@@ -1,35 +1,74 @@
 .start {
-    /*-fx-background-image: url("https://i.ibb.co/JcRwWrx/bg.jpg");*/
+
 }
-.loginButton{
-    -fx-background-color: #ffffff;
+
+.loginButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, rgba(43, 88, 142, 1) 0%, rgba(70, 252, 225, 1) 100%),
+    rgba(43, 88, 142, 1),
+    #d86e3a,
+    radial-gradient(center 50% 50%, radius 100%, rgba(43, 88, 142, 1), rgba(70, 252, 225, 1));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
 }
+
 .loginButton:hover {
-    -fx-background-color: #7393B3;
+    -fx-text-fill: #000000;
 }
-.registerButton{
-    -fx-background-color: #ffffff;
-    -fx-border-color: none;
-    -fx-cursor: pointer;
+
+.registerButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, rgba(43, 88, 142, 1) 0%, rgba(70, 252, 225, 1) 100%),
+    rgba(43, 88, 142, 1),
+    radial-gradient(center 50% 50%, radius 100%, rgba(43, 88, 142, 1), rgba(70, 252, 225, 1));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
 }
+
 .registerButton:hover {
-    -fx-background-color: #6cef0f;
+    -fx-text-fill: #6cef0f;
 }
-.infoButton{
-    -fx-background-color: #ffffff;
-    -fx-border-color: none;
-    -fx-cursor: pointer;
+
+.infoButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, rgba(43, 88, 142, 1) 0%, rgba(70, 252, 225, 1) 100%),
+    rgba(43, 88, 142, 1),
+    radial-gradient(center 50% 50%, radius 100%, rgba(43, 88, 142, 1), rgba(70, 252, 225, 1));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
 }
+
 .infoButton:hover {
-    -fx-background-color: #f18214;
+    -fx-text-fill: #f18214;
 }
-.exitButton{
-    -fx-background-color: #ffffff;
-    -fx-border-color: none;
-    -fx-cursor: pointer;
+
+.exitButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, rgba(43, 88, 142, 1) 0%, rgba(70, 252, 225, 1) 100%),
+    rgba(43, 88, 142, 1),
+    radial-gradient(center 50% 50%, radius 100%, rgba(43, 88, 142, 1), rgba(70, 252, 225, 1));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.1em;
+    -fx-text-fill: white;
 }
+
 .exitButton:hover {
-    -fx-background-color: #ff0000;
+    -fx-text-fill: #ff0000;
 }
 
 

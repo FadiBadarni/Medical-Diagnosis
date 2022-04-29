@@ -1,5 +1,21 @@
-.registerScreen {
+.loginScreen {
     -fx-background-color: linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
+}
+
+.loginButton {
+    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
+    rgba(97, 70, 252, 0.9026961126247374),
+    rgba(155, 49, 204, 0.4096989137451855),
+    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
+    -fx-background-insets: 0, 1, 2, 3, 0;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 10 20 10 20;
+}
+
+.loginButton:hover {
+    -fx-text-fill: white;
 }
 
 .registerButton {
