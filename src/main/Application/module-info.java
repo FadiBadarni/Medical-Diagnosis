@@ -9,7 +9,6 @@ module com.example.project {
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
-    requires AnimateFX;
 
     opens main to javafx.fxml;
     exports main;
