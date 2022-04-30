@@ -40,7 +40,7 @@ public class Main extends Application implements Initializable {
     public void start(Stage stage) throws IOException {
         stg = stage;
         stage.setResizable(false);
-        stage.getIcons().add(new Image("icon.png"));
+      //  stage.getIcons().add(new Image("appIcon.png"));
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         scene.getStylesheets().add("main.css");
