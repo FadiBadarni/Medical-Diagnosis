@@ -10,6 +10,7 @@ module com.example.project {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires AnimateFX;
+    requires org.apache.poi.ooxml;
 
     opens main to javafx.fxml;
     exports main;

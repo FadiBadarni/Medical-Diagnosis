@@ -7,9 +7,18 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
@@ -39,7 +48,7 @@ public class Login implements Initializable {
 
     private void validateLogin() throws IOException {
         Main m = new Main();
-        if (username.getText().toString().equals("fadi") && password.getText().toString().equals("123")) {
+        if (isCorrectPassword(username.getText().toString(), password.getText().toString())) {
             wrongLogin.setText("Success");
             m.changeScene("home.fxml");
         } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
@@ -60,6 +69,23 @@ public class Login implements Initializable {
 
     public void registerButton_Click(ActionEvent e) throws IOException {
         new fadeTransitions(parentContainer, "Register.fxml");
+    }
+
+
+    public boolean isCorrectPassword(String username, String password)
+    {
+        try {
+            ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
+            Iterator<Cell>  cellIterator= file.getAllRow(username);
+            if(cellIterator!=null && cellIterator.hasNext())
+            return cellIterator.next().getStringCellValue().equals(password);
+            else return false;
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        } catch (InvalidFormatException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 }

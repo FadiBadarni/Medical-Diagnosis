@@ -16,7 +16,7 @@ import java.util.Objects;
 public class fadeTransitions {
     public fadeTransitions(StackPane parentContainer, String resource) {
         FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.seconds(1));
+        fadeTransition.setDuration(Duration.seconds(0.3));
         fadeTransition.setNode(parentContainer);
         fadeTransition.setFromValue(1);
         fadeTransition.setToValue(0);

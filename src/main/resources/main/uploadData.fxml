@@ -13,7 +13,7 @@
 <StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.uploadData">
    <children>
       <AnchorPane />
-      <Pane fx:id="line" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/home.css">
+      <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/home.css">
          <children>
             <ImageView fitHeight="80.0" fitWidth="98.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
