@@ -1,5 +1,5 @@
 .panel {
-    -fx-background-color: linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(63, 149, 251, 0.9279061966583508) 50%, rgba(155, 49, 204, 0.78) 100%);
+    -fx-background-color: linear-gradient(to right, rgb(63, 149, 251) 0%, rgb(63, 149, 251) 50%, rgb(155, 49, 204) 100%);
 
 }
 .listview1{
