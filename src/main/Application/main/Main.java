@@ -1,8 +1,12 @@
 package main;
 
+import animatefx.animation.Bounce;
+import animatefx.animation.RollIn;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -11,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -30,11 +35,13 @@ public class Main extends Application implements Initializable {
     @FXML
     private StackPane parentContainer;
     @FXML
-    private Button loginButton;
+    private Button loginButton, registerButton, infoButton, exitButton;
     @FXML
     private AnchorPane anchorPane;
     @FXML
     private Circle circle1, circle2, circle3;
+    @FXML
+    private Label label;
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -60,6 +67,11 @@ public class Main extends Application implements Initializable {
         new RotationAnimation(circle1, true, 360, 15);
         new RotationAnimation(circle2, true, 360, 20);
         new RotationAnimation(circle3, true, 360, 25);
+        new Bounce(label).play();
+        new RollIn(loginButton).play();
+        new RollIn(registerButton).play();
+        new RollIn(infoButton).play();
+        new RollIn(exitButton).play();
     }
 
     private void makeFadeTransition() {
@@ -78,7 +90,7 @@ public class Main extends Application implements Initializable {
     }
 
     public void loginButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions(parentContainer, loginButton, anchorPane);
+        new slideTransitions(parentContainer, loginButton, anchorPane, "Login.fxml");
     }
 
     public void infoButton_Click(ActionEvent e) throws IOException {

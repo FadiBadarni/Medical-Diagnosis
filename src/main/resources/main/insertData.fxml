@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.insertData">
+   <children>
+      <AnchorPane>
+         <children>
+            <Pane fx:id="line" layoutX="-1.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/home.css">
+               <children>
+                  <ImageView fitHeight="80.0" fitWidth="98.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/doctorHome.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Home" />
+                  <Button fx:id="insertDataButton" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#insertDataButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Insert Data" />
+                  <Button fx:id="uploadDataButton" layoutX="-5.0" layoutY="290.0" mnemonicParsing="false" onAction="#uploadDataButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Upload Data" />
+                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="355.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
+                  <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="31.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/homeIcon.png" />
+                     </image>
+                  </ImageView>
+                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Sign Out" />
+                  <Line endX="-48.79998779296875" endY="586.0" layoutX="225.0" layoutY="64.0" startX="-48.79998779296875" startY="-65.50708770751953" strokeWidth="10.0" />
+                  <ImageView fitHeight="39.0" fitWidth="63.0" layoutY="226.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/addData.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="18.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/uploadData.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="26.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/questions.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="28.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/quit.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="225.0" layoutY="141.0" prefHeight="28.0" prefWidth="132.0" text="White Blood Cells">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="271.0" layoutY="181.0" prefHeight="28.0" prefWidth="89.0" text="Neutrophil">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="259.0" layoutY="221.0" prefHeight="28.0" prefWidth="101.0" text="Lymphocytes">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="237.0" layoutY="261.0" prefHeight="28.0" prefWidth="121.0" text="Red Blood Cells">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="271.0" layoutY="301.0" prefHeight="28.0" prefWidth="89.0" text="Hematocrit">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="316.0" layoutY="341.0" prefHeight="28.0" prefWidth="43.0" text="Urea">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="606.0" layoutY="141.0" prefHeight="28.0" prefWidth="89.0" text="Hemoglobin">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="617.0" layoutY="181.0" prefHeight="28.0" prefWidth="80.0" text="Creatinine">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="662.0" layoutY="221.0" prefHeight="28.0" prefWidth="33.0" text="Iron">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="518.0" layoutY="261.0" prefHeight="28.0" prefWidth="185.0" text="High Density Lipoprotein">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="542.0" layoutY="301.0" prefHeight="28.0" prefWidth="159.0" text="Alkaline Phosphatase">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="whiteBloodCellsField" layoutX="361.0" layoutY="141.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="neutrophilField" layoutX="361.0" layoutY="181.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="lymphocytesField" layoutX="361.0" layoutY="221.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="redBloodCellsField" layoutX="361.0" layoutY="261.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="hematocritField" layoutX="361.0" layoutY="301.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="ureaField" layoutX="361.0" layoutY="341.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="hemoglobinField" layoutX="702.0" layoutY="141.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="creatinineField" layoutX="702.0" layoutY="181.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="ironField" layoutX="702.0" layoutY="221.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="lipoproteinField" layoutX="702.0" layoutY="261.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <TextField fx:id="phophataseField" layoutX="702.0" layoutY="301.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
+                  <Button fx:id="saveButton" layoutX="622.0" layoutY="408.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="45.0" prefWidth="220.0" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Patient Choice" />
+                  <Label layoutX="444.0" layoutY="64.0" prefHeight="28.0" prefWidth="196.0" text="Manual Levels Input">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="21.0" />
+                     </font>
+                  </Label>
+                  <Line endX="361.7999267578125" endY="-3.0517578125E-5" layoutX="500.0" layoutY="465.0" startX="-100.0" strokeWidth="2.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

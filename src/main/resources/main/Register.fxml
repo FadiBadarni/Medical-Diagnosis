@@ -44,11 +44,6 @@
             <Line endX="-99.99996948242188" endY="369.5999755859375" layoutX="464.0" layoutY="57.0" startX="-99.99996948242188" startY="-15.199993133544922" />
             <Text layoutX="429.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username Should Be 6-8 Characters Maximum Of 2 Digits In Username" wrappingWidth="237.9215087890625" />
             <Text layoutX="429.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Password should be between 8-10 characters and contains atleast one letter and one digit and one special character [@#$]" wrappingWidth="237.9215087890625" />
-            <ImageView fitHeight="160.0" fitWidth="162.0" layoutX="447.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/stethoscope.png" />
-               </image>
-            </ImageView>
             <Button fx:id="returnButton" layoutX="9.0" layoutY="421.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="36.0" prefWidth="105.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Register.css" text="Return" textFill="RED">
                <font>
                   <Font name="Eras Bold ITC" size="12.0" />

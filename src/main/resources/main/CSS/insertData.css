@@ -1,0 +1,21 @@
+
+.textFields{
+
+}
+.textFields:focused {
+    -fx-border-color: red;
+    -fx-prompt-text-fill: rgba(115, 255, 0, 0.88);
+}
+.textFields:hover{
+
+}
+.textFields:pressed{
+
+}
+.saveButton{
+    -fx-border-width: 2;
+    -fx-border-color: #FFE4C4;
+    -fx-background-color: #FFDAB9; /* 鼠标移出 */
+    cursor: hand;
+}
+

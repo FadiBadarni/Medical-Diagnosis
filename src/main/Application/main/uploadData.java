@@ -11,13 +11,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class home implements Initializable {
+public class uploadData implements Initializable {
+    @FXML
+    StackPane parentContainer;
+    @FXML
+    AnchorPane anchorPane;
     @FXML
     private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton;
-    @FXML
-    private StackPane parentContainer;
-    @FXML
-    private AnchorPane anchorPane;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -32,7 +32,7 @@ public class home implements Initializable {
     public void uploadDataButton_Click(ActionEvent e) throws IOException{
         new slideTransitions().leftToRightTransition(parentContainer,insertDataButton,anchorPane,"uploadData.fxml");
     }
-    public void signOutButton_Click(ActionEvent e)throws IOException{
+    public void signOutButton_Click(ActionEvent e)throws IOException {
         new fadeTransitions(parentContainer, "main.fxml");
     }
 }

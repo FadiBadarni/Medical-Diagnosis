@@ -9,6 +9,8 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/Application" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources/main/CSS" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources/main/images" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/main/HTML" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/src/main/resources/main/JavaScript" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
@@ -83,5 +85,14 @@
     <orderEntry type="library" scope="TEST" name="Maven: org.apiguardian:apiguardian-api:1.1.2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.jupiter:junit-jupiter-engine:5.8.1" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.junit.platform:junit-platform-engine:1.8.1" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/AnimateFX-1.2.1.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
