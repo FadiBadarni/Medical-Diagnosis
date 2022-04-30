@@ -24,8 +24,7 @@
                   </ImageView>
                   <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Home" />
                   <Button fx:id="insertDataButton" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#insertDataButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Insert Data" />
-                  <Button fx:id="uploadDataButton" layoutX="-5.0" layoutY="290.0" mnemonicParsing="false" onAction="#uploadDataButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Upload Data" />
-                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="355.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
+                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
                   <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -43,12 +42,7 @@
                         <Image url="@images/addData.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="18.0" layoutY="299.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/uploadData.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="26.0" layoutY="361.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="28.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/questions.png" />
                      </image>
@@ -66,7 +60,7 @@
                      </font>
                   </Label>
                   <Button layoutX="570.0" layoutY="252.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="173.0" style="-fx-cursor: hand;" styleClass="diagnosisButton" stylesheets="@CSS/home.css" text="Diagnosis" />
-                  <Button layoutX="570.0" layoutY="328.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="173.0" style="-fx-cursor: hand;" styleClass="treatmentButton" stylesheets="@CSS/home.css" text="Treatment" />
+                  <Button layoutX="570.0" layoutY="328.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="173.0" styleClass="treatmentButton" stylesheets="@CSS/home.css" text="Treatment" />
                   <Label layoutX="272.0" layoutY="131.0" prefHeight="26.0" prefWidth="42.0" text="Name">
                      <font>
                         <Font name="Impact" size="15.0" />

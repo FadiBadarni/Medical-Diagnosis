@@ -1,21 +1,75 @@
 
-.textFields{
+.textFields {
 
 }
+
 .textFields:focused {
     -fx-border-color: red;
     -fx-prompt-text-fill: rgba(115, 255, 0, 0.88);
 }
-.textFields:hover{
+
+.textFields:hover {
 
 }
-.textFields:pressed{
+
+.textFields:pressed {
 
 }
-.saveButton{
-    -fx-border-width: 2;
-    -fx-border-color: #FFE4C4;
-    -fx-background-color: #FFDAB9; /* 鼠标移出 */
-    cursor: hand;
+
+.imageView {
+    -fx-background-color: #090a0c,
+    linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+    linear-gradient(rgba(63, 149, 251, 0.93), rgba(31, 147, 255, 0.77)),
+    radial-gradient(center 50% 0%, radius 100%, rgba(114, 131, 148, 0.9), rgba(255, 255, 255, 0));
+    -fx-background-radius: 5, 4, 3, 5;
+    -fx-background-insets: 0, 1, 2, 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+
+.pane {
+    -fx-background-color: #ffffff;
+    -fx-border-color: linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+    linear-gradient(rgba(0, 0, 0, 0.93), rgba(255, 255, 255, 0.77)),
+    radial-gradient(center 50% 0%, radius 100%, rgba(114, 131, 148, 0.9), rgba(255, 255, 255, 0));
+    -fx-border-width: 4px;
+}
+
+.saveButton {
+    -fx-background-color: rgba(97, 70, 252, 0.9026961126247374),
+    rgba(155, 49, 204, 0.4096989137451855),
+    linear-gradient(to right, rgb(155, 49, 204) 0%, #6b6b83 50%, rgba(63, 149, 251, 0.93) 100%);
+    -fx-background-insets: 0, 1, 2, 3, 0;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-padding: 10 20 10 20;
+    -fx-border-color: linear-gradient(rgba(56, 66, 75, 0) 0%, #1f2429 20%, #191d22 100%),
+    linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.77)),
+    radial-gradient(center 50% 0%, radius 100%, rgba(114, 131, 148, 0), rgba(255, 255, 255, 0));
+    -fx-border-width: 4px;
+
+}
+
+.saveButton:hover {
+    -fx-text-fill: #26bb26;
+}
+
+.saveButton2 {
+    -fx-background-color: rgba(97, 70, 252, 0.9026961126247374),
+    rgba(155, 49, 204, 0.4096989137451855),
+    linear-gradient(to right, rgba(63, 149, 251, 0.93) 0%, #6b6b83 50%, #9b31cc 100%);
+    -fx-background-insets: 0, 1, 2, 3, 0;
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+    -fx-font-size: 10px;
+    -fx-padding: 10 20 10 20;
+    -fx-border-color: linear-gradient(rgba(56, 66, 75, 0) 0%, #1f2429 20%, #191d22 100%),
+    linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.77)),
+    radial-gradient(center 50% 0%, radius 100%, rgba(114, 131, 148, 0), rgba(255, 255, 255, 0));
+    -fx-border-width: 4px;
+}
+
+.saveButton2:hover {
+    -fx-text-fill: #26bb26;
 }
 

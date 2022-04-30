@@ -35,4 +35,25 @@ public class fadeTransitions {
         });
         fadeTransition.play();
     }
+    public void fadeTransitionsIn(StackPane parentContainer, String resource) {
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.seconds(0.3));
+        fadeTransition.setNode(parentContainer);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                try {
+                    Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(resource)));
+                    Scene newScene = new Scene(root);
+                    Stage currentStage = (Stage) parentContainer.getScene().getWindow();
+                    currentStage.setScene(newScene);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+        fadeTransition.play();
+    }
 }
