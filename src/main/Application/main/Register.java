@@ -13,16 +13,8 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.*;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
@@ -41,7 +33,7 @@ public class Register implements Initializable {
     private Rectangle rectangle1,rectangle2;
 
     @FXML
-    private TextField firstname,lastname,number,age,weight,length,email;
+    private TextField firstname,lastname, id,age,weight,length,email;
 
     @FXML
     private PasswordField password,repasswoed;
@@ -73,15 +65,12 @@ public class Register implements Initializable {
 
     public void  register(){
        if(isCurrentinput()) {
-           Object[] data = {firstname.getText().toString(), password.getText().toString(), lastname.getText().toString(),
-                   age.getText().toString(), weight.getText().toString(), length.getText().toString(), length.getText().toString()
-           };
+           Object[] data = {id.getText(),password.getText(),firstname.getText(), lastname.getText(),
+                   age.getText(), weight.getText(), length.getText(), email.getText()};
            try {
                ReadWriteXlsx file=new ReadWriteXlsx("Users.xlsx");
                file.add(data);
-           } catch (IOException e) {
-               throw new RuntimeException(e);
-           } catch (InvalidFormatException e) {
+           } catch (IOException | InvalidFormatException e) {
                throw new RuntimeException(e);
            }
        }

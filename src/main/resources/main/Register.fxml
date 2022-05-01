@@ -17,7 +17,7 @@
             </Label>
             <TextField fx:id="firstname" layoutX="27.0" layoutY="148.0" prefHeight="34.0" prefWidth="156.0" promptText="First Name" />
             <TextField fx:id="lastname" layoutX="193.0" layoutY="148.0" prefHeight="34.0" prefWidth="156.0" promptText="Last Name" />
-            <TextField fx:id="number" layoutX="27.0" layoutY="190.0" prefHeight="34.0" prefWidth="156.0" promptText="Identification Number" />
+            <TextField fx:id="id" layoutX="27.0" layoutY="190.0" prefHeight="34.0" prefWidth="156.0" promptText="Identification Number" />
             <TextField fx:id="age" layoutX="193.0" layoutY="192.0" prefHeight="34.0" prefWidth="156.0" promptText="Age" />
             <TextField fx:id="weight" layoutX="27.0" layoutY="237.0" prefHeight="34.0" prefWidth="156.0" promptText="Weight (KG)" />
             <TextField fx:id="length" layoutX="193.0" layoutY="237.0" prefHeight="34.0" prefWidth="156.0" promptText="Length (CM)" />
