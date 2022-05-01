@@ -1,23 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.addPatient">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.addPatient">
    <children>
-      <AnchorPane />
+      <AnchorPane>
       <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/home.css">
          <children>
             <ImageView fitHeight="80.0" fitWidth="98.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
@@ -28,7 +20,7 @@
             <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Home" />
             <Button fx:id="addPatientButton" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#addPatientButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Add Patient" />
             <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
-            <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
+            <Label fx:id="username" layoutX="42.0" layoutY="113.0" text="Doctor Example">
                <font>
                   <Font name="System Bold Italic" size="12.0" />
                </font>
@@ -68,37 +60,37 @@
                   <Font name="Times New Roman Bold Italic" size="21.0" />
                </font>
             </Label>
-            <Label fx:id="inputLabel" layoutX="223.0" layoutY="103.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="First Name">
+            <Label layoutX="223.0" layoutY="103.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="First Name">
                <font>
                   <Font name="Times New Roman Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="inputLabel" layoutX="223.0" layoutY="150.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="ID Number">
+            <Label layoutX="223.0" layoutY="150.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="ID Number">
                <font>
                   <Font name="Times New Roman Bold" size="16.0" />
                </font>
             </Label>
-            <Label fx:id="inputLabel" layoutX="223.0" layoutY="195.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Weight">
+            <Label layoutX="223.0" layoutY="195.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Weight">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="inputLabel" layoutX="223.0" layoutY="240.0" prefHeight="20.0" prefWidth="119.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Phone Number">
+            <Label layoutX="223.0" layoutY="240.0" prefHeight="20.0" prefWidth="119.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Phone Number">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="inputLabel" layoutX="513.0" layoutY="103.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Last Name">
+            <Label layoutX="513.0" layoutY="103.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Last Name">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="inputLabel" layoutX="513.0" layoutY="150.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Age">
+            <Label layoutX="513.0" layoutY="150.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Age">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Label fx:id="inputLabel" layoutX="513.0" layoutY="194.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Length">
+            <Label layoutX="513.0" layoutY="194.0" prefHeight="20.0" prefWidth="89.0" styleClass="inputLabel" stylesheets="@CSS/addPatient.css" text="Length">
                <font>
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
@@ -127,9 +119,9 @@
                      </font>
                   </Label>
                   <Label layoutX="172.0" layoutY="39.0" prefHeight="21.0" prefWidth="159.0" text="Only Excel Files Are Allowed" />
-                  <Pane fx:id="pane1" layoutX="83.0" layoutY="56.0" prefHeight="155.0" prefWidth="337.0" styleClass="pane" stylesheets="@CSS/insertData.css">
+                  <Pane fx:id="pane1" layoutX="83.0" layoutY="56.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="155.0" prefWidth="337.0" styleClass="pane" stylesheets="@CSS/insertData.css">
                      <children>
-                        <Text fill="#847b7b" layoutX="159.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or Drop Here" wrappingWidth="132.0">
+                        <Text fx:id="drop_text" fill="#847b7b" layoutX="159.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or Drop Here" wrappingWidth="132.0">
                            <font>
                               <Font name="Times New Roman" size="22.0" />
                            </font>
@@ -164,12 +156,13 @@
                   </Pane>
                </children>
             </Pane>
-            <Button fx:id="saveButton1" layoutX="476.0" layoutY="615.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="36.0" prefWidth="106.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/addPatient.css" text="Save">
+            <Button fx:id="saveButton1" layoutX="476.0" layoutY="615.0" mnemonicParsing="false" onAction="#saveButton1_Click" prefHeight="36.0" prefWidth="106.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/addPatient.css" text="Save">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
          </children>
       </Pane>
+      </AnchorPane>
    </children>
 </StackPane>

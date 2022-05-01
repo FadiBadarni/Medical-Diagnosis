@@ -24,6 +24,7 @@
                      </image>
                   </ImageView>
                   <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Home" />
+                  <Button fx:id="insertDataButton" layoutX="-5.0" layoutY="290.0" mnemonicParsing="false" onAction="#insertDataButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Insert Data" />
                   <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
                   <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
                      <font>
@@ -36,6 +37,11 @@
                      </image>
                   </ImageView>
                   <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Sign Out" />
+                  <ImageView fitHeight="39.0" fitWidth="63.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/addData.png" />
+                     </image>
+                  </ImageView>
                   <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="26.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/questions.png" />
@@ -112,7 +118,7 @@
                   <TextField fx:id="ironField" layoutX="703.0" layoutY="134.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
                   <TextField fx:id="lipoproteinField" layoutX="703.0" layoutY="174.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
                   <TextField fx:id="phophataseField" layoutX="703.0" layoutY="214.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <Button fx:id="saveButton" layoutX="629.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Diagnosis" />
+                  <Button fx:id="saveButton" layoutX="629.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Patient Choice" />
                   <Label layoutX="441.0" layoutY="14.0" prefHeight="28.0" prefWidth="196.0" text="Manual Levels Input">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="21.0" />
@@ -143,7 +149,7 @@
                         </Pane>
                      </children>
                   </Pane>
-                  <Button fx:id="dropSaveButton" layoutX="409.0" layoutY="599.0" mnemonicParsing="false" onAction="#dropSaveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="dropSaveButton" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Diagnosis" />
+                  <Button fx:id="saveButton2" layoutX="409.0" layoutY="599.0" mnemonicParsing="false" onAction="#dropSaveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton2" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Patient Choice" />
                   <Button fx:id="addPatient" contentDisplay="RIGHT" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#addPatientButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Add Patient" />
                   <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="15.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
                      <image>

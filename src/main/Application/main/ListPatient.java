@@ -3,6 +3,7 @@ package main;
 import java.io.FileInputStream;
 import java.util.*;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,13 +15,15 @@ import java.io.*;
 
 public class ListPatient {
     private ArrayList<Patient> patients;
+    private String path;
 
     public ListPatient(ArrayList<Patient> patients) {
         this.patients =new ArrayList<>(patients);
     }
 
-    public ListPatient() {
+    public ListPatient(String path) {
         patients=new ArrayList<>();
+        insertData(path);
     }
 
     public void insertData(String path){
@@ -30,7 +33,8 @@ public class ListPatient {
         int age=0;
         int weight=0;
         int length=0;
-        String email=null;
+        int phone=0;
+        String bloodType=null;
         try
         {
             FileInputStream file = new FileInputStream(new File(path));
@@ -63,9 +67,13 @@ public class ListPatient {
                     if(cell.getCellType()== CellType.NUMERIC)
                         length= (int) cell.getNumericCellValue();
                     cell = cellIterator.next();
+                    if(cell.getCellType()== CellType.NUMERIC)
+                       phone = (int) cell.getNumericCellValue();
+                    cell = cellIterator.next();
                     if(cell.getCellType()== CellType.STRING)
-                        email=cell.getStringCellValue();
-                    patients.add(new Patient(id,firstName,lastName,age,weight,length,email));
+                        bloodType=cell.getStringCellValue();
+
+                    patients.add(new Patient(id,firstName,lastName,age,weight,length,phone,bloodType));
                 }
             }
             file.close();
@@ -74,6 +82,13 @@ public class ListPatient {
         {
             e.printStackTrace();
         }
+    }
+
+    public void addPatient(Patient p) throws IOException, InvalidFormatException {
+        ReadWriteXlsx file=new ReadWriteXlsx(path);
+      // p.getFirstName();
+       // file.add(data);
+        patients.add(new Patient(p));
     }
 
     public ArrayList<Patient> getPatients() {

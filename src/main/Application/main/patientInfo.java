@@ -7,13 +7,18 @@ import animatefx.animation.SlideInLeft;
 import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.effect.Glow;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -22,6 +27,9 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class patientInfo implements Initializable {
+    @FXML
+    public AnchorPane ap;
+
     @FXML
     private TextField nameField,idField,ageField,phoneField,weightField,lengthField,bloodField;
     @FXML
@@ -34,6 +42,8 @@ public class patientInfo implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parentContainer.setOpacity(0);
         makeFadeTransition();
+     //   Stage stage = (Stage) ap.getScene().getWindow();
+
         new BounceIn(nameField).play();
         new BounceIn(idField).play();
         new BounceIn(ageField).play();
@@ -65,7 +75,26 @@ public class patientInfo implements Initializable {
         fadeTransition.play();
     }
 
+
+
     public void exitButton_Click(ActionEvent actionEvent) {
-        new fadeTransitions().exitFadeTransition(parentContainer,exitButton);
+       new fadeTransitions().exitFadeTransition(parentContainer,exitButton);
+    }
+
+
+
+    public void move(MouseEvent mouseEvent) {
+        Node node = (Node) mouseEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+
+        Patient p = (Patient) stage.getUserData();
+        nameField.setText(p.getFirstName());
+        idField.setText(p.getId()+"");
+
+        ageField.setText(p.getAge()+"");
+        phoneField.setText(p.getPhone()+"");
+        weightField.setText(p.getWeight()+"");
+        lengthField.setText(p.getLength()+"");
+        bloodField.setText(p.getLength()+"");
     }
 }
