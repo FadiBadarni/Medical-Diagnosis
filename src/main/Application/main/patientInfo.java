@@ -86,11 +86,9 @@ public class patientInfo implements Initializable {
     public void move(MouseEvent mouseEvent) {
         Node node = (Node) mouseEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
-
         Patient p = (Patient) stage.getUserData();
         nameField.setText(p.getFirstName());
         idField.setText(p.getId()+"");
-
         ageField.setText(p.getAge()+"");
         phoneField.setText(p.getPhone()+"");
         weightField.setText(p.getWeight()+"");

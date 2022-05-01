@@ -16,6 +16,10 @@ import java.io.*;
 public class ListPatient {
     private ArrayList<Patient> patients;
     private String path;
+    public ListPatient() {
+        patients=new ArrayList<>();
+    }
+
 
     public ListPatient(ArrayList<Patient> patients) {
         this.patients =new ArrayList<>(patients);

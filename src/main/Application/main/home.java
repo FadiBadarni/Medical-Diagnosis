@@ -1,4 +1,5 @@
 package main;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -22,9 +23,9 @@ import java.util.ResourceBundle;
 
 public class home implements Initializable {
     @FXML
-    public Button displayInfoButton;
+    public Button displayInfoButton, addPatientButton;
     @FXML
-    private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton;
+    private Button homeButton, uploadDataButton, questionsButton, signOutButton;
     @FXML
     private StackPane parentContainer;
     @FXML
@@ -35,12 +36,13 @@ public class home implements Initializable {
     @FXML
     private ListView<String> listview1;
 
-     private ListPatient listPatient=new ListPatient();
+    private ListPatient listPatient = new ListPatient();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateData();
     }
+
     private void updateData() {
         listPatient.insertData("PatientList.xlsx");
         listview1.getItems().addAll(listPatient.getIdList());
@@ -48,15 +50,11 @@ public class home implements Initializable {
 
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "home.fxml");
-    }
-
-    public void insertDataButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "insertData.fxml");
+        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "home.fxml");
     }
 
     public void addPatientButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "addPatient.fxml");
+        new slideTransitions().leftToRightTransition(parentContainer, addPatientButton, anchorPane, "addPatient.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
@@ -69,17 +67,15 @@ public class home implements Initializable {
     }
 
 
-
     @FXML
-    public void diagnosis_Button_Click(ActionEvent actionEvent) throws IOException {
+    public void diagnosisButton_Click(ActionEvent actionEvent) throws IOException {
 
-        if(!listview1.getSelectionModel().isEmpty()) {
-            Patient p = listPatient.getPatients().get(listview1.getSelectionModel().getSelectedIndex());
-            Node node = (Node) actionEvent.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.setUserData(p);
-            new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "insertData.fxml");
-        }
+        Patient p = listPatient.getPatients().get(listview1.getSelectionModel().getSelectedIndex());
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.setUserData(p);
+        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "insertData.fxml");
+
     }
 
     @FXML

@@ -24,7 +24,6 @@
                      </image>
                   </ImageView>
                   <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Home" />
-                  <Button fx:id="insertDataButton" layoutX="-5.0" layoutY="290.0" mnemonicParsing="false" onAction="#insertDataButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Insert Data" />
                   <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
                   <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
                      <font>
