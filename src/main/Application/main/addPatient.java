@@ -28,15 +28,7 @@ public class addPatient implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "home.fxml");
-    }
-
-    public void insertDataButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "insertData.fxml");
-    }
-
-    public void uploadDataButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "addPatient.fxml");
+        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
@@ -44,7 +36,7 @@ public class addPatient implements Initializable {
     }
 
     public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "addPatient.fxml");
+        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, "addPatient.fxml");
     }
 
     public void saveButton_Click(ActionEvent actionEvent) {

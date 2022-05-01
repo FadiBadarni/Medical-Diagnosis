@@ -14,7 +14,6 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
@@ -27,7 +26,7 @@ public class insertData implements Initializable {
     @FXML
     AnchorPane anchorPane;
     @FXML
-    private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton;
+    private Button homeButton, uploadDataButton, questionsButton, signOutButton, addPatientButton,saveButton,dropSaveButton,diagnosisButton;
     @FXML
     private TextField whiteBloodCellsField, neutrophilField, lymphocytesField, hematocritField, ureaField, hemoglobinField,
             creatinineField, ironField, lipoproteinField, phophataseField, redBloodCellsField;
@@ -44,15 +43,11 @@ public class insertData implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "home.fxml");
-    }
-
-    public void insertDataButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "insertData.fxml");
+        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "home.fxml");
     }
 
     public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "addPatient.fxml");
+        new slideTransitions().leftToRightTransition(parentContainer, addPatientButton, anchorPane, "addPatient.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
@@ -84,18 +79,16 @@ public class insertData implements Initializable {
             bloodTest.put("HDL", Integer.valueOf(lipoproteinField.getText()));
             bloodTest.put("AP", Integer.valueOf(phophataseField.getText()));
 
-
             Node node = (Node) e.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
-
             Patient p = (Patient) stage.getUserData();
             p.setBloodTest(bloodTest);
-
-            System.out.println(p.getFirstName());
-
-            System.out.println(p.getBloodTest().toString());
+//            System.out.println(p.getFirstName());
+//            System.out.println(p.getBloodTest().toString());
 
         }
+        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "diagnosis.fxml");
+
     }
 
     public boolean checkField(TextField field) {
@@ -121,10 +114,10 @@ public class insertData implements Initializable {
         drop_text.setText("Done");
     }
 
+
     public void dropSaveButton_Click(ActionEvent actionEvent) {
-
-
         if (path != null) {
+
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             Patient p = (Patient) stage.getUserData();
