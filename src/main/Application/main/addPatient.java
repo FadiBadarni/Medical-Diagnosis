@@ -69,7 +69,7 @@ public class addPatient implements Initializable {
     public void saveButton_Click(ActionEvent actionEvent) {
 
         if(isCurrentinput()) {
-            Object[] data = {idField.getText(),firstNameField.getText(), lastNameField.getText(),
+            String[] data = {idField.getText(),firstNameField.getText(), lastNameField.getText(),
                     ageField.getText(), weightField.getText(), lengthField.getText(),
                     phoneField.getText(),bloodTypeField.getText()};
             try {

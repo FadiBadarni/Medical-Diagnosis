@@ -1,0 +1,11 @@
+.text-field{
+    -fx-border-color: transparent transparent red transparent;
+    -fx-border-width: 3px;
+    -fx-background-color: transparent;
+    -fx-font-size: 14px;
+}
+.text-field:focused {
+    -fx-content-display: top;
+    -fx-border-insets: 2 0 0 0;
+    -fx-border-width: 2;
+}

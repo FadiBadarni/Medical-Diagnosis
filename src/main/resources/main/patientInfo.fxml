@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+
+
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.patientInfo" onMouseMoved="#move">
+   <children>
+      <AnchorPane  fx:id="ap" prefHeight="300.0" prefWidth="520.0" >
+         <children>
+            <Pane prefHeight="336.0" prefWidth="550.0" styleClass="panel" stylesheets="@CSS/home.css" >
+               <children>
+                  <Label layoutX="14.0" layoutY="20.0" prefHeight="33.0" prefWidth="118.0" text="Patient Info">
+                     <textFill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="1.0" green="1.0" blue="1.0" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.5073170731707317">
+                                 <color>
+                                    <Color red="0.3709941506385803" green="0.821052610874176" blue="0.7685458064079285" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.810173511505127" green="0.4034697711467743" blue="0.8315789699554443" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </textFill>
+                     <font>
+                        <Font name="Times New Roman Bold" size="22.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="nameField" layoutX="23.0" layoutY="73.0" stylesheets="@CSS/patientInfo.css" />
+                  <Label fx:id="nameLabel" layoutX="23.0" layoutY="66.0" text="Full Name">
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="idField" layoutX="23.0" layoutY="127.0" stylesheets="@CSS/patientInfo.css" />
+                  <Label fx:id="idLabel" layoutX="23.0" layoutY="120.0" text="ID Number">
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="ageField" layoutX="23.0" layoutY="183.0" stylesheets="@CSS/patientInfo.css" />
+                  <Label fx:id="ageLabel" layoutX="23.0" layoutY="176.0" text="Age">
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="phoneField" layoutX="23.0" layoutY="247.0" stylesheets="@CSS/patientInfo.css" />
+                  <Label fx:id="phoneLabel" layoutX="23.0" layoutY="240.0" text="Phone Number">
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="weightField" layoutX="270.0" layoutY="73.0" stylesheets="@CSS/patientInfo.css" />
+                  <Label fx:id="weightLabel" layoutX="270.0" layoutY="66.0" text="Weight">
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="lengthField" layoutX="270.0" layoutY="127.0" stylesheets="@CSS/patientInfo.css" />
+                  <Label fx:id="lengthLabel" layoutX="270.0" layoutY="120.0" text="Length">
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Label>
+                  <TextField fx:id="bloodField" layoutX="270.0" layoutY="183.0" stylesheets="@CSS/patientInfo.css" />
+                  <Label fx:id="bloodLabel" layoutX="270.0" layoutY="176.0" text="Blood Type">
+                     <font>
+                        <Font name="Times New Roman Bold" size="12.0" />
+                     </font>
+                     <effect>
+                        <Glow />
+                     </effect>
+                  </Label>
+                  <Button fx:id="exitButton" layoutX="360.0" layoutY="270.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="25.0" prefWidth="85.0" text="Exit" />
+                  <Line endX="336.39996337890625" endY="-14.000012397766113" layoutX="213.0" layoutY="16.0" startX="-214.0" startY="-13.999996185302734" strokeWidth="4.0" />
+                  <Line endX="336.39996337890625" endY="-14.000012397766113" layoutX="215.0" layoutY="350.0" startX="-214.0" startY="-13.999996185302734" strokeWidth="4.0" />
+                  <Line endX="326.4000244140625" endY="-24.0" layoutX="222.0" layoutY="24.0" startX="328.10699462890625" startY="312.0" strokeWidth="4.0" />
+                  <Line endX="-224.7071075439453" endY="311.9999694824219" layoutX="227.0" layoutY="24.0" startX="-224.70709228515625" startY="-23.292877197265625" strokeWidth="4.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

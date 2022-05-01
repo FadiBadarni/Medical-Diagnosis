@@ -20,21 +20,29 @@ public class Patient {
     private int age;
     private int weight;
     private int length;
-    private String email;
+    private String bloodType;
+    private int phone;
 
     private Hashtable<String, Integer> bloodTest;
 
 
 
-    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, String email) {
+    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone,String blood) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
         this.weight = weight;
         this.length = lenght;
-        this.email = email;
+        this.phone = phone;
+        this.bloodType=blood;
         this.bloodTest =new Hashtable<>();
+    }
+
+
+
+    public void setPhone(int phone) {
+        this.phone = phone;
     }
 
     public Patient(Patient p) {
@@ -45,7 +53,8 @@ public class Patient {
         this.age = p.getAge();
         this.weight = p.getWeight();
         this.length =p.getLength();
-        this.email = p.getEmail();
+        this.bloodType = p.getBloodType();
+        this.phone=p.getPhone();
         this.bloodTest =new Hashtable<>(p.getBloodTest());
     }
 
@@ -141,13 +150,7 @@ public class Patient {
         this.length = length;
     }
 
-    public String getEmail() {
-        return email;
-    }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
 
     public Hashtable<String, Integer> getBloodTest() {
         return bloodTest;
@@ -155,5 +158,17 @@ public class Patient {
 
     public void setBloodTest(Hashtable<String, Integer> bloodTest) {
         this.bloodTest = bloodTest;
+    }
+
+    public String getBloodType() {
+        return bloodType;
+    }
+
+    public void setBloodType(String bloodType) {
+        this.bloodType = bloodType;
+    }
+
+    public int getPhone() {
+        return phone;
     }
 }

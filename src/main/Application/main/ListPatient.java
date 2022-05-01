@@ -33,7 +33,8 @@ public class ListPatient {
         int age=0;
         int weight=0;
         int length=0;
-        String email=null;
+        int phone=0;
+        String bloodType=null;
         try
         {
             FileInputStream file = new FileInputStream(new File(path));
@@ -66,9 +67,13 @@ public class ListPatient {
                     if(cell.getCellType()== CellType.NUMERIC)
                         length= (int) cell.getNumericCellValue();
                     cell = cellIterator.next();
+                    if(cell.getCellType()== CellType.NUMERIC)
+                       phone = (int) cell.getNumericCellValue();
+                    cell = cellIterator.next();
                     if(cell.getCellType()== CellType.STRING)
-                        email=cell.getStringCellValue();
-                    patients.add(new Patient(id,firstName,lastName,age,weight,length,email));
+                        bloodType=cell.getStringCellValue();
+
+                    patients.add(new Patient(id,firstName,lastName,age,weight,length,phone,bloodType));
                 }
             }
             file.close();
@@ -80,7 +85,7 @@ public class ListPatient {
     }
 
     public void addPatient(Patient p) throws IOException, InvalidFormatException {
-       // ReadWriteXlsx file=new ReadWriteXlsx(path);
+        ReadWriteXlsx file=new ReadWriteXlsx(path);
       // p.getFirstName();
        // file.add(data);
         patients.add(new Patient(p));

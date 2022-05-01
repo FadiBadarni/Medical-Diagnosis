@@ -31,7 +31,7 @@ public class ReadWriteXlsx {
         sheet=wb.getSheetAt(0);
     }
 
-    public void add(Object[] data){
+    public void add(String[] data){
 
         try {
         FileInputStream inputStream = new FileInputStream(file);
@@ -47,9 +47,15 @@ public class ReadWriteXlsx {
 
                 Cell cell ;
 
-                for (Object field : data) {
+                for (String field : data) {
                     cell = row.createCell(columnCount++);
-                    this.setCellValue((XSSFCell) cell,field);
+                    try {
+                       int x=Integer.parseInt(field);
+                            cell.setCellValue(x);
+                    }catch (NumberFormatException e) {
+                        cell.setCellValue(field);
+                        }
+
                 }
 
             FileOutputStream outputStream = new FileOutputStream(filePath);

@@ -1,16 +1,22 @@
 package main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 
@@ -36,6 +42,7 @@ public class home implements Initializable {
         updateData();
     }
     private void updateData() {
+
         listPatient=new ListPatient("PatientList.xlsx");
         listview1.getItems().addAll(listPatient.getIdList());
     }
@@ -76,5 +83,21 @@ public class home implements Initializable {
         }
     }
 
+    @FXML
+    private void sendData(ActionEvent event) {
 
+    }
+
+    public void displayInfoButton_Click(ActionEvent actionEvent) throws IOException {
+        if(!listview1.getSelectionModel().isEmpty()) {
+            Patient p = listPatient.getPatients().get(listview1.getSelectionModel().getSelectedIndex());
+            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("patientInfo.fxml")));
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setUserData(p);
+            stage.setScene(scene);
+            stage.initStyle(StageStyle.UNDECORATED);
+            stage.show();
+        }
+    }
 }

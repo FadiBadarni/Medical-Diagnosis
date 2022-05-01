@@ -65,7 +65,7 @@ public class Register implements Initializable {
 
     public void  register(){
        if(isCurrentinput()) {
-           Object[] data = {id.getText(),password.getText(),firstname.getText(), lastname.getText(),
+           String[] data = {id.getText(),password.getText(),firstname.getText(), lastname.getText(),
                    age.getText(), weight.getText(), length.getText(), email.getText()};
            try {
                ReadWriteXlsx file=new ReadWriteXlsx("Users.xlsx");
