@@ -50,7 +50,7 @@ public class slideTransitions {
         timeline.play();
     }
 
-    public void leftToRightTransition(StackPane parentContainer, Button button, AnchorPane anchorPane1, Pane pane, String resource) throws IOException {
+    public void leftToRightTransition(StackPane parentContainer, Button button, AnchorPane anchorPane1, String resource) throws IOException {
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(resource)));
         Scene scene = button.getScene();
         root.translateXProperty().set(-1 * scene.getWidth());
@@ -61,7 +61,22 @@ public class slideTransitions {
         timeline.getKeyFrames().add(keyFrame);
         timeline.setOnFinished(event -> {
             parentContainer.getChildren().remove(anchorPane1);
-            parentContainer.getChildren().remove(pane);
+
+        });
+        timeline.play();
+    }
+
+    public void leftToRightTransition2(StackPane parentContainer, Button button, AnchorPane anchorPane1, String resource) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(resource)));
+        Scene scene = button.getScene();
+        root.translateXProperty().set(-1 * scene.getWidth());
+        parentContainer.getChildren().add(root);
+        Timeline timeline = new Timeline();
+        KeyValue keyValue = new KeyValue(root.translateXProperty(), 0, Interpolator.EASE_IN);
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(1), keyValue);
+        timeline.getKeyFrames().add(keyFrame);
+        timeline.setOnFinished(event -> {
+            parentContainer.getChildren().remove(anchorPane1);
 
         });
         timeline.play();

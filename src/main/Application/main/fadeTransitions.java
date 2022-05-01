@@ -6,14 +6,19 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
 
 public class fadeTransitions {
+    public fadeTransitions(){
+
+    }
     public fadeTransitions(StackPane parentContainer, String resource) {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.seconds(0.3));
@@ -53,6 +58,18 @@ public class fadeTransitions {
                     throw new RuntimeException(e);
                 }
             }
+        });
+        fadeTransition.play();
+    }
+    public void exitFadeTransition(StackPane parentContainer, Button button){
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.seconds(0.3));
+        fadeTransition.setNode(parentContainer);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.setOnFinished(actionEvent -> {
+            Stage stage = (Stage) button.getScene().getWindow();
+            stage.close();
         });
         fadeTransition.play();
     }
