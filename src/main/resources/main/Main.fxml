@@ -16,7 +16,7 @@
 
 <StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Main">
    <children>
-      <AnchorPane fx:id="anchorPane" prefHeight="368.0" prefWidth="594.0" styleClass="start" stylesheets="@CSS/main.css">
+      <AnchorPane fx:id="anchorPane" prefHeight="368.0" prefWidth="594.0" styleClass="start" stylesheets="@CSS/Main.css">
          <children>
             <ImageView fitHeight="412.0" fitWidth="627.0" layoutX="-12.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -39,7 +39,7 @@
                   </Lighting>
                </effect>
             </Label>
-            <Button id="loginButton" fx:id="loginButton" layoutX="65.0" layoutY="114.0" mnemonicParsing="false" onAction="#loginButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="loginButton" stylesheets="@CSS/main.css" text="Log In">
+            <Button id="loginButton" fx:id="loginButton" layoutX="65.0" layoutY="114.0" mnemonicParsing="false" onAction="#loginButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="loginButton" stylesheets="@CSS/Main.css" text="Log In">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -49,7 +49,7 @@
                      </light>
                   </Lighting>
                </effect></Button>
-            <Button id="registerButton" fx:id="registerButton" layoutX="152.0" layoutY="166.0" mnemonicParsing="false" onAction="#registerButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/main.css" text="Register">
+            <Button id="registerButton" fx:id="registerButton" layoutX="152.0" layoutY="166.0" mnemonicParsing="false" onAction="#registerButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/Main.css" text="Register">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -59,7 +59,7 @@
                      </light>
                   </Lighting>
                </effect></Button>
-            <Button id="infoButton" fx:id="infoButton" layoutX="65.0" layoutY="221.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="infoButton" stylesheets="@CSS/main.css" text="Info">
+            <Button id="infoButton" fx:id="infoButton" layoutX="65.0" layoutY="221.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="infoButton" stylesheets="@CSS/Main.css" text="Info">
                <effect>
                   <Lighting>
                      <bumpInput>
@@ -69,7 +69,7 @@
                      </light>
                   </Lighting>
                </effect></Button>
-            <Button id="exitButton" fx:id="exitButton" layoutX="152.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="exitButton" stylesheets="@CSS/main.css" text="Exit">
+            <Button id="exitButton" fx:id="exitButton" layoutX="152.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="exitButton" stylesheets="@CSS/Main.css" text="Exit">
                <effect>
                   <Lighting>
                      <bumpInput>

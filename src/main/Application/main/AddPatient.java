@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class addPatient implements Initializable {
+public class AddPatient implements Initializable {
     public TextField weightField;
     public TextField lastNameField;
     public TextField firstNameField;
@@ -47,15 +47,15 @@ public class addPatient implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "home.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer, "main.fxml");
+        new FadeTransitions(parentContainer, "Main.fxml");
     }
 
     public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, "addPatient.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, "AddPatient.fxml");
     }
 
     public void saveButton_Click(ActionEvent actionEvent) {

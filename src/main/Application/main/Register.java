@@ -59,7 +59,7 @@ public class Register implements Initializable {
     }
 
     public void returnButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer, "main.fxml");
+        new FadeTransitions(parentContainer, "Main.fxml");
     }
 
 

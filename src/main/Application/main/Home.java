@@ -21,7 +21,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class home implements Initializable {
+public class Home implements Initializable {
     @FXML
     public Button displayInfoButton, addPatientButton;
     @FXML
@@ -50,15 +50,15 @@ public class home implements Initializable {
 
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "home.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
     }
 
     public void addPatientButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, addPatientButton, anchorPane, "addPatient.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, addPatientButton, anchorPane, "AddPatient.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer, "main.fxml");
+        new FadeTransitions(parentContainer, "Main.fxml");
     }
 
 
@@ -74,7 +74,7 @@ public class home implements Initializable {
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.setUserData(p);
-        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "insertData.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "InsertData.fxml");
 
     }
 
@@ -84,7 +84,7 @@ public class home implements Initializable {
     }
 
     public void displayInfoButton_Click(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("patientInfo.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PatientInfo.fxml")));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);

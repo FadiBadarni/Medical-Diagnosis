@@ -14,11 +14,11 @@
 <?import javafx.scene.text.Font?>
 
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.patientInfo" onMouseMoved="#move">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PatientInfo" onMouseMoved="#move">
    <children>
       <AnchorPane  fx:id="ap" prefHeight="300.0" prefWidth="520.0" >
          <children>
-            <Pane prefHeight="336.0" prefWidth="550.0" styleClass="panel" stylesheets="@CSS/home.css" >
+            <Pane prefHeight="336.0" prefWidth="550.0" styleClass="panel" stylesheets="@CSS/Home.css" >
                <children>
                   <Label layoutX="14.0" layoutY="20.0" prefHeight="33.0" prefWidth="118.0" text="Patient Info">
                      <textFill>
@@ -46,7 +46,7 @@
                         <Font name="Times New Roman Bold" size="22.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameField" layoutX="23.0" layoutY="73.0" stylesheets="@CSS/patientInfo.css" />
+                  <TextField fx:id="nameField" layoutX="23.0" layoutY="73.0" stylesheets="@CSS/PatientInfo.css" />
                   <Label fx:id="nameLabel" layoutX="23.0" layoutY="66.0" text="Full Name">
                      <font>
                         <Font name="Times New Roman Bold" size="12.0" />
@@ -55,7 +55,7 @@
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="idField" layoutX="23.0" layoutY="127.0" stylesheets="@CSS/patientInfo.css" />
+                  <TextField fx:id="idField" layoutX="23.0" layoutY="127.0" stylesheets="@CSS/PatientInfo.css" />
                   <Label fx:id="idLabel" layoutX="23.0" layoutY="120.0" text="ID Number">
                      <font>
                         <Font name="Times New Roman Bold" size="12.0" />
@@ -64,7 +64,7 @@
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="ageField" layoutX="23.0" layoutY="183.0" stylesheets="@CSS/patientInfo.css" />
+                  <TextField fx:id="ageField" layoutX="23.0" layoutY="183.0" stylesheets="@CSS/PatientInfo.css" />
                   <Label fx:id="ageLabel" layoutX="23.0" layoutY="176.0" text="Age">
                      <font>
                         <Font name="Times New Roman Bold" size="12.0" />
@@ -73,7 +73,7 @@
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="phoneField" layoutX="23.0" layoutY="247.0" stylesheets="@CSS/patientInfo.css" />
+                  <TextField fx:id="phoneField" layoutX="23.0" layoutY="247.0" stylesheets="@CSS/PatientInfo.css" />
                   <Label fx:id="phoneLabel" layoutX="23.0" layoutY="240.0" text="Phone Number">
                      <font>
                         <Font name="Times New Roman Bold" size="12.0" />
@@ -82,7 +82,7 @@
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="weightField" layoutX="270.0" layoutY="73.0" stylesheets="@CSS/patientInfo.css" />
+                  <TextField fx:id="weightField" layoutX="270.0" layoutY="73.0" stylesheets="@CSS/PatientInfo.css" />
                   <Label fx:id="weightLabel" layoutX="270.0" layoutY="66.0" text="Weight">
                      <font>
                         <Font name="Times New Roman Bold" size="12.0" />
@@ -91,7 +91,7 @@
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="lengthField" layoutX="270.0" layoutY="127.0" stylesheets="@CSS/patientInfo.css" />
+                  <TextField fx:id="lengthField" layoutX="270.0" layoutY="127.0" stylesheets="@CSS/PatientInfo.css" />
                   <Label fx:id="lengthLabel" layoutX="270.0" layoutY="120.0" text="Length">
                      <font>
                         <Font name="Times New Roman Bold" size="12.0" />
@@ -100,7 +100,7 @@
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="bloodField" layoutX="270.0" layoutY="183.0" stylesheets="@CSS/patientInfo.css" />
+                  <TextField fx:id="bloodField" layoutX="270.0" layoutY="183.0" stylesheets="@CSS/PatientInfo.css" />
                   <Label fx:id="bloodLabel" layoutX="270.0" layoutY="176.0" text="Blood Type">
                      <font>
                         <Font name="Times New Roman Bold" size="12.0" />

@@ -12,19 +12,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.questions">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Questions">
    <children>
       <AnchorPane fx:id="anchorPane">
          <children>
-            <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="872.0" styleClass="panel" stylesheets="@CSS/home.css">
+            <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="667.0" prefWidth="872.0" styleClass="panel" stylesheets="@CSS/Home.css">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="98.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/doctorHome.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Home" />
-                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
+                  <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
+                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Questions" />
                   <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -35,7 +35,7 @@
                         <Image url="@images/homeIcon.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Sign Out" />
+                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
                   <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="26.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/questions.png" />
@@ -77,7 +77,7 @@
                         <Font name="Times New Roman" size="25.0" />
                      </font>
                   </Text>
-                  <Button layoutX="377.0" layoutY="604.0" mnemonicParsing="false" text="Submit Answers And Proceed">
+                  <Button fx:id="submitButton" layoutX="377.0" layoutY="604.0" mnemonicParsing="false" onAction="#submitButton_Click" text="Submit Answers And Proceed">
                      <font>
                         <Font size="14.0" />
                      </font>

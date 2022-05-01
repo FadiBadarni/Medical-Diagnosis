@@ -12,19 +12,19 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.insertData">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.InsertData">
    <children>
       <AnchorPane>
          <children>
-            <Pane fx:id="pane" layoutX="-1.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/home.css">
+            <Pane fx:id="pane" layoutX="-1.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/Home.css">
                <children>
                   <ImageView fitHeight="80.0" fitWidth="98.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/doctorHome.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Home" />
-                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
+                  <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
+                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Questions" />
                   <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
@@ -35,12 +35,7 @@
                         <Image url="@images/homeIcon.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Sign Out" />
-                  <ImageView fitHeight="39.0" fitWidth="63.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/addData.png" />
-                     </image>
-                  </ImageView>
+                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
                   <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="26.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/questions.png" />
@@ -106,18 +101,18 @@
                         <Font name="Times New Roman Bold Italic" size="17.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="whiteBloodCellsField" layoutX="362.0" layoutY="54.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="neutrophilField" layoutX="362.0" layoutY="94.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="lymphocytesField" layoutX="362.0" layoutY="134.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="redBloodCellsField" layoutX="362.0" layoutY="174.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="hematocritField" layoutX="362.0" layoutY="214.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="ureaField" layoutX="362.0" layoutY="254.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="hemoglobinField" layoutX="703.0" layoutY="54.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="creatinineField" layoutX="703.0" layoutY="94.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="ironField" layoutX="703.0" layoutY="134.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="lipoproteinField" layoutX="703.0" layoutY="174.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <TextField fx:id="phophataseField" layoutX="703.0" layoutY="214.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
-                  <Button fx:id="saveButton" layoutX="629.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Patient Choice" />
+                  <TextField fx:id="whiteBloodCellsField" layoutX="362.0" layoutY="54.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="neutrophilField" layoutX="362.0" layoutY="94.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="lymphocytesField" layoutX="362.0" layoutY="134.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="redBloodCellsField" layoutX="362.0" layoutY="174.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="hematocritField" layoutX="362.0" layoutY="214.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="ureaField" layoutX="362.0" layoutY="254.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="hemoglobinField" layoutX="703.0" layoutY="54.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="creatinineField" layoutX="703.0" layoutY="94.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="ironField" layoutX="703.0" layoutY="134.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="lipoproteinField" layoutX="703.0" layoutY="174.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="phophataseField" layoutX="703.0" layoutY="214.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <Button fx:id="saveButton" layoutX="629.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/InsertData.css" text="Save &amp; Proceed To Patient Choice" />
                   <Label layoutX="441.0" layoutY="14.0" prefHeight="28.0" prefWidth="196.0" text="Manual Levels Input">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="21.0" />
@@ -129,7 +124,7 @@
                         <Font name="Times New Roman Bold" size="33.0" />
                      </font>
                   </Label>
-                  <Pane layoutX="273.0" layoutY="369.0" prefHeight="227.0" prefWidth="492.0" styleClass="imageView" stylesheets="@CSS/insertData.css">
+                  <Pane layoutX="273.0" layoutY="369.0" prefHeight="227.0" prefWidth="492.0" styleClass="imageView" stylesheets="@CSS/InsertData.css">
                      <children>
                         <Label layoutX="185.0" layoutY="14.0" prefHeight="25.0" prefWidth="132.0" text="Upload Levels">
                            <font>
@@ -137,7 +132,7 @@
                            </font>
                         </Label>
                         <Label layoutX="172.0" layoutY="39.0" prefHeight="21.0" prefWidth="159.0" text="Only Excel Files Are Allowed" />
-                        <Pane fx:id="droppane" layoutX="83.0" layoutY="56.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="155.0" prefWidth="337.0" styleClass="pane" stylesheets="@CSS/insertData.css">
+                        <Pane fx:id="droppane" layoutX="83.0" layoutY="56.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="155.0" prefWidth="337.0" styleClass="pane" stylesheets="@CSS/InsertData.css">
                            <children>
                               <Text fx:id="drop_text" fill="#847b7b" layoutX="118.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drop Here" wrappingWidth="101.0">
                                  <font>
@@ -148,8 +143,8 @@
                         </Pane>
                      </children>
                   </Pane>
-                  <Button fx:id="saveButton2" layoutX="409.0" layoutY="599.0" mnemonicParsing="false" onAction="#dropSaveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton2" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Patient Choice" />
-                  <Button fx:id="addPatient" contentDisplay="RIGHT" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#addPatientButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Add Patient" />
+                  <Button fx:id="saveButton2" layoutX="409.0" layoutY="599.0" mnemonicParsing="false" onAction="#dropSaveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton2" stylesheets="@CSS/InsertData.css" text="Save &amp; Proceed To Patient Choice" />
+                  <Button fx:id="addPatient" contentDisplay="RIGHT" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#addPatientButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Add Patient" />
                   <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="15.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/questions.png" />

@@ -10,23 +10,28 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class questions extends Application {
+public class Questions extends Application {
     @FXML
     private StackPane parentContainer;
     @FXML
-    private Button homeButton;
+    private Button homeButton,submitButton;
     @FXML
     private AnchorPane anchorPane;
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
-        new fadeTransitions(parentContainer, "home.fxml");
+        new FadeTransitions(parentContainer, "Home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent actionEvent) {
-        new fadeTransitions(parentContainer, "main.fxml");
+        new FadeTransitions(parentContainer, "Main.fxml");
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+
+    }
+
+    public void submitButton_Click(ActionEvent actionEvent) throws IOException {
+        new FadeTransitions(parentContainer, "Treatment.fxml");
 
     }
 }

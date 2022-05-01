@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class diagnosis {
+public class Diagnosis {
     @FXML
     StackPane parentContainer;
     @FXML
@@ -30,7 +30,7 @@ public class diagnosis {
     }
 
     public void proceedTreatmentButton_Click(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("askQuestionsPopUp.fxml")));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("AskQuestionPopUp.fxml")));
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -38,12 +38,14 @@ public class diagnosis {
     }
 
     public void goToTreatmentButton_Click(ActionEvent actionEvent) throws IOException {
-        new fadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
+        new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
         Main m = new Main();
-        m.changeScene("questions.fxml");
+        m.changeScene("Treatment.fxml");
     }
 
-    public void goToQuestionsButton_Click(ActionEvent actionEvent) {
-
+    public void goToQuestionsButton_Click(ActionEvent actionEvent) throws IOException {
+        new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
+        Main m = new Main();
+        m.changeScene("Questions.fxml");
     }
 }

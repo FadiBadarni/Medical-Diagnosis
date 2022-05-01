@@ -5,8 +5,6 @@ import animatefx.animation.RollIn;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,7 +14,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
@@ -48,9 +45,9 @@ public class Main extends Application implements Initializable {
         stg = stage;
         stage.setResizable(false);
         //stage.getIcons().add(new Image("appIcon.ico"));
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        //scene.getStylesheets().add("/CSS/main.css");
+        //scene.getStylesheets().add("/CSS/Main.css");
         stage.setTitle("Medical Diagnosis Application");
         stage.setScene(scene);
         stage.show();
@@ -90,7 +87,7 @@ public class Main extends Application implements Initializable {
     }
 
     public void loginButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions(parentContainer, loginButton, anchorPane, "Login.fxml");
+        new SlideTransitions(parentContainer, loginButton, anchorPane, "Login.fxml");
     }
 
     public void infoButton_Click(ActionEvent e) throws IOException {
@@ -109,12 +106,12 @@ public class Main extends Application implements Initializable {
     }
 
     public void registerButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer, "Register.fxml");
+        new FadeTransitions(parentContainer, "Register.fxml");
     }
 
     public void exitButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
-        m.changeScene("home.fxml");
+        m.changeScene("Home.fxml");
     }
 
 }

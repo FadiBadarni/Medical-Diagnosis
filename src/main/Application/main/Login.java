@@ -9,13 +9,7 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
@@ -50,7 +44,7 @@ public class Login implements Initializable {
         Main m = new Main();
         if (isCorrectPassword(username.getText().toString(), password.getText().toString())) {
             wrongLogin.setText("Success");
-            m.changeScene("home.fxml");
+            m.changeScene("Home.fxml");
         } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
             wrongLogin.setText("Missing Credentials");
         } else {
@@ -63,12 +57,12 @@ public class Login implements Initializable {
     }
 
     public void returnButton_Click(ActionEvent e) throws IOException {
-        slideTransitions transition = new slideTransitions();
+        SlideTransitions transition = new SlideTransitions();
         transition.rightToLeftTransition(parentContainer, returnButton, anchorPane1, anchorPane2);
     }
 
     public void registerButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer, "Register.fxml");
+        new FadeTransitions(parentContainer, "Register.fxml");
     }
 
 

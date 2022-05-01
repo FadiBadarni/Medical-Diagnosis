@@ -4,7 +4,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -24,7 +23,7 @@ import java.util.ResourceBundle;
 
 
 
-public class insertData implements Initializable {
+public class InsertData implements Initializable {
     public Label title;
     @FXML
     StackPane parentContainer;
@@ -50,15 +49,15 @@ public class insertData implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "home.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
     }
 
     public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, addPatientButton, anchorPane, "addPatient.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, addPatientButton, anchorPane, "AddPatient.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer, "main.fxml");
+        new FadeTransitions(parentContainer, "Main.fxml");
     }
 
     public void saveButton_Click(ActionEvent e) throws IOException {
@@ -90,11 +89,9 @@ public class insertData implements Initializable {
             Stage stage = (Stage) node.getScene().getWindow();
             Patient p = (Patient) stage.getUserData();
             p.setBloodTest(bloodTest);
-//            System.out.println(p.getFirstName());
-//            System.out.println(p.getBloodTest().toString());
-
         }
-        new slideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "diagnosis.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Diagnosis.fxml");
+
 
     }
 

@@ -1,13 +1,8 @@
 package main;
 
 import animatefx.animation.BounceIn;
-import animatefx.animation.Flip;
 import animatefx.animation.JackInTheBox;
-import animatefx.animation.SlideInLeft;
-import javafx.animation.Animation;
 import javafx.animation.FadeTransition;
-import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,8 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.Glow;
-import javafx.scene.input.DragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -26,7 +19,7 @@ import javafx.util.Duration;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class patientInfo implements Initializable {
+public class PatientInfo implements Initializable {
     @FXML
     public AnchorPane ap;
 
@@ -78,7 +71,7 @@ public class patientInfo implements Initializable {
 
 
     public void exitButton_Click(ActionEvent actionEvent) {
-       new fadeTransitions().exitFadeTransition(parentContainer,exitButton);
+       new FadeTransitions().exitFadeTransition(parentContainer,exitButton);
     }
 
 

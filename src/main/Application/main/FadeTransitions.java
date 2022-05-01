@@ -9,17 +9,16 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
 import java.util.Objects;
 
-public class fadeTransitions {
-    public fadeTransitions(){
+public class FadeTransitions {
+    public FadeTransitions(){
 
     }
-    public fadeTransitions(StackPane parentContainer, String resource) {
+    public FadeTransitions(StackPane parentContainer, String resource) {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.seconds(0.3));
         fadeTransition.setNode(parentContainer);
