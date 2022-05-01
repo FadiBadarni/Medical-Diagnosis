@@ -47,7 +47,6 @@
     linear-gradient(rgba(0, 0, 0, 0), rgba(255, 255, 255, 0.77)),
     radial-gradient(center 50% 0%, radius 100%, rgba(114, 131, 148, 0), rgba(255, 255, 255, 0));
     -fx-border-width: 4px;
-
 }
 
 .saveButton:hover {

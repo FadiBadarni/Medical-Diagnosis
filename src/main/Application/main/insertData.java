@@ -47,8 +47,8 @@ public class insertData implements Initializable {
         new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "insertData.fxml");
     }
 
-    public void uploadDataButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "uploadData.fxml");
+    public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
+        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "addPatient.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
@@ -77,6 +77,7 @@ public class insertData implements Initializable {
             field.setStyle(null);
         }
     }
+
 
 
 }

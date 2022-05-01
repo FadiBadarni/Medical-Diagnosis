@@ -12,13 +12,13 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class uploadData implements Initializable {
+public class addPatient implements Initializable {
     @FXML
     StackPane parentContainer;
     @FXML
     AnchorPane anchorPane;
     @FXML
-    private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton;
+    private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton, addPatientButton;
     @FXML
     private Pane pane;
 
@@ -36,10 +36,18 @@ public class uploadData implements Initializable {
     }
 
     public void uploadDataButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "uploadData.fxml");
+        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "addPatient.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
         new fadeTransitions(parentContainer, "main.fxml");
+    }
+
+    public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
+        new slideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, pane, "addPatient.fxml");
+    }
+
+    public void saveButton_Click(ActionEvent actionEvent) {
+
     }
 }
