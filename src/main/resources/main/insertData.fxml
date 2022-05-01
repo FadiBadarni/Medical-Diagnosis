@@ -8,9 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -141,46 +138,20 @@
                            </font>
                         </Label>
                         <Label layoutX="172.0" layoutY="39.0" prefHeight="21.0" prefWidth="159.0" text="Only Excel Files Are Allowed" />
-                        <Pane fx:id="pane" layoutX="83.0" layoutY="56.0" prefHeight="155.0" prefWidth="337.0" styleClass="pane" stylesheets="@CSS/insertData.css">
+                        <Pane fx:id="droppane" layoutX="83.0" layoutY="56.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="155.0" prefWidth="337.0" styleClass="pane" stylesheets="@CSS/insertData.css">
                            <children>
-                              <Text fill="#847b7b" layoutX="159.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or Drop Here" wrappingWidth="132.0">
+                              <Text fx:id="drop_text" fill="#847b7b" layoutX="118.0" layoutY="85.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drop Here" wrappingWidth="101.0">
                                  <font>
                                     <Font name="Times New Roman" size="22.0" />
                                  </font>
                               </Text>
-                              <Label layoutX="45.0" layoutY="69.0" style="-fx-cursor: hand;" text="Choose File">
-                                 <font>
-                                    <Font name="Times New Roman" size="22.0" />
-                                 </font>
-                                 <textFill>
-                                    <LinearGradient endX="1.0" endY="1.0">
-                                       <stops>
-                                          <Stop>
-                                             <color>
-                                                <Color red="0.031199999153614044" green="0.640312671661377" blue="0.7799999713897705" />
-                                             </color>
-                                          </Stop>
-                                          <Stop offset="0.5121951219512195">
-                                             <color>
-                                                <Color red="0.031199999153614044" green="0.4122517704963684" blue="0.7799999713897705" />
-                                             </color>
-                                          </Stop>
-                                          <Stop offset="1.0">
-                                             <color>
-                                                <Color red="0.7248862981796265" green="0.20272904634475708" blue="0.8421052694320679" />
-                                             </color>
-                                          </Stop>
-                                       </stops>
-                                    </LinearGradient>
-                                 </textFill>
-                              </Label>
                            </children>
                         </Pane>
                      </children>
                   </Pane>
-                  <Button fx:id="saveButton2" layoutX="409.0" layoutY="599.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton2" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Patient Choice" />
-                  <Button fx:id="addPatientButton" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#addPatientButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Add Patient" />
-                  <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="26.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
+                  <Button fx:id="saveButton2" layoutX="409.0" layoutY="599.0" mnemonicParsing="false" onAction="#dropSaveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton2" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Patient Choice" />
+                  <Button fx:id="addPatient" contentDisplay="RIGHT" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#addPatientButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Add Patient" />
+                  <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="15.0" layoutY="231.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/questions.png" />
                      </image>

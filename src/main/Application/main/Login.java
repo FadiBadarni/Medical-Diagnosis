@@ -81,9 +81,7 @@ public class Login implements Initializable {
             return cellIterator.next().getStringCellValue().equals(password);
             else return false;
 
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        } catch (InvalidFormatException e) {
+        } catch (IOException | InvalidFormatException e) {
             throw new RuntimeException(e);
         }
     }

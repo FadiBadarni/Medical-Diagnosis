@@ -4,10 +4,13 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 
 public class ReadWriteXlsx {
@@ -171,6 +174,30 @@ public class ReadWriteXlsx {
            }
         return null;
     }
+
+    public Set<String> getColumnList() {
+        Set<String> columnList = new HashSet<>();
+        try {
+
+            XSSFWorkbook workbook = new XSSFWorkbook(file);
+            XSSFSheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> rowIterator = sheet.iterator();
+            while (rowIterator.hasNext()) {
+                Row row = rowIterator.next();
+                Iterator<Cell> cellIterator = row.cellIterator();
+                Cell cell = cellIterator.next();
+                switch (cell.getCellType()) {
+                    case STRING:
+                        columnList.add(cell.getStringCellValue());
+                        break;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return columnList;
+    }
+
 }
 
 
