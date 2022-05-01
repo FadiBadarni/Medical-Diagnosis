@@ -29,14 +29,14 @@ public class home implements Initializable {
     @FXML
     private ListView<String> listview1;
 
-     private ListPatient listPatient=new ListPatient();
+     private ListPatient listPatient;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateData();
     }
     private void updateData() {
-        listPatient.insertData("PatientList.xlsx");
+        listPatient=new ListPatient("PatientList.xlsx");
         listview1.getItems().addAll(listPatient.getIdList());
     }
 
@@ -76,8 +76,5 @@ public class home implements Initializable {
         }
     }
 
-    @FXML
-    private void sendData(ActionEvent event) {
 
-    }
 }

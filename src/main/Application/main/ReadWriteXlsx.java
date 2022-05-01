@@ -4,13 +4,14 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.model.StylesTable;
+import org.apache.poi.xssf.usermodel.*;
+import org.apache.poi.xssf.usermodel.extensions.XSSFCellBorder;
+import org.apache.poi.xssf.usermodel.extensions.XSSFCellFill;
 
 import java.io.*;
-import java.util.HashSet;
+
 import java.util.Iterator;
-import java.util.Set;
 
 
 public class ReadWriteXlsx {
@@ -26,86 +27,9 @@ public class ReadWriteXlsx {
 
         this.filePath=filePath;
         file = new File(filePath);
-       // workbook = new XSSFWorkbook();
-     //   outputStream = new FileOutputStream(file);
-      //  inputStream = new FileInputStream(file);
         XSSFWorkbook wb = new XSSFWorkbook(file);
         sheet=wb.getSheetAt(0);
     }
-//    public void write( Map<String, Object[]> data,String SheetName) {
-//        sheet = workbook.createSheet(SheetName);
-//        Set<String> keyset = data.keySet();
-//        int rownum = 0;
-//        for (String key : keyset)
-//        {
-//            Row row = sheet.createRow(rownum++);
-//            Object [] objArr = data.get(key);
-//            int cellnum = 0;
-//            for (Object obj : objArr)
-//            {
-//                Cell cell = row.createCell(cellnum++);
-//                if(obj instanceof String)
-//                    cell.setCellValue((String)obj);
-//                else if(obj instanceof Integer)
-//                    cell.setCellValue((Integer)obj);
-//            }
-//        }
-//        try
-//        {
-//            //Write the workbook in file system
-//           // out = new FileOutputStream(new File("howtodoinjava_demo.xlsx"));
-//        //    workbook.write(outputStream);
-//         //   outputStream.close();
-//            //System.out.println("howtodoinjava_demo.xlsx written successfully on disk.");
-//        }
-//        catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//    }
-//
-//    public void print(){
-//        try
-//        {
-//            FileInputStream file = new FileInputStream(new File("howtodoinjava_demo.xlsx"));
-//            XSSFWorkbook workbook = new XSSFWorkbook(file);
-//            XSSFSheet sheet = workbook.getSheetAt(0);
-//            Iterator<Row> rowIterator = sheet.iterator();
-//            while (rowIterator.hasNext())
-//            {
-//                Row row = rowIterator.next();
-//                Iterator<Cell> cellIterator = row.cellIterator();
-//
-//                while (cellIterator.hasNext())
-//                {
-//                    Cell cell = cellIterator.next();
-//                    switch (cell.getCellType())
-//                    {
-//                        case NUMERIC:
-//                            System.out.print(cell.getNumericCellValue() + "\t");
-//                            break;
-//                        case STRING:
-//                            System.out.print(cell.getStringCellValue() + "\t");
-//                            break;
-//                    }
-//                }
-//                System.out.println("");
-//            }
-//            file.close();
-//        }
-//        catch (Exception e)
-//        {
-//            e.printStackTrace();
-//        }
-//    }
-//    public void isfound(){
-//
-//    }
-//
-//    public void update(int row,int column,String value){
-//        Cell cell2Update = sheet.getRow(row).getCell(column);
-//        cell2Update.setCellValue(value);
-//    }
 
     public void add(Object[] data){
 
@@ -122,18 +46,10 @@ public class ReadWriteXlsx {
                 int columnCount = 0;
 
                 Cell cell ;
-                //= row.createCell(columnCount);
-
-               // cell.setCellValue(rowCount);
 
                 for (Object field : data) {
                     cell = row.createCell(columnCount++);
-                    if (field instanceof String) {
-                        cell.setCellValue((String) field);
-                    } else if (field instanceof Integer) {
-
-                        cell.setCellValue((Integer) field);
-                    }
+                    this.setCellValue((XSSFCell) cell,field);
                 }
 
             FileOutputStream outputStream = new FileOutputStream(filePath);
@@ -175,29 +91,98 @@ public class ReadWriteXlsx {
         return null;
     }
 
-    public Set<String> getColumnList() {
-        Set<String> columnList = new HashSet<>();
-        try {
+    public void copy(String path)
+    {
+            // Read xlsx file
+            XSSFWorkbook oldWorkbook = null;
+            try {
+                oldWorkbook = (XSSFWorkbook) WorkbookFactory.create(new File(path));
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
 
-            XSSFWorkbook workbook = new XSSFWorkbook(file);
-            XSSFSheet sheet = workbook.getSheetAt(0);
-            Iterator<Row> rowIterator = sheet.iterator();
-            while (rowIterator.hasNext()) {
-                Row row = rowIterator.next();
-                Iterator<Cell> cellIterator = row.cellIterator();
-                Cell cell = cellIterator.next();
-                switch (cell.getCellType()) {
-                    case STRING:
-                        columnList.add(cell.getStringCellValue());
-                        break;
+             XSSFWorkbook newWorkbook = new XSSFWorkbook();
+
+
+            // Copy sheets
+            for (int sheetNumber = 0; sheetNumber < oldWorkbook.getNumberOfSheets(); sheetNumber++) {
+                final XSSFSheet oldSheet = oldWorkbook.getSheetAt(sheetNumber);
+                final XSSFSheet newSheet = newWorkbook.createSheet(oldSheet.getSheetName());
+
+                newSheet.setDefaultRowHeight(oldSheet.getDefaultRowHeight());
+                newSheet.setDefaultColumnWidth(oldSheet.getDefaultColumnWidth());
+
+                // Copy content
+                for (int rowNumber = oldSheet.getFirstRowNum(); rowNumber < oldSheet.getLastRowNum(); rowNumber++) {
+                    final XSSFRow oldRow = oldSheet.getRow(rowNumber);
+                    if (oldRow != null) {
+                        final XSSFRow newRow = newSheet.createRow(rowNumber);
+                        newRow.setHeight(oldRow.getHeight());
+
+                        for (int columnNumber = oldRow.getFirstCellNum(); columnNumber < oldRow
+                                .getLastCellNum(); columnNumber++) {
+                            newSheet.setColumnWidth(columnNumber, oldSheet.getColumnWidth(columnNumber));
+
+                            final XSSFCell oldCell = oldRow.getCell(columnNumber);
+                            if (oldCell != null) {
+                                final XSSFCell newCell = newRow.createCell(columnNumber);
+
+                                // Copy value
+                                setCellValue(newCell, getCellValue(oldCell));
+
+                                // Copy style
+                                XSSFCellStyle newCellStyle = newWorkbook.createCellStyle();
+                                newCellStyle.cloneStyleFrom(oldCell.getCellStyle());
+                                newCell.setCellStyle(newCellStyle);
+                            }
+                        }
+                    }
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return columnList;
-    }
 
+            try {
+                oldWorkbook.close();
+                newWorkbook.write(new FileOutputStream(this.filePath));
+                newWorkbook.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+                return;
+            }
+        }
+
+        private void setCellValue( XSSFCell cell,  Object value) {
+            if (value instanceof Boolean) {
+                cell.setCellValue((boolean) value);
+            } else if (value instanceof Byte) {
+                cell.setCellValue((byte) value);
+            } else if (value instanceof Double) {
+                cell.setCellValue((double) value);
+            } else if (value instanceof String) {
+                cell.setCellValue((String) value);
+            } else {
+                throw new IllegalArgumentException();
+            }
+        }
+
+        private  Object getCellValue(XSSFCell cell) {
+            switch (cell.getCellType()) {
+                case BOOLEAN:
+                    return cell.getBooleanCellValue(); // boolean
+                case ERROR:
+                    return cell.getErrorCellValue(); // byte
+                case NUMERIC:
+                    return cell.getNumericCellValue(); // double
+                case STRING:
+                case BLANK:
+                    return cell.getStringCellValue(); // String
+                case FORMULA:
+                    return  "=" + cell.getCellFormula(); // String for formula
+                default:
+                    throw new IllegalArgumentException();
+            }
+        }
 }
+
 
 

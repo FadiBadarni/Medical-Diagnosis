@@ -3,6 +3,7 @@ package main;
 import java.io.FileInputStream;
 import java.util.*;
 
+import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
@@ -14,13 +15,15 @@ import java.io.*;
 
 public class ListPatient {
     private ArrayList<Patient> patients;
+    private String path;
 
     public ListPatient(ArrayList<Patient> patients) {
         this.patients =new ArrayList<>(patients);
     }
 
-    public ListPatient() {
+    public ListPatient(String path) {
         patients=new ArrayList<>();
+        insertData(path);
     }
 
     public void insertData(String path){
@@ -74,6 +77,13 @@ public class ListPatient {
         {
             e.printStackTrace();
         }
+    }
+
+    public void addPatient(Patient p) throws IOException, InvalidFormatException {
+       // ReadWriteXlsx file=new ReadWriteXlsx(path);
+      // p.getFirstName();
+       // file.add(data);
+        patients.add(new Patient(p));
     }
 
     public ArrayList<Patient> getPatients() {

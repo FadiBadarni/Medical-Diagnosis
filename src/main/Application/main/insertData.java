@@ -4,7 +4,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
@@ -21,11 +23,14 @@ import java.net.URL;
 import java.util.Hashtable;
 import java.util.ResourceBundle;
 
+
+
 public class insertData implements Initializable {
+    public Label title;
     @FXML
     StackPane parentContainer;
     @FXML
-    AnchorPane anchorPane;
+    private AnchorPane anchorPane;
     @FXML
     private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton;
     @FXML
@@ -39,8 +44,10 @@ public class insertData implements Initializable {
 
     private String path;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {

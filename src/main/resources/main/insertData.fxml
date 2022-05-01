@@ -1,20 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.insertData">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.insertData">
    <children>
-      <AnchorPane>
+      <AnchorPane fx:id="anchorPane">
          <children>
             <Pane fx:id="pane" layoutX="-1.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/home.css">
                <children>
@@ -26,7 +20,7 @@
                   <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Home" />
                   <Button fx:id="insertDataButton" layoutX="-5.0" layoutY="290.0" mnemonicParsing="false" onAction="#insertDataButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Insert Data" />
                   <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
-                  <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
+                  <Label fx:id="username" layoutX="42.0" layoutY="113.0" text="Doctor Example">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
@@ -119,7 +113,7 @@
                   <TextField fx:id="lipoproteinField" layoutX="703.0" layoutY="174.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
                   <TextField fx:id="phophataseField" layoutX="703.0" layoutY="214.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/insertData.css" />
                   <Button fx:id="saveButton" layoutX="629.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/insertData.css" text="Save &amp; Proceed To Patient Choice" />
-                  <Label layoutX="441.0" layoutY="14.0" prefHeight="28.0" prefWidth="196.0" text="Manual Levels Input">
+                  <Label fx:id="title" layoutX="441.0" layoutY="14.0" prefHeight="28.0" prefWidth="196.0" text="Manual Levels Input">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="21.0" />
                      </font>

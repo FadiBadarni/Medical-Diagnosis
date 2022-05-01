@@ -37,6 +37,18 @@ public class Patient {
         this.bloodTest =new Hashtable<>();
     }
 
+    public Patient(Patient p) {
+
+        this.id = p.getId();
+        this.firstName =p.getFirstName();
+        this.lastName =p.getLastName();
+        this.age = p.getAge();
+        this.weight = p.getWeight();
+        this.length =p.getLength();
+        this.email = p.getEmail();
+        this.bloodTest =new Hashtable<>(p.getBloodTest());
+    }
+
     public void addBloodTest(Hashtable<String,Integer> bloodTest)
     {
         this.bloodTest=new Hashtable<>(bloodTest);
