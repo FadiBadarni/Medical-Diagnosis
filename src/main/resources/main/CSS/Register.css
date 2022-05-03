@@ -1,12 +1,12 @@
 .registerScreen {
-    -fx-background-color: linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
+    -fx-background-color: linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%,  #329d9c 100%);
 }
 
 .registerButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
+    -fx-background-color: #000000,
+    #56c596,
+    #00ff3f,
+    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 25%, #2d82b5 100%);
     -fx-background-insets: 0, 1, 2, 3, 0;
     -fx-text-fill: #000000;
     -fx-font-weight: bold;
@@ -16,20 +16,30 @@
 
 .registerButton:hover {
     -fx-text-fill: #6cef0f;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0), 4, 0, 0, 1);
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 3, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
 }
 
 .returnButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
+    -fx-background-color: #000000,
+    #56c596,
+    #ff0000,
+    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 25%, #2d82b5 100%);
     -fx-background-insets: 0, 1, 2, 3, 0;
     -fx-text-fill: #000000;
     -fx-font-weight: bold;
     -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
+
+
 }
 
 .returnButton:hover {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0), 4, 0, 0, 1);
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 3, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
     -fx-text-fill: #ff0000;
 }

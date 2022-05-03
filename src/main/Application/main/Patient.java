@@ -26,8 +26,7 @@ public class Patient {
     private Hashtable<String, Integer> bloodTest;
 
 
-
-    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone,String blood) {
+    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,11 +34,9 @@ public class Patient {
         this.weight = weight;
         this.length = lenght;
         this.phone = phone;
-        this.bloodType=blood;
-        this.bloodTest =new Hashtable<>();
+        this.bloodType = blood;
+        this.bloodTest = new Hashtable<>();
     }
-
-
 
     public void setPhone(int phone) {
         this.phone = phone;
@@ -48,53 +45,47 @@ public class Patient {
     public Patient(Patient p) {
 
         this.id = p.getId();
-        this.firstName =p.getFirstName();
-        this.lastName =p.getLastName();
+        this.firstName = p.getFirstName();
+        this.lastName = p.getLastName();
         this.age = p.getAge();
         this.weight = p.getWeight();
-        this.length =p.getLength();
+        this.length = p.getLength();
         this.bloodType = p.getBloodType();
-        this.phone=p.getPhone();
-        this.bloodTest =new Hashtable<>(p.getBloodTest());
+        this.phone = p.getPhone();
+        this.bloodTest = new Hashtable<>(p.getBloodTest());
     }
 
-    public void addBloodTest(Hashtable<String,Integer> bloodTest)
-    {
-        this.bloodTest=new Hashtable<>(bloodTest);
+    public void addBloodTest(Hashtable<String, Integer> bloodTest) {
+        this.bloodTest = new Hashtable<>(bloodTest);
     }
 
-    public void addBloodTest(String path)
-    {
+    public void addBloodTest(String path) {
         bloodTest.clear();
         String key = null;
         int value = 0;
-        try
-        {
+        try {
             FileInputStream file = new FileInputStream(new File(path));
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rowIterator = sheet.iterator();
-            while (rowIterator.hasNext())
-            {
+            while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
 
                 Cell cell = cellIterator.next();
 
-                if(cell.getCellType()== CellType.STRING)
-                    key=cell.getStringCellValue();
+                if (cell.getCellType() == CellType.STRING)
+                    key = cell.getStringCellValue();
 
                 cell = cellIterator.next();
-                if(cell.getCellType()==CellType.NUMERIC) NUMERIC:
-                        value= (int) cell.getNumericCellValue();
+                if (cell.getCellType() == CellType.NUMERIC) NUMERIC:
+                        value = (int) cell.getNumericCellValue();
 
-                if(key!=null && value!=0)
-                    bloodTest.put(key,value);
+                if (key != null && value != 0)
+                    bloodTest.put(key, value);
             }
             file.close();
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -125,7 +116,6 @@ public class Patient {
     }
 
 
-
     public int getAge() {
         return age;
     }
@@ -149,7 +139,6 @@ public class Patient {
     public void setLength(int length) {
         this.length = length;
     }
-
 
 
     public Hashtable<String, Integer> getBloodTest() {

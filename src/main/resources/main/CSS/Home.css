@@ -1,50 +1,57 @@
 .panel {
-    -fx-background-color: linear-gradient(to right, rgb(7, 83, 173) 0%, rgb(63, 149, 251) 50%, rgb(155, 49, 204) 100%);
+    -fx-background-color: linear-gradient(to right,
+    #6495ED 0%,
+    #56c596 25%,
+    #6495ED 100%);
 
 }
 
 .listview1 {
     -fx-background-color: #090a0c,
-    linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
-    linear-gradient(rgba(63, 149, 251, 0.93), rgba(31, 147, 255, 0.77)),
-    radial-gradient(center 50% 0%, radius 100%, rgba(114, 131, 148, 0.9), rgba(255, 255, 255, 0));
+    linear-gradient(rgb(86, 197, 150), rgb(207, 244, 210)),
+    radial-gradient(center 50% 0%, radius 100%, rgb(86, 197, 150), rgba(255, 255, 255, 0));
     -fx-background-radius: 5, 4, 3, 5;
     -fx-background-insets: 0, 1, 2, 0;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
-    -fx-font-family: "Arial";
-    -fx-text-fill: linear-gradient(white, #d0d0d0);
-    -fx-font-size: 12px;
-    -fx-padding: 10 20 10 20;
 }
 
 .homeButton {
     -fx-background-color: #090a0c,
-    linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
-    linear-gradient(#20262b, #191d22),
-    radial-gradient(center 50% 0%, radius 100%, rgba(114, 131, 148, 0.9), rgba(255, 255, 255, 0));
-    -fx-background-radius: 5, 4, 3, 5;
-    -fx-background-insets: 0, 1, 2, 0;
+    linear-gradient(#4a707a 0%, #56C596 20%, #015c92 100%),
+    linear-gradient(#88cdf6, #56c596);
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
-    -fx-font-family: "Arial";
-    -fx-text-fill: linear-gradient(white, #d0d0d0);
-    -fx-font-size: 12px;
+    -fx-font-family: "Times New Roman";
+    -fx-text-fill: #000000;
+    -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
 }
 
 .homeButton:hover {
-    -fx-background-color: linear-gradient(rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 1) 100%);
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
+    #56C596,
+    #BCE6FF,
+    radial-gradient(center 50% 50%, radius 100%, #88CDF6, #329D9C);
+    -fx-effect: dropshadow(gaussian, #329D9C, 4, 0, 0, 1);
+    -fx-font-weight: bold;
+    -fx-font-size: 1.2em;
+    -fx-text-fill: black;
 }
 
 .displayInfoButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgb(255, 255, 255) 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56C596 0%, rgba(70, 252, 225, 1) 100%),
+    #56C596,
+    #BCE6FF,
+    radial-gradient(center 50% 50%, radius 100%, #98BBC4, rgba(70, 252, 225, 1));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
     -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
+    -fx-font-size: 1.2em;
+    -fx-text-fill: black;
 }
 
 .displayInfoButton:hover {
@@ -52,51 +59,21 @@
 }
 
 .diagnosisButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(255, 255, 255, 0.93) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(63, 149, 251, 0.93) 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
+    #56C596,
+    #BCE6FF,
+    radial-gradient(center 50% 50%, radius 100%, #98BBC4, rgba(70, 252, 225, 1));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
     -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
+    -fx-font-size: 1.2em;
+    -fx-text-fill: black;
 }
 
 .diagnosisButton:hover {
     -fx-text-fill: #ff0000;
-}
-
-.treatmentButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgb(255, 255, 255) 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
-}
-
-.treatmentButton:hover {
-    -fx-text-fill: #6cef0f;
-}
-
-.insertDataButton {
-
-}
-
-.insertDataButton:hover {
-
-}
-
-.uploadDataButton {
-
-}
-
-.uploadDataButton:hover {
-
 }
 
 .questionsButton {

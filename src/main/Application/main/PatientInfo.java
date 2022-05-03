@@ -24,18 +24,19 @@ public class PatientInfo implements Initializable {
     public AnchorPane ap;
 
     @FXML
-    private TextField nameField,idField,ageField,phoneField,weightField,lengthField,bloodField;
+    private TextField nameField, idField, ageField, phoneField, weightField, lengthField, bloodField;
     @FXML
-    private Label nameLabel,idLabel,ageLabel,phoneLabel,weightLabel,lengthLabel,bloodLabel;
+    private Label nameLabel, idLabel, ageLabel, phoneLabel, weightLabel, lengthLabel, bloodLabel;
     @FXML
     private Button exitButton;
     @FXML
     private StackPane parentContainer;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parentContainer.setOpacity(0);
         makeFadeTransition();
-     //   Stage stage = (Stage) ap.getScene().getWindow();
+        //   Stage stage = (Stage) ap.getScene().getWindow();
 
         new BounceIn(nameField).play();
         new BounceIn(idField).play();
@@ -59,6 +60,7 @@ public class PatientInfo implements Initializable {
         lengthField.setEditable(false);
         bloodField.setEditable(false);
     }
+
     private void makeFadeTransition() {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.seconds(1));
@@ -68,24 +70,20 @@ public class PatientInfo implements Initializable {
         fadeTransition.play();
     }
 
-
-
     public void exitButton_Click(ActionEvent actionEvent) {
-       new FadeTransitions().exitFadeTransition(parentContainer,exitButton);
+        new FadeTransitions().exitFadeTransition(parentContainer, exitButton);
     }
-
-
 
     public void move(MouseEvent mouseEvent) {
         Node node = (Node) mouseEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         Patient p = (Patient) stage.getUserData();
         nameField.setText(p.getFirstName());
-        idField.setText(p.getId()+"");
-        ageField.setText(p.getAge()+"");
-        phoneField.setText(p.getPhone()+"");
-        weightField.setText(p.getWeight()+"");
-        lengthField.setText(p.getLength()+"");
-        bloodField.setText(p.getLength()+"");
+        idField.setText(p.getId() + "");
+        ageField.setText(p.getAge() + "");
+        phoneField.setText(p.getPhone() + "");
+        weightField.setText(p.getWeight() + "");
+        lengthField.setText(p.getLength() + "");
+        bloodField.setText(p.getLength() + "");
     }
 }

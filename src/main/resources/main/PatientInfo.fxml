@@ -14,7 +14,7 @@
 <?import javafx.scene.text.Font?>
 
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PatientInfo" onMouseMoved="#move">
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PatientInfo">
    <children>
       <AnchorPane  fx:id="ap" prefHeight="300.0" prefWidth="520.0" >
          <children>
