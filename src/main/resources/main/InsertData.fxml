@@ -112,7 +112,7 @@
                   <TextField fx:id="ironField" layoutX="703.0" layoutY="134.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
                   <TextField fx:id="lipoproteinField" layoutX="703.0" layoutY="174.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
                   <TextField fx:id="phophataseField" layoutX="703.0" layoutY="214.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
-                  <Button fx:id="saveButton" layoutX="629.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/InsertData.css" text="Save &amp; Proceed To Patient Choice" />
+                  <Button fx:id="saveButton" layoutX="629.0" layoutY="277.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/InsertData.css" text="Save &amp; Proceed To Results" />
                   <Label layoutX="441.0" layoutY="14.0" prefHeight="28.0" prefWidth="196.0" text="Manual Levels Input">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="21.0" />

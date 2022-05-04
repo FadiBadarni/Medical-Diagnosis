@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
@@ -26,6 +28,8 @@ public class AddPatient implements Initializable {
     public TextField lengthField;
     public TextField phoneField;
     public TextField bloodTypeField;
+    public CheckBox eastCheckBox,ethiopianCheckBox;
+    public ChoiceBox<String> genderBox;
 
     @FXML
     StackPane parentContainer;
@@ -43,7 +47,8 @@ public class AddPatient implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        genderBox.getItems().add("Male");
+        genderBox.getItems().add("Female");
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
@@ -61,12 +66,14 @@ public class AddPatient implements Initializable {
     public void saveButton_Click(ActionEvent actionEvent) {
 
         if(isCurrentinput()) {
+
             String[] data = {idField.getText(),firstNameField.getText(), lastNameField.getText(),
                     ageField.getText(), weightField.getText(), lengthField.getText(),
-                    phoneField.getText(),bloodTypeField.getText()};
+                    phoneField.getText(),bloodTypeField.getText(),genderBox.getSelectionModel().getSelectedItem()};
             try {
                 ReadWriteXlsx file=new ReadWriteXlsx("PatientList.xlsx");
                 file.add(data);
+                new SlideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, "Home.fxml");
             } catch (IOException | InvalidFormatException e) {
                 throw new RuntimeException(e);
             }

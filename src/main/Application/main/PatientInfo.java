@@ -9,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -17,16 +18,16 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PatientInfo implements Initializable {
     @FXML
     public AnchorPane ap;
-
     @FXML
-    private TextField nameField, idField, ageField, phoneField, weightField, lengthField, bloodField;
+    private TextField nameField, idField, ageField, phoneField, weightField, lengthField, bloodField, genderField;
     @FXML
-    private Label nameLabel, idLabel, ageLabel, phoneLabel, weightLabel, lengthLabel, bloodLabel;
+    private Label nameLabel, idLabel, ageLabel, phoneLabel, weightLabel, lengthLabel, bloodLabel, genderLabel;
     @FXML
     private Button exitButton;
     @FXML
@@ -36,8 +37,6 @@ public class PatientInfo implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parentContainer.setOpacity(0);
         makeFadeTransition();
-        //   Stage stage = (Stage) ap.getScene().getWindow();
-
         new BounceIn(nameField).play();
         new BounceIn(idField).play();
         new BounceIn(ageField).play();
@@ -45,6 +44,7 @@ public class PatientInfo implements Initializable {
         new BounceIn(weightField).play();
         new BounceIn(lengthField).play();
         new BounceIn(bloodField).play();
+        new BounceIn(genderField).play();
         new JackInTheBox(nameLabel).play();
         new JackInTheBox(idLabel).play();
         new JackInTheBox(ageLabel).play();
@@ -52,13 +52,15 @@ public class PatientInfo implements Initializable {
         new JackInTheBox(weightLabel).play();
         new JackInTheBox(lengthLabel).play();
         new JackInTheBox(bloodLabel).play();
-        nameField.setEditable(true);
+        new JackInTheBox(genderField).play();
+        nameField.setEditable(false);
         idField.setEditable(false);
         ageField.setEditable(false);
         phoneField.setEditable(false);
         weightField.setEditable(false);
         lengthField.setEditable(false);
         bloodField.setEditable(false);
+        genderField.setEditable(false);
     }
 
     private void makeFadeTransition() {
@@ -72,18 +74,5 @@ public class PatientInfo implements Initializable {
 
     public void exitButton_Click(ActionEvent actionEvent) {
         new FadeTransitions().exitFadeTransition(parentContainer, exitButton);
-    }
-
-    public void move(MouseEvent mouseEvent) {
-        Node node = (Node) mouseEvent.getSource();
-        Stage stage = (Stage) node.getScene().getWindow();
-        Patient p = (Patient) stage.getUserData();
-        nameField.setText(p.getFirstName());
-        idField.setText(p.getId() + "");
-        ageField.setText(p.getAge() + "");
-        phoneField.setText(p.getPhone() + "");
-        weightField.setText(p.getWeight() + "");
-        lengthField.setText(p.getLength() + "");
-        bloodField.setText(p.getLength() + "");
     }
 }

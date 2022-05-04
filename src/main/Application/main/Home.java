@@ -18,9 +18,11 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
+import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -36,9 +38,6 @@ public class Home implements Initializable {
     private AnchorPane anchorPane;
     @FXML
     private Pane pane;
-    @FXML
-    private TextField nameField, idField, ageField, phoneField, weightField, lengthField, bloodField;
-
     @FXML
     private ListView<String> listview1;
 
@@ -91,14 +90,33 @@ public class Home implements Initializable {
     }
 
     public void displayInfoButton_Click(ActionEvent actionEvent) throws IOException {
-
         Stage stage = new Stage();
-        Patient p = listPatient.getPatients().get(listview1.getSelectionModel().getSelectedIndex());
-
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("PatientInfo.fxml")));
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
+
+        TextField nameField=(TextField) scene.lookup("#nameField");
+        TextField idField=(TextField) scene.lookup("#idField");
+        TextField ageField=(TextField) scene.lookup("#ageField");
+        TextField phoneField=(TextField) scene.lookup("#phoneField");
+        TextField weightField=(TextField) scene.lookup("#weightField");
+        TextField lengthField=(TextField) scene.lookup("#lengthField");
+        TextField bloodField=(TextField) scene.lookup("#bloodField");
+        TextField genderField=(TextField) scene.lookup("#genderField");
+
+        List<List<String>> excelData = ExcelFileUtility.readExcelFile("PatientList.xlsx");
+        int index = listview1.getSelectionModel().getSelectedIndex();
+        idField.setText(excelData.get(index).get(0));
+        nameField.setText(excelData.get(index).get(1));
+        nameField.appendText(" " + excelData.get(index).get(2));
+        ageField.setText(excelData.get(index).get(3));
+        weightField.setText(excelData.get(index).get(4));
+        lengthField.setText(excelData.get(index).get(5));
+        phoneField.setText(excelData.get(index).get(6));
+        bloodField.setText(excelData.get(index).get(7));
+        genderField.setText(excelData.get(index).get(8));
+
     }
 }

@@ -13,20 +13,12 @@ import java.util.Iterator;
 
 public class Patient {
 
-    private int id;
-    private String firstName;
-    private String lastName;
+    private int id, age, weight, length, phone;
+    private String firstName, lastName, bloodType, gender;
+    private Hashtable<String, Double> bloodTest;
+    private Boolean isEthiopian = false, isEastern = false;
 
-    private int age;
-    private int weight;
-    private int length;
-    private String bloodType;
-    private int phone;
-
-    private Hashtable<String, Integer> bloodTest;
-
-
-    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood) {
+    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,6 +27,7 @@ public class Patient {
         this.length = lenght;
         this.phone = phone;
         this.bloodType = blood;
+        this.gender = gender;
         this.bloodTest = new Hashtable<>();
     }
 
@@ -43,7 +36,6 @@ public class Patient {
     }
 
     public Patient(Patient p) {
-
         this.id = p.getId();
         this.firstName = p.getFirstName();
         this.lastName = p.getLastName();
@@ -55,7 +47,7 @@ public class Patient {
         this.bloodTest = new Hashtable<>(p.getBloodTest());
     }
 
-    public void addBloodTest(Hashtable<String, Integer> bloodTest) {
+    public void addBloodTest(Hashtable<String, Double> bloodTest) {
         this.bloodTest = new Hashtable<>(bloodTest);
     }
 
@@ -67,22 +59,13 @@ public class Patient {
             FileInputStream file = new FileInputStream(new File(path));
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
-            Iterator<Row> rowIterator = sheet.iterator();
-            while (rowIterator.hasNext()) {
-                Row row = rowIterator.next();
+            for (Row row : sheet) {
                 Iterator<Cell> cellIterator = row.cellIterator();
-
                 Cell cell = cellIterator.next();
-
-                if (cell.getCellType() == CellType.STRING)
-                    key = cell.getStringCellValue();
-
+                if (cell.getCellType() == CellType.STRING) key = cell.getStringCellValue();
                 cell = cellIterator.next();
-                if (cell.getCellType() == CellType.NUMERIC) NUMERIC:
-                        value = (int) cell.getNumericCellValue();
-
-                if (key != null && value != 0)
-                    bloodTest.put(key, value);
+                if (cell.getCellType() == CellType.NUMERIC) value = (int) cell.getNumericCellValue();
+                if (key != null && value != 0) bloodTest.put(key, (double) value);
             }
             file.close();
         } catch (Exception e) {
@@ -115,7 +98,6 @@ public class Patient {
         this.lastName = lastName;
     }
 
-
     public int getAge() {
         return age;
     }
@@ -140,12 +122,19 @@ public class Patient {
         this.length = length;
     }
 
+    public String getGender() {
+        return gender;
+    }
 
-    public Hashtable<String, Integer> getBloodTest() {
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public Hashtable<String, Double> getBloodTest() {
         return bloodTest;
     }
 
-    public void setBloodTest(Hashtable<String, Integer> bloodTest) {
+    public void setBloodTest(Hashtable<String, Double> bloodTest) {
         this.bloodTest = bloodTest;
     }
 
@@ -159,5 +148,21 @@ public class Patient {
 
     public int getPhone() {
         return phone;
+    }
+
+    public Boolean getEthiopian() {
+        return isEthiopian;
+    }
+
+    public void setEthiopian(Boolean ethiopian) {
+        isEthiopian = ethiopian;
+    }
+
+    public Boolean getEastern() {
+        return isEastern;
+    }
+
+    public void setEastern(Boolean eastern) {
+        isEastern = eastern;
     }
 }

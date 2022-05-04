@@ -2,7 +2,9 @@ package main;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
@@ -13,6 +15,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
@@ -57,8 +60,9 @@ public class Login implements Initializable {
     }
 
     public void returnButton_Click(ActionEvent e) throws IOException {
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main.fxml")));
         SlideTransitions transition = new SlideTransitions();
-        transition.rightToLeftTransition(parentContainer, returnButton, anchorPane1, anchorPane2);
+        transition.rightToLeftTransition(root,parentContainer, returnButton, anchorPane1);
     }
 
     public void registerButton_Click(ActionEvent e) throws IOException {

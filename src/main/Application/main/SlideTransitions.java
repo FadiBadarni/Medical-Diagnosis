@@ -32,8 +32,7 @@ public class SlideTransitions {
         timeline.play();
     }
 
-    public void rightToLeftTransition(StackPane parentContainer, Button returnButton, AnchorPane anchorPane1, AnchorPane anchorPane2) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main.fxml")));
+    public void rightToLeftTransition(Parent root,StackPane parentContainer, Button returnButton, AnchorPane anchorPane1) throws IOException {
         Scene scene = returnButton.getScene();
         root.translateXProperty().set(scene.getWidth());
         parentContainer.getChildren().add(root);
@@ -43,7 +42,7 @@ public class SlideTransitions {
         timeline.getKeyFrames().add(keyFrame);
         timeline.setOnFinished(event -> {
             parentContainer.getChildren().remove(anchorPane1);
-            parentContainer.getChildren().remove(anchorPane2);
+
         });
         timeline.play();
     }
