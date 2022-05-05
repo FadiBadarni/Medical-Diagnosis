@@ -21,27 +21,26 @@
 <StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.AddPatient">
    <children>
       <AnchorPane>
-         <ImageView fitHeight="670.0" fitWidth="989.0" pickOnBounds="true" preserveRatio="true">
+         <ImageView fitHeight="706.0" fitWidth="990.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
             <image>
-               <Image url="@images/home_bg.jpg" />
+               <Image url="@images/homeBG.jpg" />
             </image>
          </ImageView>
-      <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="990.0" stylesheets="@CSS/Home.css">
+      <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="990.0" stylesheets="@CSS/Home.css">
          <children>
-               <ImageView fitHeight="671.0" fitWidth="694.0" layoutX="-148.0" layoutY="-6.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+               <ImageView fitHeight="722.0" fitWidth="751.0" layoutX="-170.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                   <image>
                      <Image url="@images/bar_line.png" />
                   </image>
                </ImageView>
-            <ImageView fitHeight="135.0" fitWidth="179.0" layoutX="189.0" layoutY="422.0" pickOnBounds="true" preserveRatio="true" rotate="9.6">
+            <ImageView fitHeight="135.0" fitWidth="179.0" layoutX="184.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" rotate="9.6">
                <image>
                   <Image url="@images/addPatient.png" />
                </image>
             </ImageView>
             <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
-            <Button fx:id="addPatientButton" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#addPatientButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Add Patient" />
-            <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Questions" />
-            <Button fx:id="signOutButton" layoutY="591.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
+            <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Info" />
+            <Button fx:id="signOutButton" layoutX="-5.0" layoutY="622.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
             <TextField fx:id="weightField" layoutX="464.0" layoutY="176.0" prefHeight="33.0" prefWidth="157.0" promptText="Weight (KG)" />
             <TextField fx:id="lastNameField" layoutX="748.0" layoutY="86.0" prefHeight="33.0" prefWidth="157.0" promptText="Last Name" />
             <TextField fx:id="firstNameField" layoutX="464.0" layoutY="86.0" prefHeight="33.0" prefWidth="157.0" promptText="First Name" />

@@ -4,16 +4,16 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Main">
+<Pane fx:id="parentContainer" prefHeight="532.0" prefWidth="717.0" style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Main">
    <children>
-      <AnchorPane fx:id="anchorPane" prefHeight="530.0" prefWidth="734.0" styleClass="start" stylesheets="@CSS/Main.css">
+      <AnchorPane fx:id="anchorPane" prefHeight="530.0" prefWidth="734.0" style="-fx-background-color: transparent;" stylesheets="@CSS/Main.css">
          <children>
-            <ImageView fitHeight="530.0" fitWidth="734.0" layoutX="3.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="532.0" fitWidth="718.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/menu.png" />
+                  <Image url="@images/menu2.png" />
                </image>
             </ImageView>
             <Button fx:id="loginButton" layoutX="195.0" layoutY="23.0" mnemonicParsing="false" onAction="#loginButton_Click" prefHeight="74.0" prefWidth="243.0" style="-fx-background-color: transparent;" styleClass="loginButton" stylesheets="@CSS/Main.css" text="LOG IN" textFill="#2b5b60">
@@ -39,4 +39,4 @@
          </children>
       </AnchorPane>
    </children>
-</StackPane>
+</Pane>

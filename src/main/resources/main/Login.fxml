@@ -10,7 +10,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.paint.RadialGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -18,14 +18,14 @@
 <?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="435.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Login">
+<Pane fx:id="parentContainer" style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Login">
    <children>
-      <ImageView fitHeight="454.0" fitWidth="771.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="454.0" fitWidth="771.0" layoutY="4.404216110706329" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@images/loginbg.jpg" />
+            <Image url="@images/loginbg2.png" />
          </image>
       </ImageView>
-      <AnchorPane fx:id="anchorPane1" prefHeight="332.0" prefWidth="600.0">
+      <AnchorPane fx:id="anchorPane1" layoutY="1.2042160034179688" prefHeight="332.0" prefWidth="600.0" style="-fx-background-color: transparent;">
          <children>
             <AmbientLight color="CHARTREUSE" layoutX="58.0" layoutY="61.0" lightOn="true" />
             <Label fx:id="newLabel" alignment="CENTER" layoutX="458.0" layoutY="99.0" prefHeight="34.0" prefWidth="143.0" rotate="14.4" text="New Here ?">
@@ -63,14 +63,14 @@
             </Label>
             <Button fx:id="returnButton" layoutX="28.0" layoutY="372.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="26.0" prefWidth="95.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Login.css" text="Return">
                <font>
-                  <Font name="Eras Bold ITC" size="15.0" />
+                  <Font name="Berlin Sans FB" size="18.0" />
                </font>
             </Button>
-            <Circle fx:id="circle1" fill="#1f93ff00" layoutX="164.0" layoutY="99.0" radius="75.0" stroke="#4b8cc9" strokeType="INSIDE" strokeWidth="6.0" style="-fx-stroke-dash-array: 40;">
+            <Circle fx:id="circle1" fill="#1f93ff00" layoutX="164.0" layoutY="99.0" radius="75.0" stroke="#56c596" strokeType="INSIDE" strokeWidth="6.0" style="-fx-stroke-dash-array: 40;">
                <effect>
                   <Shadow>
                      <color>
-                        <Color red="0.2235087752342224" green="0.4506608247756958" blue="0.6631578803062439" />
+                        <Color red="0.36565300822257996" green="0.6366029977798462" blue="0.8736842274665833" />
                      </color>
                   </Shadow>
                </effect>
@@ -106,4 +106,4 @@
          </children>
       </AnchorPane>
    </children>
-</StackPane>
+</Pane>

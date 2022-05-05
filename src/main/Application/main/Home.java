@@ -70,11 +70,11 @@ public class Home implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
+        new FadeTransitions(parentContainer, "Home.fxml");
     }
 
     public void addPatientButton_Click(ActionEvent e) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, addPatientButton, anchorPane, "AddPatient.fxml");
+        new FadeTransitions(parentContainer, "AddPatient.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
@@ -88,8 +88,7 @@ public class Home implements Initializable {
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.setUserData(p);
-        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "InsertData.fxml");
-
+        new FadeTransitions(parentContainer, "InsertData.fxml");
     }
 
     @FXML

@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.util.Duration;
@@ -32,7 +33,7 @@ public class Login implements Initializable {
     @FXML
     private PasswordField password;
     @FXML
-    private StackPane parentContainer;
+    private Pane parentContainer;
     @FXML
     private AnchorPane anchorPane1, anchorPane2;
     @FXML
@@ -68,11 +69,14 @@ public class Login implements Initializable {
     }
 
     public void returnButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Main.fxml");
+        Main m = new Main();
+        m.changeScene("Main.fxml");
+
     }
 
     public void registerButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Register.fxml");
+        Main m = new Main();
+        m.changeScene("Register.fxml");
     }
 
 

@@ -58,8 +58,7 @@ public class Diagnosis implements Initializable {
     }
 
     public void advanceButton_Click(ActionEvent actionEvent) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, advanceButton, anchorPane, "Questions.fxml");
-    }
+        new FadeTransitions(parentContainer, "Questions.fxml");     }
 
     public void goToTreatmentButton_Click(ActionEvent actionEvent) throws IOException {
         new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);

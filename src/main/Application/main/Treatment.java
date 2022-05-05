@@ -20,8 +20,7 @@ public class Treatment {
     private Button homeButton, signOutButton, returnButton;
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
-
+        new FadeTransitions(parentContainer, "Home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent actionEvent) {
@@ -29,8 +28,6 @@ public class Treatment {
     }
 
     public void returnButton_Click(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Questions.fxml")));
-        SlideTransitions transition = new SlideTransitions();
-        transition.rightToLeftTransition(root, parentContainer, returnButton, anchorPane);
+        new FadeTransitions(parentContainer, "Questions.fxml");
     }
 }

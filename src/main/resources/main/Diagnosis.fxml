@@ -9,60 +9,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Diagnosis">
+<StackPane fx:id="parentContainer" prefHeight="694.0" prefWidth="976.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Diagnosis">
    <children>
       <AnchorPane fx:id="anchorPane" prefHeight="483.0" prefWidth="726.0">
          <children>
-            <Pane fx:id="pane" layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/Home.css">
+            <ImageView fitHeight="701.0" fitWidth="982.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <image>
+                  <Image url="@images/homeBG.jpg" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="709.0" fitWidth="751.0" layoutX="-177.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+               <image>
+                  <Image url="@images/bar_line.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pane" layoutX="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="982.0" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="-2.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="98.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/doctorHome.png" />
-                     </image>
-                  </ImageView>
                   <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
-                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Questions" />
-                  <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
+                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Questions" />
+                  <Label layoutX="14.0" layoutY="27.0" prefHeight="33.0" prefWidth="143.0" text="Doctor Example">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="31.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/homeIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
-                  <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="26.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/questions.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="28.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/quit.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="-48.799957275390625" endY="594.4000244140625" layoutX="225.0" layoutY="64.0" startX="-48.79998779296875" startY="-65.50708770751953" strokeWidth="10.0" />
-                  <Label layoutX="448.0" layoutY="36.0" prefHeight="28.0" prefWidth="153.0" text="Detailed Results ">
+                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="608.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
+                  <Label layoutX="558.0" layoutY="44.0" prefHeight="28.0" prefWidth="153.0" text="Detailed Results ">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="21.0" />
                      </font>
                   </Label>
-                  <Label layoutX="197.0" layoutY="141.0" prefHeight="20.0" prefWidth="121.0" text="White Blood Cells">
+                  <Label layoutX="307.0" layoutY="149.0" prefHeight="20.0" prefWidth="121.0" text="White Blood Cells">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="217.0" layoutY="91.0" text="Test Type">
+                  <Label layoutX="327.0" layoutY="99.0" text="Test Type">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
                   </Label>
-                  <Label layoutX="525.0" layoutY="87.0" text="Result">
+                  <Label layoutX="635.0" layoutY="95.0" text="Result">
                      <font>
                         <Font name="System Bold" size="18.0" />
                      </font>
@@ -71,85 +59,85 @@
                      <font>
                         <Font size="14.0" />
                      </font></Button>
-                  <TextField fx:id="testField1" layoutX="356.0" layoutY="139.0" prefHeight="25.0" prefWidth="300.0" style="-fx-cursor: hand;" styleClass="testField1" stylesheets="@CSS/Diagnosis.css" />
-                  <Label layoutX="197.0" layoutY="174.0" prefHeight="20.0" prefWidth="121.0" text="Neutrophil">
+                  <TextField fx:id="testField1" layoutX="466.0" layoutY="147.0" prefHeight="25.0" prefWidth="300.0" style="-fx-cursor: hand;" styleClass="testField1" stylesheets="@CSS/Diagnosis.css" />
+                  <Label layoutX="307.0" layoutY="182.0" prefHeight="20.0" prefWidth="121.0" text="Neutrophil">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="197.0" layoutY="205.0" prefHeight="20.0" prefWidth="121.0" text="Lymphocytes">
+                  <Label layoutX="307.0" layoutY="213.0" prefHeight="20.0" prefWidth="121.0" text="Lymphocytes">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="testField2" layoutX="356.0" layoutY="171.0" prefHeight="25.0" prefWidth="300.0" />
-                  <TextField fx:id="testField3" layoutX="356.0" layoutY="203.0" prefHeight="25.0" prefWidth="300.0" />
-                  <Label layoutX="197.0" layoutY="238.0" prefHeight="20.0" prefWidth="121.0" text="Red Blood Cells">
+                  <TextField fx:id="testField2" layoutX="466.0" layoutY="179.0" prefHeight="25.0" prefWidth="300.0" />
+                  <TextField fx:id="testField3" layoutX="466.0" layoutY="211.0" prefHeight="25.0" prefWidth="300.0" />
+                  <Label layoutX="307.0" layoutY="246.0" prefHeight="20.0" prefWidth="121.0" text="Red Blood Cells">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="testField4" layoutX="356.0" layoutY="235.0" prefHeight="25.0" prefWidth="300.0" />
-                  <Label layoutX="197.0" layoutY="270.0" prefHeight="20.0" prefWidth="121.0" text="Hematocrit">
+                  <TextField fx:id="testField4" layoutX="466.0" layoutY="243.0" prefHeight="25.0" prefWidth="300.0" />
+                  <Label layoutX="307.0" layoutY="278.0" prefHeight="20.0" prefWidth="121.0" text="Hematocrit">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="197.0" layoutY="301.0" prefHeight="20.0" prefWidth="121.0" text="Urea">
+                  <Label layoutX="307.0" layoutY="309.0" prefHeight="20.0" prefWidth="121.0" text="Urea">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="testField5" layoutX="356.0" layoutY="267.0" prefHeight="25.0" prefWidth="300.0" />
-                  <TextField fx:id="testField6" layoutX="356.0" layoutY="299.0" prefHeight="25.0" prefWidth="300.0" />
-                  <Label layoutX="197.0" layoutY="338.0" prefHeight="20.0" prefWidth="121.0" text="Hemoglobin">
+                  <TextField fx:id="testField5" layoutX="466.0" layoutY="275.0" prefHeight="25.0" prefWidth="300.0" />
+                  <TextField fx:id="testField6" layoutX="466.0" layoutY="307.0" prefHeight="25.0" prefWidth="300.0" />
+                  <Label layoutX="307.0" layoutY="346.0" prefHeight="20.0" prefWidth="121.0" text="Hemoglobin">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="197.0" layoutY="369.0" prefHeight="20.0" prefWidth="121.0" text="Creatinine">
+                  <Label layoutX="307.0" layoutY="377.0" prefHeight="20.0" prefWidth="121.0" text="Creatinine">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="testField7" layoutX="356.0" layoutY="331.0" prefHeight="25.0" prefWidth="300.0" />
-                  <TextField fx:id="testField8" layoutX="356.0" layoutY="363.0" prefHeight="25.0" prefWidth="300.0" />
-                  <Label layoutX="197.0" layoutY="398.0" prefHeight="20.0" prefWidth="121.0" text="Iron">
+                  <TextField fx:id="testField7" layoutX="466.0" layoutY="339.0" prefHeight="25.0" prefWidth="300.0" />
+                  <TextField fx:id="testField8" layoutX="466.0" layoutY="371.0" prefHeight="25.0" prefWidth="300.0" />
+                  <Label layoutX="307.0" layoutY="406.0" prefHeight="20.0" prefWidth="121.0" text="Iron">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="testField9" layoutX="356.0" layoutY="395.0" prefHeight="25.0" prefWidth="300.0" />
-                  <Label layoutX="197.0" layoutY="430.0" prefHeight="20.0" prefWidth="153.0" text="High Density Lipoprotein">
+                  <TextField fx:id="testField9" layoutX="466.0" layoutY="403.0" prefHeight="25.0" prefWidth="300.0" />
+                  <Label layoutX="307.0" layoutY="438.0" prefHeight="20.0" prefWidth="153.0" text="High Density Lipoprotein">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <Label layoutX="197.0" layoutY="461.0" prefHeight="20.0" prefWidth="143.0" text="Alkaline Phosphatase">
+                  <Label layoutX="307.0" layoutY="469.0" prefHeight="20.0" prefWidth="143.0" text="Alkaline Phosphatase">
                      <font>
                         <Font name="System Bold" size="14.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="testField10" layoutX="356.0" layoutY="427.0" prefHeight="25.0" prefWidth="300.0" />
-                  <TextField fx:id="testField11" layoutX="356.0" layoutY="459.0" prefHeight="25.0" prefWidth="300.0" />
-                  <ProgressBar fx:id="progressBar1" layoutX="660.0" layoutY="141.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar2" layoutX="660.0" layoutY="174.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar3" layoutX="660.0" layoutY="205.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar4" layoutX="660.0" layoutY="238.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar5" layoutX="660.0" layoutY="270.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar6" layoutX="660.0" layoutY="301.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar7" layoutX="660.0" layoutY="334.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar8" layoutX="660.0" layoutY="366.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar9" layoutX="660.0" layoutY="397.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar10" layoutX="660.0" layoutY="430.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <ProgressBar fx:id="progressBar11" layoutX="660.0" layoutY="461.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
-                  <Button fx:id="viewButton" layoutX="528.0" layoutY="285.0" mnemonicParsing="false" onAction="#viewButton_Click" prefHeight="53.0" prefWidth="164.0" style="-fx-background-color: transparent;" styleClass="viewButton" stylesheets="@CSS/Diagnosis.css" text="Click To View">
+                  <TextField fx:id="testField10" layoutX="466.0" layoutY="435.0" prefHeight="25.0" prefWidth="300.0" />
+                  <TextField fx:id="testField11" layoutX="466.0" layoutY="467.0" prefHeight="25.0" prefWidth="300.0" />
+                  <ProgressBar fx:id="progressBar1" layoutX="770.0" layoutY="149.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar2" layoutX="770.0" layoutY="182.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar3" layoutX="770.0" layoutY="213.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar4" layoutX="770.0" layoutY="246.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar5" layoutX="770.0" layoutY="278.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar6" layoutX="770.0" layoutY="309.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar7" layoutX="770.0" layoutY="342.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar8" layoutX="770.0" layoutY="374.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar9" layoutX="770.0" layoutY="405.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar10" layoutX="770.0" layoutY="438.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <ProgressBar fx:id="progressBar11" layoutX="770.0" layoutY="469.0" prefHeight="20.0" prefWidth="198.0" progress="0.0" styleClass="progressBar" stylesheets="@CSS/Diagnosis.css" />
+                  <Button fx:id="viewButton" layoutX="638.0" layoutY="293.0" mnemonicParsing="false" onAction="#viewButton_Click" prefHeight="53.0" prefWidth="164.0" style="-fx-background-color: transparent;" styleClass="viewButton" stylesheets="@CSS/Diagnosis.css" text="Click To View">
                      <font>
                         <Font name="Franklin Gothic Heavy" size="18.0" />
                      </font>
                   </Button>
-                  <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="327.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true" />
-                  <Button fx:id="returnButton" layoutX="197.0" layoutY="605.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="33.0" prefWidth="99.0" text="return" />
+                  <ImageView fitHeight="25.0" fitWidth="26.0" layoutX="437.0" layoutY="147.0" pickOnBounds="true" preserveRatio="true" />
+                  <Button fx:id="returnButton" layoutX="291.0" layoutY="634.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="33.0" prefWidth="99.0" text="return" />
                </children>
             </Pane>
          </children>

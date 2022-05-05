@@ -8,6 +8,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -24,7 +25,7 @@ public class Register implements Initializable {
     @FXML
     private Button returnButton;
     @FXML
-    private StackPane parentContainer;
+    private Pane parentContainer;
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -41,12 +42,13 @@ public class Register implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        parentContainer.setOpacity(0);
-        makeFadeTransition();
+//        parentContainer.setOpacity(0);
+//        makeFadeTransition();
         new RotationAnimation(circle1, true, 360, 20);
         new RotationAnimation(circle2, true, 360, 20);
         new RotationAnimation(rectangle1);
         new RotationAnimation(rectangle2);
+
     }
 
     private void makeFadeTransition() {
@@ -59,7 +61,8 @@ public class Register implements Initializable {
     }
 
     public void returnButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Main.fxml");
+        Main m = new Main();
+        m.changeScene("Main.fxml");
     }
 
 

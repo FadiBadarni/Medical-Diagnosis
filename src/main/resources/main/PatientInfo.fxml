@@ -4,124 +4,112 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.paint.LinearGradient?>
-<?import javafx.scene.paint.Stop?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PatientInfo">
    <children>
       <AnchorPane fx:id="ap" prefHeight="300.0" prefWidth="520.0">
          <children>
-            <Pane prefHeight="336.0" prefWidth="550.0" styleClass="panel" stylesheets="@CSS/Home.css">
+            <ImageView fitHeight="404.0" fitWidth="716.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/infoBG2.jpg" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="403.0" prefWidth="716.0">
                <children>
-                  <Label layoutX="211.0" layoutY="14.0" prefHeight="33.0" prefWidth="118.0" text="Patient Info">
-                     <textFill>
-                        <LinearGradient endX="1.0" endY="1.0">
-                           <stops>
-                              <Stop>
-                                 <color>
-                                    <Color red="1.0" green="1.0" blue="1.0" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="0.5073170731707317">
-                                 <color>
-                                    <Color red="0.3709941506385803" green="0.821052610874176" blue="0.7685458064079285" />
-                                 </color>
-                              </Stop>
-                              <Stop offset="1.0">
-                                 <color>
-                                    <Color red="0.810173511505127" green="0.4034697711467743" blue="0.8315789699554443" />
-                                 </color>
-                              </Stop>
-                           </stops>
-                        </LinearGradient>
-                     </textFill>
+                  <ImageView fitHeight="217.0" fitWidth="164.0" layoutX="-7.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/infoBG.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="256.0" layoutY="285.0" prefHeight="58.0" prefWidth="200.0" text="PATIENT" textFill="#7dbac9ba">
                      <font>
-                        <Font name="Times New Roman Bold" size="22.0" />
+                        <Font name="Berlin Sans FB" size="52.0" />
                      </font>
                   </Label>
-                  <TextField fx:id="nameField" layoutX="31.0" layoutY="75.0" stylesheets="@CSS/PatientInfo.css" />
-                  <Label fx:id="nameLabel" layoutX="31.0" layoutY="68.0" text="Full Name">
+                  <TextField fx:id="nameField" layoutX="335.0" layoutY="39.0" prefHeight="35.0" prefWidth="184.0" stylesheets="@CSS/PatientInfo.css" />
+                  <Label fx:id="nameLabel" layoutX="330.0" layoutY="16.0" text="FULL NAME">
                      <font>
-                        <Font name="Times New Roman Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                      <effect>
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="idField" layoutX="31.0" layoutY="129.0" stylesheets="@CSS/PatientInfo.css" />
-                  <Label fx:id="idLabel" layoutX="31.0" layoutY="122.0" text="ID Number">
+                  <TextField fx:id="idField" layoutX="335.0" layoutY="104.0" prefHeight="35.0" prefWidth="184.0" stylesheets="@CSS/PatientInfo.css" />
+                  <Label fx:id="idLabel" layoutX="330.0" layoutY="81.0" text="ID NUMBER">
                      <font>
-                        <Font name="Times New Roman Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                      <effect>
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="ageField" layoutX="31.0" layoutY="185.0" stylesheets="@CSS/PatientInfo.css" />
-                  <Label fx:id="ageLabel" layoutX="31.0" layoutY="178.0" text="Age">
+                  <TextField fx:id="ageField" layoutX="335.0" layoutY="175.0" prefHeight="35.0" prefWidth="184.0" stylesheets="@CSS/PatientInfo.css" />
+                  <Label fx:id="ageLabel" layoutX="330.0" layoutY="150.0" text="AGE">
                      <font>
-                        <Font name="Times New Roman Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                      <effect>
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="phoneField" layoutX="31.0" layoutY="249.0" stylesheets="@CSS/PatientInfo.css" />
-                  <Label fx:id="phoneLabel" layoutX="31.0" layoutY="242.0" text="Phone Number">
+                  <TextField fx:id="phoneField" layoutX="335.0" layoutY="248.0" prefHeight="35.0" prefWidth="184.0" stylesheets="@CSS/PatientInfo.css" />
+                  <Label fx:id="phoneLabel" layoutX="330.0" layoutY="223.0" text="PHONE NUMBER">
                      <font>
-                        <Font name="Times New Roman Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                      <effect>
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="weightField" layoutX="329.0" layoutY="75.0" stylesheets="@CSS/PatientInfo.css" />
-                  <Label fx:id="weightLabel" layoutX="329.0" layoutY="68.0" text="Weight">
+                  <TextField fx:id="weightField" layoutX="542.0" layoutY="39.0" prefHeight="35.0" prefWidth="164.0" stylesheets="@CSS/PatientInfo.css" />
+                  <Label fx:id="weightLabel" layoutX="542.0" layoutY="16.0" text="WEIGHT">
                      <font>
-                        <Font name="Times New Roman Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                      <effect>
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="lengthField" layoutX="329.0" layoutY="129.0" stylesheets="@CSS/PatientInfo.css" />
-                  <Label fx:id="lengthLabel" layoutX="329.0" layoutY="122.0" text="Length">
+                  <TextField fx:id="lengthField" layoutX="543.0" layoutY="104.0" prefHeight="35.0" prefWidth="164.0" stylesheets="@CSS/PatientInfo.css" />
+                  <Label fx:id="lengthLabel" layoutX="540.0" layoutY="81.0" text="LENGTH">
                      <font>
-                        <Font name="Times New Roman Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                      <effect>
                         <Glow />
                      </effect>
                   </Label>
-                  <TextField fx:id="bloodField" layoutX="329.0" layoutY="185.0" stylesheets="@CSS/PatientInfo.css" />
-                  <Label fx:id="bloodLabel" layoutX="329.0" layoutY="178.0" text="Blood Type">
+                  <TextField fx:id="bloodField" layoutX="543.0" layoutY="175.0" prefHeight="35.0" prefWidth="164.0" stylesheets="@CSS/PatientInfo.css" />
+                  <Label fx:id="bloodLabel" layoutX="542.0" layoutY="150.0" text="BLOOD TYPE">
                      <font>
-                        <Font name="Times New Roman Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                      <effect>
                         <Glow />
                      </effect>
                   </Label>
-                  <Button fx:id="exitButton" layoutX="234.0" layoutY="297.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="25.0" prefWidth="85.0" text="Exit" />
-                  <Line endX="336.39996337890625" endY="-14.000012397766113" layoutX="213.0" layoutY="16.0" startX="-214.0" startY="-13.999996185302734" strokeWidth="4.0" />
-                  <Line endX="336.39996337890625" endY="-14.000012397766113" layoutX="215.0" layoutY="350.0" startX="-214.0" startY="-13.999996185302734" strokeWidth="4.0" />
-                  <Line endX="326.4000244140625" endY="-24.0" layoutX="222.0" layoutY="24.0" startX="328.10699462890625" startY="312.0" strokeWidth="4.0" />
-                  <Line endX="-224.7071075439453" endY="311.9999694824219" layoutX="227.0" layoutY="24.0" startX="-224.70709228515625" startY="-23.292877197265625" strokeWidth="4.0" />
-                  <TextField fx:id="genderField" layoutX="329.0" layoutY="249.0" stylesheets="@CSS/PatientInfo.css" />
-                  <Label fx:id="genderLabel" layoutX="329.0" layoutY="242.0" text="Gender">
+                  <TextField fx:id="genderField" layoutX="542.0" layoutY="248.0" prefHeight="35.0" prefWidth="164.0" stylesheets="@CSS/PatientInfo.css" />
+                  <Label fx:id="genderLabel" layoutX="540.0" layoutY="223.0" text="GENDER">
                      <font>
-                        <Font name="Times New Roman Bold" size="12.0" />
+                        <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                      <effect>
                         <Glow />
                      </effect>
                   </Label>
+                  <Label layoutX="358.0" layoutY="331.0" prefHeight="58.0" prefWidth="347.0" text="INFORMATION" textFill="#7cbacb8f">
+                     <font>
+                        <Font name="Berlin Sans FB" size="52.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="exitButton" layoutX="22.0" layoutY="355.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="31.0" prefWidth="121.0" text="Exit" />
                </children>
             </Pane>
          </children>

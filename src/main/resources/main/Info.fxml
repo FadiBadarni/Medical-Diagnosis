@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Info">
+   <children>
+      <AnchorPane fx:id="ap" prefHeight="300.0" prefWidth="520.0">
+         <children>
+            <ImageView fitHeight="404.0" fitWidth="716.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/infoBG2.jpg" />
+               </image>
+            </ImageView>
+            <Pane prefHeight="403.0" prefWidth="716.0">
+               <children>
+                  <ImageView fitHeight="82.0" fitWidth="76.0" layoutX="22.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/warning.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="256.0" layoutY="285.0" prefHeight="58.0" prefWidth="212.0" text="PROJECT" textFill="#7dbac9ba">
+                     <font>
+                        <Font name="Berlin Sans FB" size="52.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="358.0" layoutY="331.0" prefHeight="58.0" prefWidth="347.0" text="INFORMATION" textFill="#7cbacb8f">
+                     <font>
+                        <Font name="Berlin Sans FB" size="52.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="exitButton" layoutX="22.0" layoutY="355.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="31.0" prefWidth="121.0" text="Exit" />
+                  <Text fx:id="text" layoutX="276.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Final Project For The Course Quality And Software Testing  - Made By :             " wrappingWidth="428.94219970703125">
+                     <font>
+                        <Font name="Berlin Sans FB" size="24.0" />
+                     </font>
+                  </Text>
+                  <Label fx:id="label1" layoutX="293.0" layoutY="80.0" text="FADI BADARNI">
+                     <font>
+                        <Font name="Berlin Sans FB" size="32.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label2" layoutX="293.0" layoutY="128.0" text="ABEDALLA SHIEKH KHALIL">
+                     <font>
+                        <Font name="Berlin Sans FB" size="32.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="label3" layoutX="292.0" layoutY="178.0" text="ABED ALRAHMAN ABU KHIET">
+                     <font>
+                        <Font name="Berlin Sans FB" size="32.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="362.0" layoutY="231.0" prefHeight="54.0" prefWidth="302.0" />
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>
