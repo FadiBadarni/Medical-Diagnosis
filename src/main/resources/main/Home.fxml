@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Home">
+<StackPane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Home">
    <children>
       <AnchorPane fx:id="anchorPane" prefHeight="674.0" prefWidth="980.0">
          <children>
@@ -38,7 +38,7 @@
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Button>
-            <Button fx:id="infoButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" style="-fx-cursor: hand;" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Info">
+            <Button fx:id="infoButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="482.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="45.0" prefWidth="179.0" style="-fx-cursor: hand;" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Info">
                <font>
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
@@ -53,8 +53,8 @@
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Button>
-            <ListView fx:id="listview1" layoutX="329.0" layoutY="139.0" prefHeight="397.0" prefWidth="291.0" stylesheets="@CSS/Home.css" />
-            <Button fx:id="displayInfoButton" layoutX="731.0" layoutY="566.0" mnemonicParsing="false" onAction="#displayInfoButton_Click" prefHeight="45.0" prefWidth="198.0" style="-fx-cursor: hand;" styleClass="displayInfoButton" stylesheets="@CSS/Home.css" text="Display Patient Info">
+            <ListView fx:id="listview1" layoutX="329.0" layoutY="139.0" prefHeight="397.0" prefWidth="291.0" styleClass="listview1" stylesheets="@CSS/Home.css" />
+            <Button fx:id="displayInfoButton" layoutX="731.0" layoutY="225.0" mnemonicParsing="false" onAction="#displayInfoButton_Click" prefHeight="45.0" prefWidth="198.0" style="-fx-cursor: hand;" styleClass="displayInfoButton" stylesheets="@CSS/Home.css" text="Display Patient Info">
                <font>
                   <Font name="Berlin Sans FB" size="17.0" />
                </font>
@@ -64,7 +64,7 @@
                   <Font name="Berlin Sans FB" size="25.0" />
                </font>
             </Label>
-            <Button fx:id="diagnosisButton" layoutX="731.0" layoutY="508.0" mnemonicParsing="false" onAction="#diagnosisButton_Click" prefHeight="44.0" prefWidth="198.0" style="-fx-cursor: hand;" styleClass="diagnosisButton" stylesheets="@CSS/Home.css" text="DIAGNOSIS">
+            <Button fx:id="diagnosisButton" layoutX="708.0" layoutY="552.0" mnemonicParsing="false" onAction="#diagnosisButton_Click" prefHeight="44.0" prefWidth="198.0" style="-fx-cursor: hand;" styleClass="diagnosisButton" stylesheets="@CSS/Home.css" text="DIAGNOSIS">
                <font>
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>
@@ -84,7 +84,7 @@
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Button>
-            <ImageView fitHeight="174.0" fitWidth="233.0" layoutX="731.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="174.0" fitWidth="233.0" layoutX="708.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/home_doctor.png" />
                </image>

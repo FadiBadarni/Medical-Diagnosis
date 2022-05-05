@@ -5,12 +5,16 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,12 +29,12 @@ public class Questions implements Initializable {
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private ChoiceBox<String> question1, question2, question3, question4, question5, question6, question7, question8;
+    private ChoiceBox<String> question1, question2, question3, question4;
+    private static Stage stg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillChoices(question1, question2, question3, question4);
-        fillChoices(question5, question6, question7, question8);
 
     }
 
@@ -49,8 +53,9 @@ public class Questions implements Initializable {
         new FadeTransitions(parentContainer, "Home.fxml");
     }
 
-    public void signOutButton_Click(ActionEvent actionEvent) {
-        new FadeTransitions(parentContainer, "Main.fxml");
+    public void signOutButton_Click(ActionEvent actionEvent) throws IOException {
+        Main m = new Main();
+        m.changeScene("Main.fxml");
     }
 
     public void submitButton_Click(ActionEvent actionEvent) throws IOException {
@@ -65,5 +70,26 @@ public class Questions implements Initializable {
 
     public void returnButton_Click(ActionEvent actionEvent) throws IOException {
         new FadeTransitions(parentContainer, "Diagnosis.fxml");
+    }
+
+    public void panePressed(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Delta.x = stg.getX() - mouseEvent.getScreenX();
+        Delta.y = stg.getY() - mouseEvent.getScreenY();
+    }
+
+    public void paneDragged(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stg.setX(Delta.x + mouseEvent.getScreenX());
+        stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
+
+    public void infoButton_Click(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Info.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
     }
 }

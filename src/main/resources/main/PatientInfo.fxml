@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PatientInfo">
+<StackPane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.PatientInfo">
    <children>
       <AnchorPane fx:id="ap" prefHeight="300.0" prefWidth="520.0">
          <children>
@@ -109,7 +109,7 @@
                         <Font name="Berlin Sans FB" size="52.0" />
                      </font>
                   </Label>
-                  <Button fx:id="exitButton" layoutX="22.0" layoutY="355.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="31.0" prefWidth="121.0" text="Exit" />
+                  <Button fx:id="exitButton" layoutX="22.0" layoutY="355.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="31.0" prefWidth="121.0" styleClass="terminateButton" stylesheets="@CSS/Main.css" text="Exit" />
                </children>
             </Pane>
          </children>

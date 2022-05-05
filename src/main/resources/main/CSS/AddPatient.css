@@ -3,11 +3,13 @@
     -fx-font-family: "Times New Roman";
 }
 .saveButton {
+    -fx-padding: 8 15 10 10;
     -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
-    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
-    #56C596,
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
     #BCE6FF,
-    radial-gradient(center 50% 50%, radius 100%, #98BBC4, rgba(70, 252, 225, 1));
+    #7cbacb;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
     -fx-text-fill: black;
 }

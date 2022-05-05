@@ -10,9 +10,11 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.effect.BoxBlur;
 import javafx.scene.effect.Effect;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -26,7 +28,7 @@ public class Diagnosis implements Initializable {
     @FXML
     StackPane parentContainer;
     @FXML
-    Button goToTreatmentButton, advanceButton, homeButton, viewButton, returnButton;
+    Button goToTreatmentButton, advanceButton, homeButton, viewButton, returnButton,infoButton;
     @FXML
     AnchorPane anchorPane;
     @FXML
@@ -35,6 +37,7 @@ public class Diagnosis implements Initializable {
     ListView listView;
     @FXML
     ProgressBar progressBar1, progressBar2, progressBar3, progressBar4, progressBar5, progressBar6, progressBar7, progressBar8, progressBar9, progressBar10, progressBar11;
+    private static Stage stg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -50,15 +53,17 @@ public class Diagnosis implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
+        new FadeTransitions(parentContainer, "Home.fxml");
     }
 
-    public void signOutButton_Click(ActionEvent actionEvent) {
-        new FadeTransitions(parentContainer, "Main.fxml");
+    public void signOutButton_Click(ActionEvent actionEvent) throws IOException {
+        Main m = new Main();
+        m.changeScene("Main.fxml");
     }
 
     public void advanceButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "Questions.fxml");     }
+        new FadeTransitions(parentContainer, "Questions.fxml");
+    }
 
     public void goToTreatmentButton_Click(ActionEvent actionEvent) throws IOException {
         new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
@@ -70,6 +75,10 @@ public class Diagnosis implements Initializable {
         new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
         Main m = new Main();
         m.changeScene("Questions.fxml");
+    }
+
+    public void returnButton_Click(ActionEvent actionEvent) throws IOException {
+        new FadeTransitions(parentContainer, "InsertData.fxml");
     }
 
     public void viewButton_Click(ActionEvent actionEvent) {
@@ -497,9 +506,24 @@ public class Diagnosis implements Initializable {
         }
     }
 
-    public void returnButton_Click(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("InsertData.fxml")));
-        SlideTransitions transition = new SlideTransitions();
-        transition.rightToLeftTransition(root, parentContainer, returnButton, anchorPane);
+    public void panePressed(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Delta.x = stg.getX() - mouseEvent.getScreenX();
+        Delta.y = stg.getY() - mouseEvent.getScreenY();
+    }
+
+    public void paneDragged(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stg.setX(Delta.x + mouseEvent.getScreenX());
+        stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
+
+    public void infoButton_Click(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Info.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
     }
 }

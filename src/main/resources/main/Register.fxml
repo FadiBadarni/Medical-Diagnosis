@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="parentContainer" prefHeight="489.0" prefWidth="713.0" styleClass="registerScreen" stylesheets="@CSS/Register.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Register">
+<Pane fx:id="parentContainer" prefHeight="489.0" prefWidth="713.0" styleClass="registerScreen" stylesheets="@CSS/Register.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Register" onMousePressed="#panePressed" onMouseDragged="#paneDragged">
    <children>
       <AnchorPane fx:id="anchorPane" layoutY="-1.0" prefHeight="476.0" prefWidth="713.0" style="-fx-background-color: transparent;">
          <children>

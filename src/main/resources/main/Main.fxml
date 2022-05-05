@@ -7,11 +7,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="parentContainer" prefHeight="532.0" prefWidth="717.0" style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Main">
+<Pane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" prefHeight="532.0" prefWidth="712.0" style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Main">
    <children>
       <AnchorPane fx:id="anchorPane" prefHeight="530.0" prefWidth="734.0" style="-fx-background-color: transparent;" stylesheets="@CSS/Main.css">
          <children>
-            <ImageView fitHeight="532.0" fitWidth="718.0" layoutX="3.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="532.0" fitWidth="718.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/menu2.png" />
                </image>
@@ -34,6 +34,11 @@
             <Button fx:id="exitButton" layoutX="120.0" layoutY="420.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="94.0" prefWidth="174.0" style="-fx-background-color: transparent;" styleClass="loginButton" stylesheets="@CSS/Main.css" text="EXIT" textFill="#004762">
                <font>
                   <Font name="Berlin Sans FB" size="54.0" />
+               </font>
+            </Button>
+            <Button fx:id="terminateButton" layoutX="656.0" layoutY="23.0" mnemonicParsing="false" onAction="#terminateButton_Click" styleClass="terminateButton" stylesheets="@CSS/Main.css" text="X">
+               <font>
+                  <Font name="Berlin Sans FB Bold" size="15.0" />
                </font>
             </Button>
          </children>

@@ -1,11 +1,13 @@
 package main;
 
 import animatefx.animation.Bounce;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -17,8 +19,10 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 import org.w3c.dom.Text;
 
@@ -29,11 +33,11 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class Home implements Initializable {
+public class Home extends Application implements Initializable {
     @FXML
     public Button displayInfoButton, addPatientButton;
     @FXML
-    private Button homeButton, uploadDataButton, questionsButton, signOutButton, diagnosisButton;
+    private Button homeButton, uploadDataButton, questionsButton, signOutButton, diagnosisButton,infoButton;
     @FXML
     private StackPane parentContainer;
     @FXML
@@ -43,7 +47,7 @@ public class Home implements Initializable {
     @FXML
     private ListView<String> listview1;
     private ListPatient listPatient = new ListPatient();
-
+    private static Stage stg;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateData();
@@ -64,6 +68,19 @@ public class Home implements Initializable {
         });
     }
 
+    @Override
+    public void start(Stage stage) throws Exception {
+        stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent event) {
+                Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
+                stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
+                stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
+            }
+        });
+        stage.show();
+    }
+
     private void updateData() {
         listPatient.insertData("PatientList.xlsx");
         listview1.getItems().addAll(listPatient.getIdList());
@@ -78,7 +95,8 @@ public class Home implements Initializable {
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Main.fxml");
+        Main m = new Main();
+        m.changeScene("Main.fxml");
     }
 
     @FXML
@@ -125,5 +143,25 @@ public class Home implements Initializable {
         bloodField.setText(excelData.get(index).get(7));
         genderField.setText(excelData.get(index).get(8));
 
+    }
+    public void panePressed(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Delta.x = stg.getX() - mouseEvent.getScreenX();
+        Delta.y = stg.getY() - mouseEvent.getScreenY();
+    }
+
+    public void paneDragged(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stg.setX(Delta.x + mouseEvent.getScreenX());
+        stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
+
+    public void infoButton_Click(ActionEvent actionEvent) throws IOException {
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Info.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
     }
 }

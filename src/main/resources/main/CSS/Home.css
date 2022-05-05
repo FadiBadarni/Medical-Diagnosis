@@ -7,9 +7,9 @@
 }
 
 .listview1 {
-    -fx-background-color: #090a0c,
-    linear-gradient(rgb(86, 197, 150), rgb(207, 244, 210)),
-    radial-gradient(center 50% 0%, radius 100%, rgb(86, 197, 150), rgba(255, 255, 255, 0));
+    -fx-background-color:
+            linear-gradient(#4a707a 0%, #9fc9da 20%, #62a4cb 100%),
+    linear-gradient(#92aab7, #8ec7e0);
     -fx-background-radius: 5, 4, 3, 5;
     -fx-background-insets: 0, 1, 2, 0;
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
@@ -17,8 +17,8 @@
 
 .homeButton {
     -fx-background-color: #090a0c,
-    linear-gradient(#4a707a 0%, #56C596 20%, #015c92 100%),
-    linear-gradient(#88cdf6, #56c596);
+    linear-gradient(#4a707a 0%, #387f9d 20%, #015c92 100%),
+    linear-gradient(#65afda, #4599bd);
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
     -fx-text-fill: #000000;
     -fx-padding: 10 20 10 20;
@@ -30,11 +30,11 @@
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
     -fx-background-radius: 8;
-    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
-    #56C596,
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
     #BCE6FF,
-    radial-gradient(center 50% 50%, radius 100%, #88CDF6, #329D9C);
-    -fx-effect: dropshadow(gaussian, #329D9C, 4, 0, 0, 1);
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
     -fx-text-fill: black;
 }
 
@@ -42,8 +42,8 @@
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
     -fx-background-radius: 8;
-    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56C596 0%, rgba(70, 252, 225, 1) 100%),
-    #56C596,
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
     #BCE6FF,
     #7cbacb;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
@@ -60,8 +60,8 @@
     -fx-padding: 8 15 15 15;
     -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
     -fx-background-radius: 8;
-    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
-    #56C596,
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
     #BCE6FF,
     #7cbacb;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
@@ -71,6 +71,7 @@
 
 .diagnosisButton:hover {
     -fx-text-fill: #ff0000;
+    -fx-cursor: hand;
 }
 
 .questionsButton {

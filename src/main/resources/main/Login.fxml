@@ -6,6 +6,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.GaussianBlur?>
 <?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,7 +19,7 @@
 <?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="parentContainer" style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Login">
+<Pane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Login">
    <children>
       <ImageView fitHeight="454.0" fitWidth="771.0" layoutY="4.404216110706329" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -70,7 +71,7 @@
                <effect>
                   <Shadow>
                      <color>
-                        <Color red="0.36565300822257996" green="0.6366029977798462" blue="0.8736842274665833" />
+                        <Color red="0.19607843458652496" green="0.6352941393852234" blue="0.7137255072593689" />
                      </color>
                   </Shadow>
                </effect>
@@ -92,7 +93,10 @@
                </font>
             </Label>
             <PasswordField fx:id="password" layoutX="76.0" layoutY="260.0" prefHeight="26.0" prefWidth="176.0" promptText="Password" />
-            <CubicCurve controlX1="266.199951171875" controlX2="30.999969482421875" controlY1="59.60017395019531" controlY2="101.20018005371094" endX="205.39999389648438" endY="-108.0" fill="#38b1bad0" layoutX="248.0" layoutY="108.0" startX="50.000030517578125" startY="328.8000183105469" stroke="BLACK" />
+            <CubicCurve controlX1="266.199951171875" controlX2="30.999969482421875" controlY1="59.60017395019531" controlY2="101.20018005371094" endX="205.39999389648438" endY="-108.0" fill="#39b87400" layoutX="248.0" layoutY="108.0" startX="50.000030517578125" startY="328.8000183105469" stroke="#32a2b6" strokeWidth="3.0">
+               <effect>
+                  <GaussianBlur />
+               </effect></CubicCurve>
             <ImageView fitHeight="211.0" fitWidth="252.0" layoutX="424.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/register.png" />
