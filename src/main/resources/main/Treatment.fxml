@@ -48,8 +48,13 @@
                         <Font name="Times New Roman Bold" size="19.0" />
                      </font>
                   </Label>
-                  <Button fx:id="exportButton" layoutX="636.0" layoutY="586.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="179.0" text="Export Detailed Patient File" />
+                  <Button fx:id="exportButton" layoutX="636.0" layoutY="586.0" mnemonicParsing="false" onAction="#exportButton_Click" prefHeight="33.0" prefWidth="179.0" text="Export Detailed Patient File" />
                   <Button fx:id="returnButton" layoutX="392.0" layoutY="619.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="33.0" prefWidth="99.0" text="return" />
+                  <Label fx:id="treatmentText" layoutX="357.0" layoutY="261.0" text="Label">
+                     <font>
+                        <Font size="23.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>

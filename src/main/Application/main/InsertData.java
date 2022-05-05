@@ -117,6 +117,8 @@ public class InsertData implements Initializable {
             p.addBloodTest(path);
             System.out.println(p.getFirstName());
             System.out.println(p.getBloodTest().toString());
+
+            new FadeTransitions(parentContainer, "Diagnosis.fxml");
         } else drop_text.setText("Error");
     }
 }

@@ -50,7 +50,7 @@ public class ReadWriteXlsx {
             for (String field : data) {
                 cell = row.createCell(columnCount++);
                 try {
-                    int x = Integer.parseInt(field);
+                    double x = Double.parseDouble(field);
                     cell.setCellValue(x);
                 } catch (NumberFormatException e) {
                     cell.setCellValue(field);

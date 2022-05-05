@@ -36,7 +36,9 @@ public class Diagnosis implements Initializable {
     @FXML
     ProgressBar progressBar1, progressBar2, progressBar3, progressBar4, progressBar5, progressBar6, progressBar7, progressBar8, progressBar9, progressBar10, progressBar11;
 
-    int wbc=0,neut=0,lymph=0,rbc=0,hct=0,urea=0,hp=0,crtn=0,iron=0,hdl=0,ap=0;
+    Patient p;
+  //  int wbc=0,neut=0,lymph=0,rbc=0,hct=0,urea=0,hp=0,crtn=0,iron=0,hdl=0,ap=0;
+    Hashtable<String, Integer> values=new Hashtable<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -60,6 +62,10 @@ public class Diagnosis implements Initializable {
     }
 
     public void advanceButton_Click(ActionEvent actionEvent) throws IOException {
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        p.setValues(values);
+        stage.setUserData(p);
         new SlideTransitions().leftToRightTransition(parentContainer, advanceButton, anchorPane, "Questions.fxml");
     }
 
@@ -70,6 +76,8 @@ public class Diagnosis implements Initializable {
     }
 
     public void goToQuestionsButton_Click(ActionEvent actionEvent) throws IOException {
+
+
         new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
         Main m = new Main();
         m.changeScene("Questions.fxml");
@@ -78,7 +86,7 @@ public class Diagnosis implements Initializable {
     public void viewButton_Click(ActionEvent actionEvent) {
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
-        Patient p = (Patient) stage.getUserData();
+        p = (Patient) stage.getUserData();
 
         Hashtable<String, Double> bloodTest = p.getBloodTest();
         String human = returnStage(p.getAge());
@@ -152,10 +160,12 @@ public class Diagnosis implements Initializable {
         if (ap_level < 30) {
             progressBar11.setStyle("-fx-accent: yellow;");
             testField11.setText("Low Value");
-            ap=-1;
+
+            values.put("AP",-1);
         } else if (ap_level <= 90) {
             progressBar11.setStyle("-fx-accent: green;");
             testField11.setText("Value within normal range.");
+            values.put("HCT",0);
         } else {
             AP_OverFlow();
         }
@@ -167,10 +177,11 @@ public class Diagnosis implements Initializable {
             if (hdl_level < 29) {
                 progressBar10.setStyle("-fx-accent: yellow;");
                 testField10.setText("Low Value");
-                hdl=-1;
+                values.put("HDL",-1);
             } else if (hdl_level <= 62) {
                 progressBar10.setStyle("-fx-accent: green;");
                 testField10.setText("Value within normal range.");
+                values.put("HDL",0);
             } else {
                 HDL_OverFlow();
             }
@@ -179,9 +190,12 @@ public class Diagnosis implements Initializable {
             if (hdl_level < 34) {
                 progressBar10.setStyle("-fx-accent: yellow;");
                 testField10.setText("Low Value");
+                values.put("HDL",-1);
+
             } else if (hdl_level <= 82) {
                 progressBar10.setStyle("-fx-accent: green;");
                 testField10.setText("Value within normal range.");
+                values.put("HDL",0);
             } else {
                 HDL_OverFlow();
             }
@@ -195,10 +209,12 @@ public class Diagnosis implements Initializable {
             if (iron_level < 60) {
                 progressBar9.setStyle("-fx-accent: yellow;");
                 testField9.setText("Low Value");
-                iron=-1;
+                values.put("Iron",-1);
             } else if (iron_level <= 160) {
                 progressBar9.setStyle("-fx-accent: green;");
                 testField9.setText("Value within normal range.");
+                values.put("Iron",0);
+
             } else {
                 Iron_OverFlow();
             }
@@ -207,9 +223,11 @@ public class Diagnosis implements Initializable {
             if (iron_level < 48) {
                 progressBar9.setStyle("-fx-accent: yellow;");
                 testField9.setText("Low Value");
+                values.put("Iron",-1);
             } else if (iron_level <= 128) {
                 progressBar9.setStyle("-fx-accent: green;");
                 testField9.setText("Value within normal range.");
+                values.put("Iron",0);
             } else {
                 Iron_OverFlow();
             }
@@ -222,10 +240,12 @@ public class Diagnosis implements Initializable {
             if (Crtn_Level < 0.6) {
                 progressBar8.setStyle("-fx-accent: yellow;");
                 testField8.setText("Low Value");
-                crtn=-1;
+                values.put("Crtn",-1);
+
             } else if (Crtn_Level <= 1) {
                 progressBar8.setStyle("-fx-accent: green;");
                 testField8.setText("Value within normal range.");
+                values.put("Crtn",0);
             } else {
                 Creatinine_OverFlow();
             }
@@ -233,10 +253,11 @@ public class Diagnosis implements Initializable {
             if (Crtn_Level < 0.6) {
                 progressBar8.setStyle("-fx-accent: yellow;");
                 testField8.setText("Low Value");
-                crtn=-1;
+                values.put("Crtn",-1);
             } else if (Crtn_Level <= 1.2) {
                 progressBar8.setStyle("-fx-accent: green;");
                 testField8.setText("Value within normal range.");
+                values.put("Crtn",0);
             } else {
                 Creatinine_OverFlow();
             }
@@ -244,10 +265,11 @@ public class Diagnosis implements Initializable {
             if (Crtn_Level < 0.5) {
                 progressBar8.setStyle("-fx-accent: yellow;");
                 testField8.setText("Low Value");
-                crtn=-1;
+                values.put("Crtn",-1);
             } else if (Crtn_Level <= 1) {
                 progressBar8.setStyle("-fx-accent: green;");
                 testField8.setText("Value within normal range.");
+                values.put("Crtn",0);
             } else {
                 Creatinine_OverFlow();
             }
@@ -255,10 +277,12 @@ public class Diagnosis implements Initializable {
             if (Crtn_Level < 0.2) {
                 progressBar8.setStyle("-fx-accent: yellow;");
                 testField8.setText("Low Value");
-                crtn=-1;
+                values.put("Crtn",-1);
+
             } else if (Crtn_Level <= 0.5) {
                 progressBar8.setStyle("-fx-accent: green;");
                 testField8.setText("Value within normal range.");
+                values.put("Crtn",0);
             } else {
                 Creatinine_OverFlow();
             }
@@ -270,10 +294,12 @@ public class Diagnosis implements Initializable {
         if (Hb_Level < 11.5) {
             progressBar7.setStyle("-fx-accent: yellow;");
             testField7.setText("Low Value");
-            hp=-1;
+            values.put("Hb",-1);
+
         } else if (Hb_Level <= 15.5) {
             progressBar7.setStyle("-fx-accent: green;");
             testField7.setText("Value within normal range.");
+            values.put("Hb",0);
         } else {
             HB_OverFlow();
         }
@@ -285,10 +311,11 @@ public class Diagnosis implements Initializable {
             if (Hb_Level < 12) {
                 progressBar7.setStyle("-fx-accent: yellow;");
                 testField7.setText("Low Value");
-                hp=-1;
+                values.put("Hb",-1);
             } else if (Hb_Level <= 18) {
                 progressBar7.setStyle("-fx-accent: green;");
                 testField7.setText("Value within normal range.");
+                values.put("Hb",0);
             } else {
                 HB_OverFlow();
             }
@@ -297,10 +324,11 @@ public class Diagnosis implements Initializable {
             if (Hb_Level < 12) {
                 progressBar7.setStyle("-fx-accent: yellow;");
                 testField7.setText("Low Value");
-                hp=-1;
+                values.put("Hb",-1);
             } else if (Hb_Level <= 16) {
                 progressBar7.setStyle("-fx-accent: green;");
                 testField7.setText("Value within normal range.");
+                values.put("Hb",0);
             } else {
                 HB_OverFlow();
             }
@@ -312,10 +340,12 @@ public class Diagnosis implements Initializable {
         if (urea_level < 17) {
             progressBar6.setStyle("-fx-accent: yellow;");
             testField6.setText("Low Value");
-            urea=-1;
+            values.put("Urea",-1);
+
         } else if (urea_level < 43) {
             progressBar6.setStyle("-fx-accent: green;");
             testField6.setText("Value within normal range.");
+            values.put("Urea",0);
         } else {
             progressBar6.setStyle("-fx-accent: red;");
             testField6.setText("UREA OVERFLOW");
@@ -324,7 +354,7 @@ public class Diagnosis implements Initializable {
             tooltip.setShowDelay(Duration.seconds(2));
             tooltip.setHideDelay(Duration.seconds(5));
             testField6.setTooltip(tooltip);
-            urea=1;
+            values.put("Urea",1);
         }
         progressBar6.setProgress(urea_level / 43);
     }
@@ -334,10 +364,12 @@ public class Diagnosis implements Initializable {
             if (HCT_Level < 0.37) {
                 progressBar5.setStyle("-fx-accent: yellow;");
                 testField5.setText("Low Value");
-                hct=-1;
+                values.put("HCT",-1);
+
             } else if (HCT_Level <= 0.54) {
                 progressBar5.setStyle("-fx-accent: green;");
                 testField5.setText("Value within normal range.");
+                values.put("HCT",0);
             } else {
                 HCT_OverFlow();
             }
@@ -346,9 +378,11 @@ public class Diagnosis implements Initializable {
             if (HCT_Level < 0.33) {
                 progressBar5.setStyle("-fx-accent: yellow;");
                 testField5.setText("Low Value");
+                values.put("HCT",-1);
             } else if (HCT_Level <= 0.47) {
                 progressBar5.setStyle("-fx-accent: green;");
                 testField5.setText("Value within normal range.");
+                values.put("HCT",0);
             } else {
                 HCT_OverFlow();
             }
@@ -360,10 +394,12 @@ public class Diagnosis implements Initializable {
         if (RBC_Level < 4.5) {
             progressBar4.setStyle("-fx-accent: yellow;");
             testField4.setText("Low Value");
-            rbc=-1;
+            values.put("RBC",-1);
+
         } else if (RBC_Level <= 6) {
             progressBar4.setStyle("-fx-accent: green;");
             testField4.setText("Value within normal range.");
+            values.put("RBC",0);
         } else {
             progressBar4.setStyle("-fx-accent: red;");
             testField4.setText("RBC OVERFLOW");
@@ -372,7 +408,7 @@ public class Diagnosis implements Initializable {
             tooltip.setShowDelay(Duration.seconds(2));
             tooltip.setHideDelay(Duration.seconds(5));
             testField4.setTooltip(tooltip);
-            rbc=1;
+            values.put("RBC",1);
         }
         progressBar4.setProgress(RBC_Level / 6);
     }
@@ -381,10 +417,12 @@ public class Diagnosis implements Initializable {
         if (lymph_level / wbc_level < 0.36) {
             progressBar3.setStyle("-fx-accent: yellow;");
             testField3.setText("Low Level");
-            lymph=-1;
+            values.put("Lymph",-1);
+
         } else if (lymph_level / wbc_level >= 0.36 && lymph_level / wbc_level <= 0.52) {
             progressBar3.setStyle("-fx-accent: green;");
             testField3.setText("Value within normal range.");
+            values.put("Lymph",0);
         } else {
             progressBar3.setStyle("-fx-accent: red;");
             testField3.setText(" LYMPH OVERFLOW");
@@ -393,7 +431,7 @@ public class Diagnosis implements Initializable {
             tooltip.setShowDelay(Duration.seconds(2));
             tooltip.setHideDelay(Duration.seconds(5));
             testField3.setTooltip(tooltip);
-            lymph=-1;
+            values.put("Lymph",1);
         }
         progressBar3.setProgress((lymph_level / wbc_level) / 0.52);
     }
@@ -402,10 +440,12 @@ public class Diagnosis implements Initializable {
         if (Neut_Level / WBC_Level < 0.28) {
             progressBar2.setStyle("-fx-accent: yellow;");
             testField2.setText("Low Level");
-            neut=-1;
+            values.put("Neut",-1);
+
         } else if (Neut_Level / WBC_Level >= 0.28 && Neut_Level / WBC_Level <= 0.54) {
             progressBar2.setStyle("-fx-accent: green;");
             testField2.setText("Value within normal range.");
+            values.put("Neut",0);
         } else {
             progressBar2.setStyle("-fx-accent: red;");
             testField2.setText(" NEUT OVERFLOW");
@@ -414,7 +454,8 @@ public class Diagnosis implements Initializable {
             tooltip.setShowDelay(Duration.seconds(2));
             tooltip.setHideDelay(Duration.seconds(5));
             testField2.setTooltip(tooltip);
-            neut=1;
+            values.put("Neut",1);
+
         }
         progressBar2.setProgress((Neut_Level / WBC_Level) / 0.54);
     }
@@ -429,17 +470,19 @@ public class Diagnosis implements Initializable {
         tooltip.setShowDelay(Duration.seconds(2));
         tooltip.setHideDelay(Duration.seconds(5));
         testField1.setTooltip(tooltip);
-        wbc=1;
+        values.put("WBC",1);
+
     }
     private void WBC_Normal() {
         progressBar1.setStyle("-fx-accent: green;");
         testField1.setText("Value within normal range.");
-        wbc=0;
+        values.put("WBC",0);
+
     }
     private void WBC_UnderFlow() {
         progressBar1.setStyle("-fx-accent: yellow;");
         testField1.setText("Indicate viral disease. Immune system failure and in very rare cases cancer.");
-        wbc=-1;
+        values.put("WBC",-1);
     }
 
     private void HCT_OverFlow() {
@@ -450,7 +493,8 @@ public class Diagnosis implements Initializable {
         tooltip.setShowDelay(Duration.seconds(2));
         tooltip.setHideDelay(Duration.seconds(5));
         testField5.setTooltip(tooltip);
-        hct=1;
+        values.put("HCT",1);
+
     }
 
     private void AP_OverFlow() {
@@ -461,7 +505,7 @@ public class Diagnosis implements Initializable {
         tooltip.setShowDelay(Duration.seconds(2));
         tooltip.setHideDelay(Duration.seconds(5));
         testField11.setTooltip(tooltip);
-        ap=1;
+        values.put("AP",1);
     }
 
     private void HDL_OverFlow() {
@@ -472,7 +516,8 @@ public class Diagnosis implements Initializable {
         tooltip.setShowDelay(Duration.seconds(2));
         tooltip.setHideDelay(Duration.seconds(5));
         testField10.setTooltip(tooltip);
-        hdl=1;
+        values.put("HDL",0);
+
     }
 
     private void Creatinine_OverFlow() {
@@ -483,7 +528,8 @@ public class Diagnosis implements Initializable {
         tooltip.setShowDelay(Duration.seconds(2));
         tooltip.setHideDelay(Duration.seconds(5));
         testField8.setTooltip(tooltip);
-        crtn=1;
+        values.put("Crtn",1);
+
     }
 
     private void Iron_OverFlow() {
@@ -494,7 +540,8 @@ public class Diagnosis implements Initializable {
         tooltip.setShowDelay(Duration.seconds(2));
         tooltip.setHideDelay(Duration.seconds(5));
         testField9.setTooltip(tooltip);
-        iron=1;
+        values.put("Iron",1);
+
     }
 
     private void HB_OverFlow() {
@@ -505,7 +552,8 @@ public class Diagnosis implements Initializable {
         tooltip.setShowDelay(Duration.seconds(2));
         tooltip.setHideDelay(Duration.seconds(5));
         testField7.setTooltip(tooltip);
-        hp=1;
+
+        values.put("Hb",0);
     }
 
     public String returnStage(int age) {
