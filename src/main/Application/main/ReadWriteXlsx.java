@@ -71,16 +71,20 @@ public class ReadWriteXlsx {
 
     }
 
-    public Iterator<Cell> getAllRow(String rowName) {
+    public Iterator<Cell> getAllRow(int rowName) {
 
         try {
             Iterator<Row> itr = sheet.iterator();
+            if(itr.hasNext()) itr.next();
             while (itr.hasNext()) {
                 Row row = itr.next();
                 Iterator<Cell> cellIterator = row.cellIterator();   //iterating over each column
                 Cell cell = cellIterator.next();
-                if (cell.getCellType() == CellType.STRING) {
-                    if (cell.getStringCellValue().equals(rowName))
+
+
+
+                if (cell.getCellType() == CellType.NUMERIC) {
+                    if (cell.getNumericCellValue()==rowName)
                         return cellIterator;
                 }
             }
@@ -90,7 +94,6 @@ public class ReadWriteXlsx {
         }
         return null;
     }
-
     public void copy(String path) {
         // Read xlsx file
         XSSFWorkbook oldWorkbook = null;

@@ -15,6 +15,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,7 +39,8 @@ public class Register implements Initializable {
 
     @FXML
     private PasswordField password,repasswoed;
-
+    public TextField phoneNumber;
+    public Button registerButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -66,22 +68,43 @@ public class Register implements Initializable {
     }
 
 
+
     public void  register(){
-       if(isCurrentinput()) {
-           String[] data = {id.getText(),password.getText(),firstname.getText(), lastname.getText(),
-                   age.getText(), weight.getText(), length.getText(), email.getText()};
-           try {
-               ReadWriteXlsx file=new ReadWriteXlsx("Users.xlsx");
-               file.add(data);
-           } catch (IOException | InvalidFormatException e) {
-               throw new RuntimeException(e);
-           }
-       }
+        if(isCurrentInput()) {
+            String[] data = {id.getText(),password.getText(),firstname.getText(), lastname.getText(), email.getText(),phoneNumber.getText()};
+            try {
+                ReadWriteXlsx file=new ReadWriteXlsx("Users.xlsx");
+                file.add(data);
+                new FadeTransitions(parentContainer, "Home.fxml");
+
+            } catch (IOException | InvalidFormatException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+        else registerButton.setText("Error");
     }
 
 
 
-    public boolean isCurrentinput(){
+    public boolean isCurrentInput(){
+        if(id.getText().length()!=9) return false;
+
+        try {
+            int number = Integer.parseInt(id.getText());
+            ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
+            Iterator<Cell>  cellIterator= file.getAllRow(number);
+            if(cellIterator!=null) return false;
+        } catch (NumberFormatException |IOException | InvalidFormatException e) {
+            throw new RuntimeException(e);
+        }
+        if(!password.getText().equals(repasswoed.getText())) return false;
+
+        if(phoneNumber.getText().length()!=10) return false;
+
+        if(email.getText().length()<5) return false;
+        if(password.getText().length()<8) return false;
+
         return true;
     }
 }

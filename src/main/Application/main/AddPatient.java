@@ -14,9 +14,11 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Iterator;
 import java.util.ResourceBundle;
 
 public class AddPatient implements Initializable {
@@ -61,24 +63,46 @@ public class AddPatient implements Initializable {
         new FadeTransitions(parentContainer, "AddPatient.fxml");     }
 
     public void saveButton_Click(ActionEvent actionEvent) {
-        if(isCurrentinput()) {
+        if(isCurrentInput()) {
+
             String[] data = {idField.getText(),firstNameField.getText(), lastNameField.getText(),
                     ageField.getText(), weightField.getText(), lengthField.getText(),
-                    phoneField.getText(),bloodTypeField.getText(),genderBox.getSelectionModel().getSelectedItem()};
+                    phoneField.getText(),bloodTypeField.getText(),genderBox.getSelectionModel().getSelectedItem(),eastCheckBox.isSelected()+"",ethiopianCheckBox.isSelected()+""};
             try {
                 ReadWriteXlsx file=new ReadWriteXlsx("PatientList.xlsx");
                 file.add(data);
-                new FadeTransitions(parentContainer, "Home.fxml");
+                new SlideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, "Home.fxml");
             } catch (IOException | InvalidFormatException e) {
                 throw new RuntimeException(e);
             }
         }
 
+
     }
 
-    private boolean isCurrentinput() {
+    public boolean isCurrentInput(){
+        if(idField.getText().length()!=9) return false;
+
+        try {
+            int number = Integer.parseInt(idField.getText());
+            ReadWriteXlsx file = new ReadWriteXlsx("PatientList.xlsx");
+            Iterator<Cell> cellIterator= file.getAllRow(number);
+            if(cellIterator!=null) return false;
+            if(firstNameField.getText().length()==0) return false;
+            if(lastNameField.getText().length()==0) return false;
+            Integer.parseInt(ageField.getText());
+            Integer.parseInt(weightField.getText());
+            Integer.parseInt(lengthField.getText());
+            Integer.parseInt(phoneField.getText());
+            if(phoneField.getText().length()!=10) return false;
+            if(!genderBox.isScaleShape()) return false;
+        } catch (NumberFormatException | IOException | InvalidFormatException e) {
+            return false;
+        }
+
         return true;
     }
+
 
     public void handleDrop(DragEvent dragEvent) {
         path = String.valueOf(dragEvent.getDragboard().getFiles());
