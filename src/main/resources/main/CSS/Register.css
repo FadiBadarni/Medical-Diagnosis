@@ -1,17 +1,17 @@
 .registerScreen {
-    -fx-background-color: linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%,  #329d9c 100%);
+    -fx-background-color: linear-gradient(to right, #3bb2b6 0%, #1fd3a3 100%);
 }
 
 .registerButton {
-    -fx-background-color: #000000,
-    #56c596,
-    #00ff3f,
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 25%, #2d82b5 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, rgb(72, 126, 190) 0%, rgba(70, 252, 225, 1) 100%),
+    rgb(81, 138, 206),
+    rgba(115, 255, 0, 0.88),
+    radial-gradient(center 50% 50%, radius 100%, rgb(64, 117, 182), rgb(16, 178, 154));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: white;
 }
 
 .registerButton:hover {
@@ -23,16 +23,15 @@
 }
 
 .returnButton {
-    -fx-background-color: #000000,
-    #56c596,
-    #ff0000,
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 25%, #2d82b5 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
-
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, rgb(18, 182, 157) 0%, rgba(70, 252, 225, 1) 100%),
+    rgb(81, 138, 206),
+    rgb(255, 0, 0),
+    radial-gradient(center 50% 50%, radius 100%, rgb(23, 152, 132), rgb(16, 164, 178));
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: white;
 
 }
 

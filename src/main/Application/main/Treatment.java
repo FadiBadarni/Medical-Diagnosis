@@ -19,8 +19,9 @@ public class Treatment {
     @FXML
     private Button homeButton, signOutButton, returnButton;
 
-    public void homeButton_Click(ActionEvent actionEvent) {
-        new FadeTransitions(parentContainer, "Home.fxml");
+    public void homeButton_Click(ActionEvent actionEvent) throws IOException {
+        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
+
     }
 
     public void signOutButton_Click(ActionEvent actionEvent) {

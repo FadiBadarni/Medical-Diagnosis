@@ -7,7 +7,7 @@
 <?import javafx.scene.text.Text?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="466.0" styleClass="panel" stylesheets="@CSS/Home.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Diagnosis">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="466.0" styleClass="panel" stylesheets="@CSS/Home.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Main">
    <children>
       <Text layoutX="62.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Would You Like To Answer Some Questions In Order To Improve The Precision Of The Diagnosis" wrappingWidth="378.5277404785156">
          <font>
@@ -17,7 +17,5 @@
             <Glow />
          </effect>
       </Text>
-      <Button fx:id="goToTreatmentButton" layoutX="20.0" layoutY="113.0" mnemonicParsing="false" onAction="#goToTreatmentButton_Click" text="No Proceed To Treatment" />
-      <Button fx:id="goToQuestionsButton" layoutX="277.0" layoutY="113.0" mnemonicParsing="false" onAction="#goToQuestionsButton_Click" text="Yes, Take Me To The Questions" />
    </children>
 </Pane>
