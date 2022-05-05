@@ -35,15 +35,14 @@ public class home implements Initializable {
     @FXML
     private ListView<String> listview1;
 
-     private ListPatient listPatient;
+     private ListPatient listPatient=new ListPatient();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateData();
     }
     private void updateData() {
-
-        listPatient=new ListPatient("PatientList.xlsx");
+        listPatient.insertData("PatientList.xlsx");
         listview1.getItems().addAll(listPatient.getIdList());
     }
 
@@ -89,15 +88,11 @@ public class home implements Initializable {
     }
 
     public void displayInfoButton_Click(ActionEvent actionEvent) throws IOException {
-        if(!listview1.getSelectionModel().isEmpty()) {
-            Patient p = listPatient.getPatients().get(listview1.getSelectionModel().getSelectedIndex());
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("patientInfo.fxml")));
-            Scene scene = new Scene(root);
-            Stage stage = new Stage();
-            stage.setUserData(p);
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UNDECORATED);
-            stage.show();
-        }
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("patientInfo.fxml")));
+        Scene scene = new Scene(root);
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
     }
 }

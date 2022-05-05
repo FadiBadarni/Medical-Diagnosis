@@ -18,7 +18,6 @@
                </image>
             </ImageView>
             <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Home" />
-            <Button fx:id="insertDataButton" layoutX="-5.0" layoutY="290.0" mnemonicParsing="false" onAction="#insertDataButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Insert Data" />
             <Button fx:id="addPatientButton" layoutX="-5.0" layoutY="225.0" mnemonicParsing="false" onAction="#addPatientButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Add Patient" />
             <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Questions" />
             <Label fx:id="username" layoutX="42.0" layoutY="113.0" text="Doctor Example">
@@ -33,11 +32,6 @@
             </ImageView>
             <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/home.css" text="Sign Out" />
             <Line endX="-48.79998779296875" endY="586.0" layoutX="225.0" layoutY="64.0" startX="-48.79998779296875" startY="-65.50708770751953" strokeWidth="10.0" />
-            <ImageView fitHeight="39.0" fitWidth="63.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/addData.png" />
-               </image>
-            </ImageView>
             <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="26.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/questions.png" />
