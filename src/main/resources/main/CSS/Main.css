@@ -1,6 +1,7 @@
 .start {
     -fx-background-radius: 6;
     -fx-background-insets: 0, 0 1 1 0;
+    -fx-background-color: transparent;
 }
 
 .loginButton {
@@ -39,7 +40,28 @@
 .exitButton:hover {
     -fx-text-fill: #ff0000;
     -fx-cursor: hand;
-
+}
+.exitButton2{
+    -fx-background-color: #090a0c,
+    linear-gradient(#4a707a 0%, #56C596 20%, #015c92 100%),
+    linear-gradient(#88cdf6, #56c596);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+    -fx-text-fill: #000000;
+    -fx-padding: 10 20 10 20;
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 20px;
+}
+.exitButton2:hover {
+    -fx-text-fill: #ff0000;
+    -fx-cursor: hand;
+}
+.terminateButton{
+    -fx-background-color: #090a0c,
+    linear-gradient(#61bad5, #2a8184);
+}
+.terminateButton:hover{
+    -fx-text-fill: #ff0000;
+    -fx-cursor: hand;
 }
 
 

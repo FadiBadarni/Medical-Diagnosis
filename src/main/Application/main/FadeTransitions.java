@@ -94,4 +94,16 @@ public class FadeTransitions {
         });
         fadeTransition.play();
     }
+    public void exitFadeTransition(Pane parentContainer, Button button){
+        FadeTransition fadeTransition = new FadeTransition();
+        fadeTransition.setDuration(Duration.seconds(0.3));
+        fadeTransition.setNode(parentContainer);
+        fadeTransition.setFromValue(1);
+        fadeTransition.setToValue(0);
+        fadeTransition.setOnFinished(actionEvent -> {
+            Stage stage = (Stage) button.getScene().getWindow();
+            stage.close();
+        });
+        fadeTransition.play();
+    }
 }

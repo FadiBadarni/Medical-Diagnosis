@@ -6,61 +6,55 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Info">
+<Pane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseDragged="#paneDragged" onMousePressed="#panePressed" prefHeight="403.0" prefWidth="716.0" style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Info">
    <children>
-      <AnchorPane fx:id="ap" prefHeight="300.0" prefWidth="520.0">
+      <ImageView fitHeight="404.0" fitWidth="716.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@images/infoBG2.png" />
+         </image>
+      </ImageView>
+      <AnchorPane fx:id="ap" layoutX="1.0" layoutY="1.0" prefHeight="403.0" prefWidth="716.0" style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css">
          <children>
-            <ImageView fitHeight="404.0" fitWidth="716.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="82.0" fitWidth="76.0" layoutX="32.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/infoBG2.jpg" />
+                  <Image url="@images/warning.png" />
                </image>
             </ImageView>
-            <Pane prefHeight="403.0" prefWidth="716.0">
-               <children>
-                  <ImageView fitHeight="82.0" fitWidth="76.0" layoutX="22.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/warning.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="256.0" layoutY="285.0" prefHeight="58.0" prefWidth="212.0" text="PROJECT" textFill="#7dbac9ba">
-                     <font>
-                        <Font name="Berlin Sans FB" size="52.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="358.0" layoutY="331.0" prefHeight="58.0" prefWidth="347.0" text="INFORMATION" textFill="#7cbacb8f">
-                     <font>
-                        <Font name="Berlin Sans FB" size="52.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="exitButton" layoutX="22.0" layoutY="355.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="31.0" prefWidth="121.0" text="Exit" />
-                  <Text fx:id="text" layoutX="276.0" layoutY="28.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Final Project For The Course Quality And Software Testing  - Made By :             " wrappingWidth="428.94219970703125">
-                     <font>
-                        <Font name="Berlin Sans FB" size="24.0" />
-                     </font>
-                  </Text>
-                  <Label fx:id="label1" layoutX="293.0" layoutY="80.0" text="FADI BADARNI">
-                     <font>
-                        <Font name="Berlin Sans FB" size="32.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="label2" layoutX="293.0" layoutY="128.0" text="ABEDALLA SHIEKH KHALIL">
-                     <font>
-                        <Font name="Berlin Sans FB" size="32.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="label3" layoutX="292.0" layoutY="178.0" text="ABED ALRAHMAN ABU KHIET">
-                     <font>
-                        <Font name="Berlin Sans FB" size="32.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="362.0" layoutY="231.0" prefHeight="54.0" prefWidth="302.0" />
-               </children>
-            </Pane>
+            <Label layoutX="314.0" layoutY="271.0" prefHeight="58.0" prefWidth="212.0" text="PROJECT" textFill="#30616bba">
+               <font>
+                  <Font name="Berlin Sans FB" size="52.0" />
+               </font>
+            </Label>
+            <Label layoutX="331.0" layoutY="330.0" prefHeight="58.0" prefWidth="347.0" text="INFORMATION" textFill="#30616b8f">
+               <font>
+                  <Font name="Berlin Sans FB" size="52.0" />
+               </font>
+            </Label>
+            <Button fx:id="exitButton2" layoutX="14.0" layoutY="337.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="31.0" prefWidth="121.0" styleClass="exitButton2" stylesheets="@CSS/Home.css" text="Exit" />
+            <Text fx:id="text" layoutX="260.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Final Project For The Course Quality And Software Testing  - Made By :             " wrappingWidth="428.94219970703125">
+               <font>
+                  <Font name="Berlin Sans FB" size="24.0" />
+               </font>
+            </Text>
+            <Label fx:id="label1" layoutX="284.0" layoutY="78.0" text="FADI BADARNI">
+               <font>
+                  <Font name="Berlin Sans FB" size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="label2" layoutX="284.0" layoutY="114.0" text="ABEDALLA SHIEKH KHALIL">
+               <font>
+                  <Font name="Berlin Sans FB" size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="label3" layoutX="284.0" layoutY="152.0" text="ABED ALRAHMAN ABU KHIET">
+               <font>
+                  <Font name="Berlin Sans FB" size="32.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
-</StackPane>
+</Pane>

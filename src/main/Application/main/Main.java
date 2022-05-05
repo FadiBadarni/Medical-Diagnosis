@@ -7,15 +7,18 @@ import animatefx.animation.RollIn;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
@@ -24,6 +27,7 @@ import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -55,9 +59,6 @@ public class Main extends Application implements Initializable {
         stage.setTitle("Medical Diagnosis Application");
         stage.setScene(scene);
         stage.show();
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        stg.setX((primScreenBounds.getWidth() - stg.getWidth()) / 3);
-        stg.setY((primScreenBounds.getHeight() - stg.getHeight()) / 3);
     }
 
     @Override
@@ -127,4 +128,19 @@ public class Main extends Application implements Initializable {
         m.changeScene("Home.fxml");
     }
 
+    public void panePressed(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Delta.x = stg.getX() - mouseEvent.getScreenX();
+        Delta.y = stg.getY() - mouseEvent.getScreenY();
+    }
+
+    public void paneDragged(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stg.setX(Delta.x + mouseEvent.getScreenX());
+        stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
+
+    public void terminateButton_Click(ActionEvent actionEvent) {
+        System.exit(0);
+    }
 }

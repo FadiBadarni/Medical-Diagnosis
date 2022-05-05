@@ -18,7 +18,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.AddPatient">
+<StackPane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.AddPatient">
    <children>
       <AnchorPane>
          <ImageView fitHeight="706.0" fitWidth="990.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
@@ -33,13 +33,13 @@
                      <Image url="@images/bar_line.png" />
                   </image>
                </ImageView>
-            <ImageView fitHeight="135.0" fitWidth="179.0" layoutX="184.0" layoutY="460.0" pickOnBounds="true" preserveRatio="true" rotate="9.6">
+            <ImageView fitHeight="220.0" fitWidth="293.0" layoutX="-32.0" layoutY="281.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/addPatient.png" />
                </image>
             </ImageView>
             <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
-            <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Info" />
+            <Button fx:id="infoButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="482.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Info" />
             <Button fx:id="signOutButton" layoutX="-5.0" layoutY="622.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
             <TextField fx:id="weightField" layoutX="464.0" layoutY="176.0" prefHeight="33.0" prefWidth="157.0" promptText="Weight (KG)" />
             <TextField fx:id="lastNameField" layoutX="748.0" layoutY="86.0" prefHeight="33.0" prefWidth="157.0" promptText="Last Name" />
@@ -94,23 +94,26 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Button fx:id="saveButton" layoutX="852.0" layoutY="300.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="40.0" prefWidth="113.0" rotate="-6.1" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/AddPatient.css" text="Save">
+            <Button fx:id="saveButton" layoutX="830.0" layoutY="288.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="40.0" prefWidth="113.0" rotate="-6.1" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/AddPatient.css" text="Save">
                <font>
                   <Font size="18.0" />
                </font>
             </Button>
-            <Label layoutX="366.0" layoutY="389.0" prefHeight="38.0" prefWidth="50.0" text="OR">
+            <Label layoutX="341.0" layoutY="370.0" prefHeight="38.0" prefWidth="50.0" text="OR">
                <font>
                   <Font name="Berlin Sans FB" size="33.0" />
                </font>
             </Label>
-            <Label layoutX="661.0" layoutY="373.0" prefHeight="25.0" prefWidth="113.0" text="Upload Info">
+            <Label layoutX="722.0" layoutY="431.0" prefHeight="25.0" prefWidth="157.0" text="UPLOAD INFO">
                <font>
-                  <Font name="Times New Roman Bold" size="21.0" />
+                  <Font name="Berlin Sans FB" size="23.0" />
                </font>
             </Label>
-            <Label layoutX="638.0" layoutY="398.0" prefHeight="21.0" prefWidth="159.0" text="Only Excel Files Are Allowed" />
-            <Pane fx:id="pane1" layoutX="549.0" layoutY="427.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="155.0" prefWidth="337.0" styleClass="pane" stylesheets="@CSS/InsertData.css">
+            <Label layoutX="693.0" layoutY="459.0" prefHeight="21.0" prefWidth="216.0" text="ONLY EXCEL FILES ARE ALLOWED">
+                  <font>
+                     <Font name="Berlin Sans FB" size="14.0" />
+                  </font></Label>
+            <Pane fx:id="pane1" layoutX="617.0" layoutY="485.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="155.0" prefWidth="337.0" styleClass="pane" stylesheets="@CSS/InsertData.css">
                <children>
                   <Text fx:id="drop_text" fill="#847b7b" layoutX="159.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Or Drop Here" wrappingWidth="132.0">
                      <font>
@@ -131,12 +134,12 @@
                               </Stop>
                               <Stop offset="0.5121951219512195">
                                  <color>
-                                    <Color red="0.031199999153614044" green="0.4122517704963684" blue="0.7799999713897705" />
+                                    <Color red="0.28421053290367126" green="0.5778947472572327" blue="0.8526315689086914" />
                                  </color>
                               </Stop>
                               <Stop offset="1.0">
                                  <color>
-                                    <Color red="0.7248862981796265" green="0.20272904634475708" blue="0.8421052694320679" />
+                                    <Color red="0.15208576619625092" green="0.8616575598716736" blue="0.8736842274665833" />
                                  </color>
                               </Stop>
                            </stops>
@@ -145,7 +148,7 @@
                   </Label>
                </children>
             </Pane>
-            <Button fx:id="saveButton1" layoutX="654.0" layoutY="613.0" mnemonicParsing="false" onAction="#saveButton1_Click" prefHeight="36.0" prefWidth="106.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/AddPatient.css" text="Save">
+            <Button fx:id="saveButton1" layoutX="740.0" layoutY="650.0" mnemonicParsing="false" onAction="#saveButton1_Click" prefHeight="36.0" prefWidth="106.0" style="-fx-cursor: hand;" styleClass="saveButton" stylesheets="@CSS/AddPatient.css" text="Save">
                <font>
                   <Font size="18.0" />
                </font>
@@ -171,11 +174,16 @@
                      <Font name="Berlin Sans FB" size="19.0" />
                   </font>
                </Label>
-               <CubicCurve controlX1="-97.0" controlX2="-4.78778076171875" controlY1="-94.0" controlY2="107.98779296875" endX="272.4000244140625" endY="-18.800018310546875" fill="#45b9d9a8" layoutX="718.0" layoutY="348.0" startX="-256.7878112792969" startY="39.187774658203125" stroke="BLACK">
+               <CubicCurve controlX1="-97.0" controlX2="-4.78778076171875" controlY1="-94.0" controlY2="107.98779296875" endX="272.4000244140625" endY="-18.800018310546875" fill="#45bbd900" layoutX="718.0" layoutY="348.0" startX="-256.7878112792969" startY="39.187774658203125" stroke="BLACK" strokeWidth="2.0">
                   <effect>
                      <MotionBlur />
                   </effect>
                </CubicCurve>
+               <Label layoutX="366.0" layoutY="403.0" prefHeight="28.0" prefWidth="321.0" text="AUTOMATIC PATIENT INFO INPUT">
+                  <font>
+                     <Font name="Berlin Sans FB" size="21.0" />
+                  </font>
+               </Label>
          </children>
       </Pane>
       </AnchorPane>

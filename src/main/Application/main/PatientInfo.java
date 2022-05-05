@@ -32,6 +32,7 @@ public class PatientInfo implements Initializable {
     private Button exitButton;
     @FXML
     private StackPane parentContainer;
+    private static Stage stg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -74,5 +75,17 @@ public class PatientInfo implements Initializable {
 
     public void exitButton_Click(ActionEvent actionEvent) {
         new FadeTransitions().exitFadeTransition(parentContainer, exitButton);
+    }
+
+    public void panePressed(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Delta.x = stg.getX() - mouseEvent.getScreenX();
+        Delta.y = stg.getY() - mouseEvent.getScreenY();
+    }
+
+    public void paneDragged(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stg.setX(Delta.x + mouseEvent.getScreenX());
+        stg.setY(Delta.y + mouseEvent.getScreenY());
     }
 }

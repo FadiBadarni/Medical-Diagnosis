@@ -1,19 +1,23 @@
 package main;
 
 import animatefx.animation.*;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.w3c.dom.events.MouseEvent;
 
 import java.io.IOException;
 import java.net.URL;
@@ -38,6 +42,7 @@ public class Login implements Initializable {
     private AnchorPane anchorPane1, anchorPane2;
     @FXML
     private Label newLabel;
+    private static Stage stg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -93,5 +98,15 @@ public class Login implements Initializable {
             throw new RuntimeException(e);
         }
     }
+    public void panePressed(javafx.scene.input.MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Delta.x = stg.getX() - mouseEvent.getScreenX();
+        Delta.y = stg.getY() - mouseEvent.getScreenY();
+    }
 
+    public void paneDragged(javafx.scene.input.MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stg.setX(Delta.x + mouseEvent.getScreenX());
+        stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
 }

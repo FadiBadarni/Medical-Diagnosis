@@ -5,26 +5,26 @@ import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.layout.StackPane;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
 import javafx.util.Duration;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.Stack;
 
 public class Info implements Initializable {
     @FXML
-    private StackPane parentContainer;
+    private Pane parentContainer;
     @FXML
-    private Button exitButton;
+    private Button exitButton2;
     @FXML
-    private Label  label1, label2, label3;
-
-
+    private Label label1, label2, label3;
+    private static Stage stg;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parentContainer.setOpacity(0);
@@ -32,13 +32,13 @@ public class Info implements Initializable {
         AnimationFX animatelabel1 = new JackInTheBox(label1);
         AnimationFX animatelabel2 = new JackInTheBox(label2);
         AnimationFX animatelabel3 = new JackInTheBox(label3);
-        AnimationFX animateExit = new Shake(exitButton);
-        exitButton.setVisible(false);
+        AnimationFX animateExit = new Shake(exitButton2);
+        exitButton2.setVisible(false);
         animatelabel1.setOnFinished(actionEvent -> {
             animatelabel2.setOnFinished(actionEvent1 -> {
                 animatelabel3.setOnFinished(actionEvent2 -> {
                     animateExit.play();
-                    exitButton.setVisible(true);
+                    exitButton2.setVisible(true);
                 });
                 animatelabel3.play();
             });
@@ -57,8 +57,19 @@ public class Info implements Initializable {
     }
 
     public void exitButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions().exitFadeTransition(parentContainer, exitButton);
+        new FadeTransitions().exitFadeTransition(parentContainer, exitButton2);
     }
 
 
+    public void panePressed(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Delta.x = stg.getX() - mouseEvent.getScreenX();
+        Delta.y = stg.getY() - mouseEvent.getScreenY();
+    }
+
+    public void paneDragged(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stg.setX(Delta.x + mouseEvent.getScreenX());
+        stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
 }
