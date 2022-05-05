@@ -3,13 +3,16 @@
 }
 
 .loginButton {
-    -fx-background-color: #2b5b60,
-    #205156,
-    #2a8184,
-    linear-gradient(to right, #23a1d0 50%, #92e0e8 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
+    #56C596,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
+
 }
 
 .loginButton:hover {
@@ -17,14 +20,15 @@
 }
 
 .registerButton {
-    -fx-background-color: #2b5b60,
-    #205156,
-    #2a8184,
-    linear-gradient(to right, #23a1d0 50%, #92e0e8 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
-    -fx-padding: 10 20 10 20;
-    -fx-effect: dropshadow(three-pass-box, rgba(115, 255, 0, 0.88), 5, 0.0, 0, 1);
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
+    #56C596,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
 }
 
 .registerButton:hover {
@@ -32,13 +36,15 @@
 }
 
 .returnButton {
-    -fx-background-color: #205156,
-    #205156,
-    #23a1d0,
-    linear-gradient(to right, #cb6868 0%, #7aaaaf 50%, #92e0e8 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
+    #56C596,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
 }
 
 .returnButton:hover {

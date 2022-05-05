@@ -45,7 +45,7 @@
     -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56C596 0%, rgba(70, 252, 225, 1) 100%),
     #56C596,
     #BCE6FF,
-    radial-gradient(center 50% 50%, radius 100%, #98BBC4, rgba(70, 252, 225, 1));
+    #7cbacb;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
     -fx-text-fill: black;
     -fx-font-family: "Berlin Sans FB";
@@ -63,7 +63,7 @@
     -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
     #56C596,
     #BCE6FF,
-    radial-gradient(center 50% 50%, radius 100%, #98BBC4, rgba(70, 252, 225, 1));
+    #7cbacb;
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
     -fx-text-fill: black;
 

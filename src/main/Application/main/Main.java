@@ -17,7 +17,9 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
@@ -32,7 +34,7 @@ import java.util.ResourceBundle;
 public class Main extends Application implements Initializable {
     private static Stage stg;
     @FXML
-    private StackPane parentContainer;
+    private Pane parentContainer;
     @FXML
     private Button loginButton, registerButton, infoButton, exitButton;
     @FXML
@@ -46,17 +48,16 @@ public class Main extends Application implements Initializable {
     public void start(Stage stage) throws IOException {
         stg = stage;
         stage.setResizable(false);
-        //stage.getIcons().add(new Image("appIcon.ico"));
         FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        //scene.getStylesheets().add("/CSS/Main.css");
+        scene.setFill(Color.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.setTitle("Medical Diagnosis Application");
         stage.setScene(scene);
         stage.show();
         Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
         stg.setX((primScreenBounds.getWidth() - stg.getWidth()) / 3);
         stg.setY((primScreenBounds.getHeight() - stg.getHeight()) / 3);
-
     }
 
     @Override
@@ -85,8 +86,6 @@ public class Main extends Application implements Initializable {
         });
         loginButton.setVisible(true);
         animateLogin.play();
-
-
     }
 
     private void makeFadeTransition() {
@@ -105,26 +104,22 @@ public class Main extends Application implements Initializable {
     }
 
     public void loginButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Login.fxml");
+        Main m = new Main();
+        m.changeScene("Login.fxml");
     }
 
     public void infoButton_Click(ActionEvent e) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText("""
-                Final Project For The Course Quality And Software Testing
-                Made By
-                Fadi Badarni
-                Abdalla Sheikh Khalil
-                Abed Alrhman Abu Khiet
-                """);
-        alert.showAndWait();
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Info.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
     }
 
     public void registerButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Register.fxml");
+        Main m = new Main();
+        m.changeScene("Register.fxml");
     }
 
     public void exitButton_Click(ActionEvent e) throws IOException {

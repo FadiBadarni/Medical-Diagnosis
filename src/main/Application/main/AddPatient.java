@@ -52,28 +52,23 @@ public class AddPatient implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
-    }
+        new FadeTransitions(parentContainer, "Home.fxml");     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Main.fxml");
-    }
+        new FadeTransitions(parentContainer, "Main.fxml");     }
 
     public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, "AddPatient.fxml");
-    }
+        new FadeTransitions(parentContainer, "AddPatient.fxml");     }
 
     public void saveButton_Click(ActionEvent actionEvent) {
-
         if(isCurrentinput()) {
-
             String[] data = {idField.getText(),firstNameField.getText(), lastNameField.getText(),
                     ageField.getText(), weightField.getText(), lengthField.getText(),
                     phoneField.getText(),bloodTypeField.getText(),genderBox.getSelectionModel().getSelectedItem()};
             try {
                 ReadWriteXlsx file=new ReadWriteXlsx("PatientList.xlsx");
                 file.add(data);
-                new SlideTransitions().leftToRightTransition(parentContainer, insertDataButton, anchorPane, "Home.fxml");
+                new FadeTransitions(parentContainer, "Home.fxml");
             } catch (IOException | InvalidFormatException e) {
                 throw new RuntimeException(e);
             }
@@ -99,9 +94,8 @@ public class AddPatient implements Initializable {
     public void saveButton1_Click(ActionEvent actionEvent) throws IOException, InvalidFormatException {
         if(path!=null) {
             ReadWriteXlsx readWriteXlsx = new ReadWriteXlsx("PatientList.xlsx");
-
             readWriteXlsx.copy(path);
-
+            new FadeTransitions(parentContainer, "Home.fxml");
         }
         else   drop_text.setText("Error");
     }

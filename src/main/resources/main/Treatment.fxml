@@ -7,61 +7,49 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <StackPane fx:id="parentContainer" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Treatment">
    <children>
       <AnchorPane fx:id="anchorPane">
          <children>
-            <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/Home.css">
+            <ImageView fitHeight="706.0" fitWidth="990.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@images/homeBG.jpg" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="706.0" prefWidth="990.0">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="98.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="722.0" fitWidth="751.0" layoutX="-170.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                      <image>
-                        <Image url="@images/doctorHome.png" />
+                        <Image url="@images/bar_line.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
-                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Questions" />
-                  <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
+                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Info" />
+                  <Label layoutX="42.0" layoutY="48.0" text="Doctor Example">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="31.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/homeIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
-                  <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="28.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/questions.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="28.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/quit.png" />
-                     </image>
-                  </ImageView>
-                  <Line fx:id="line" endX="-48.79997253417969" endY="594.0" layoutX="225.0" layoutY="64.0" startX="-48.79998779296875" startY="-65.50708770751953" strokeWidth="10.0" />
-                  <Label layoutX="351.0" layoutY="50.0" text="Treatment Recommendation">
+                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="622.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
+                  <Label layoutX="392.0" layoutY="56.0" text="Treatment Recommendation">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="26.0" />
                      </font>
                   </Label>
-                  <Label layoutX="277.0" layoutY="103.0" text="Suspected Disease">
+                  <Label layoutX="357.0" layoutY="111.0" text="Suspected Disease">
                      <font>
                         <Font name="Times New Roman Bold" size="19.0" />
                      </font>
                   </Label>
-                  <Label layoutX="522.0" layoutY="103.0" text="Recommended Treatment">
+                  <Label layoutX="550.0" layoutY="111.0" text="Recommended Treatment">
                      <font>
                         <Font name="Times New Roman Bold" size="19.0" />
                      </font>
                   </Label>
                   <Button fx:id="exportButton" layoutX="636.0" layoutY="586.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="179.0" text="Export Detailed Patient File" />
-                  <Button fx:id="returnButton" layoutX="204.0" layoutY="586.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="33.0" prefWidth="99.0" text="return" />
+                  <Button fx:id="returnButton" layoutX="392.0" layoutY="619.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="33.0" prefWidth="99.0" text="return" />
                </children>
             </Pane>
          </children>

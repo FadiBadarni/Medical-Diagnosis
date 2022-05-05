@@ -46,8 +46,7 @@ public class Questions implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
-
+        new FadeTransitions(parentContainer, "Home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent actionEvent) {
@@ -56,18 +55,15 @@ public class Questions implements Initializable {
 
     public void submitButton_Click(ActionEvent actionEvent) throws IOException {
         //TODO :SAVE QUESTION ANSWERS AND TAKE THEM INTO CONSIDERATION
-        new SlideTransitions().leftToRightTransition(parentContainer, submitButton, anchorPane, "Treatment.fxml");
-
+        new FadeTransitions(parentContainer, "Treatment.fxml");
     }
 
     public void skipButton_Click(ActionEvent actionEvent) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, skipButton, anchorPane, "Treatment.fxml");
+        new FadeTransitions(parentContainer, "Treatment.fxml");
     }
 
 
     public void returnButton_Click(ActionEvent actionEvent) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Diagnosis.fxml")));
-        SlideTransitions transition = new SlideTransitions();
-        transition.rightToLeftTransition(root, parentContainer, returnButton, anchorPane);
+        new FadeTransitions(parentContainer, "Diagnosis.fxml");
     }
 }

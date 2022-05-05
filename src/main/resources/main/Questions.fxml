@@ -8,7 +8,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -16,118 +15,107 @@
    <children>
       <AnchorPane fx:id="anchorPane">
          <children>
-            <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="658.0" prefWidth="861.0" styleClass="panel" stylesheets="@CSS/Home.css">
+            <ImageView fitHeight="701.0" fitWidth="982.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@images/homeBG.jpg" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="982.0">
                <children>
-                  <ImageView fitHeight="80.0" fitWidth="98.0" layoutX="44.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="722.0" fitWidth="751.0" layoutX="-170.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
                      <image>
-                        <Image url="@images/doctorHome.png" />
+                        <Image url="@images/bar_line.png" />
                      </image>
                   </ImageView>
                   <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
-                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Questions" />
-                  <Label layoutX="42.0" layoutY="113.0" text="Doctor Example">
+                  <Button fx:id="questionsButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="482.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Questions" />
+                  <Label layoutX="48.0" layoutY="42.0" text="Doctor Example">
                      <font>
                         <Font name="System Bold Italic" size="12.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="28.0" fitWidth="34.0" layoutX="31.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/homeIcon.png" />
-                     </image>
-                  </ImageView>
-                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="547.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
-                  <ImageView fitHeight="36.0" fitWidth="33.0" layoutX="26.0" layoutY="488.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/questions.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="33.0" fitWidth="33.0" layoutX="28.0" layoutY="550.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@images/quit.png" />
-                     </image>
-                  </ImageView>
-                  <Line endX="-48.799957275390625" endY="594.4000244140625" layoutX="225.0" layoutY="64.0" startX="-48.79998779296875" startY="-65.50708770751953" strokeWidth="10.0" />
-                  <Label layoutX="380.0" layoutY="34.0" prefHeight="30.0" prefWidth="166.0" text="Questionnaire">
+                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="622.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
+                  <Label layoutX="471.0" layoutY="35.0" prefHeight="30.0" prefWidth="166.0" text="Questionnaire">
                      <font>
                         <Font name="Times New Roman Bold Italic" size="27.0" />
                      </font>
                   </Label>
-                  <Text layoutX="218.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Downbelow will be a group of questions that are made to make the diagnosis result more precise and help with treatment decision please answer with complete honesty." wrappingWidth="630.507080078125">
+                  <Text layoutX="309.0" layoutY="100.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Downbelow will be a group of questions that are made to make the diagnosis result more precise and help with treatment decision please answer with complete honesty." wrappingWidth="630.507080078125">
                      <font>
                         <Font name="Times New Roman" size="17.0" />
                      </font>
                   </Text>
-                  <Text layoutX="228.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question">
+                  <Text layoutX="380.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question">
                      <font>
                         <Font name="Times New Roman" size="25.0" />
                      </font>
                   </Text>
-                  <Text layoutX="221.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
+                  <Text layoutX="322.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text layoutX="221.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
+                  <Text layoutX="322.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text layoutX="644.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer">
+                  <Text layoutX="735.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer">
                      <font>
                         <Font name="Times New Roman" size="25.0" />
                      </font>
                   </Text>
-                  <Button fx:id="skipButton" layoutX="681.0" layoutY="603.0" mnemonicParsing="false" onAction="#skipButton_Click" text="I Don't Want To Answer">
+                  <Button fx:id="skipButton" layoutX="772.0" layoutY="604.0" mnemonicParsing="false" onAction="#skipButton_Click" text="I Don't Want To Answer">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Text layoutX="221.0" layoutY="310.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
+                  <Text layoutX="322.0" layoutY="311.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text layoutX="221.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
+                  <Text layoutX="322.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text layoutX="221.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
+                  <Text layoutX="322.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text layoutX="221.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
+                  <Text layoutX="322.0" layoutY="416.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text layoutX="221.0" layoutY="450.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
+                  <Text layoutX="322.0" layoutY="451.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <Text layoutX="221.0" layoutY="485.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
+                  <Text layoutX="322.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd ">
                      <font>
                         <Font size="16.0" />
                      </font>
                   </Text>
-                  <ChoiceBox fx:id="question1" layoutX="614.0" layoutY="222.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="question2" layoutX="614.0" layoutY="257.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="question3" layoutX="614.0" layoutY="292.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="question4" layoutX="614.0" layoutY="327.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="question5" layoutX="614.0" layoutY="362.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="question6" layoutX="614.0" layoutY="397.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="question7" layoutX="614.0" layoutY="432.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="question8" layoutX="614.0" layoutY="467.0" prefWidth="150.0" />
-                  <Button fx:id="submitButton" layoutX="432.0" layoutY="527.0" mnemonicParsing="false" onAction="#submitButton_Click" text="Submit Answers And Proceed">
+                  <ChoiceBox fx:id="question1" layoutX="705.0" layoutY="223.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="question2" layoutX="705.0" layoutY="258.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="question3" layoutX="705.0" layoutY="293.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="question4" layoutX="705.0" layoutY="328.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="question5" layoutX="705.0" layoutY="363.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="question6" layoutX="705.0" layoutY="398.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="question7" layoutX="705.0" layoutY="433.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="question8" layoutX="705.0" layoutY="468.0" prefWidth="150.0" />
+                  <Button fx:id="submitButton" layoutX="523.0" layoutY="528.0" mnemonicParsing="false" onAction="#submitButton_Click" text="Submit Answers And Proceed">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Button>
+                  <Button fx:id="returnButton" layoutX="399.0" layoutY="604.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="33.0" prefWidth="99.0" text="return" />
                </children>
             </Pane>
-            <Button fx:id="returnButton" layoutX="214.0" layoutY="596.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="33.0" prefWidth="99.0" text="return" />
          </children>
       </AnchorPane>
    </children>

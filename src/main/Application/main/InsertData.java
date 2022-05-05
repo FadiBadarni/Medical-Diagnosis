@@ -48,12 +48,7 @@ public class InsertData implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
-    }
-
-    public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, addPatientButton, anchorPane, "AddPatient.fxml");
-    }
+        new FadeTransitions(parentContainer, "Home.fxml");     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
         new FadeTransitions(parentContainer, "Main.fxml");
@@ -89,8 +84,7 @@ public class InsertData implements Initializable {
             Patient p = (Patient) stage.getUserData();
             p.setBloodTest(bloodTest);
         }
-        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Diagnosis.fxml");
-
+        new FadeTransitions(parentContainer, "Diagnosis.fxml");
     }
 
     public boolean checkField(TextField field) {
