@@ -1,5 +1,6 @@
 package main;
 
+import animatefx.animation.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.util.Duration;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 
@@ -33,10 +35,16 @@ public class Login implements Initializable {
     private StackPane parentContainer;
     @FXML
     private AnchorPane anchorPane1, anchorPane2;
+    @FXML
+    private Label newLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         new RotationAnimation(circle1, true, 360, 10);
+        AnimationFX animateRegister = new Shake(registerButton);
+        animateRegister.setDelay(Duration.seconds(5));
+        animateRegister.play();
+
     }
 
     public void userLogin(ActionEvent e) throws IOException {
@@ -60,9 +68,7 @@ public class Login implements Initializable {
     }
 
     public void returnButton_Click(ActionEvent e) throws IOException {
-        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Main.fxml")));
-        SlideTransitions transition = new SlideTransitions();
-        transition.rightToLeftTransition(root,parentContainer, returnButton, anchorPane1);
+        new FadeTransitions(parentContainer, "Main.fxml");
     }
 
     public void registerButton_Click(ActionEvent e) throws IOException {

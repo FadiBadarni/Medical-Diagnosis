@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Register">
+<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Register">
    <children>
       <AnchorPane fx:id="anchorPane" prefHeight="494.0" prefWidth="574.0" styleClass="registerScreen" stylesheets="@CSS/Register.css">
          <children>
@@ -24,38 +31,44 @@
             <TextField fx:id="email" layoutX="26.0" layoutY="283.0" prefHeight="34.0" prefWidth="323.0" promptText="Email" />
             <Line endX="92.00003051757812" endY="-1.52587890625E-5" layoutX="3.0" layoutY="131.0" startX="27.199981689453125" startY="-1.52587890625E-5" />
             <Line endX="100.0" layoutX="245.0" layoutY="131.0" startX="27.199981689453125" startY="-1.52587890625E-5" />
-            <ImageView fitHeight="140.0" fitWidth="215.0" layoutX="112.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="116.0" fitWidth="120.0" layoutX="125.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/addDoctor.png" />
+                  <Image url="@images/register1.png" />
                </image>
             </ImageView>
-            <Button fx:id="registerButton" layoutX="133.0" layoutY="375.0" mnemonicParsing="false" onAction="#register" prefHeight="36.0" prefWidth="120.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/Register.css" text="Register" textFill="#28ae2a">
+            <Button fx:id="registerButton" layoutX="129.0" layoutY="392.0" mnemonicParsing="false" onAction="#register" prefHeight="36.0" prefWidth="120.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/Register.css" text="Register" textFill="#28ae2a">
                <font>
                   <Font name="Eras Bold ITC" size="13.0" />
                </font>
             </Button>
-            <Line endX="-99.99996948242188" endY="369.5999755859375" layoutX="464.0" layoutY="57.0" startX="-99.99996948242188" startY="-15.199993133544922" />
-            <Text layoutX="429.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username Should Be 6-8 Characters Maximum Of 2 Digits In Username" wrappingWidth="237.9215087890625" />
-            <Text layoutX="429.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Password should be between 8-10 characters and contains atleast one letter and one digit and one special character [@#$]" wrappingWidth="237.9215087890625" />
-            <Button fx:id="returnButton" layoutX="9.0" layoutY="421.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="36.0" prefWidth="105.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Register.css" text="Return" textFill="RED">
+            <Line endX="-99.99996948242188" endY="369.5999755859375" layoutX="498.0" layoutY="59.0" startX="-99.99996948242188" startY="-15.199993133544922" strokeWidth="2.0" />
+            <Text layoutX="463.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username Should Be 6-8 Characters Maximum Of 2 Digits In Username" wrappingWidth="237.9215087890625">
                <font>
-                  <Font name="Eras Bold ITC" size="12.0" />
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
+            <Text layoutX="463.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Password should be between 8-10 characters and contains atleast one letter and one digit and one special character [@#$]" wrappingWidth="237.9215087890625">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font></Text>
+            <Button fx:id="returnButton" layoutX="587.0" layoutY="413.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="41.0" prefWidth="114.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Register.css" text="Return" textFill="RED">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
                </font>
             </Button>
-            <Text layoutX="398.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!" wrappingWidth="12.21014404296875">
+            <Text layoutX="432.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!" wrappingWidth="12.21014404296875">
                <font>
                   <Font name="System Bold Italic" size="23.0" />
                </font>
             </Text>
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="32.0" layoutX="389.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="32.0" layoutX="392.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-            <Text layoutX="401.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!" wrappingWidth="12.21014404296875">
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="32.0" layoutX="423.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="32.0" layoutX="426.0" layoutY="204.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Text layoutX="435.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!" wrappingWidth="12.21014404296875">
                <font>
                   <Font name="System Bold Italic" size="23.0" />
                </font>
             </Text>
-            <PasswordField fx:id="password"  layoutX="27.0" layoutY="329.0" prefHeight="34.0" prefWidth="156.0" promptText="Password" />
-            <PasswordField fx:id="repasswoed"  layoutX="193.0" layoutY="329.0" prefHeight="34.0" prefWidth="156.0" promptText="Confirm Password" />
+            <PasswordField fx:id="password" layoutX="27.0" layoutY="329.0" prefHeight="34.0" prefWidth="156.0" promptText="Password" />
+            <PasswordField fx:id="repasswoed" layoutX="193.0" layoutY="329.0" prefHeight="34.0" prefWidth="156.0" promptText="Confirm Password" />
          </children>
       </AnchorPane>
    </children>

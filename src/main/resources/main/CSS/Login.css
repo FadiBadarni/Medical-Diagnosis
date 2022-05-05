@@ -3,14 +3,12 @@
 }
 
 .loginButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
+    -fx-background-color: #2b5b60,
+    #205156,
+    #2a8184,
+    linear-gradient(to right, #23a1d0 50%, #92e0e8 100%);
     -fx-background-insets: 0, 1, 2, 3, 0;
     -fx-text-fill: #000000;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
 }
 
@@ -19,15 +17,14 @@
 }
 
 .registerButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
+    -fx-background-color: #2b5b60,
+    #205156,
+    #2a8184,
+    linear-gradient(to right, #23a1d0 50%, #92e0e8 100%);
     -fx-background-insets: 0, 1, 2, 3, 0;
     -fx-text-fill: #000000;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
+    -fx-effect: dropshadow(three-pass-box, rgba(115, 255, 0, 0.88), 5, 0.0, 0, 1);
 }
 
 .registerButton:hover {
@@ -35,14 +32,12 @@
 }
 
 .returnButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
+    -fx-background-color: #205156,
+    #205156,
+    #23a1d0,
+    linear-gradient(to right, #cb6868 0%, #7aaaaf 50%, #92e0e8 100%);
     -fx-background-insets: 0, 1, 2, 3, 0;
     -fx-text-fill: #000000;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
 }
 

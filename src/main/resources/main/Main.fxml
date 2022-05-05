@@ -1,107 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.Glow?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
-<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Main">
+<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="530.0" prefWidth="707.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Main">
    <children>
-      <AnchorPane fx:id="anchorPane" prefHeight="368.0" prefWidth="594.0" styleClass="start" stylesheets="@CSS/Main.css">
+      <AnchorPane fx:id="anchorPane" prefHeight="530.0" prefWidth="734.0" styleClass="start" stylesheets="@CSS/Main.css">
          <children>
-            <ImageView fitHeight="412.0" fitWidth="627.0" layoutX="-12.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="530.0" fitWidth="734.0" layoutX="3.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/bg.jpeg" />
+                  <Image url="@images/menu.png" />
                </image>
             </ImageView>
-            <Label fx:id="label" layoutX="117.0" layoutY="36.0" prefHeight="42.0" prefWidth="388.0" text="Welcome To Our Medical Diagnosis Application" textFill="#e1effc">
+            <Button fx:id="loginButton" layoutX="195.0" layoutY="23.0" mnemonicParsing="false" onAction="#loginButton_Click" prefHeight="74.0" prefWidth="243.0" style="-fx-background-color: transparent;" styleClass="loginButton" stylesheets="@CSS/Main.css" text="LOG IN" textFill="#2b5b60">
                <font>
-                  <Font name="Berlin Sans FB Demi Bold" size="18.0" />
+                  <Font name="Berlin Sans FB" size="54.0" />
                </font>
-               <effect>
-                  <Lighting>
-                     <bumpInput>
-                        <Shadow>
-                           <color>
-                              <Color red="0.9473684430122375" green="0.038596492260694504" blue="0.038596492260694504" />
-                           </color>
-                        </Shadow>
-                     </bumpInput>
-                  </Lighting>
-               </effect>
-            </Label>
-            <Button id="loginButton" fx:id="loginButton" layoutX="65.0" layoutY="114.0" mnemonicParsing="false" onAction="#loginButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="loginButton" stylesheets="@CSS/Main.css" text="Log In">
-               <effect>
-                  <Lighting>
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                     </light>
-                  </Lighting>
-               </effect></Button>
-            <Button id="registerButton" fx:id="registerButton" layoutX="152.0" layoutY="166.0" mnemonicParsing="false" onAction="#registerButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/Main.css" text="Register">
-               <effect>
-                  <Lighting>
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                     </light>
-                  </Lighting>
-               </effect></Button>
-            <Button id="infoButton" fx:id="infoButton" layoutX="65.0" layoutY="221.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="infoButton" stylesheets="@CSS/Main.css" text="Info">
-               <effect>
-                  <Lighting>
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                     </light>
-                  </Lighting>
-               </effect></Button>
-            <Button id="exitButton" fx:id="exitButton" layoutX="152.0" layoutY="274.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="34.0" prefWidth="87.0" style="-fx-cursor: hand;" styleClass="exitButton" stylesheets="@CSS/Main.css" text="Exit">
-               <effect>
-                  <Lighting>
-                     <bumpInput>
-                        <Shadow />
-                     </bumpInput>
-                     <light>
-                     </light>
-                  </Lighting>
-               </effect>
             </Button>
-            <Circle fx:id="circle1" fill="#1f93ff00" layoutX="498.0" layoutY="189.0" radius="101.0" stroke="#183959" strokeType="INSIDE" strokeWidth="10.0" style="-fx-stroke-dash-array: 40;">
-               <effect>
-                  <Glow />
-               </effect>
-            </Circle>
-            <Circle fx:id="circle2" fill="#1f93ff00" layoutX="499.0" layoutY="189.0" radius="75.0" stroke="#215a8e" strokeType="INSIDE" strokeWidth="10.0" style="-fx-stroke-dash-array: 40;">
-               <effect>
-                  <Glow />
-               </effect>
-            </Circle>
-            <Circle fx:id="circle3" fill="#1f93ff00" layoutX="499.0" layoutY="189.0" radius="50.0" stroke="#1f77c9" strokeType="INSIDE" strokeWidth="10.0" style="-fx-stroke-dash-array: 40;">
-               <effect>
-                  <Glow />
-               </effect>
-            </Circle>
-            <Line endX="43.0" endY="-7.62939453125E-6" layoutX="65.0" layoutY="57.0" startX="-57.0000114440918" startY="-7.62939453125E-6" strokeWidth="3.0" />
-            <Line endX="58.199951171875" endY="-7.62939453125E-6" layoutX="557.0" layoutY="58.0" startX="-57.0000114440918" startY="-7.62939453125E-6" strokeWidth="3.0" />
-            <ImageView fitHeight="100.0" fitWidth="139.0" layoutX="448.0" layoutY="139.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/snakebowl.png" />
-               </image>
-            </ImageView>
+            <Button fx:id="registerButton" layoutX="255.0" layoutY="153.0" mnemonicParsing="false" onAction="#registerButton_Click" prefHeight="79.0" prefWidth="298.0" style="-fx-background-color: transparent;" styleClass="loginButton" stylesheets="@CSS/Main.css" text="REGISTER" textFill="#205156">
+               <font>
+                  <Font name="Berlin Sans FB" size="54.0" />
+               </font>
+            </Button>
+            <Button fx:id="infoButton" layoutX="438.0" layoutY="289.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="98.0" prefWidth="194.0" style="-fx-background-color: transparent;" styleClass="loginButton" stylesheets="@CSS/Main.css" text="INFO" textFill="#2a8184">
+               <font>
+                  <Font name="Berlin Sans FB" size="54.0" />
+               </font>
+            </Button>
+            <Button fx:id="exitButton" layoutX="120.0" layoutY="420.0" mnemonicParsing="false" onAction="#exitButton_Click" prefHeight="94.0" prefWidth="174.0" style="-fx-background-color: transparent;" styleClass="loginButton" stylesheets="@CSS/Main.css" text="EXIT" textFill="#004762">
+               <font>
+                  <Font name="Berlin Sans FB" size="54.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
    </children>

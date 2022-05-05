@@ -26,7 +26,7 @@ public class Diagnosis implements Initializable {
     @FXML
     StackPane parentContainer;
     @FXML
-    Button goToTreatmentButton, advanceButton, homeButton, viewButton,returnButton;
+    Button goToTreatmentButton, advanceButton, homeButton, viewButton, returnButton;
     @FXML
     AnchorPane anchorPane;
     @FXML
@@ -58,7 +58,7 @@ public class Diagnosis implements Initializable {
     }
 
     public void advanceButton_Click(ActionEvent actionEvent) throws IOException {
-        new SlideTransitions().leftToRightTransition(parentContainer, advanceButton,anchorPane,"Questions.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, advanceButton, anchorPane, "Questions.fxml");
     }
 
     public void goToTreatmentButton_Click(ActionEvent actionEvent) throws IOException {
@@ -125,7 +125,6 @@ public class Diagnosis implements Initializable {
 
             setResults(p, WBC_Level, Neut_Level, Lymph_Level, RBC_Level, HCT_Level, Urea_Level, Crtn_Level, Iron_Level, HDL_Level, Ap_Level);
 
-
         } else if (Objects.equals(human, "Toddler")) {
             if (WBC_Level / 17500 < 0.342) {
                 progressBar1.setStyle("-fx-accent: yellow;");
@@ -137,14 +136,9 @@ public class Diagnosis implements Initializable {
                 WBC_OverFlow();
             }
             progressBar1.setProgress(WBC_Level / 17500);
-
             setChildHbLevel(Hb_Level);
-
             setResults(p, WBC_Level, Neut_Level, Lymph_Level, RBC_Level, HCT_Level, Urea_Level, Crtn_Level, Iron_Level, HDL_Level, Ap_Level);
-
         }
-
-
         for (TextField textField : Arrays.asList(testField1, testField2, testField3, testField4, testField5, testField6, testField7, testField8, testField9, testField10, testField11)) {
             textField.setEffect(null);
         }

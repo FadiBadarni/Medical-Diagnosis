@@ -108,7 +108,7 @@ public class ListPatient {
     public Set<String> getIdList() {
         Set<String> ids = new HashSet<>();
         for (Patient p : patients) {
-            ids.add(p.getFirstName() + " " + p.getLastName() + "             " + p.getId());
+            ids.add(p.getId() + "             "  + p.getFirstName() + " " + p.getLastName());
         }
         return ids;
     }

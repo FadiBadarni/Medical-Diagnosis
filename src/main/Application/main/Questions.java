@@ -31,6 +31,7 @@ public class Questions implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         fillChoices(question1, question2, question3, question4);
         fillChoices(question5, question6, question7, question8);
+
     }
 
     private void fillChoices(ChoiceBox<String> question1, ChoiceBox<String> question2, ChoiceBox<String> question3, ChoiceBox<String> question4) {
@@ -45,7 +46,8 @@ public class Questions implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "Home.fxml");
+        new SlideTransitions().leftToRightTransition(parentContainer, homeButton, anchorPane, "Home.fxml");
+
     }
 
     public void signOutButton_Click(ActionEvent actionEvent) {

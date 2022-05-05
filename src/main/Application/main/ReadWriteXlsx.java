@@ -16,47 +16,47 @@ import java.util.Iterator;
 
 public class ReadWriteXlsx {
 
-  //  private Workbook workbook;
+    //  private Workbook workbook;
     private Sheet sheet;
-     //private FileOutputStream outputStream;
-     private String filePath;
+    //private FileOutputStream outputStream;
+    private String filePath;
     // private  FileInputStream inputStream;
-     private File file;
+    private File file;
 
     ReadWriteXlsx(String filePath) throws IOException, InvalidFormatException {
 
-        this.filePath=filePath;
+        this.filePath = filePath;
         file = new File(filePath);
         XSSFWorkbook wb = new XSSFWorkbook(file);
-        sheet=wb.getSheetAt(0);
+        sheet = wb.getSheetAt(0);
     }
 
-    public void add(String[] data){
+    public void add(String[] data) {
 
         try {
-        FileInputStream inputStream = new FileInputStream(file);
-        Workbook workbook = WorkbookFactory.create(inputStream);
-        sheet = workbook.getSheetAt(0);
+            FileInputStream inputStream = new FileInputStream(file);
+            Workbook workbook = WorkbookFactory.create(inputStream);
+            sheet = workbook.getSheetAt(0);
 
 
             int rowCount = sheet.getLastRowNum();
 
-                Row row = sheet.createRow(++rowCount);
+            Row row = sheet.createRow(++rowCount);
 
-                int columnCount = 0;
+            int columnCount = 0;
 
-                Cell cell ;
+            Cell cell;
 
-                for (String field : data) {
-                    cell = row.createCell(columnCount++);
-                    try {
-                       int x=Integer.parseInt(field);
-                            cell.setCellValue(x);
-                    }catch (NumberFormatException e) {
-                        cell.setCellValue(field);
-                        }
-
+            for (String field : data) {
+                cell = row.createCell(columnCount++);
+                try {
+                    int x = Integer.parseInt(field);
+                    cell.setCellValue(x);
+                } catch (NumberFormatException e) {
+                    cell.setCellValue(field);
                 }
+
+            }
 
             FileOutputStream outputStream = new FileOutputStream(filePath);
             workbook.write(outputStream);
@@ -65,129 +65,114 @@ public class ReadWriteXlsx {
 
         } catch (IOException | EncryptedDocumentException ex) {
 
-              ex.printStackTrace();
-          }
+            ex.printStackTrace();
+        }
 
 
     }
 
-    public  Iterator<Cell> getAllRow(String rowName)  {
+    public Iterator<Cell> getAllRow(String rowName) {
 
-        try
-        {
+        try {
             Iterator<Row> itr = sheet.iterator();
-        while (itr.hasNext())
-        {
-            Row row = itr.next();
-            Iterator<Cell> cellIterator = row.cellIterator();   //iterating over each column
-            Cell cell = cellIterator.next();
-            switch (cell.getCellType()) {
-                case STRING:
-                if (cell.getStringCellValue().equals(rowName))
-                    return cellIterator;
-                    break;
+            while (itr.hasNext()) {
+                Row row = itr.next();
+                Iterator<Cell> cellIterator = row.cellIterator();   //iterating over each column
+                Cell cell = cellIterator.next();
+                if (cell.getCellType() == CellType.STRING) {
+                    if (cell.getStringCellValue().equals(rowName))
+                        return cellIterator;
+                }
             }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        return null;
-        }
-     catch(Exception e)
-            {
-               e.printStackTrace();
-           }
         return null;
     }
 
-    public void copy(String path)
-    {
-            // Read xlsx file
-            XSSFWorkbook oldWorkbook = null;
-            try {
-                oldWorkbook = (XSSFWorkbook) WorkbookFactory.create(new File(path));
-            } catch (Exception e) {
-                e.printStackTrace();
-                return;
-            }
+    public void copy(String path) {
+        // Read xlsx file
+        XSSFWorkbook oldWorkbook = null;
+        try {
+            oldWorkbook = (XSSFWorkbook) WorkbookFactory.create(new File(path));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return;
+        }
 
-             XSSFWorkbook newWorkbook = new XSSFWorkbook();
+        XSSFWorkbook newWorkbook = new XSSFWorkbook();
 
 
-            // Copy sheets
-            for (int sheetNumber = 0; sheetNumber < oldWorkbook.getNumberOfSheets(); sheetNumber++) {
-                final XSSFSheet oldSheet = oldWorkbook.getSheetAt(sheetNumber);
-                final XSSFSheet newSheet = newWorkbook.createSheet(oldSheet.getSheetName());
+        // Copy sheets
+        for (int sheetNumber = 0; sheetNumber < oldWorkbook.getNumberOfSheets(); sheetNumber++) {
+            final XSSFSheet oldSheet = oldWorkbook.getSheetAt(sheetNumber);
+            final XSSFSheet newSheet = newWorkbook.createSheet(oldSheet.getSheetName());
 
-                newSheet.setDefaultRowHeight(oldSheet.getDefaultRowHeight());
-                newSheet.setDefaultColumnWidth(oldSheet.getDefaultColumnWidth());
+            newSheet.setDefaultRowHeight(oldSheet.getDefaultRowHeight());
+            newSheet.setDefaultColumnWidth(oldSheet.getDefaultColumnWidth());
 
-                // Copy content
-                for (int rowNumber = oldSheet.getFirstRowNum(); rowNumber < oldSheet.getLastRowNum(); rowNumber++) {
-                    final XSSFRow oldRow = oldSheet.getRow(rowNumber);
-                    if (oldRow != null) {
-                        final XSSFRow newRow = newSheet.createRow(rowNumber);
-                        newRow.setHeight(oldRow.getHeight());
+            // Copy content
+            for (int rowNumber = oldSheet.getFirstRowNum(); rowNumber < oldSheet.getLastRowNum(); rowNumber++) {
+                final XSSFRow oldRow = oldSheet.getRow(rowNumber);
+                if (oldRow != null) {
+                    final XSSFRow newRow = newSheet.createRow(rowNumber);
+                    newRow.setHeight(oldRow.getHeight());
 
-                        for (int columnNumber = oldRow.getFirstCellNum(); columnNumber < oldRow
-                                .getLastCellNum(); columnNumber++) {
-                            newSheet.setColumnWidth(columnNumber, oldSheet.getColumnWidth(columnNumber));
+                    for (int columnNumber = oldRow.getFirstCellNum(); columnNumber < oldRow
+                            .getLastCellNum(); columnNumber++) {
+                        newSheet.setColumnWidth(columnNumber, oldSheet.getColumnWidth(columnNumber));
 
-                            final XSSFCell oldCell = oldRow.getCell(columnNumber);
-                            if (oldCell != null) {
-                                final XSSFCell newCell = newRow.createCell(columnNumber);
+                        final XSSFCell oldCell = oldRow.getCell(columnNumber);
+                        if (oldCell != null) {
+                            final XSSFCell newCell = newRow.createCell(columnNumber);
 
-                                // Copy value
-                                setCellValue(newCell, getCellValue(oldCell));
+                            // Copy value
+                            setCellValue(newCell, getCellValue(oldCell));
 
-                                // Copy style
-                                XSSFCellStyle newCellStyle = newWorkbook.createCellStyle();
-                                newCellStyle.cloneStyleFrom(oldCell.getCellStyle());
-                                newCell.setCellStyle(newCellStyle);
-                            }
+                            // Copy style
+                            XSSFCellStyle newCellStyle = newWorkbook.createCellStyle();
+                            newCellStyle.cloneStyleFrom(oldCell.getCellStyle());
+                            newCell.setCellStyle(newCellStyle);
                         }
                     }
                 }
             }
-
-            try {
-                oldWorkbook.close();
-                newWorkbook.write(new FileOutputStream(this.filePath));
-                newWorkbook.close();
-            } catch (Exception e) {
-                e.printStackTrace();
-                return;
-            }
         }
 
-        private void setCellValue( XSSFCell cell,  Object value) {
-            if (value instanceof Boolean) {
-                cell.setCellValue((boolean) value);
-            } else if (value instanceof Byte) {
-                cell.setCellValue((byte) value);
-            } else if (value instanceof Double) {
-                cell.setCellValue((double) value);
-            } else if (value instanceof String) {
-                cell.setCellValue((String) value);
-            } else {
-                throw new IllegalArgumentException();
-            }
+        try {
+            oldWorkbook.close();
+            newWorkbook.write(new FileOutputStream(this.filePath));
+            newWorkbook.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 
-        private  Object getCellValue(XSSFCell cell) {
-            switch (cell.getCellType()) {
-                case BOOLEAN:
-                    return cell.getBooleanCellValue(); // boolean
-                case ERROR:
-                    return cell.getErrorCellValue(); // byte
-                case NUMERIC:
-                    return cell.getNumericCellValue(); // double
-                case STRING:
-                case BLANK:
-                    return cell.getStringCellValue(); // String
-                case FORMULA:
-                    return  "=" + cell.getCellFormula(); // String for formula
-                default:
-                    throw new IllegalArgumentException();
-            }
+    private void setCellValue(XSSFCell cell, Object value) {
+        if (value instanceof Boolean) {
+            cell.setCellValue((boolean) value);
+        } else if (value instanceof Byte) {
+            cell.setCellValue((byte) value);
+        } else if (value instanceof Double) {
+            cell.setCellValue((double) value);
+        } else if (value instanceof String) {
+            cell.setCellValue((String) value);
+        } else {
+            throw new IllegalArgumentException();
         }
+    }
+
+    private Object getCellValue(XSSFCell cell) {
+        return switch (cell.getCellType()) {
+            case BOOLEAN -> cell.getBooleanCellValue(); // boolean
+            case ERROR -> cell.getErrorCellValue(); // byte
+            case NUMERIC -> cell.getNumericCellValue(); // double
+            case STRING, BLANK -> cell.getStringCellValue(); // String
+            case FORMULA -> "=" + cell.getCellFormula(); // String for formula
+            default -> throw new IllegalArgumentException();
+        };
+    }
 }
 
 

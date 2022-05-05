@@ -1,6 +1,8 @@
 package main;
 
+import animatefx.animation.AnimationFX;
 import animatefx.animation.Bounce;
+import animatefx.animation.BounceIn;
 import animatefx.animation.RollIn;
 import javafx.animation.*;
 import javafx.application.Application;
@@ -61,14 +63,30 @@ public class Main extends Application implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parentContainer.setOpacity(0);
         makeFadeTransition();
-        new RotationAnimation(circle1, true, 360, 15);
-        new RotationAnimation(circle2, true, 360, 20);
-        new RotationAnimation(circle3, true, 360, 25);
-        new Bounce(label).play();
-        new RollIn(loginButton).play();
-        new RollIn(registerButton).play();
-        new RollIn(infoButton).play();
-        new RollIn(exitButton).play();
+        AnimationFX animateLogin = new BounceIn(loginButton);
+        AnimationFX animateRegister = new BounceIn(registerButton);
+        AnimationFX animateInfo = new BounceIn(infoButton);
+        AnimationFX animateExit = new BounceIn(exitButton);
+        registerButton.setVisible(false);
+        loginButton.setVisible(false);
+        infoButton.setVisible(false);
+        exitButton.setVisible(false);
+        animateLogin.setOnFinished(actionEvent -> {
+            animateRegister.setOnFinished(actionEvent1 -> {
+                animateInfo.setOnFinished(actionEvent2 -> {
+                    exitButton.setVisible(true);
+                    animateExit.play();
+                });
+                infoButton.setVisible(true);
+                animateInfo.play();
+            });
+            registerButton.setVisible(true);
+            animateRegister.play();
+        });
+        loginButton.setVisible(true);
+        animateLogin.play();
+
+
     }
 
     private void makeFadeTransition() {
@@ -87,7 +105,7 @@ public class Main extends Application implements Initializable {
     }
 
     public void loginButton_Click(ActionEvent e) throws IOException {
-        new SlideTransitions(parentContainer, loginButton, anchorPane, "Login.fxml");
+        new FadeTransitions(parentContainer, "Login.fxml");
     }
 
     public void infoButton_Click(ActionEvent e) throws IOException {

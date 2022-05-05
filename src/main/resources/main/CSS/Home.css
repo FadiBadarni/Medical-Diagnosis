@@ -20,10 +20,10 @@
     linear-gradient(#4a707a 0%, #56C596 20%, #015c92 100%),
     linear-gradient(#88cdf6, #56c596);
     -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
-    -fx-font-family: "Times New Roman";
     -fx-text-fill: #000000;
-    -fx-font-size: 14px;
     -fx-padding: 10 20 10 20;
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 20px;
 }
 
 .homeButton:hover {
@@ -35,8 +35,6 @@
     #BCE6FF,
     radial-gradient(center 50% 50%, radius 100%, #88CDF6, #329D9C);
     -fx-effect: dropshadow(gaussian, #329D9C, 4, 0, 0, 1);
-    -fx-font-weight: bold;
-    -fx-font-size: 1.2em;
     -fx-text-fill: black;
 }
 
@@ -49,9 +47,9 @@
     #BCE6FF,
     radial-gradient(center 50% 50%, radius 100%, #98BBC4, rgba(70, 252, 225, 1));
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
-    -fx-font-weight: bold;
-    -fx-font-size: 1.2em;
     -fx-text-fill: black;
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 20px;
 }
 
 .displayInfoButton:hover {
@@ -67,9 +65,8 @@
     #BCE6FF,
     radial-gradient(center 50% 50%, radius 100%, #98BBC4, rgba(70, 252, 225, 1));
     -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
-    -fx-font-weight: bold;
-    -fx-font-size: 1.2em;
     -fx-text-fill: black;
+
 }
 
 .diagnosisButton:hover {
