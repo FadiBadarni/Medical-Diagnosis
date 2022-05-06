@@ -17,13 +17,6 @@ public class Patient {
     private String firstName, lastName, bloodType, gender;
     private Hashtable<String, Double> bloodTest;
     private int isEthiopian = 0, isEastern = 0;
-
-
-
-
-
-
-
     private    Hashtable<String, Integer> values;
 
     public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood, String gender,int iseast, int isethiopian) {

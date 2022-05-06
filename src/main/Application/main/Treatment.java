@@ -75,7 +75,6 @@ public class Treatment implements Initializable {
 
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
-        int test = indicator.iterator().next();  //2 questions were asked (2 & 5) i received question numbers and questions answers (0,1)
         p = (Patient) stage.getUserData();
         values = p.getValues();
         ReadWriteXlsx readWriteXlsx = new ReadWriteXlsx("output.xlsx");
@@ -112,6 +111,13 @@ public class Treatment implements Initializable {
                             "Viral Disease",
                             "Rest at home."
                     });
+            if (values.get("Do You Drink Enough Water ?") == 1) {
+                readWriteXlsx.add(new String[]
+                        {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+                                "Water Dehydration",
+                                "Drink More Water."
+                        });
+            }
         }
         if (values.get("WBC") == 1) {
             //TODO: Check if the person smokes or have a previous history with lung diseases.
@@ -197,6 +203,7 @@ public class Treatment implements Initializable {
         if (values.get("HCT") == 1) {
             //TODO: Check if the person smokes.
         }
+
         if (values.get("Urea") == -1) {
             //TODO: Check if the person is pregnant.
             readWriteXlsx.add(new String[]
@@ -204,6 +211,7 @@ public class Treatment implements Initializable {
                             "Malnutrition",
                             "Schedule an appointment with a nutritionist."
                     });
+            int test = indicator.iterator().next();  //2 questions were asked (2 & 5) i received question numbers and questions answers (0,1)
             //treatmentText.setText("Urea                 לתאם פגישה עם תזונאי \n");
         }
         if (values.get("Urea") == 1) {
@@ -280,6 +288,7 @@ public class Treatment implements Initializable {
                     });
         }
         if (values.get("HDL") == -1) {
+            //TODO:
             readWriteXlsx.add(new String[]
                     {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
                             "Heart Diseases",

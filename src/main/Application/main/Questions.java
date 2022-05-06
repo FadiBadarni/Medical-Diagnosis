@@ -35,10 +35,9 @@ public class Questions implements Initializable {
             {
                     "Is Your Temperature Average ? [~ 37°C]",
                     "Are You A Smoker ?",
-                    "Do You Drink Enough Water ?",
+                    "Do You Drink Enough Water ?", //
                     "Any Existing History With Lung Diseases ?",
                     "Are You Currently Pregnant ?",
-                    "Do You Live In The East ?",
                     "Do You Currently Have Diarrhea ?",
                     "Did You Vomit Recently ?",
                     "Do You Do A Lot Of Physical Activity ?"
@@ -150,8 +149,6 @@ public class Questions implements Initializable {
         p = (Patient) stage.getUserData();
         values = p.getValues();
 
-
-
         if (values.get("WBC") == 1) {
             questionsAsked.add(0);  //temperature
         }
@@ -163,7 +160,6 @@ public class Questions implements Initializable {
             questionsAsked.add(1);  //smoker
         }
         if (values.get("Urea") == 1) {
-            questionsAsked.add(5);  //easterner
             questionsAsked.add(2); //water
         }
         if (values.get("Crtn") == 1) {
