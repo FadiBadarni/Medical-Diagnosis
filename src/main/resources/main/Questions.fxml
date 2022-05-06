@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -45,31 +44,27 @@
                         <Font name="Berlin Sans FB" size="19.0" />
                      </font>
                   </Text>
-                  <Text layoutX="380.0" layoutY="176.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question">
+                  <Text layoutX="371.0" layoutY="206.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Question">
                      <font>
                         <Font name="Berlin Sans FB" size="28.0" />
                      </font>
                   </Text>
-                  <Text layoutX="341.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do You Smoke" wrappingWidth="149.99999999999977">
+                  <Text fx:id="questionText" layoutX="345.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do You Smoke" wrappingWidth="366.39996337890625">
                      <font>
                         <Font name="Berlin Sans FB" size="23.0" />
                      </font>
                   </Text>
-                  <Text layoutX="735.0" layoutY="177.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer">
+                  <Text layoutX="769.0" layoutY="205.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Answer">
                      <font>
                         <Font name="Berlin Sans FB" size="28.0" />
                      </font>
                   </Text>
-                  <Button fx:id="skipButton" layoutX="751.0" layoutY="629.0" mnemonicParsing="false" onAction="#skipButton_Click" styleClass="advanceButton" stylesheets="@CSS/Diagnosis.css" text="I Don't Want To Answer">
+                  <Button fx:id="skipButton" layoutX="645.0" layoutY="414.0" mnemonicParsing="false" onAction="#skipButton_Click" prefHeight="44.0" prefWidth="102.0" styleClass="advanceButton" stylesheets="@CSS/Diagnosis.css" text="Skip">
                      <font>
                         <Font name="Berlin Sans FB" size="18.0" />
                      </font>
                   </Button>
-                  <ChoiceBox fx:id="question1" layoutX="705.0" layoutY="223.0" prefWidth="150.0" stylesheets="@CSS/Questions.css" />
-                  <ChoiceBox fx:id="question2" layoutX="705.0" layoutY="258.0" prefWidth="150.0" stylesheets="@CSS/Questions.css" />
-                  <ChoiceBox fx:id="question3" layoutX="705.0" layoutY="293.0" prefWidth="150.0" stylesheets="@CSS/Questions.css" />
-                  <ChoiceBox fx:id="question4" layoutX="705.0" layoutY="328.0" prefWidth="150.0" stylesheets="@CSS/Questions.css" />
-                  <Button fx:id="submitButton" layoutX="491.0" layoutY="527.0" mnemonicParsing="false" onAction="#submitButton_Click" styleClass="advanceButton" stylesheets="@CSS/Diagnosis.css" text="Submit Answers And Proceed">
+                  <Button fx:id="submitButton" layoutX="703.0" layoutY="621.0" mnemonicParsing="false" onAction="#submitButton_Click" styleClass="advanceButton" stylesheets="@CSS/Diagnosis.css" text="Submit Answers And Proceed">
                      <font>
                         <Font name="Berlin Sans FB" size="17.0" />
                      </font>
@@ -83,26 +78,13 @@
                         <Image url="@images/questions.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="341.0" layoutY="278.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pregnancy ?" wrappingWidth="149.99999999999977">
+                  <Button fx:id="yes_Button" layoutX="731.0" layoutY="254.0" mnemonicParsing="false" onAction="#yesButton_Click" styleClass="advanceButton" stylesheets="@CSS/Diagnosis.css" text="Yes" />
+                  <Button fx:id="noButton" layoutX="804.0" layoutY="254.0" mnemonicParsing="false" onAction="#noButton_Click" styleClass="advanceButton" stylesheets="@CSS/Diagnosis.css" text="No" />
+                  <Button fx:id="ignoreButton" layoutX="891.0" layoutY="254.0" mnemonicParsing="false" onAction="#ignoreButton_Click" styleClass="advanceButton" stylesheets="@CSS/Diagnosis.css" text="ignore" />
+                  <Button fx:id="askButton" layoutX="422.0" layoutY="414.0" mnemonicParsing="false" onAction="#askButton_Click" styleClass="advanceButton" stylesheets="@CSS/Diagnosis.css" text="View Question">
                      <font>
-                        <Font name="Berlin Sans FB" size="23.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="341.0" layoutY="314.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Any Past History Of Lung Diseases" wrappingWidth="333.99996948242165">
-                     <font>
-                        <Font name="Berlin Sans FB" size="23.0" />
-                     </font>
-                  </Text>
-                  <Text layoutX="341.0" layoutY="349.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do You Drink Enough Water" wrappingWidth="333.99996948242165">
-                     <font>
-                        <Font name="Berlin Sans FB" size="23.0" />
-                     </font>
-                  </Text>
-                  <Button fx:id="yes_Button" layoutX="662.0" layoutY="240.0" mnemonicParsing="false" onAction="#yesButton_Click" text="Yes" />
-                  <Button fx:id="noButton" layoutX="735.0" layoutY="240.0" mnemonicParsing="false" onAction="#noButton_Click" text="No" />
-                  <Button fx:id="ignoreButton" layoutX="822.0" layoutY="240.0" mnemonicParsing="false" onAction="#ignorButton_Click" text="ignore" />
-                  <Button fx:id="askButton" layoutX="470.0" layoutY="338.0" mnemonicParsing="false" onAction="#askButton_Click" text="Ask" />
-                  <Button fx:id="skip_Button" layoutX="662.0" layoutY="337.0" mnemonicParsing="false" onAction="#skipButton_Click" text="skip" />
+                        <Font name="Berlin Sans FB" size="18.0" />
+                     </font></Button>
                </children>
             </Pane>
          </children>

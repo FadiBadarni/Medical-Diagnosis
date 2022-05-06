@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
@@ -43,6 +44,8 @@ public class Register implements Initializable {
     private PasswordField password, repasswoed;
     public TextField phoneNumber;
     public Button registerButton;
+    @FXML
+    private Label errorLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -82,13 +85,12 @@ public class Register implements Initializable {
                 throw new RuntimeException(e);
             }
 
-        } else registerButton.setText("Error");
+        } else errorLabel.setText("");
     }
 
 
     public boolean isCurrentInput() {
         if (id.getText().length() != 9) return false;
-
         try {
             int number = Integer.parseInt(id.getText());
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
@@ -101,9 +103,8 @@ public class Register implements Initializable {
 
         if (phoneNumber.getText().length() != 10) return false;
 
-        if (email.getText().length() < 5) return false;
-        if (password.getText().length() < 8) return false;
-        return true;
+        if (!email.getText().contains("@")) return false;
+        return password.getText().length() >= 8;
     }
 
     public void panePressed(MouseEvent mouseEvent) {

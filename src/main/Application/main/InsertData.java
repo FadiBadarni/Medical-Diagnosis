@@ -91,8 +91,8 @@ public class InsertData implements Initializable {
             Stage stage = (Stage) node.getScene().getWindow();
             Patient p = (Patient) stage.getUserData();
             p.setBloodTest(bloodTest);
+            new FadeTransitions(parentContainer, "Diagnosis.fxml");
         }
-        new FadeTransitions(parentContainer, "Diagnosis.fxml");
     }
 
     public boolean checkField(TextField field) {

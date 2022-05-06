@@ -29,7 +29,7 @@
                   <Image url="@images/bar_line.png" />
                </image>
             </ImageView>
-            <Button fx:id="exportButton" layoutX="833.0" layoutY="690.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="201.0" styleClass="diagnosisButton" text="Export Detailed Patient File">
+            <Button fx:id="exportButton" layoutX="833.0" layoutY="690.0" mnemonicParsing="false" onAction="#exportButton_Click" prefHeight="54.0" prefWidth="201.0" styleClass="diagnosisButton" text="Export Detailed Patient File">
                <stylesheets>
                   <URL value="@CSS/Diagnosis.css" />
                   <URL value="@CSS/Home.css" />
@@ -144,7 +144,7 @@
                   <Font name="Berlin Sans FB" size="27.0" />
                </font>
             </Label>
-            <Label fx:id="treatmentText" layoutX="357.0" layoutY="261.0" text="Label">
+            <Label fx:id="treatmentText" layoutX="418.0" layoutY="627.0" text="Label">
                <font>
                   <Font size="23.0" />
                </font>

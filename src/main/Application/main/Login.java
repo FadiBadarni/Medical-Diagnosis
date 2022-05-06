@@ -60,7 +60,7 @@ public class Login implements Initializable {
 
     private void validateLogin() throws IOException {
         Main m = new Main();
-        if (isCorrectPassword(username.getText().toString(), password.getText().toString())) {
+        if (isCorrectPassword(username.getText(), password.getText())) {
             wrongLogin.setText("Success");
             m.changeScene("Home.fxml");
         } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
@@ -105,7 +105,7 @@ public class Login implements Initializable {
         } catch (NumberFormatException | IOException | InvalidFormatException ex) {
             return false;
         }
-        return false;
+        return true;
     }
 
     public void panePressed(javafx.scene.input.MouseEvent mouseEvent) {

@@ -1,6 +1,5 @@
 package main;
 
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,15 +8,12 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 
 import java.io.IOException;
 import java.net.URL;
@@ -25,25 +21,28 @@ import java.util.*;
 
 public class Questions implements Initializable {
     public Text questionText;
-    public Button noButton;
-    public Button ignoreButton;
-    public Button yes_Button;
-    public Button askButton;
-    public Button skip_Button;
+    public Button noButton, ignoreButton, yes_Button, askButton, skipButton;
     @FXML
     private Pane parentContainer;
     @FXML
-    private Button homeButton, submitButton, skipButton, returnButton;
+    private Button homeButton, submitButton, returnButton;
     @FXML
     private AnchorPane anchorPane;
-
     Hashtable<String, Integer> values = new Hashtable<>();
     private static Stage stg;
-
-    //   @FXML
-    //  private ChoiceBox<String> question1, question2, question3, question4, question5, question6, question7, question8;
-
-    private String[] question = new String[]{"If there is a fever.?", "do you smoke?", "do you drink water?", "q3", "q4", "q5"};
+    public static Set<Integer> questionsAsked = new HashSet<>();
+    private final String[] question = new String[]
+            {
+                    "Is Your Temperature Average ? [~ 37°C]",
+                    "Are You A Smoker ?",
+                    "Do You Drink Enough Water ?",
+                    "Any Existing History With Lung Diseases ?",
+                    "Are You Currently Pregnant ?",
+                    "Do You Live In The East ?",
+                    "Do You Currently Have Diarrhea ?",
+                    "Did You Vomit Recently ?",
+                    "Do You Do A Lot Of Physical Activity ?"
+            };
 
     Patient p;
     private int[] answer;
@@ -53,26 +52,11 @@ public class Questions implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-//        fillChoices(question1, question2, question3, question4);
-//        fillChoices(question5, question6, question7, question8);
-
         questionText.setVisible(false);
         yes_Button.setVisible(false);
         noButton.setVisible(false);
         ignoreButton.setVisible(false);
-
     }
-
-//    private void fillChoices(ChoiceBox<String> question1, ChoiceBox<String> question2, ChoiceBox<String> question3, ChoiceBox<String> question4) {
-//        question1.getItems().add("Yes");
-//        question1.getItems().add("No");
-//        question2.getItems().add("Yes");
-//        question2.getItems().add("No");
-//        question3.getItems().add("Yes");
-//        question3.getItems().add("No");
-//        question4.getItems().add("Yes");
-//        question4.getItems().add("No");
-//    }
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
         new FadeTransitions(parentContainer, "Home.fxml");
@@ -142,7 +126,7 @@ public class Questions implements Initializable {
         } else questionText.setText(question[qnumber[q]]);
     }
 
-    public void ignorButton_Click(ActionEvent actionEvent) {
+    public void ignoreButton_Click(ActionEvent actionEvent) {
         //answer[q++]=0;
         values.put(question[qnumber[q++]], 0);
         if (q == qnumber.length) {
@@ -155,31 +139,47 @@ public class Questions implements Initializable {
     }
 
     public void askButton_Click(ActionEvent actionEvent) {
-
         questionText.setVisible(true);
         yes_Button.setVisible(true);
         noButton.setVisible(true);
         ignoreButton.setVisible(true);
-
         askButton.setVisible(false);
-        skip_Button.setVisible(false);
-
+        skipButton.setVisible(false);
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         p = (Patient) stage.getUserData();
         values = p.getValues();
-        // qnumber=new int[question.length];
 
-        Set<Integer> wq = new HashSet<>();
 
-        if (values.get("WBC") == 1) wq.add(0);
-        if (values.get("RBC") == 1) wq.add(1);
-        if (values.get("HCT") == 1) wq.add(1);
-        if (values.get("Urea") == 1) wq.add(2);
-        if (values.get("Urea") == -1) wq.add(3);
-        if (values.get("Hb") == -1) wq.add(4);
-        qnumber = wq.toArray(new Integer[0]);
-        //  qnumber=new int[]{1,3,4};
+
+        if (values.get("WBC") == 1) {
+            questionsAsked.add(0);  //temperature
+        }
+        if (values.get("RBC") == 1 && values.get("HCT") == 1) {
+            questionsAsked.add(1);  //smoker
+            questionsAsked.add(3);  //lung disease
+        }
+        if (values.get("HCT") == 1) {
+            questionsAsked.add(1);  //smoker
+        }
+        if (values.get("Urea") == 1) {
+            questionsAsked.add(5);  //easterner
+            questionsAsked.add(2); //water
+        }
+        if (values.get("Crtn") == 1) {
+            questionsAsked.add(6); //diarrhea
+            questionsAsked.add(7); //vomit
+        }
+        if (values.get("Iron") == -1 || values.get("Urea") == -1) {
+            if (Objects.equals(p.getGender(), "Female")) {
+                questionsAsked.add(4);  //pregnancy question
+            }
+        }
+        if (values.get("HDL") == 1) {
+            questionsAsked.add(8); //physical activity
+        }
+
+        qnumber = questionsAsked.toArray(new Integer[0]);
         if (qnumber.length == 0)
             new FadeTransitions(parentContainer, "Treatment.fxml");
         else {
@@ -187,6 +187,10 @@ public class Questions implements Initializable {
             questionText.setText(question[qnumber[0]]);
         }
     }
-
-
+    public static Set<Integer> getQuestionsAsked() {
+        return questionsAsked;
+    }
+    public void setQuestionsAsked(Set<Integer> questionsAsked) {
+        Questions.questionsAsked = questionsAsked;
+    }
 }
