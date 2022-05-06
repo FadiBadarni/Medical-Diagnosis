@@ -177,7 +177,7 @@ public class Diagnosis implements Initializable {
             } else if (ap_level <= 120) {
                 progressBar11.setStyle("-fx-accent: green;");
                 testField11.setText("Value within normal range.");
-                values.put("HCT", 0);
+                values.put("AP", 0);
             } else {
                 AP_OverFlow();
             }
@@ -191,7 +191,7 @@ public class Diagnosis implements Initializable {
             } else if (ap_level <= 90) {
                 progressBar11.setStyle("-fx-accent: green;");
                 testField11.setText("Value within normal range.");
-                values.put("HCT", 0);
+                values.put("AP", 0);
             } else {
                 AP_OverFlow();
             }

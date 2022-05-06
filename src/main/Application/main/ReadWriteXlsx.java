@@ -4,13 +4,11 @@ import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.*;
 
-import org.apache.poi.xssf.model.StylesTable;
 import org.apache.poi.xssf.usermodel.*;
-import org.apache.poi.xssf.usermodel.extensions.XSSFCellBorder;
-import org.apache.poi.xssf.usermodel.extensions.XSSFCellFill;
 
 import java.io.*;
 
+import java.util.Hashtable;
 import java.util.Iterator;
 
 
@@ -22,6 +20,7 @@ public class ReadWriteXlsx {
     private String filePath;
     // private  FileInputStream inputStream;
     private File file;
+
 
     ReadWriteXlsx(String filePath) throws IOException, InvalidFormatException {
 
@@ -175,6 +174,35 @@ public class ReadWriteXlsx {
             case FORMULA -> "=" + cell.getCellFormula(); // String for formula
             default -> throw new IllegalArgumentException();
         };
+    }
+
+    public void add(Hashtable<String, String> data) {
+        try {
+            FileInputStream inputStream = new FileInputStream(file);
+            Workbook workbook = WorkbookFactory.create(inputStream);
+            sheet = workbook.getSheetAt(0);
+            Cell cell;
+            int rowCount = sheet.getLastRowNum();
+            Row row = sheet.createRow(rowCount);
+           int lastCellNum = sheet.getRow(0).getLastCellNum();
+
+            for(String s: data.keySet()) {
+                cell = row.createCell(lastCellNum-2);
+                cell.setCellValue(s);
+                cell = row.createCell(lastCellNum-1);
+                cell.setCellValue(data.get(s));
+
+            }
+            FileOutputStream outputStream = new FileOutputStream(filePath);
+            workbook.write(outputStream);
+            workbook.close();
+            outputStream.close();
+
+        } catch (IOException | EncryptedDocumentException ex) {
+
+            ex.printStackTrace();
+        }
+
     }
 }
 

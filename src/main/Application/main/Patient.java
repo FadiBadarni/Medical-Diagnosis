@@ -3,6 +3,7 @@ package main;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -57,7 +58,7 @@ public class Patient {
         this.bloodTest = new Hashtable<>(bloodTest);
     }
 
-    public void addBloodTest(String path) {
+    public Boolean addBloodTest(String path) {
         bloodTest.clear();
         String key = null;
         double value = 0;
@@ -65,20 +66,25 @@ public class Patient {
             FileInputStream file = new FileInputStream(new File(path));
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
-            for (Row row : sheet) {
-                Iterator<Cell> cellIterator = row.cellIterator();
-                Cell cell = cellIterator.next();
-                if (cell.getCellType() == CellType.STRING) key = cell.getStringCellValue();
-                cell = cellIterator.next();
-                if (cell.getCellType() == CellType.NUMERIC) value =  cell.getNumericCellValue();
-                if (key != null && value != 0) bloodTest.put(key,  value);
-            }
+                for(int i=0;i<sheet.getRow(0).getLastCellNum();i++)
+                {
+                    XSSFRow cell=sheet.getRow(0);
+                    if (cell.getCell(i).getCellType() == CellType.STRING)
+                        key=(cell.getCell(i).getStringCellValue());
+                    if (sheet.getRow(1).getCell(i).getCellType() == CellType.NUMERIC)
+                        value=(sheet.getRow(1).getCell(i).getNumericCellValue());
+                    if (key != null && value != 0) bloodTest.put(key,  value);
+                    else return false;
+                }
             file.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        }
+        catch (Exception e) {
+            return false;
         }
 
+        return true;
     }
+
 
     public int getId() {
         return id;

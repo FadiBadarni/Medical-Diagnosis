@@ -122,11 +122,9 @@ public class InsertData implements Initializable {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             Patient p = (Patient) stage.getUserData();
-            p.addBloodTest(path);
-            System.out.println(p.getFirstName());
-            System.out.println(p.getBloodTest().toString());
-
+          if(p.addBloodTest(path))
             new FadeTransitions(parentContainer, "Diagnosis.fxml");
+          else drop_text.setText("Error");
         } else drop_text.setText("Error");
     }
 
