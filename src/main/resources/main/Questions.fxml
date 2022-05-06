@@ -51,6 +51,10 @@
                      </font>
                   </Text>
                   <Text layoutX="341.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Do You Smoke" wrappingWidth="149.99999999999977">
+                        <Font name="Times New Roman" size="25.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="questionText" layoutX="309.0" layoutY="259.0" strokeType="OUTSIDE" strokeWidth="0.0" text="asdas dasd as ads asd asd  asd asd " wrappingWidth="296.6875">
                      <font>
                         <Font name="Berlin Sans FB" size="23.0" />
                      </font>
@@ -60,6 +64,17 @@
                         <Font name="Berlin Sans FB" size="28.0" />
                      </font>
                   </Text>
+                  <Button fx:id="skipButton" layoutX="772.0" layoutY="604.0" mnemonicParsing="false" onAction="#skipButton_Click" text="I Don't Want To Answer">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+                  <Button fx:id="returnButton" layoutX="399.0" layoutY="604.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="33.0" prefWidth="99.0" text="return" />
+                  <Button fx:id="yes_Button" layoutX="662.0" layoutY="240.0" mnemonicParsing="false" onAction="#yesButton_Click" text="Yes" />
+                  <Button fx:id="noButton" layoutX="735.0" layoutY="240.0" mnemonicParsing="false" onAction="#noButton_Click" text="No" />
+                  <Button fx:id="ignoreButton" layoutX="822.0" layoutY="240.0" mnemonicParsing="false" onAction="#ignorButton_Click" text="ignore" />
+                  <Button fx:id="askButton" layoutX="470.0" layoutY="338.0" mnemonicParsing="false" onAction="#askButton_Click" text="Ask" />
+                  <Button fx:id="skip_Button" layoutX="662.0" layoutY="337.0" mnemonicParsing="false" onAction="#skipButton_Click" text="skip" />
                   <Button fx:id="skipButton" layoutX="751.0" layoutY="629.0" mnemonicParsing="false" onAction="#skipButton_Click" styleClass="advanceButton" stylesheets="@CSS/Diagnosis.css" text="I Don't Want To Answer">
                      <font>
                         <Font name="Berlin Sans FB" size="18.0" />

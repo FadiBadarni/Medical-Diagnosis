@@ -36,6 +36,8 @@ public class ListPatient {
         String firstName = null;
         String lastName = null;
         String gender = null;
+        int iseast=0;
+        int isethiopian=0;
         int age = 0;
         int weight = 0;
         int length = 0;
@@ -46,6 +48,7 @@ public class ListPatient {
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rowIterator = sheet.iterator();
+            if(rowIterator.hasNext()) rowIterator.next();
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
@@ -78,7 +81,15 @@ public class ListPatient {
                     cell = cellIterator.next();
                     if (cell.getCellType() == CellType.STRING)
                         gender = cell.getStringCellValue();
-                    patients.add(new Patient(id, firstName, lastName, age, weight, length, phone, bloodType, gender));
+
+                    cell = cellIterator.next();
+                    if (cell.getCellType() == CellType.NUMERIC)
+                        iseast = (int) cell.getNumericCellValue();
+                    cell = cellIterator.next();
+                    if (cell.getCellType() == CellType.NUMERIC)
+                        isethiopian = (int) cell.getNumericCellValue();
+
+                    patients.add(new Patient(id, firstName, lastName, age, weight, length, phone, bloodType, gender,iseast,isethiopian));
                 }
             }
             file.close();

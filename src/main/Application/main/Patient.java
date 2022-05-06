@@ -16,9 +16,17 @@ public class Patient {
     private int id, age, weight, length, phone;
     private String firstName, lastName, bloodType, gender;
     private Hashtable<String, Double> bloodTest;
-    private Boolean isEthiopian = false, isEastern = false;
+    private int isEthiopian = 0, isEastern = 0;
 
-    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood, String gender) {
+
+
+
+
+
+
+    private    Hashtable<String, Integer> values;
+
+    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood, String gender,int iseast, int isethiopian) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -28,8 +36,13 @@ public class Patient {
         this.phone = phone;
         this.bloodType = blood;
         this.gender = gender;
+        this.isEthiopian=isethiopian;
+        this.isEastern=iseast;
         this.bloodTest = new Hashtable<>();
+
+        this.values=new Hashtable<>();
     }
+
 
     public void setPhone(int phone) {
         this.phone = phone;
@@ -54,7 +67,7 @@ public class Patient {
     public void addBloodTest(String path) {
         bloodTest.clear();
         String key = null;
-        int value = 0;
+        double value = 0;
         try {
             FileInputStream file = new FileInputStream(new File(path));
             XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -64,8 +77,8 @@ public class Patient {
                 Cell cell = cellIterator.next();
                 if (cell.getCellType() == CellType.STRING) key = cell.getStringCellValue();
                 cell = cellIterator.next();
-                if (cell.getCellType() == CellType.NUMERIC) value = (int) cell.getNumericCellValue();
-                if (key != null && value != 0) bloodTest.put(key, (double) value);
+                if (cell.getCellType() == CellType.NUMERIC) value =  cell.getNumericCellValue();
+                if (key != null && value != 0) bloodTest.put(key,  value);
             }
             file.close();
         } catch (Exception e) {
@@ -102,6 +115,13 @@ public class Patient {
         return age;
     }
 
+    public Hashtable<String, Integer> getValues() {
+        return values;
+    }
+
+    public void setValues(Hashtable<String, Integer> values) {
+        this.values = values;
+    }
     public void setAge(int age) {
         this.age = age;
     }
@@ -150,19 +170,35 @@ public class Patient {
         return phone;
     }
 
-    public Boolean getEthiopian() {
+    public int getEthiopian() {
         return isEthiopian;
     }
 
-    public void setEthiopian(Boolean ethiopian) {
+    public void setEthiopian(int ethiopian) {
         isEthiopian = ethiopian;
     }
 
-    public Boolean getEastern() {
+    public int getEastern() {
         return isEastern;
     }
 
-    public void setEastern(Boolean eastern) {
+    public void setEastern(int eastern) {
         isEastern = eastern;
     }
+    public int getIsEthiopian() {
+        return isEthiopian;
+    }
+
+    public void setIsEthiopian(int isEthiopian) {
+        this.isEthiopian = isEthiopian;
+    }
+
+    public int getIsEastern() {
+        return isEastern;
+    }
+
+    public void setIsEastern(int isEastern) {
+        this.isEastern = isEastern;
+    }
+
 }

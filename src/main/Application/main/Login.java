@@ -10,7 +10,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -18,6 +17,7 @@ import javafx.util.Duration;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.w3c.dom.events.MouseEvent;
+import org.apache.poi.ss.usermodel.CellType;
 
 import java.io.IOException;
 import java.net.URL;
@@ -87,16 +87,29 @@ public class Login implements Initializable {
 
     public boolean isCorrectPassword(String username, String password)
     {
-        try {
-            ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
-            Iterator<Cell>  cellIterator= file.getAllRow(username);
-            if(cellIterator!=null && cellIterator.hasNext())
-            return cellIterator.next().getStringCellValue().equals(password);
-            else return false;
 
-        } catch (IOException | InvalidFormatException e) {
-            throw new RuntimeException(e);
+        try{
+            int number = Integer.parseInt(username);
+            ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
+            Iterator<Cell>  cellIterator= file.getAllRow(number);
+            if(cellIterator!=null && cellIterator.hasNext())
+            {
+                Cell cell=cellIterator.next();
+                if(cell.getCellType()== CellType.NUMERIC) {
+                    int passwordNumber = Integer.parseInt(password);
+                    return cellIterator.next().getNumericCellValue() == passwordNumber;
+                }
+                else
+                    return cell.getStringCellValue().equals(password);
+
+
+            }
         }
+        catch (NumberFormatException | IOException | InvalidFormatException ex){
+            return false;
+        }
+        return false;
+    }
     }
     public void panePressed(javafx.scene.input.MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
@@ -109,4 +122,6 @@ public class Login implements Initializable {
         stg.setX(Delta.x + mouseEvent.getScreenX());
         stg.setY(Delta.y + mouseEvent.getScreenY());
     }
+}
+
 }

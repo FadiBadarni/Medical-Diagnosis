@@ -131,17 +131,28 @@ public class Home extends Application implements Initializable {
         TextField bloodField = (TextField) scene.lookup("#bloodField");
         TextField genderField = (TextField) scene.lookup("#genderField");
 
-        List<List<String>> excelData = ExcelFileUtility.readExcelFile("PatientList.xlsx");
-        int index = listview1.getSelectionModel().getSelectedIndex();
-        idField.setText(excelData.get(index).get(0));
-        nameField.setText(excelData.get(index).get(1));
-        nameField.appendText(" " + excelData.get(index).get(2));
-        ageField.setText(excelData.get(index).get(3));
-        weightField.setText(excelData.get(index).get(4));
-        lengthField.setText(excelData.get(index).get(5));
-        phoneField.setText("0" + excelData.get(index).get(6));
-        bloodField.setText(excelData.get(index).get(7));
-        genderField.setText(excelData.get(index).get(8));
+
+        Patient p= listPatient.getPatient(listview1.getSelectionModel().getSelectedIndex());
+        idField.setText(p.getId()+"");
+        nameField.setText(p.getFirstName()+" "+ p.getLastName());
+        ageField.setText(p.getAge()+"");
+        phoneField.setText("0"+p.getPhone());
+        weightField.setText(p.getWeight()+"Kg");
+        lengthField.setText(p.getLength()+"Cm");
+        bloodField.setText(p.getBloodType());
+        genderField.setText(p.getGender());
+
+//        List<List<String>> excelData = ExcelFileUtility.readExcelFile("PatientList.xlsx");
+//        int index = listview1.getSelectionModel().getSelectedIndex();
+//        idField.setText(excelData.get(index).get(0));
+//        nameField.setText(excelData.get(index).get(1));
+//        nameField.appendText(" " + excelData.get(index).get(2));
+//        ageField.setText(excelData.get(index).get(3));
+//        weightField.setText(excelData.get(index).get(4));
+//        lengthField.setText(excelData.get(index).get(5));
+//        phoneField.setText("0" + excelData.get(index).get(6));
+//        bloodField.setText(excelData.get(index).get(7));
+//        genderField.setText(excelData.get(index).get(8));
 
     }
     public void panePressed(MouseEvent mouseEvent) {

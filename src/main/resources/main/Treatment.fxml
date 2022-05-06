@@ -144,6 +144,11 @@
                   <Font name="Berlin Sans FB" size="27.0" />
                </font>
             </Label>
+            <Label fx:id="treatmentText" layoutX="357.0" layoutY="261.0" text="Label">
+               <font>
+                  <Font size="23.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </children>
