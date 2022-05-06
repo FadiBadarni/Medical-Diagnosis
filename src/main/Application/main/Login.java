@@ -10,6 +10,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -85,32 +86,28 @@ public class Login implements Initializable {
     }
 
 
-    public boolean isCorrectPassword(String username, String password)
-    {
+    public boolean isCorrectPassword(String username, String password) {
 
-        try{
+        try {
             int number = Integer.parseInt(username);
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
-            Iterator<Cell>  cellIterator= file.getAllRow(number);
-            if(cellIterator!=null && cellIterator.hasNext())
-            {
-                Cell cell=cellIterator.next();
-                if(cell.getCellType()== CellType.NUMERIC) {
+            Iterator<Cell> cellIterator = file.getAllRow(number);
+            if (cellIterator != null && cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                if (cell.getCellType() == CellType.NUMERIC) {
                     int passwordNumber = Integer.parseInt(password);
                     return cellIterator.next().getNumericCellValue() == passwordNumber;
-                }
-                else
+                } else
                     return cell.getStringCellValue().equals(password);
 
 
             }
-        }
-        catch (NumberFormatException | IOException | InvalidFormatException ex){
+        } catch (NumberFormatException | IOException | InvalidFormatException ex) {
             return false;
         }
         return false;
     }
-    }
+
     public void panePressed(javafx.scene.input.MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Delta.x = stg.getX() - mouseEvent.getScreenX();
@@ -124,4 +121,3 @@ public class Login implements Initializable {
     }
 }
 
-}

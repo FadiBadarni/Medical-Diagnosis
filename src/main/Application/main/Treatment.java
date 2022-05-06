@@ -14,7 +14,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import javafx.stage.Stage;
@@ -31,7 +31,7 @@ public class Treatment implements Initializable {
     private Label result1, result2, result3, result4,result5, result1Desc, result2Desc, result3Desc, result4Desc,result5Desc;
     public Label treatmentText;
     @FXML
-    private StackPane parentContainer;
+    private Pane pane;
     @FXML
     private AnchorPane anchorPane;
     @FXML
@@ -57,7 +57,7 @@ public class Treatment implements Initializable {
     Patient p;
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "Home.fxml");
+        new FadeTransitions(pane, "Home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent actionEvent) throws IOException {
@@ -66,7 +66,7 @@ public class Treatment implements Initializable {
     }
 
     public void returnButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "Questions.fxml");
+        new FadeTransitions(pane, "Questions.fxml");
     }
 
 

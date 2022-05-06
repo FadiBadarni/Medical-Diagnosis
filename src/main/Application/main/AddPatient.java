@@ -22,6 +22,7 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
+
 import java.util.Iterator;
 import java.io.IOException;
 import java.net.URL;
@@ -37,7 +38,7 @@ public class AddPatient implements Initializable {
     public TextField lengthField;
     public TextField phoneField;
     public TextField bloodTypeField;
-    public CheckBox eastCheckBox,ethiopianCheckBox;
+    public CheckBox eastCheckBox, ethiopianCheckBox;
     public ChoiceBox<String> genderBox;
     private static Stage stg;
 
@@ -46,7 +47,7 @@ public class AddPatient implements Initializable {
     @FXML
     AnchorPane anchorPane;
     @FXML
-    private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton, addPatientButton,infoButton;
+    private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton, addPatientButton, infoButton;
     @FXML
     private Pane pane;
 
@@ -62,23 +63,26 @@ public class AddPatient implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Home.fxml");     }
+        new FadeTransitions(parentContainer, "Home.fxml");
+    }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
         m.changeScene("Main.fxml");
     }
+
     public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "AddPatient.fxml");     }
+        new FadeTransitions(parentContainer, "AddPatient.fxml");
+    }
 
     public void saveButton_Click(ActionEvent actionEvent) {
-        if(isCurrentInput()) {
+        if (isCurrentInput()) {
 
-            String[] data = {idField.getText(),firstNameField.getText(), lastNameField.getText(),
+            String[] data = {idField.getText(), firstNameField.getText(), lastNameField.getText(),
                     ageField.getText(), weightField.getText(), lengthField.getText(),
-                    phoneField.getText(),bloodTypeField.getText(),genderBox.getSelectionModel().getSelectedItem(),eastCheckBox.isSelected()+"",ethiopianCheckBox.isSelected()+""};
+                    phoneField.getText(), bloodTypeField.getText(), genderBox.getSelectionModel().getSelectedItem(), eastCheckBox.isSelected() + "", ethiopianCheckBox.isSelected() + ""};
             try {
-                ReadWriteXlsx file=new ReadWriteXlsx("PatientList.xlsx");
+                ReadWriteXlsx file = new ReadWriteXlsx("PatientList.xlsx");
                 file.add(data);
                 new FadeTransitions(parentContainer, "Home.fxml");
             } catch (IOException | InvalidFormatException e) {
@@ -89,32 +93,34 @@ public class AddPatient implements Initializable {
 
     }
 
-    public boolean isCurrentInput(){
-        if(idField.getText().length()!=9) return false;
+    public boolean isCurrentInput() {
+        if (idField.getText().length() != 9) return false;
 
         try {
             int number = Integer.parseInt(idField.getText());
             ReadWriteXlsx file = new ReadWriteXlsx("PatientList.xlsx");
-            Iterator<Cell> cellIterator= file.getAllRow(number);
-            if(cellIterator!=null) return false;
-            if(firstNameField.getText().length()==0) return false;
-            if(lastNameField.getText().length()==0) return false;
+            Iterator<Cell> cellIterator = file.getAllRow(number);
+            if (cellIterator != null) return false;
+            if (firstNameField.getText().length() == 0) return false;
+            if (lastNameField.getText().length() == 0) return false;
             Integer.parseInt(ageField.getText());
             Integer.parseInt(weightField.getText());
             Integer.parseInt(lengthField.getText());
             Integer.parseInt(phoneField.getText());
-            if(phoneField.getText().length()!=10) return false;
-            if(!genderBox.isScaleShape()) return false;
+            if (phoneField.getText().length() != 10) return false;
+            if (!genderBox.isScaleShape()) return false;
         } catch (NumberFormatException | IOException | InvalidFormatException e) {
             return false;
         }
-
+        return false;  //ADDED
+    }
 
     public void handleDrop(DragEvent dragEvent) {
         path = String.valueOf(dragEvent.getDragboard().getFiles());
         path = path.replace("[", "").replace("]", "");
         drop_text.setText("Done");
     }
+
     public void handleDragOver(DragEvent dragEvent) {
         if (dragEvent.getDragboard().hasFiles())
             dragEvent.acceptTransferModes(TransferMode.ANY);
@@ -122,12 +128,11 @@ public class AddPatient implements Initializable {
 
 
     public void saveButton1_Click(ActionEvent actionEvent) throws IOException, InvalidFormatException {
-        if(path!=null) {
+        if (path != null) {
             ReadWriteXlsx readWriteXlsx = new ReadWriteXlsx("PatientList.xlsx");
             readWriteXlsx.copy(path);
             new FadeTransitions(parentContainer, "Home.fxml");
-        }
-        else   drop_text.setText("Error");
+        } else drop_text.setText("Error");
     }
 
     public void infoButton_Click(ActionEvent actionEvent) throws IOException {
@@ -151,3 +156,4 @@ public class AddPatient implements Initializable {
         stg.setY(Delta.y + mouseEvent.getScreenY());
     }
 }
+

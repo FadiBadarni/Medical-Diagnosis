@@ -32,15 +32,15 @@ public class Register implements Initializable {
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private Circle circle1,circle2;
+    private Circle circle1, circle2;
     @FXML
-    private Rectangle rectangle1,rectangle2;
+    private Rectangle rectangle1, rectangle2;
 
     @FXML
-    private TextField firstname,lastname, id,age,weight,length,email;
+    private TextField firstname, lastname, id, age, weight, length, email;
 
     @FXML
-    private PasswordField password,repasswoed;
+    private PasswordField password, repasswoed;
     public TextField phoneNumber;
     public Button registerButton;
 
@@ -70,12 +70,11 @@ public class Register implements Initializable {
     }
 
 
-
-    public void  register(){
-        if(isCurrentInput()) {
-            String[] data = {id.getText(),password.getText(),firstname.getText(), lastname.getText(), email.getText(),phoneNumber.getText()};
+    public void register() {
+        if (isCurrentInput()) {
+            String[] data = {id.getText(), password.getText(), firstname.getText(), lastname.getText(), email.getText(), phoneNumber.getText()};
             try {
-                ReadWriteXlsx file=new ReadWriteXlsx("Users.xlsx");
+                ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
                 file.add(data);
                 new FadeTransitions(parentContainer, "Home.fxml");
 
@@ -83,29 +82,29 @@ public class Register implements Initializable {
                 throw new RuntimeException(e);
             }
 
-        }
-        else registerButton.setText("Error");
+        } else registerButton.setText("Error");
     }
 
 
-
-    public boolean isCurrentInput(){
-        if(id.getText().length()!=9) return false;
+    public boolean isCurrentInput() {
+        if (id.getText().length() != 9) return false;
 
         try {
             int number = Integer.parseInt(id.getText());
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
-            Iterator<Cell>  cellIterator= file.getAllRow(number);
-            if(cellIterator!=null) return false;
-        } catch (NumberFormatException |IOException | InvalidFormatException e) {
+            Iterator<Cell> cellIterator = file.getAllRow(number);
+            if (cellIterator != null) return false;
+        } catch (NumberFormatException | IOException | InvalidFormatException e) {
             throw new RuntimeException(e);
         }
-        if(!password.getText().equals(repasswoed.getText())) return false;
+        if (!password.getText().equals(repasswoed.getText())) return false;
 
-        if(phoneNumber.getText().length()!=10) return false;
+        if (phoneNumber.getText().length() != 10) return false;
 
-        if(email.getText().length()<5) return false;
-        if(password.getText().length()<8) return false;
+        if (email.getText().length() < 5) return false;
+        if (password.getText().length() < 8) return false;
+        return true;
+    }
 
     public void panePressed(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
