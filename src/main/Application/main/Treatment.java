@@ -5,6 +5,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Node;
 import javafx.scene.Parent;
@@ -14,8 +15,8 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.control.Label;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.*;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
@@ -132,41 +133,22 @@ public class Treatment implements Initializable {
         readWriteXlsx.add(new String[]{"First name", "Last name", "Age", "weight", "length", "phone", "Blood Type", "gender", "Is Ethiopian", "Is Eastern", "WBC", "Neut", "Lymph", "RBC", "HCT",
                 "Urea", "Hb", "Crtn", "Iron", "HDL", "AP", "Diagnosis", "Treatment"});
 
-        readWriteXlsx.add(new String[]{
-                p.getFirstName(),
-                p.getLastName(),
-                p.getAge() + "",
-                p.getWeight() + "",
-                p.getLength() + "",
-                p.getPhone() + "",
-                p.getBloodType(),
-                p.getGender(),
-                p.getEthiopian() + "",
-                p.getEastern() + "",
-                p.getBloodTest().get("WBC") + "",
-                p.getBloodTest().get("Neut") + "",
-                p.getBloodTest().get("Lymph") + "",
-                p.getBloodTest().get("RBC") + "",
-                p.getBloodTest().get("HCT") + "",
-                p.getBloodTest().get("Urea") + "",
-                p.getBloodTest().get("Hb") + "",
-                p.getBloodTest().get("Crtn") + "",
-                p.getBloodTest().get("Iron") + "",
-                p.getBloodTest().get("HDL") + "",
-                p.getBloodTest().get("AP") + ""});
-
         if (values.get("WBC") == -1) {
-            readWriteXlsx.add(new String[]
-                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                            "Viral Disease",
-                            "Rest at home."
-                    });
+            data.put("Viral Disease",
+                    "Rest at home.");
+//            readWriteXlsx.add(new String[]
+//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+//                            "Viral Disease",
+//                            "Rest at home."
+//                    });
             if (values.get("Do You Drink Enough Water ?") == 1) {
-                readWriteXlsx.add(new String[]
-                        {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-                                "Water Dehydration",
-                                "Drink More Water."
-                        });
+                data.put( "Water Dehydration",
+                                "Drink More Water.");
+//                readWriteXlsx.add(new String[]
+//                        {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
+//                                "Water Dehydration",
+//                                "Drink More Water."
+//                        });
             }
         }
         if (values.get("WBC") == 1) {
@@ -462,8 +444,34 @@ public class Treatment implements Initializable {
 //                    });
 
         }
-        readWriteXlsx.add(data);
+        readWriteXlsx.add(new String[]{
+                p.getFirstName(),
+                p.getLastName(),
+                p.getAge() + "",
+                p.getWeight() + "",
+                p.getLength() + "",
+                p.getPhone() + "",
+                p.getBloodType(),
+                p.getGender(),
+                p.getEthiopian() + "",
+                p.getEastern() + "",
+                p.getBloodTest().get("WBC") + "",
+                p.getBloodTest().get("Neut") + "",
+                p.getBloodTest().get("Lymph") + "",
+                p.getBloodTest().get("RBC") + "",
+                p.getBloodTest().get("HCT") + "",
+                p.getBloodTest().get("Urea") + "",
+                p.getBloodTest().get("Hb") + "",
+                p.getBloodTest().get("Crtn") + "",
+                p.getBloodTest().get("Iron") + "",
+                p.getBloodTest().get("HDL") + "",
+                p.getBloodTest().get("AP") + ""},data);
+
         treatmentText.setText(data.toString().replace("{","").replace("}","").replace("=","\n").replace(",","\n\n\n"));
+
+
+        treatmentText.setBackground(new Background(new BackgroundFill(Color.color(0.5F,0.5F,0.5F,0.7F), CornerRadii.EMPTY, new Insets(3))));
+        treatmentText.setTextFill(Color.WHITE);
     }
 
     public void panePressed(MouseEvent mouseEvent) {

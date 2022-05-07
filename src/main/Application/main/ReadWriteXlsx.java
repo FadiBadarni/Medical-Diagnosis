@@ -39,7 +39,6 @@ public class ReadWriteXlsx {
 
 
             int rowCount = sheet.getLastRowNum();
-
             Row row = sheet.createRow(++rowCount);
 
             int columnCount = 0;
@@ -176,21 +175,37 @@ public class ReadWriteXlsx {
         };
     }
 
-    public void add(Hashtable<String, String> data) {
+    public void add(String[] fdata,Hashtable<String, String> ldata) {
         try {
             FileInputStream inputStream = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(inputStream);
             sheet = workbook.getSheetAt(0);
-            Cell cell;
-            int rowCount = sheet.getLastRowNum();
-            Row row = sheet.createRow(rowCount);
-           int lastCellNum = sheet.getRow(0).getLastCellNum();
 
-            for(String s: data.keySet()) {
-                cell = row.createCell(lastCellNum-2);
+
+            int rowCount = sheet.getLastRowNum();
+            Row row = sheet.createRow(++rowCount);
+
+
+            int columnCount = 0;
+
+            Cell cell;
+
+            for (String field : fdata) {
+                cell = row.createCell(columnCount++);
+                try {
+                    double x = Double.parseDouble(field);
+                    cell.setCellValue(x);
+                } catch (NumberFormatException e) {
+                    cell.setCellValue(field);
+                }
+
+            }
+
+            for(String s: ldata.keySet()) {
+                cell = row.createCell(columnCount);
                 cell.setCellValue(s);
-                cell = row.createCell(lastCellNum-1);
-                cell.setCellValue(data.get(s));
+                cell = row.createCell(columnCount+1);
+                cell.setCellValue(ldata.get(s));
 
             }
             FileOutputStream outputStream = new FileOutputStream(filePath);
