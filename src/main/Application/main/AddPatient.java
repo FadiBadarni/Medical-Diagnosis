@@ -96,7 +96,7 @@ public class AddPatient implements Initializable {
         } catch (NumberFormatException | IOException | InvalidFormatException e) {
             return false;
         }
-        return false;  //ADDED
+        return true;  //ADDED
     }
 
     public void handleDrop(DragEvent dragEvent) {

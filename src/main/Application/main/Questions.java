@@ -46,7 +46,7 @@ public class Questions implements Initializable {
             };
 
     Patient p;
-    private int[] answer;
+
     private Integer[] qnumber;
     int q = 0;
 
@@ -163,7 +163,7 @@ public class Questions implements Initializable {
         values.put("Do You Do A Lot Of Physical Activity ?",0);
         values.put("Is Your Meat Intake Regular ?",0);
         values.put("Any Previous History With Muscle Diseases ?",0);
-        values.put( "Did You Vomit Recently ?",0);
+        values.put("Did You Vomit Recently ?",0);
 
 
         if (values.get("WBC") == 1) {
@@ -200,7 +200,7 @@ public class Questions implements Initializable {
             m.changeScene("Treatment.fxml");
         }
         else {
-            answer = new int[qnumber.length];
+
             questionText.setText(question[qnumber[0]]);
         }
     }
