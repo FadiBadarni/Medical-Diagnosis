@@ -14,17 +14,12 @@ import java.util.Objects;
 
 
 public class ReadWriteXlsx {
-
-    //  private Workbook workbook;
     private Sheet sheet;
-    //private FileOutputStream outputStream;
     private String filePath;
-    // private  FileInputStream inputStream;
     private File file;
 
 
     ReadWriteXlsx(String filePath) throws IOException, InvalidFormatException {
-
         this.filePath = filePath;
         file = new File(filePath);
         XSSFWorkbook wb = new XSSFWorkbook(file);
@@ -32,20 +27,14 @@ public class ReadWriteXlsx {
     }
 
     public void add(String[] data) {
-
         try {
             FileInputStream inputStream = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(inputStream);
             sheet = workbook.getSheetAt(0);
-
-
             int rowCount = sheet.getLastRowNum();
             Row row = sheet.createRow(++rowCount);
-
             int columnCount = 0;
-
             Cell cell;
-
             for (String field : data) {
                 cell = row.createCell(columnCount++);
                 try {
@@ -54,24 +43,17 @@ public class ReadWriteXlsx {
                 } catch (NumberFormatException e) {
                     cell.setCellValue(field);
                 }
-
             }
-
             FileOutputStream outputStream = new FileOutputStream(filePath);
             workbook.write(outputStream);
             workbook.close();
             outputStream.close();
-
         } catch (IOException | EncryptedDocumentException ex) {
-
             ex.printStackTrace();
         }
-
-
     }
 
     public Iterator<Cell> getAllRow(String rowName,int cellnum) {
-
         try {
             Iterator<Row> itr = sheet.iterator();
             if(itr.hasNext()) itr.next();
@@ -79,7 +61,6 @@ public class ReadWriteXlsx {
                 Row row = itr.next();
                 Iterator<Cell> cellIterator = row.cellIterator();   //iterating over each column
                 Cell cell = cellIterator.next();
-
                 if(cell.getRow().getCell(cellnum).getCellType()==CellType.STRING)
                 {
                     String s=cell.getRow().getCell(cellnum).getStringCellValue();
@@ -93,7 +74,6 @@ public class ReadWriteXlsx {
         }
         return null;
     }
-
     public Iterator<Cell> getAllRow(int rowName,int cellnum) {
 
         try {
@@ -143,18 +123,13 @@ public class ReadWriteXlsx {
             e.printStackTrace();
             return;
         }
-
         XSSFWorkbook newWorkbook = new XSSFWorkbook();
-
-
         // Copy sheets
         for (int sheetNumber = 0; sheetNumber < oldWorkbook.getNumberOfSheets(); sheetNumber++) {
             final XSSFSheet oldSheet = oldWorkbook.getSheetAt(sheetNumber);
             final XSSFSheet newSheet = newWorkbook.createSheet(oldSheet.getSheetName());
-
             newSheet.setDefaultRowHeight(oldSheet.getDefaultRowHeight());
             newSheet.setDefaultColumnWidth(oldSheet.getDefaultColumnWidth());
-
             // Copy content
             for (int rowNumber = oldSheet.getFirstRowNum(); rowNumber < oldSheet.getLastRowNum(); rowNumber++) {
                 final XSSFRow oldRow = oldSheet.getRow(rowNumber);
@@ -165,14 +140,11 @@ public class ReadWriteXlsx {
                     for (int columnNumber = oldRow.getFirstCellNum(); columnNumber < oldRow
                             .getLastCellNum(); columnNumber++) {
                         newSheet.setColumnWidth(columnNumber, oldSheet.getColumnWidth(columnNumber));
-
                         final XSSFCell oldCell = oldRow.getCell(columnNumber);
                         if (oldCell != null) {
                             final XSSFCell newCell = newRow.createCell(columnNumber);
-
                             // Copy value
                             setCellValue(newCell, getCellValue(oldCell));
-
                             // Copy style
                             XSSFCellStyle newCellStyle = newWorkbook.createCellStyle();
                             newCellStyle.cloneStyleFrom(oldCell.getCellStyle());
@@ -182,7 +154,6 @@ public class ReadWriteXlsx {
                 }
             }
         }
-
         try {
             oldWorkbook.close();
             newWorkbook.write(new FileOutputStream(this.filePath));
@@ -191,7 +162,6 @@ public class ReadWriteXlsx {
             e.printStackTrace();
         }
     }
-
     private void setCellValue(XSSFCell cell, Object value) {
         if (value instanceof Boolean) {
             cell.setCellValue((boolean) value);
@@ -205,7 +175,6 @@ public class ReadWriteXlsx {
             throw new IllegalArgumentException();
         }
     }
-
     private Object getCellValue(XSSFCell cell) {
         return switch (cell.getCellType()) {
             case BOOLEAN -> cell.getBooleanCellValue(); // boolean
@@ -216,7 +185,6 @@ public class ReadWriteXlsx {
             default -> throw new IllegalArgumentException();
         };
     }
-
     public void add(String[] fdata,Hashtable<String, String> ldata) {
         try {
             FileInputStream inputStream = new FileInputStream(file);
@@ -224,11 +192,8 @@ public class ReadWriteXlsx {
             sheet = workbook.getSheetAt(0);
             int rowCount = sheet.getLastRowNum();
             Row row = sheet.createRow(++rowCount);
-
             int columnCount = 0;
-
             Cell cell;
-
             for (String field : fdata) {
                 cell = row.createCell(columnCount++);
                 try {
@@ -237,25 +202,19 @@ public class ReadWriteXlsx {
                 } catch (NumberFormatException e) {
                     cell.setCellValue(field);
                 }
-
             }
-
             for(String s: ldata.keySet()) {
-
                 cell = row.createCell(columnCount);
                 cell.setCellValue(s);
                 cell = row.createCell(columnCount+1);
                 cell.setCellValue(ldata.get(s));
                 row = sheet.createRow(++rowCount);
-
             }
             FileOutputStream outputStream = new FileOutputStream(filePath);
             workbook.write(outputStream);
             workbook.close();
             outputStream.close();
-
         } catch (IOException | EncryptedDocumentException ex) {
-
             ex.printStackTrace();
         }
 

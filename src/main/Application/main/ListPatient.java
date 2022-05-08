@@ -12,23 +12,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import java.io.*;
 
-
 public class ListPatient {
     private ArrayList<Patient> patients;
-    private String path;
 
     public ListPatient() {
         patients = new ArrayList<>();
-    }
-
-
-    public ListPatient(ArrayList<Patient> patients) {
-        this.patients = new ArrayList<>(patients);
-    }
-
-    public ListPatient(String path) {
-        patients = new ArrayList<>();
-        insertData(path);
     }
 
     public void insertData(String path) {
@@ -36,8 +24,8 @@ public class ListPatient {
         String firstName = null;
         String lastName = null;
         String gender = null;
-        int iseast=0;
-        int isethiopian=0;
+        int iseast = 0;
+        int isethiopian = 0;
         int age = 0;
         int weight = 0;
         int length = 0;
@@ -48,11 +36,10 @@ public class ListPatient {
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
             Iterator<Row> rowIterator = sheet.iterator();
-            if(rowIterator.hasNext()) rowIterator.next();
+            if (rowIterator.hasNext()) rowIterator.next();
             while (rowIterator.hasNext()) {
                 Row row = rowIterator.next();
                 Iterator<Cell> cellIterator = row.cellIterator();
-
                 while (cellIterator.hasNext()) {
                     Cell cell = cellIterator.next();
                     if (cell.getCellType() == CellType.NUMERIC)
@@ -81,26 +68,19 @@ public class ListPatient {
                     cell = cellIterator.next();
                     if (cell.getCellType() == CellType.STRING)
                         gender = cell.getStringCellValue();
-
                     cell = cellIterator.next();
                     if (cell.getCellType() == CellType.NUMERIC)
                         iseast = (int) cell.getNumericCellValue();
                     cell = cellIterator.next();
                     if (cell.getCellType() == CellType.NUMERIC)
                         isethiopian = (int) cell.getNumericCellValue();
-
-                    patients.add(new Patient(id, firstName, lastName, age, weight, length, phone, bloodType, gender,iseast,isethiopian));
+                    patients.add(new Patient(id, firstName, lastName, age, weight, length, phone, bloodType, gender, iseast, isethiopian));
                 }
             }
             file.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }
-
-    public void addPatient(Patient p) throws IOException, InvalidFormatException {
-        ReadWriteXlsx file = new ReadWriteXlsx(path);
-        patients.add(new Patient(p));
     }
 
     public ArrayList<Patient> getPatients() {
@@ -112,14 +92,10 @@ public class ListPatient {
         return this.patients.get(x);
     }
 
-    public void setPatients(ArrayList patients) {
-        this.patients = patients;
-    }
-
     public Set<String> getIdList() {
         Set<String> ids = new HashSet<>();
         for (Patient p : patients) {
-            ids.add(p.getId() + "             "  + p.getFirstName() + " " + p.getLastName());
+            ids.add(p.getId() + "             " + p.getFirstName() + " " + p.getLastName());
         }
         return ids;
     }

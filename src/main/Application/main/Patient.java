@@ -13,14 +13,13 @@ import java.util.Hashtable;
 import java.util.Iterator;
 
 public class Patient {
-
     private int id, age, weight, length, phone;
     private String firstName, lastName, bloodType, gender;
     private Hashtable<String, Double> bloodTest;
     private int isEthiopian = 0, isEastern = 0;
-    private    Hashtable<String, Integer> values;
+    private Hashtable<String, Integer> values;
 
-    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood, String gender,int iseast, int isethiopian) {
+    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood, String gender, int iseast, int isethiopian) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,16 +29,10 @@ public class Patient {
         this.phone = phone;
         this.bloodType = blood;
         this.gender = gender;
-        this.isEthiopian=isethiopian;
-        this.isEastern=iseast;
+        this.isEthiopian = isethiopian;
+        this.isEastern = iseast;
         this.bloodTest = new Hashtable<>();
-
-        this.values=new Hashtable<>();
-    }
-
-
-    public void setPhone(int phone) {
-        this.phone = phone;
+        this.values = new Hashtable<>();
     }
 
     public Patient(Patient p) {
@@ -66,25 +59,21 @@ public class Patient {
             FileInputStream file = new FileInputStream(new File(path));
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
-                for(int i=0;i<sheet.getRow(0).getLastCellNum();i++)
-                {
-                    XSSFRow cell=sheet.getRow(0);
-                    if (cell.getCell(i).getCellType() == CellType.STRING)
-                        key=(cell.getCell(i).getStringCellValue());
-                    if (sheet.getRow(1).getCell(i).getCellType() == CellType.NUMERIC)
-                        value=(sheet.getRow(1).getCell(i).getNumericCellValue());
-                    if (key != null && value != 0) bloodTest.put(key,  value);
-                    else return false;
-                }
+            for (int i = 0; i < sheet.getRow(0).getLastCellNum(); i++) {
+                XSSFRow cell = sheet.getRow(0);
+                if (cell.getCell(i).getCellType() == CellType.STRING)
+                    key = (cell.getCell(i).getStringCellValue());
+                if (sheet.getRow(1).getCell(i).getCellType() == CellType.NUMERIC)
+                    value = (sheet.getRow(1).getCell(i).getNumericCellValue());
+                if (key != null && value != 0) bloodTest.put(key, value);
+                else return false;
+            }
             file.close();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             return false;
         }
-
         return true;
     }
-
 
     public int getId() {
         return id;
@@ -121,6 +110,7 @@ public class Patient {
     public void setValues(Hashtable<String, Integer> values) {
         this.values = values;
     }
+
     public void setAge(int age) {
         this.age = age;
     }
@@ -184,6 +174,7 @@ public class Patient {
     public void setEastern(int eastern) {
         isEastern = eastern;
     }
+
     public int getIsEthiopian() {
         return isEthiopian;
     }

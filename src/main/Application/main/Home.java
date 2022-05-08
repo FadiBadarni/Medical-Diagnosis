@@ -35,9 +35,7 @@ import java.util.ResourceBundle;
 
 public class Home extends Application implements Initializable {
     @FXML
-    public Button displayInfoButton, addPatientButton;
-    @FXML
-    private Button homeButton, uploadDataButton, questionsButton, signOutButton, diagnosisButton,infoButton;
+    private Button homeButton, uploadDataButton, questionsButton, signOutButton, diagnosisButton, infoButton, displayInfoButton, addPatientButton;
     @FXML
     private StackPane parentContainer;
     @FXML
@@ -46,8 +44,9 @@ public class Home extends Application implements Initializable {
     private Pane pane;
     @FXML
     private ListView<String> listview1;
-    private ListPatient listPatient = new ListPatient();
+    private final ListPatient listPatient = new ListPatient();
     private static Stage stg;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         updateData();
@@ -103,18 +102,12 @@ public class Home extends Application implements Initializable {
 
     @FXML
     public void diagnosisButton_Click(ActionEvent actionEvent) throws IOException {
-
         Patient p = listPatient.getPatients().get(listview1.getSelectionModel().getSelectedIndex());
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.setUserData(p);
         Main m = new Main();
         m.changeScene("InsertData.fxml");
-    }
-
-    @FXML
-    private void sendData(ActionEvent event) {
-
     }
 
     public void displayInfoButton_Click(ActionEvent actionEvent) throws IOException {
@@ -124,7 +117,6 @@ public class Home extends Application implements Initializable {
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
-
         TextField nameField = (TextField) scene.lookup("#nameField");
         TextField idField = (TextField) scene.lookup("#idField");
         TextField ageField = (TextField) scene.lookup("#ageField");
@@ -133,31 +125,17 @@ public class Home extends Application implements Initializable {
         TextField lengthField = (TextField) scene.lookup("#lengthField");
         TextField bloodField = (TextField) scene.lookup("#bloodField");
         TextField genderField = (TextField) scene.lookup("#genderField");
-
-
-        Patient p= listPatient.getPatient(listview1.getSelectionModel().getSelectedIndex());
-        idField.setText(p.getId()+"");
-        nameField.setText(p.getFirstName()+" "+ p.getLastName());
-        ageField.setText(p.getAge()+"");
-        phoneField.setText("0"+p.getPhone());
-        weightField.setText(p.getWeight()+"Kg");
-        lengthField.setText(p.getLength()+"Cm");
+        Patient p = listPatient.getPatient(listview1.getSelectionModel().getSelectedIndex());
+        idField.setText(p.getId() + "");
+        nameField.setText(p.getFirstName() + " " + p.getLastName());
+        ageField.setText(p.getAge() + "");
+        phoneField.setText("0" + p.getPhone());
+        weightField.setText(p.getWeight() + "Kg");
+        lengthField.setText(p.getLength() + "Cm");
         bloodField.setText(p.getBloodType());
         genderField.setText(p.getGender());
-
-//        List<List<String>> excelData = ExcelFileUtility.readExcelFile("PatientList.xlsx");
-//        int index = listview1.getSelectionModel().getSelectedIndex();
-//        idField.setText(excelData.get(index).get(0));
-//        nameField.setText(excelData.get(index).get(1));
-//        nameField.appendText(" " + excelData.get(index).get(2));
-//        ageField.setText(excelData.get(index).get(3));
-//        weightField.setText(excelData.get(index).get(4));
-//        lengthField.setText(excelData.get(index).get(5));
-//        phoneField.setText("0" + excelData.get(index).get(6));
-//        bloodField.setText(excelData.get(index).get(7));
-//        genderField.setText(excelData.get(index).get(8));
-
     }
+
     public void panePressed(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Delta.x = stg.getX() - mouseEvent.getScreenX();

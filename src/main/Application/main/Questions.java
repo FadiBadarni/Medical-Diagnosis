@@ -44,7 +44,6 @@ public class Questions implements Initializable {
                     "Is Your Meat Intake Regular ?",
                     "Any Previous History With Muscle Diseases ?"
             };
-
     Patient p;
     private int[] answer;
     private Integer[] qnumber;
@@ -52,7 +51,6 @@ public class Questions implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         questionText.setVisible(false);
         yes_Button.setVisible(false);
         noButton.setVisible(false);
@@ -117,8 +115,6 @@ public class Questions implements Initializable {
             Main m = new Main();
             m.changeScene("Treatment.fxml");
         } else questionText.setText(question[qnumber[q]]);
-
-
     }
 
     public void noButton_Click(ActionEvent actionEvent) throws IOException {
@@ -143,7 +139,6 @@ public class Questions implements Initializable {
             Main m = new Main();
             m.changeScene("Treatment.fxml");
         } else questionText.setText(question[qnumber[q]]);
-
     }
 
     public void askButton_Click(ActionEvent actionEvent) throws IOException {

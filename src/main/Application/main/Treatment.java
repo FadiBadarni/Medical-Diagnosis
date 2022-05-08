@@ -276,7 +276,6 @@ public class Treatment implements Initializable {
                         "Referral to a family doctor for a match between medications.");
 
             }
-
             readWriteXlsx.add(new String[]{
                     p.getFirstName(),
                     p.getLastName(),
@@ -301,16 +300,11 @@ public class Treatment implements Initializable {
                     p.getBloodTest().get("AP") + ""}, data);
 
             treatmentText.setText(data.toString().replace("{", "").replace("}", "").replace("=", "\n").replace(",", "\n\n\n"));
-
             treatmentText.setBackground(new Background(new BackgroundFill(Color.color(0.5F, 0.5F, 0.5F, 0.7F), CornerRadii.EMPTY, new Insets(3))));
             treatmentText.setTextFill(Color.WHITE);
-
-
         } catch (IOException | InvalidFormatException e) {
             treatmentText.setText("Error");
         }
-
-
     }
 
     public void panePressed(MouseEvent mouseEvent) {

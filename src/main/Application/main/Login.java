@@ -53,7 +53,6 @@ public class Login implements Initializable {
         animateRegister.play();
 
     }
-
     public void userLogin(ActionEvent e) throws IOException {
         validateLogin();
     }
@@ -69,22 +68,17 @@ public class Login implements Initializable {
             wrongLogin.setText("Wrong Credentials");
         }
     }
-
-
     public void returnButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
         m.changeScene("Main.fxml");
 
     }
-
     public void registerButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
         m.changeScene("Register.fxml");
     }
 
-
     public boolean isCorrectPassword(String username, String password) {
-
         try {
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
             Iterator<Cell> cellIterator = file.getAllRow(username,5);
@@ -103,7 +97,6 @@ public class Login implements Initializable {
         Delta.x = stg.getX() - mouseEvent.getScreenX();
         Delta.y = stg.getY() - mouseEvent.getScreenY();
     }
-
     public void paneDragged(javafx.scene.input.MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stg.setX(Delta.x + mouseEvent.getScreenX());

@@ -28,27 +28,22 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-
 public class InsertData implements Initializable {
-    public Label title;
     @FXML
     StackPane parentContainer;
     @FXML
     private AnchorPane anchorPane;
     @FXML
-    private Button homeButton, uploadDataButton, questionsButton, signOutButton, addPatientButton,saveButton,dropSaveButton,diagnosisButton;
+    private Button homeButton, uploadDataButton, questionsButton, signOutButton, addPatientButton, saveButton, dropSaveButton, diagnosisButton;
     @FXML
     private TextField whiteBloodCellsField, neutrophilField, lymphocytesField, hematocritField, ureaField, hemoglobinField,
             creatinineField, ironField, lipoproteinField, phophataseField, redBloodCellsField;
     @FXML
     private Pane pane;
     private static Stage stg;
-
     @FXML
     private Text drop_text;
-
     private String path;
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -125,11 +120,10 @@ public class InsertData implements Initializable {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             Patient p = (Patient) stage.getUserData();
-          if(p.addBloodTest(path)){
-              Main m = new Main();
-              m.changeScene("Diagnosis.fxml");
-          }
-          else drop_text.setText("Error");
+            if (p.addBloodTest(path)) {
+                Main m = new Main();
+                m.changeScene("Diagnosis.fxml");
+            } else drop_text.setText("Error");
         } else drop_text.setText("File Missing");
     }
 

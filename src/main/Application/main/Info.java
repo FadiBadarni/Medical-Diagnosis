@@ -25,7 +25,6 @@ public class Info implements Initializable {
     @FXML
     private Label label1, label2, label3;
     private static Stage stg;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parentContainer.setOpacity(0);
@@ -47,7 +46,6 @@ public class Info implements Initializable {
         });
         animatelabel1.play();
     }
-
     private void makeFadeTransition() {
         FadeTransition fadeTransition = new FadeTransition();
         fadeTransition.setDuration(Duration.seconds(1));
@@ -68,7 +66,6 @@ public class Info implements Initializable {
         Delta.x = stg.getX() - mouseEvent.getScreenX();
         Delta.y = stg.getY() - mouseEvent.getScreenY();
     }
-
     public void paneDragged(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stg.setX(Delta.x + mouseEvent.getScreenX());

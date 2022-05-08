@@ -36,32 +36,26 @@ public class Register implements Initializable {
     private Circle circle1, circle2;
     @FXML
     private Rectangle rectangle1, rectangle2;
-
     @FXML
     private TextField firstname, lastname, id, age, weight, length, email;
-
     @FXML
     private PasswordField password, repasswoed;
     public TextField username;
     public Button registerButton;
     @FXML
     private Label errorLabel;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         new RotationAnimation(circle1, true, 360, 20);
         new RotationAnimation(circle2, true, 360, 20);
         new RotationAnimation(rectangle1);
         new RotationAnimation(rectangle2);
-
     }
 
     public void returnButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
         m.changeScene("Main.fxml");
     }
-
-
     public void register() {
         if (isCurrentInput()) {
             String[] data = {id.getText(), password.getText(), firstname.getText(), lastname.getText(), email.getText(), username.getText()};
@@ -76,15 +70,19 @@ public class Register implements Initializable {
 
         }
     }
-
-
     public boolean isCurrentInput() {
         try {
             int number = Integer.parseInt(id.getText());
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
-            Iterator<Cell> cellIterator = file.getAllRow(number,0);
-            if (cellIterator != null) return false;
-            if(file.found(5,username.getText())) return false;
+            Iterator<Cell> cellIterator = file.getAllRow(number, 0);
+            if (cellIterator != null) {
+                errorLabel.setText("CELL ITERATOR ERROR");
+                return false;
+            }
+            if (file.found(5, username.getText())){
+                errorLabel.setText("USERNAME NOT FOUND");
+                return false;
+            }
         } catch (NumberFormatException | IOException | InvalidFormatException e) {
             errorLabel.setText("ID Must be a valid number");
             return false;
@@ -97,29 +95,38 @@ public class Register implements Initializable {
             errorLabel.setText("Passwords Do Not Match");
             return false;
         }
-        if (password.getText().length() > 7 && password.getText().length() < 11) {
+        if (password.getText().length() < 8 || password.getText().length() > 10) {
             errorLabel.setText("Password is not within required length");
             return false;
         }
-        if (!(password.getText().contains("!") || password.getText().contains("@") || password.getText().contains("#") ||
-                password.getText().contains("$") || password.getText().contains("%") || password.getText().contains("^") ||
-                password.getText().contains("&") || password.getText().contains("*") || password.getText().contains("(") ||
-                password.getText().contains(")") || password.getText().contains("-") || password.getText().contains("+"))) {
-            errorLabel.setText("Add At least one special character to your password");
+        int letters = 0, numbers = 0, specialChars = 0;
+        for (char c : password.getText().toCharArray()) {
+            if (Character.isLetter(c))
+                letters++;
+            else if (Character.isDigit(c))
+                numbers++;
+            else
+                specialChars++;
+        }
+        if (letters < 1 || numbers < 1 || specialChars < 1) {
+            errorLabel.setText("Password Does Not Meat Minimum Requirements.");
             return false;
         }
-
-
-        if (username.getText().length() <= 6 || username.getText().length() > 9) {
+        if (username.getText().length() < 6 || username.getText().length() > 9) {
             errorLabel.setText("Username is not within required length");
             return false;
         }
-        if (!Pattern.matches("[a-zA-Z]+", username.getText())) {
-            errorLabel.setText("Only english letters are allowed");
+        if (!Pattern.matches("^[a-zA-Z0-9]+$", username.getText())) {
+            errorLabel.setText("Only alphanumeric characters are allowed.");
             return false;
         }
-        if (!Pattern.matches("(?=(.*\\d){2})", username.getText())) {
-            errorLabel.setText("A Minimum of 2 numbers is required in the username");
+        numbers = 0;
+        for (char c : username.getText().toCharArray()) {
+            if (Character.isDigit(c))
+                numbers++;
+        }
+        if (numbers > 2) {
+            errorLabel.setText("A Maximum of 2 digits is allowed in usernames.");
             return false;
         }
         if (!email.getText().contains("@")) {
@@ -128,13 +135,11 @@ public class Register implements Initializable {
         }
         return true;
     }
-
     public void panePressed(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Delta.x = stg.getX() - mouseEvent.getScreenX();
         Delta.y = stg.getY() - mouseEvent.getScreenY();
     }
-
     public void paneDragged(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stg.setX(Delta.x + mouseEvent.getScreenX());

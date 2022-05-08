@@ -124,8 +124,7 @@ public class Main extends Application implements Initializable {
     }
 
     public void exitButton_Click(ActionEvent e) throws IOException {
-        Main m = new Main();
-        m.changeScene("Home.fxml");
+        System.exit(0);
     }
 
     public void panePressed(MouseEvent mouseEvent) {

@@ -38,9 +38,7 @@ public class Diagnosis implements Initializable {
     @FXML
     ProgressBar progressBar1, progressBar2, progressBar3, progressBar4, progressBar5, progressBar6, progressBar7, progressBar8, progressBar9, progressBar10, progressBar11;
     private static Stage stg;
-
     Patient p;
-    //  int wbc=0,neut=0,lymph=0,rbc=0,hct=0,urea=0,hp=0,crtn=0,iron=0,hdl=0,ap=0;
     Hashtable<String, Integer> values = new Hashtable<>();
 
     @Override
@@ -76,18 +74,6 @@ public class Diagnosis implements Initializable {
         m.changeScene("Questions.fxml");
     }
 
-//    public void goToTreatmentButton_Click(ActionEvent actionEvent) throws IOException {
-//        new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
-//        Main m = new Main();
-//        m.changeScene("Treatment.fxml");
-//    }
-
-//    public void goToQuestionsButton_Click(ActionEvent actionEvent) throws IOException {
-//        new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
-//        Main m = new Main();
-//        m.changeScene("Questions.fxml");
-//    }
-
     public void returnButton_Click(ActionEvent actionEvent) throws IOException {
         Main m = new Main();
         m.changeScene("InsertData.fxml");
@@ -97,7 +83,6 @@ public class Diagnosis implements Initializable {
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         p = (Patient) stage.getUserData();
-
         Hashtable<String, Double> bloodTest = p.getBloodTest();
         String human = returnStage(p.getAge());
         double WBC_Level = bloodTest.get("WBC");
@@ -111,7 +96,6 @@ public class Diagnosis implements Initializable {
         double Iron_Level = bloodTest.get("Iron");
         double HDL_Level = bloodTest.get("HDL");
         double Ap_Level = bloodTest.get("AP");
-
         if (Objects.equals(human, "Adult")) {
             if (WBC_Level / 11000 < 0.409) WBC_UnderFlow();
             else if (WBC_Level / 11000 > 0.409 && WBC_Level / 11000 < 1) WBC_Normal();
@@ -119,22 +103,17 @@ public class Diagnosis implements Initializable {
                 WBC_OverFlow();
             }
             progressBar1.setProgress(WBC_Level / 11000);
-
             setAdultHbLevel(p, Hb_Level);
             setResults(p, WBC_Level, Neut_Level, Lymph_Level, RBC_Level, HCT_Level, Urea_Level, Crtn_Level, Iron_Level, HDL_Level, Ap_Level);
-
-
         } else if (Objects.equals(human, "Child")) {
             if (WBC_Level / 15500 < 0.354) {
                 WBC_UnderFlow();
             } else if (WBC_Level / 15500 > 0.354 && WBC_Level / 15500 < 1) {
                 WBC_Normal();
             } else WBC_OverFlow();
-
             progressBar1.setProgress(WBC_Level / 15500);
             setChildHbLevel(Hb_Level);
             setResults(p, WBC_Level, Neut_Level, Lymph_Level, RBC_Level, HCT_Level, Urea_Level, Crtn_Level, Iron_Level, HDL_Level, Ap_Level);
-
         } else if (Objects.equals(human, "Toddler")) {
             if (WBC_Level / 17500 < 0.342) {
                 WBC_UnderFlow();
@@ -152,18 +131,16 @@ public class Diagnosis implements Initializable {
         for (ProgressBar progressBar : Arrays.asList(progressBar1, progressBar2, progressBar3, progressBar4, progressBar5, progressBar6, progressBar7, progressBar8, progressBar9, progressBar10, progressBar11)) {
             progressBar.setEffect(null);
         }
-
         Button viewbutton = (Button) actionEvent.getSource();
         viewbutton.setVisible(false);
         advanceButton.setDisable(false);
     }
 
-
     private void setResults(Patient p, double WBC_Level, double neut_Level, double lymph_Level, double RBC_Level,
                             double HCT_Level, double urea_Level, double crtn_Level, double iron_Level,
                             double HDL_Level, double ap_Level) {
-        setNeutLevel(WBC_Level, neut_Level);
-        setLymphLevel(WBC_Level, lymph_Level);
+        setNeutLevel(neut_Level);
+        setLymphLevel(lymph_Level);
         setRbcLevel(RBC_Level);
         setHctLevel(p, HCT_Level);
         setUreaLevel(urea_Level);
@@ -202,7 +179,6 @@ public class Diagnosis implements Initializable {
             }
             progressBar11.setProgress(ap_level / 90);
         }
-
     }
 
     private void setHdlLevel(Patient p, double hdl_level) {
@@ -225,7 +201,6 @@ public class Diagnosis implements Initializable {
                     progressBar10.setStyle("-fx-accent: yellow;");
                     testField10.setText("Low Value");
                     values.put("HDL", -1);
-
                 } else if (hdl_level <= 98.4) {
                     progressBar10.setStyle("-fx-accent: green;");
                     testField10.setText("Value within normal range.");
@@ -254,7 +229,6 @@ public class Diagnosis implements Initializable {
                     progressBar10.setStyle("-fx-accent: yellow;");
                     testField10.setText("Low Value");
                     values.put("HDL", -1);
-
                 } else if (hdl_level <= 82) {
                     progressBar10.setStyle("-fx-accent: green;");
                     testField10.setText("Value within normal range.");
@@ -265,8 +239,6 @@ public class Diagnosis implements Initializable {
                 progressBar10.setProgress(hdl_level / 82);
             }
         }
-
-
     }
 
     private void setIronLevel(Patient p, double iron_level) {
@@ -279,7 +251,6 @@ public class Diagnosis implements Initializable {
                 progressBar9.setStyle("-fx-accent: green;");
                 testField9.setText("Value within normal range.");
                 values.put("Iron", 0);
-
             } else {
                 Iron_OverFlow();
             }
@@ -306,7 +277,6 @@ public class Diagnosis implements Initializable {
                 progressBar8.setStyle("-fx-accent: yellow;");
                 testField8.setText("Low Value");
                 values.put("Crtn", -1);
-
             } else if (Crtn_Level <= 1) {
                 progressBar8.setStyle("-fx-accent: green;");
                 testField8.setText("Value within normal range.");
@@ -343,7 +313,6 @@ public class Diagnosis implements Initializable {
                 progressBar8.setStyle("-fx-accent: yellow;");
                 testField8.setText("Low Value");
                 values.put("Crtn", -1);
-
             } else if (Crtn_Level <= 0.5) {
                 progressBar8.setStyle("-fx-accent: green;");
                 testField8.setText("Value within normal range.");
@@ -360,7 +329,6 @@ public class Diagnosis implements Initializable {
             progressBar7.setStyle("-fx-accent: yellow;");
             testField7.setText("Low Value");
             values.put("Hb", -1);
-
         } else if (Hb_Level <= 15.5) {
             progressBar7.setStyle("-fx-accent: green;");
             testField7.setText("Value within normal range.");
@@ -406,7 +374,6 @@ public class Diagnosis implements Initializable {
             progressBar6.setStyle("-fx-accent: yellow;");
             testField6.setText("Low Value");
             values.put("Urea", -1);
-
         } else if (urea_level < 43) {
             progressBar6.setStyle("-fx-accent: green;");
             testField6.setText("Value within normal range.");
@@ -430,7 +397,6 @@ public class Diagnosis implements Initializable {
                 progressBar5.setStyle("-fx-accent: yellow;");
                 testField5.setText("Low Value");
                 values.put("HCT", -1);
-
             } else if (HCT_Level <= 54) {
                 progressBar5.setStyle("-fx-accent: green;");
                 testField5.setText("Value within normal range.");
@@ -460,7 +426,6 @@ public class Diagnosis implements Initializable {
             progressBar4.setStyle("-fx-accent: yellow;");
             testField4.setText("Low Value");
             values.put("RBC", -1);
-
         } else if (RBC_Level <= 6) {
             progressBar4.setStyle("-fx-accent: green;");
             testField4.setText("Value within normal range.");
@@ -478,12 +443,11 @@ public class Diagnosis implements Initializable {
         progressBar4.setProgress(RBC_Level / 6);
     }
 
-    private void setLymphLevel(double wbc_level, double lymph_level) {
+    private void setLymphLevel(double lymph_level) {
         if (lymph_level < 36) {
             progressBar3.setStyle("-fx-accent: yellow;");
             testField3.setText("Low Level");
             values.put("Lymph", -1);
-
         } else if (lymph_level >= 36 && lymph_level <= 52) {
             progressBar3.setStyle("-fx-accent: green;");
             testField3.setText("Value within normal range.");
@@ -501,42 +465,32 @@ public class Diagnosis implements Initializable {
         progressBar3.setProgress(lymph_level / 52);
     }
 
-    private void setNeutLevel(double WBC_Level, double Neut_Level) {
+    private void setNeutLevel(double Neut_Level) {
         if (Neut_Level < 28) {
             progressBar2.setStyle("-fx-accent: yellow;");
             testField2.setText("Low Level");
             values.put("Neut", -1);
-
         } else if (Neut_Level >= 28 && Neut_Level <= 54) {
             progressBar2.setStyle("-fx-accent: green;");
             testField2.setText("Value within normal range.");
             values.put("Neut", 0);
         } else {
             progressBar2.setStyle("-fx-accent: red;");
-            testField2.setText(" NEUT OVERFLOW");
+            testField2.setText("NEUT OVERFLOW");
             Tooltip tooltip = new Tooltip();
             tooltip.setText("NEUT OVERFLOW");
             tooltip.setShowDelay(Duration.seconds(2));
             tooltip.setHideDelay(Duration.seconds(5));
             testField2.setTooltip(tooltip);
             values.put("Neut", 1);
-
         }
         progressBar2.setProgress(Neut_Level / 54);
     }
 
     private void WBC_OverFlow() {
         progressBar1.setStyle("-fx-accent: red;");
-        testField1.setText("Most often indicate the presence of an infection if there is a fever. " +
-                "In other cases, very rare, may indicate blood disease or cancer.");
-        Tooltip tooltip = new Tooltip();
-        tooltip.setText("Most often indicate the presence of an infection if there is a fever. " +
-                "In other cases, very rare, may indicate blood disease or cancer.");
-        tooltip.setShowDelay(Duration.seconds(2));
-        tooltip.setHideDelay(Duration.seconds(5));
-        testField1.setTooltip(tooltip);
+        testField1.setText("NEUT OVERFLOW");
         values.put("WBC", 1);
-
     }
 
     private void WBC_Normal() {
@@ -561,7 +515,6 @@ public class Diagnosis implements Initializable {
         tooltip.setHideDelay(Duration.seconds(5));
         testField5.setTooltip(tooltip);
         values.put("HCT", 1);
-
     }
 
     private void AP_OverFlow() {
@@ -584,7 +537,6 @@ public class Diagnosis implements Initializable {
         tooltip.setHideDelay(Duration.seconds(5));
         testField10.setTooltip(tooltip);
         values.put("HDL", 0);
-
     }
 
     private void Creatinine_OverFlow() {
@@ -596,7 +548,6 @@ public class Diagnosis implements Initializable {
         tooltip.setHideDelay(Duration.seconds(5));
         testField8.setTooltip(tooltip);
         values.put("Crtn", 1);
-
     }
 
     private void Iron_OverFlow() {
@@ -608,7 +559,6 @@ public class Diagnosis implements Initializable {
         tooltip.setHideDelay(Duration.seconds(5));
         testField9.setTooltip(tooltip);
         values.put("Iron", 1);
-
     }
 
     private void HB_OverFlow() {
@@ -619,7 +569,6 @@ public class Diagnosis implements Initializable {
         tooltip.setShowDelay(Duration.seconds(2));
         tooltip.setHideDelay(Duration.seconds(5));
         testField7.setTooltip(tooltip);
-
         values.put("Hb", 0);
     }
 

@@ -30,18 +30,10 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddPatient implements Initializable {
-    public TextField weightField;
-    public TextField lastNameField;
-    public TextField firstNameField;
-    public TextField ageField;
-    public TextField idField;
-    public TextField lengthField;
-    public TextField phoneField;
-    public TextField bloodTypeField;
+    public TextField lastNameField,weightField,firstNameField,ageField,idField,lengthField,phoneField,bloodTypeField;
     public CheckBox eastCheckBox, ethiopianCheckBox;
     public ChoiceBox<String> genderBox;
     private static Stage stg;
-
     @FXML
     StackPane parentContainer;
     @FXML
@@ -50,36 +42,28 @@ public class AddPatient implements Initializable {
     private Button homeButton, insertDataButton, uploadDataButton, questionsButton, signOutButton, addPatientButton, infoButton;
     @FXML
     private Pane pane;
-
     private String path;
-
     @FXML
     private Text drop_text;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         genderBox.getItems().add("Male");
         genderBox.getItems().add("Female");
     }
-
     public void homeButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
         m.changeScene("Home.fxml");
     }
-
     public void signOutButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
         m.changeScene("Main.fxml");
     }
-
     public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
         Main m = new Main();
         m.changeScene("AddPatient.fxml");
     }
-
     public void saveButton_Click(ActionEvent actionEvent) {
         if (isCurrentInput()) {
-
             String[] data = {idField.getText(), firstNameField.getText(), lastNameField.getText(),
                     ageField.getText(), weightField.getText(), lengthField.getText(),
                     phoneField.getText(), bloodTypeField.getText(), genderBox.getSelectionModel().getSelectedItem(), eastCheckBox.isSelected() + "", ethiopianCheckBox.isSelected() + ""};
@@ -92,10 +76,7 @@ public class AddPatient implements Initializable {
                 throw new RuntimeException(e);
             }
         }
-
-
     }
-
     public boolean isCurrentInput() {
         if (idField.getText().length() != 9) return false;
 
@@ -128,8 +109,6 @@ public class AddPatient implements Initializable {
         if (dragEvent.getDragboard().hasFiles())
             dragEvent.acceptTransferModes(TransferMode.ANY);
     }
-
-
     public void saveButton1_Click(ActionEvent actionEvent) throws IOException, InvalidFormatException {
         if (path != null) {
             ReadWriteXlsx readWriteXlsx = new ReadWriteXlsx("PatientList.xlsx");
@@ -138,7 +117,6 @@ public class AddPatient implements Initializable {
             m.changeScene("Home.fxml");
         } else drop_text.setText("Error");
     }
-
     public void infoButton_Click(ActionEvent actionEvent) throws IOException {
         Stage stage = new Stage();
         Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Info.fxml")));
@@ -147,13 +125,11 @@ public class AddPatient implements Initializable {
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
     }
-
     public void panePressed(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         Delta.x = stg.getX() - mouseEvent.getScreenX();
         Delta.y = stg.getY() - mouseEvent.getScreenY();
     }
-
     public void paneDragged(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stg.setX(Delta.x + mouseEvent.getScreenX());
