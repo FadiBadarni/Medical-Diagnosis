@@ -70,7 +70,6 @@ public class Register implements Initializable {
                 file.add(data);
                 Main m = new Main();
                 m.changeScene("Home.fxml");
-
             } catch (IOException | InvalidFormatException e) {
                 throw new RuntimeException(e);
             }
@@ -83,8 +82,9 @@ public class Register implements Initializable {
         try {
             int number = Integer.parseInt(id.getText());
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
-            Iterator<Cell> cellIterator = file.getAllRow(number);
+            Iterator<Cell> cellIterator = file.getAllRow(number,0);
             if (cellIterator != null) return false;
+            if(file.found(5,username.getText())) return false;
         } catch (NumberFormatException | IOException | InvalidFormatException e) {
             errorLabel.setText("ID Must be a valid number");
             return false;
@@ -97,7 +97,7 @@ public class Register implements Initializable {
             errorLabel.setText("Passwords Do Not Match");
             return false;
         }
-        if (password.getText().length() >= 8) {
+        if (password.getText().length() > 7 && password.getText().length() < 11) {
             errorLabel.setText("Password is not within required length");
             return false;
         }
@@ -108,7 +108,9 @@ public class Register implements Initializable {
             errorLabel.setText("Add At least one special character to your password");
             return false;
         }
-        if (username.getText().length() < 6 || username.getText().length() > 10) {
+
+
+        if (username.getText().length() <= 6 || username.getText().length() > 9) {
             errorLabel.setText("Username is not within required length");
             return false;
         }

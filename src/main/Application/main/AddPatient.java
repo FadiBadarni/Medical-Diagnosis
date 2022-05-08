@@ -102,7 +102,7 @@ public class AddPatient implements Initializable {
         try {
             int number = Integer.parseInt(idField.getText());
             ReadWriteXlsx file = new ReadWriteXlsx("PatientList.xlsx");
-            Iterator<Cell> cellIterator = file.getAllRow(number);
+            Iterator<Cell> cellIterator = file.getAllRow(number,0);
             if (cellIterator != null) return false;
             if (firstNameField.getText().length() == 0) return false;
             if (lastNameField.getText().length() == 0) return false;

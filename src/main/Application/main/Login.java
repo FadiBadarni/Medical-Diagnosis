@@ -70,9 +70,6 @@ public class Login implements Initializable {
         }
     }
 
-    public void userRegister(ActionEvent e) throws IOException {
-
-    }
 
     public void returnButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
@@ -89,23 +86,16 @@ public class Login implements Initializable {
     public boolean isCorrectPassword(String username, String password) {
 
         try {
-            int number = Integer.parseInt(username);
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
-            Iterator<Cell> cellIterator = file.getAllRow(number);
+            Iterator<Cell> cellIterator = file.getAllRow(username,5);
             if (cellIterator != null && cellIterator.hasNext()) {
                 Cell cell = cellIterator.next();
-                if (cell.getCellType() == CellType.NUMERIC) {
-                    int passwordNumber = Integer.parseInt(password);
-                    return cellIterator.next().getNumericCellValue() == passwordNumber;
-                } else
-                    return cell.getStringCellValue().equals(password);
-
-
+                return cell.getStringCellValue().equals(password);
             }
-        } catch (NumberFormatException | IOException | InvalidFormatException ex) {
+        } catch (IOException | InvalidFormatException ex) {
             return false;
         }
-        return true;
+        return false;
     }
 
     public void panePressed(javafx.scene.input.MouseEvent mouseEvent) {

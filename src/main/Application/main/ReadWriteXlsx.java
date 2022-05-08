@@ -10,6 +10,7 @@ import java.io.*;
 
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Objects;
 
 
 public class ReadWriteXlsx {
@@ -69,7 +70,7 @@ public class ReadWriteXlsx {
 
     }
 
-    public Iterator<Cell> getAllRow(int rowName) {
+    public Iterator<Cell> getAllRow(String rowName,int cellnum) {
 
         try {
             Iterator<Row> itr = sheet.iterator();
@@ -79,10 +80,10 @@ public class ReadWriteXlsx {
                 Iterator<Cell> cellIterator = row.cellIterator();   //iterating over each column
                 Cell cell = cellIterator.next();
 
-
-
-                if (cell.getCellType() == CellType.NUMERIC) {
-                    if (cell.getNumericCellValue()==rowName)
+                if(cell.getRow().getCell(cellnum).getCellType()==CellType.STRING)
+                {
+                    String s=cell.getRow().getCell(cellnum).getStringCellValue();
+                    if(Objects.equals(s, rowName))
                         return cellIterator;
                 }
             }
@@ -91,6 +92,47 @@ public class ReadWriteXlsx {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public Iterator<Cell> getAllRow(int rowName,int cellnum) {
+
+        try {
+            Iterator<Row> itr = sheet.iterator();
+            if(itr.hasNext()) itr.next();
+            while (itr.hasNext()) {
+                Row row = itr.next();
+                Iterator<Cell> cellIterator = row.cellIterator();   //iterating over each column
+                Cell cell = cellIterator.next();
+
+                if(cell.getRow().getCell(cellnum).getCellType()==CellType.NUMERIC)
+                {
+                    if(cell.getRow().getCell(cellnum).getNumericCellValue()==rowName)
+                        return cellIterator;
+                }
+            }
+            return null;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public boolean found(int fRow,String value) {
+        try {
+            Iterator<Row> itr = sheet.iterator();
+            if(itr.hasNext()) itr.next();
+            while (itr.hasNext()) {
+                Row row = itr.next();
+                Iterator<Cell> cellIterator = row.cellIterator();   //iterating over each column
+                Cell cell = cellIterator.next();
+                if (cell.getCellType() == CellType.STRING) {
+                    if(cell.getRow().getCell(fRow).getStringCellValue()==value)
+                        return true;
+                }
+            }
+        } catch (Exception e) {
+            return false;
+        }
+        return false;
     }
     public void copy(String path) {
         // Read xlsx file
@@ -199,10 +241,12 @@ public class ReadWriteXlsx {
             }
 
             for(String s: ldata.keySet()) {
+
                 cell = row.createCell(columnCount);
                 cell.setCellValue(s);
                 cell = row.createCell(columnCount+1);
                 cell.setCellValue(ldata.get(s));
+                row = sheet.createRow(++rowCount);
 
             }
             FileOutputStream outputStream = new FileOutputStream(filePath);
