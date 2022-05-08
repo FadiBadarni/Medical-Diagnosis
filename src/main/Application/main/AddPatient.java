@@ -63,7 +63,8 @@ public class AddPatient implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Home.fxml");
+        Main m = new Main();
+        m.changeScene("Home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
@@ -72,7 +73,8 @@ public class AddPatient implements Initializable {
     }
 
     public void addPatientButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "AddPatient.fxml");
+        Main m = new Main();
+        m.changeScene("AddPatient.fxml");
     }
 
     public void saveButton_Click(ActionEvent actionEvent) {
@@ -84,7 +86,8 @@ public class AddPatient implements Initializable {
             try {
                 ReadWriteXlsx file = new ReadWriteXlsx("PatientList.xlsx");
                 file.add(data);
-                new FadeTransitions(parentContainer, "Home.fxml");
+                Main m = new Main();
+                m.changeScene("Home.fxml");
             } catch (IOException | InvalidFormatException e) {
                 throw new RuntimeException(e);
             }
@@ -131,7 +134,8 @@ public class AddPatient implements Initializable {
         if (path != null) {
             ReadWriteXlsx readWriteXlsx = new ReadWriteXlsx("PatientList.xlsx");
             readWriteXlsx.copy(path);
-            new FadeTransitions(parentContainer, "Home.fxml");
+            Main m = new Main();
+            m.changeScene("Home.fxml");
         } else drop_text.setText("Error");
     }
 

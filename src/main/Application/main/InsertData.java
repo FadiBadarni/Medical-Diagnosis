@@ -55,7 +55,9 @@ public class InsertData implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Home.fxml");     }
+        Main m = new Main();
+        m.changeScene("Home.fxml");
+    }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
         Main m = new Main();
@@ -91,7 +93,8 @@ public class InsertData implements Initializable {
             Stage stage = (Stage) node.getScene().getWindow();
             Patient p = (Patient) stage.getUserData();
             p.setBloodTest(bloodTest);
-            new FadeTransitions(parentContainer, "Diagnosis.fxml");
+            Main m = new Main();
+            m.changeScene("Diagnosis.fxml");
         }
     }
 
@@ -114,18 +117,20 @@ public class InsertData implements Initializable {
     public void handleDrop(DragEvent dragEvent) throws FileNotFoundException {
         path = String.valueOf(dragEvent.getDragboard().getFiles());
         path = path.replace("[", "").replace("]", "");
-        drop_text.setText("Done");
+        drop_text.setText("File Uploaded - Hit Save Button");
     }
 
-    public void dropSaveButton_Click(ActionEvent actionEvent) {
+    public void dropSaveButton_Click(ActionEvent actionEvent) throws IOException {
         if (path != null) {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             Patient p = (Patient) stage.getUserData();
-          if(p.addBloodTest(path))
-            new FadeTransitions(parentContainer, "Diagnosis.fxml");
+          if(p.addBloodTest(path)){
+              Main m = new Main();
+              m.changeScene("Diagnosis.fxml");
+          }
           else drop_text.setText("Error");
-        } else drop_text.setText("Error");
+        } else drop_text.setText("File Missing");
     }
 
     public void panePressed(MouseEvent mouseEvent) {

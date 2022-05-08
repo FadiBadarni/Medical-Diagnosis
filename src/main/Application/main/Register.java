@@ -12,7 +12,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
@@ -23,6 +22,7 @@ import org.apache.poi.ss.usermodel.Cell;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Register implements Initializable {
     private static Stage stg;
@@ -42,29 +42,18 @@ public class Register implements Initializable {
 
     @FXML
     private PasswordField password, repasswoed;
-    public TextField phoneNumber;
+    public TextField username;
     public Button registerButton;
     @FXML
     private Label errorLabel;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        parentContainer.setOpacity(0);
-//        makeFadeTransition();
         new RotationAnimation(circle1, true, 360, 20);
         new RotationAnimation(circle2, true, 360, 20);
         new RotationAnimation(rectangle1);
         new RotationAnimation(rectangle2);
 
-    }
-
-    private void makeFadeTransition() {
-        FadeTransition fadeTransition = new FadeTransition();
-        fadeTransition.setDuration(Duration.seconds(1));
-        fadeTransition.setNode(parentContainer);
-        fadeTransition.setFromValue(0);
-        fadeTransition.setToValue(1);
-        fadeTransition.play();
     }
 
     public void returnButton_Click(ActionEvent e) throws IOException {
@@ -75,36 +64,67 @@ public class Register implements Initializable {
 
     public void register() {
         if (isCurrentInput()) {
-            String[] data = {id.getText(), password.getText(), firstname.getText(), lastname.getText(), email.getText(), phoneNumber.getText()};
+            String[] data = {id.getText(), password.getText(), firstname.getText(), lastname.getText(), email.getText(), username.getText()};
             try {
                 ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
                 file.add(data);
-                new FadeTransitions(parentContainer, "Home.fxml");
+                Main m = new Main();
+                m.changeScene("Home.fxml");
 
             } catch (IOException | InvalidFormatException e) {
                 throw new RuntimeException(e);
             }
 
-        } else errorLabel.setText("");
+        }
     }
 
 
     public boolean isCurrentInput() {
-        if (id.getText().length() != 9) return false;
         try {
             int number = Integer.parseInt(id.getText());
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
             Iterator<Cell> cellIterator = file.getAllRow(number);
             if (cellIterator != null) return false;
         } catch (NumberFormatException | IOException | InvalidFormatException e) {
-            throw new RuntimeException(e);
+            errorLabel.setText("ID Must be a valid number");
+            return false;
         }
-        if (!password.getText().equals(repasswoed.getText())) return false;
-
-        if (phoneNumber.getText().length() != 10) return false;
-
-        if (!email.getText().contains("@")) return false;
-        return password.getText().length() >= 8;
+        if (id.getText().length() != 9) {
+            errorLabel.setText("ID is not within required length");
+            return false;
+        }
+        if (!password.getText().equals(repasswoed.getText())) {
+            errorLabel.setText("Passwords Do Not Match");
+            return false;
+        }
+        if (password.getText().length() >= 8) {
+            errorLabel.setText("Password is not within required length");
+            return false;
+        }
+        if (!(password.getText().contains("!") || password.getText().contains("@") || password.getText().contains("#") ||
+                password.getText().contains("$") || password.getText().contains("%") || password.getText().contains("^") ||
+                password.getText().contains("&") || password.getText().contains("*") || password.getText().contains("(") ||
+                password.getText().contains(")") || password.getText().contains("-") || password.getText().contains("+"))) {
+            errorLabel.setText("Add At least one special character to your password");
+            return false;
+        }
+        if (username.getText().length() < 6 || username.getText().length() > 10) {
+            errorLabel.setText("Username is not within required length");
+            return false;
+        }
+        if (!Pattern.matches("[a-zA-Z]+", username.getText())) {
+            errorLabel.setText("Only english letters are allowed");
+            return false;
+        }
+        if (!Pattern.matches("(?=(.*\\d){2})", username.getText())) {
+            errorLabel.setText("A Minimum of 2 numbers is required in the username");
+            return false;
+        }
+        if (!email.getText().contains("@")) {
+            errorLabel.setText("Please Enter A Valid Email Address");
+            return false;
+        }
+        return true;
     }
 
     public void panePressed(MouseEvent mouseEvent) {

@@ -74,7 +74,8 @@ public class PatientInfo implements Initializable {
     }
 
     public void exitButton_Click(ActionEvent actionEvent) {
-        new FadeTransitions().exitFadeTransition(parentContainer, exitButton);
+        Stage stage = (Stage) exitButton.getScene().getWindow();
+        stage.close();
     }
 
     public void panePressed(MouseEvent mouseEvent) {

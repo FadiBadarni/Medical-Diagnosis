@@ -87,11 +87,13 @@ public class Home extends Application implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "Home.fxml");
+        Main m = new Main();
+        m.changeScene("Home.fxml");
     }
 
     public void addPatientButton_Click(ActionEvent e) throws IOException {
-        new FadeTransitions(parentContainer, "AddPatient.fxml");
+        Main m = new Main();
+        m.changeScene("AddPatient.fxml");
     }
 
     public void signOutButton_Click(ActionEvent e) throws IOException {
@@ -106,7 +108,8 @@ public class Home extends Application implements Initializable {
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         stage.setUserData(p);
-        new FadeTransitions(parentContainer, "InsertData.fxml");
+        Main m = new Main();
+        m.changeScene("InsertData.fxml");
     }
 
     @FXML

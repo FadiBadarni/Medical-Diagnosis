@@ -40,7 +40,9 @@ public class Questions implements Initializable {
                     "Are You Currently Pregnant ?",
                     "Do You Currently Have Diarrhea ?",
                     "Did You Vomit Recently ?",
-                    "Do You Do A Lot Of Physical Activity ?"
+                    "Do You Do A Lot Of Physical Activity ?",
+                    "Is Your Meat Intake Regular ?",
+                    "Any Previous History With Muscle Diseases ?"
             };
 
     Patient p;
@@ -58,7 +60,8 @@ public class Questions implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "Home.fxml");
+        Main m = new Main();
+        m.changeScene("Home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent actionEvent) throws IOException {
@@ -68,16 +71,19 @@ public class Questions implements Initializable {
 
     public void submitButton_Click(ActionEvent actionEvent) throws IOException {
         //TODO :SAVE QUESTION ANSWERS AND TAKE THEM INTO CONSIDERATION
-        new FadeTransitions(parentContainer, "Treatment.fxml");
+        Main m = new Main();
+        m.changeScene("Treatment.fxml");
     }
 
     public void skipButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "Treatment.fxml");
+        Main m = new Main();
+        m.changeScene("Treatment.fxml");
     }
 
 
     public void returnButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "Diagnosis.fxml");
+        Main m = new Main();
+        m.changeScene("Diagnosis.fxml");
     }
 
     public void panePressed(MouseEvent mouseEvent) {
@@ -101,43 +107,46 @@ public class Questions implements Initializable {
         stage.show();
     }
 
-    public void yesButton_Click(ActionEvent actionEvent) {
+    public void yesButton_Click(ActionEvent actionEvent) throws IOException {
         //   answer[q++]=1;
         values.put(question[qnumber[q++]], 1);
         if (q == qnumber.length) {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             stage.setUserData(p);
-            new FadeTransitions(parentContainer, "Treatment.fxml");
+            Main m = new Main();
+            m.changeScene("Treatment.fxml");
         } else questionText.setText(question[qnumber[q]]);
 
 
     }
 
-    public void noButton_Click(ActionEvent actionEvent) {
+    public void noButton_Click(ActionEvent actionEvent) throws IOException {
         //answer[q++]=-1;
         values.put(question[qnumber[q++]], -1);
         if (q == qnumber.length) {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             stage.setUserData(p);
-            new FadeTransitions(parentContainer, "Treatment.fxml");
+            Main m = new Main();
+            m.changeScene("Treatment.fxml");
         } else questionText.setText(question[qnumber[q]]);
     }
 
-    public void ignoreButton_Click(ActionEvent actionEvent) {
+    public void ignoreButton_Click(ActionEvent actionEvent) throws IOException {
         //answer[q++]=0;
         values.put(question[qnumber[q++]], 0);
         if (q == qnumber.length) {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             stage.setUserData(p);
-            new FadeTransitions(parentContainer, "Treatment.fxml");
+            Main m = new Main();
+            m.changeScene("Treatment.fxml");
         } else questionText.setText(question[qnumber[q]]);
 
     }
 
-    public void askButton_Click(ActionEvent actionEvent) {
+    public void askButton_Click(ActionEvent actionEvent) throws IOException {
         questionText.setVisible(true);
         yes_Button.setVisible(true);
         noButton.setVisible(true);
@@ -163,8 +172,10 @@ public class Questions implements Initializable {
             questionsAsked.add(2); //water
         }
         if (values.get("Crtn") == 1) {
-            questionsAsked.add(6); //diarrhea
-            questionsAsked.add(7); //vomit
+            questionsAsked.add(5); //diarrhea
+            questionsAsked.add(6); //muscle disease
+            questionsAsked.add(8); //meat
+            questionsAsked.add(9); //meat
         }
         if (values.get("Iron") == -1 || values.get("Urea") == -1) {
             if (Objects.equals(p.getGender(), "Female")) {
@@ -172,12 +183,14 @@ public class Questions implements Initializable {
             }
         }
         if (values.get("HDL") == 1) {
-            questionsAsked.add(8); //physical activity
+            questionsAsked.add(7); //physical activity
         }
 
         qnumber = questionsAsked.toArray(new Integer[0]);
-        if (qnumber.length == 0)
-            new FadeTransitions(parentContainer, "Treatment.fxml");
+        if (qnumber.length == 0) {
+            Main m = new Main();
+            m.changeScene("Treatment.fxml");
+        }
         else {
             answer = new int[qnumber.length];
             questionText.setText(question[qnumber[0]]);

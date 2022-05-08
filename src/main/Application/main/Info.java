@@ -25,6 +25,7 @@ public class Info implements Initializable {
     @FXML
     private Label label1, label2, label3;
     private static Stage stg;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parentContainer.setOpacity(0);
@@ -57,7 +58,8 @@ public class Info implements Initializable {
     }
 
     public void exitButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions().exitFadeTransition(parentContainer, exitButton2);
+        Stage stage = (Stage) exitButton2.getScene().getWindow();
+        stage.close();
     }
 
 

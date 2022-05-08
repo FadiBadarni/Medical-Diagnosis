@@ -54,10 +54,12 @@ public class Diagnosis implements Initializable {
             progressBar.setEffect(frostEffect);
         }
         parentContainer.setOpacity(1);
+        advanceButton.setDisable(true);
     }
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "Home.fxml");
+        Main m = new Main();
+        m.changeScene("Home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent actionEvent) throws IOException {
@@ -70,23 +72,25 @@ public class Diagnosis implements Initializable {
         Stage stage = (Stage) node.getScene().getWindow();
         p.setValues(values);
         stage.setUserData(p);
-        new FadeTransitions(parentContainer, "Questions.fxml");
-    }
-
-    public void goToTreatmentButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
-        Main m = new Main();
-        m.changeScene("Treatment.fxml");
-    }
-
-    public void goToQuestionsButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
         Main m = new Main();
         m.changeScene("Questions.fxml");
     }
 
+//    public void goToTreatmentButton_Click(ActionEvent actionEvent) throws IOException {
+//        new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
+//        Main m = new Main();
+//        m.changeScene("Treatment.fxml");
+//    }
+
+//    public void goToQuestionsButton_Click(ActionEvent actionEvent) throws IOException {
+//        new FadeTransitions().exitFadeTransition(parentContainer, goToTreatmentButton);
+//        Main m = new Main();
+//        m.changeScene("Questions.fxml");
+//    }
+
     public void returnButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(parentContainer, "InsertData.fxml");
+        Main m = new Main();
+        m.changeScene("InsertData.fxml");
     }
 
     public void viewButton_Click(ActionEvent actionEvent) {
@@ -151,6 +155,7 @@ public class Diagnosis implements Initializable {
 
         Button viewbutton = (Button) actionEvent.getSource();
         viewbutton.setVisible(false);
+        advanceButton.setDisable(false);
     }
 
 
@@ -421,32 +426,32 @@ public class Diagnosis implements Initializable {
 
     private void setHctLevel(Patient p, double HCT_Level) {
         if (Objects.equals(p.getGender(), "male") || Objects.equals(p.getGender(), "Male")) {
-            if (HCT_Level < 0.37) {
+            if (HCT_Level < 37) {
                 progressBar5.setStyle("-fx-accent: yellow;");
                 testField5.setText("Low Value");
                 values.put("HCT", -1);
 
-            } else if (HCT_Level <= 0.54) {
+            } else if (HCT_Level <= 54) {
                 progressBar5.setStyle("-fx-accent: green;");
                 testField5.setText("Value within normal range.");
                 values.put("HCT", 0);
             } else {
                 HCT_OverFlow();
             }
-            progressBar5.setProgress(HCT_Level / 0.54);
+            progressBar5.setProgress(HCT_Level / 54);
         } else if (Objects.equals(p.getGender(), "female") || Objects.equals(p.getGender(), "Female")) {
-            if (HCT_Level < 0.33) {
+            if (HCT_Level < 33) {
                 progressBar5.setStyle("-fx-accent: yellow;");
                 testField5.setText("Low Value");
                 values.put("HCT", -1);
-            } else if (HCT_Level <= 0.47) {
+            } else if (HCT_Level <= 47) {
                 progressBar5.setStyle("-fx-accent: green;");
                 testField5.setText("Value within normal range.");
                 values.put("HCT", 0);
             } else {
                 HCT_OverFlow();
             }
-            progressBar5.setProgress(HCT_Level / 0.47);
+            progressBar5.setProgress(HCT_Level / 47);
         }
     }
 
@@ -474,12 +479,12 @@ public class Diagnosis implements Initializable {
     }
 
     private void setLymphLevel(double wbc_level, double lymph_level) {
-        if (lymph_level / wbc_level < 0.36) {
+        if (lymph_level < 36) {
             progressBar3.setStyle("-fx-accent: yellow;");
             testField3.setText("Low Level");
             values.put("Lymph", -1);
 
-        } else if (lymph_level / wbc_level >= 0.36 && lymph_level / wbc_level <= 0.52) {
+        } else if (lymph_level >= 36 && lymph_level <= 52) {
             progressBar3.setStyle("-fx-accent: green;");
             testField3.setText("Value within normal range.");
             values.put("Lymph", 0);
@@ -493,16 +498,16 @@ public class Diagnosis implements Initializable {
             testField3.setTooltip(tooltip);
             values.put("Lymph", 1);
         }
-        progressBar3.setProgress((lymph_level / wbc_level) / 0.52);
+        progressBar3.setProgress(lymph_level / 52);
     }
 
     private void setNeutLevel(double WBC_Level, double Neut_Level) {
-        if (Neut_Level / WBC_Level < 0.28) {
+        if (Neut_Level < 28) {
             progressBar2.setStyle("-fx-accent: yellow;");
             testField2.setText("Low Level");
             values.put("Neut", -1);
 
-        } else if (Neut_Level / WBC_Level >= 0.28 && Neut_Level / WBC_Level <= 0.54) {
+        } else if (Neut_Level >= 28 && Neut_Level <= 54) {
             progressBar2.setStyle("-fx-accent: green;");
             testField2.setText("Value within normal range.");
             values.put("Neut", 0);
@@ -517,7 +522,7 @@ public class Diagnosis implements Initializable {
             values.put("Neut", 1);
 
         }
-        progressBar2.setProgress((Neut_Level / WBC_Level) / 0.54);
+        progressBar2.setProgress(Neut_Level / 54);
     }
 
     private void WBC_OverFlow() {

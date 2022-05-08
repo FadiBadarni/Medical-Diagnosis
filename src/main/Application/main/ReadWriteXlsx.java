@@ -180,11 +180,8 @@ public class ReadWriteXlsx {
             FileInputStream inputStream = new FileInputStream(file);
             Workbook workbook = WorkbookFactory.create(inputStream);
             sheet = workbook.getSheetAt(0);
-
-
             int rowCount = sheet.getLastRowNum();
             Row row = sheet.createRow(++rowCount);
-
 
             int columnCount = 0;
 

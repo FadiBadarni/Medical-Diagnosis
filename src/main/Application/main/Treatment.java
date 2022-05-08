@@ -69,7 +69,8 @@ public class Treatment implements Initializable {
     }
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(pane, "Home.fxml");
+        Main m = new Main();
+        m.changeScene("Home.fxml");
     }
 
     public void signOutButton_Click(ActionEvent actionEvent) throws IOException {
@@ -78,49 +79,22 @@ public class Treatment implements Initializable {
     }
 
     public void returnButton_Click(ActionEvent actionEvent) throws IOException {
-        new FadeTransitions(pane, "Questions.fxml");
+        Main m = new Main();
+        m.changeScene("Questions.fxml");
     }
-
-
-
-
-    @FXML
-    public void handleChangeDirectoryBtnClick() {
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        File selectedDirectory = directoryChooser.showDialog(null);
-
-    }
-
-    @FXML
-    public void handleSaveBtnClick() {
-//        Path file = Paths.get(directoryTextField.getText(), fileNameTextField.getText().trim() + fileExtensionComboBox.getSelectionModel().getSelectedItem());
-//        if (!Files.exists(file)) {
-//            {
-//                try {
-//                    Files.createFile(file.toAbsolutePath());
-//                    //...
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                }
-//            }
-//        }
-    }
-
     public void exportButton_Click(ActionEvent actionEvent) throws IOException, InvalidFormatException {
 
-
-        Hashtable<String,String> data=new Hashtable<>();
+        Hashtable<String, String> data = new Hashtable<>();
         String path = null;
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(null);
-        if (selectedDirectory != null)  path=selectedDirectory.getAbsolutePath();
-
+        if (selectedDirectory != null) path = selectedDirectory.getAbsolutePath();
 
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         p = (Patient) stage.getUserData();
         values = p.getValues();
-        String s=path+"\\output1.xlsx";
+        String s = path + "\\output1.xlsx";
         XSSFWorkbook workbook = new XSSFWorkbook();
         workbook.createSheet("Java Books");
 
@@ -136,312 +110,161 @@ public class Treatment implements Initializable {
         if (values.get("WBC") == -1) {
             data.put("Viral Disease",
                     "Rest at home.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Viral Disease",
-//                            "Rest at home."
-//                    });
             if (values.get("Do You Drink Enough Water ?") == 1) {
-                data.put( "Water Dehydration",
-                                "Drink More Water.");
-//                readWriteXlsx.add(new String[]
-//                        {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                                "Water Dehydration",
-//                                "Drink More Water."
-//                        });
+                data.put("Water Dehydration",
+                        "Drink More Water.");
             }
         }
         if (values.get("WBC") == 1) {
-            data.put("Disruption of blood / blood cell formation","10 MG pill of B12 a day for a month\n" +
+            data.put("Disruption of blood / blood cell formation", "10 MG pill of B12 a day for a month\n" +
                     "5 MG pill of folic acid a day for a month");
-            //TODO: Check if the person smokes or have a previous history with lung diseases.
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Disruption of blood / blood cell formation",
-//                            "10 MG pill of B12 a day for a month\n" +
-//                                    "5 MG pill of folic acid a day for a month"});
+            if (values.get("Is Your Temperature Average ? [~ 37°C]") == 1) {
+                data.put("Infection", "Dedicated Antibiotics");
+            }
+            //TODO: if over 100k cancer
         }
         if (values.get("Neut") == -1) {
             //TODO: in very rare cases this points to cancerous process.
-            data.put("Disruption of blood / blood cell formation","10 MG pill of B12 a day for a month\n" +
+            data.put("Disruption of blood / blood cell formation", "10 MG pill of B12 a day for a month\n" +
                     "5 MG pill of folic acid a day for a month");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Disruption of blood / blood cell formation",
-//                            "10 MG pill of B12 a day for a month\n" +
-//                                    "5 MG pill of folic acid a day for a month"});
             data.put("Tendency to bacterial infections", "Dedicated Antibiotics");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Tendency to bacterial infections",
-//                            "Dedicated Antibiotics"
-//                    });
         }
         if (values.get("Neut") == 1) {
-            data.put( "Infection","Dedicated Antibiotics");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Infection",
-//                            "Dedicated Antibiotics"
-//                    });
+            data.put("Infection", "Dedicated Antibiotics");
         }
         if (values.get("Lymph") == -1) {
             data.put("Disruption of blood / blood cell formation",
                     "10 MG pill of B12 a day for a month\n" +
                             "5 MG pill of folic acid a day for a month");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Disruption of blood / blood cell formation",
-//                            "10 MG pill of B12 a day for a month\n" +
-//                                    "5 MG pill of folic acid a day for a month"
-//                    });
         }
         if (values.get("Lymph") == 1) {
             data.put("Prolonged Bacterial Infection",
                     "Dedicated Antibiotics");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Prolonged Bacterial Infection",
-//                            "Dedicated Antibiotics"
-//                    });
             data.put("Lymphoma Cancer",
                     "Entrectinib");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Lymphoma Cancer",
-//                            "Entrectinib"
-//                    });
         }
         if (values.get("RBC") == -1) {
             data.put("Anemia",
                     "Two 10 MG B12 pills a day for a month.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Anemia",
-//                            "Two 10 MG B12 pills a day for a month."
-//                    });
             data.put("Bleeding",
                     "To be rushed to the hospital urgently.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Bleeding",
-//                            "To be rushed to the hospital urgently."
-//                    });
         }
         if (values.get("RBC") == 1) {
-            data.put(  "Infection",
+            data.put("Infection",
                     "Dedicated Antibiotics");
-//            readWriteXlsx.add(new String[]
-//                    //TODO: Check if the person has a fever. +
-//                    // Check if the person smokes or have a previous history with lung diseases.
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Infection",
-//                            "Dedicated Antibiotics"
-//                    });
+            if (values.get("Are You A Smoker ?") == 1) {
+                data.put("Smoker",
+                        "Quit Smoking");
+            }
+            if (values.get("Any Existing History With Lung Diseases ?") == 1) {
+                data.put("Lung Diseases",
+                        "Stop smoking / Refer to an X-ray of the lungs");
+            }
         }
         if (values.get("HCT") == -1) {
             data.put("Anemia",
                     "Two 10 MG B12 pills a day for a month.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Anemia",
-//                            "Two 10 MG B12 pills a day for a month."
-//                    });
             data.put("Bleeding",
                     "To be rushed to the hospital urgently.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Bleeding",
-//                            "To be rushed to the hospital urgently."
-//                    });
         }
         if (values.get("HCT") == 1) {
-            //TODO: Check if the person smokes.
+            if (values.get("Are You A Smoker ?") == 1) {
+                data.put("Smoker",
+                        "Quit Smoking");
+            }
         }
-
         if (values.get("Urea") == -1) {
-            data.put( "Malnutrition",
+            data.put("Malnutrition",
                     "Schedule an appointment with a nutritionist.");
-            //TODO: Check if the person is pregnant.
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Malnutrition",
-//                            "Schedule an appointment with a nutritionist."
-//                    });
-          //  int test = indicator.iterator().next();  //2 questions were asked (2 & 5) i received question numbers and questions answers (0,1)
-            //treatmentText.setText("Urea                 לתאם פגישה עם תזונאי \n");
+            if (values.get("Are You Currently Pregnant ?") == 1) {
+                data.put("Pregnancy",
+                        "During Pregnancy The Urea Level Decreases.");
+            }
         }
         if (values.get("Urea") == 1) {
             data.put("Kidney diseases",
                     "Balance blood sugar levels.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Kidney diseases",
-//                            "Balance blood sugar levels."
-//                    });
-            data.put( "Malnutrition - A high-protein diet",
+            data.put("Malnutrition - A high-protein diet",
                     "Schedule an appointment with a nutritionist.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Malnutrition - A high-protein diet",
-//                            "Schedule an appointment with a nutritionist."
-//                    });
             data.put("Dehydration",
                     "Complete rest while lying down, increase fluids intake by drinking water more.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Dehydration",
-//                            "Complete rest while lying down, increase fluids intake by drinking water more."
-//                    });
         }
         if (values.get("Hb") == -1) {
             data.put("Anemia",
                     "Two 10 MG B12 pills a day for a month.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Anemia",
-//                            "Two 10 MG B12 pills a day for a month."
-//                    });
         }
         if (values.get("Crtn") == -1) {
-            data.put( "Muscle diseases - Poor Muscle Mass",
+            data.put("Muscle diseases - Poor Muscle Mass",
                     "Two 5 MG pills of Altman C3 turmeric a day for a month.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Muscle diseases - Poor Muscle Mass",
-//                            "Two 5 MG pills of Altman C3 turmeric a day for a month."
-//                    });
             data.put("Malnutrition - A low-protein diet",
                     "Schedule an appointment with a nutritionist.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Malnutrition - A low-protein diet",
-//                            "Schedule an appointment with a nutritionist."
-//                    });
         }
         if (values.get("Crtn") == 1) {
-            data.put("Malnutrition - Increased consumption of meat",
-                    "Schedule an appointment with a nutritionist.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Malnutrition - Increased consumption of meat",
-//                            "Schedule an appointment with a nutritionist."
-//                    });
-            data.put("Muscle diseases",
-                    "Two 5 MG pills of Altman C3 turmeric a day for a month.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Muscle diseases",
-//                            "Two 5 MG pills of Altman C3 turmeric a day for a month."
-//                    });
-            data.put( "Kidney diseases",
+            data.put("Kidney diseases",
                     "Balance blood sugar levels.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Kidney diseases",
-//                            "Balance blood sugar levels."
-//                    });
+            if (values.get("Do You Currently Have Diarrhea ?") == 1) {
+                data.put("Diarrhea",
+                        "Diarrhea Cause");
+            }
+            if (values.get("Any Previous History With Muscle Diseases ?") == 1) {
+                data.put("Muscle diseases",
+                        "Two 5 MG pills of Altman C3 turmeric a day for a month.");
+            }
+            if (values.get("Did You Vomit Recently ?") == 1) {
+                data.put("Vomit",
+                        "Vomit Cause");
+            }
+            if (values.get("Is Your Meat Intake Regular ?") == 1) {
+                data.put("Increased consumption of meat",
+                        "Schedule an appointment with a nutritionist.");
+            }
         }
         if (values.get("Iron") == -1) {
-            //TODO: check if person is pregnant which will explain increased consumption of iron.
+            if (values.get("Are You Currently Pregnant ?") == 1) {
+                data.put("Pregnancy",
+                        "During Pregnancy The Iron Level Decreases.");
+            }
             data.put("Malnutrition - Inadequate nutrition",
                     "Schedule an appointment with a nutritionist.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Malnutrition - Inadequate nutrition",
-//                            "Schedule an appointment with a nutritionist."
-//                    });
             data.put("Blood Loss",
                     "To be rushed to the hospital urgently.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Blood Loss",
-//                            "To be rushed to the hospital urgently."
-//                    });
         }
         if (values.get("Iron") == 1) {
             data.put("Iron poisoning",
                     "To be rushed to the hospital urgently.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Iron poisoning",
-//                            "To be rushed to the hospital urgently."
-//                    });
         }
         if (values.get("HDL") == -1) {
-            //TODO:
             data.put("Heart Diseases",
                     "Schedule an appointment with a nutritionist.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Heart Diseases",
-//                            "Schedule an appointment with a nutritionist."
-//                    });
             data.put("Hyperlipidemia",
                     "Schedule an appointment with a nutritionist. A 5 MG pill of Simobil daily for a week.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Hyperlipidemia",
-//                            "Schedule an appointment with a nutritionist. A 5 MG pill of Simobil daily for a week."
-//                    });
-            data.put( "Adult Diabetes",
+            data.put("Adult Diabetes",
                     "Insulin adjustment for the patient.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Adult Diabetes",
-//                            "Insulin adjustment for the patient."
-//                    });
         }
         if (values.get("HDL") == 1) {
-            //Harmless
+            data.put("Harmless",
+                    "");
         }
         if (values.get("AP") == -1) {
             data.put("Malnutrition - A low-protein diet",
                     "Schedule an appointment with a nutritionist." +
                             "");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Malnutrition - A low-protein diet",
-//                            "Schedule an appointment with a nutritionist." +
-//                                    ""});
             data.put("Vitamin deficiency",
                     "Referral for a blood test to identify the missing vitamins.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Vitamin deficiency",
-//                            "Referral for a blood test to identify the missing vitamins."
-//                    });
         }
         if (values.get("AP") == 1) {
-            //TODO: Check if the person is pregnant.
-            data.put( "Liver disease",
+            if (values.get("Are You Currently Pregnant ?") == 1) {
+                data.put("Pregnancy",
+                        "During Pregnancy The AP Level Increases.");
+            }
+            data.put("Liver disease",
                     "Referral to a specific diagnosis for the purpose of determining treatment.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Liver disease",
-//                            "Referral to a specific diagnosis for the purpose of determining treatment."
-//                    });
             data.put("Diseases of the biliary tract",
                     "Referral to surgical treatment.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Diseases of the biliary tract",
-//                            "Referral to surgical treatment."
-//                    });
-            data.put( "Overactive thyroid gland",
+            data.put("Overactive thyroid gland",
                     "Propylthiouracil To reduce thyroid activity.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Overactive thyroid gland",
-//                            "Propylthiouracil To reduce thyroid activity."
-//                    });
-            data.put( "Use of various medications",
+            data.put("Use of various medications",
                     "Referral to a family doctor for a match between medications.");
-//            readWriteXlsx.add(new String[]
-//                    {"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
-//                            "Use of various medications",
-//                            "Referral to a family doctor for a match between medications."
-//                    });
 
         }
         readWriteXlsx.add(new String[]{
@@ -465,12 +288,11 @@ public class Treatment implements Initializable {
                 p.getBloodTest().get("Crtn") + "",
                 p.getBloodTest().get("Iron") + "",
                 p.getBloodTest().get("HDL") + "",
-                p.getBloodTest().get("AP") + ""},data);
+                p.getBloodTest().get("AP") + ""}, data);
 
-        treatmentText.setText(data.toString().replace("{","").replace("}","").replace("=","\n").replace(",","\n\n\n"));
+        treatmentText.setText(data.toString().replace("{", "").replace("}", "").replace("=", "\n").replace(",", "\n\n\n"));
 
-
-        treatmentText.setBackground(new Background(new BackgroundFill(Color.color(0.5F,0.5F,0.5F,0.7F), CornerRadii.EMPTY, new Insets(3))));
+        treatmentText.setBackground(new Background(new BackgroundFill(Color.color(0.5F, 0.5F, 0.5F, 0.7F), CornerRadii.EMPTY, new Insets(3))));
         treatmentText.setTextFill(Color.WHITE);
     }
 
