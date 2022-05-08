@@ -44,6 +44,7 @@ public class Questions implements Initializable {
                     "Is Your Meat Intake Regular ?",
                     "Any Previous History With Muscle Diseases ?"
             };
+
     Patient p;
     private int[] answer;
     private Integer[] qnumber;
@@ -51,6 +52,7 @@ public class Questions implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         questionText.setVisible(false);
         yes_Button.setVisible(false);
         noButton.setVisible(false);
@@ -152,6 +154,17 @@ public class Questions implements Initializable {
         Stage stage = (Stage) node.getScene().getWindow();
         p = (Patient) stage.getUserData();
         values = p.getValues();
+        values.put("Is Your Temperature Average ? [~ 37°C]",0);
+        values.put("Are You A Smoker ?",0);
+        values.put("Do You Drink Enough Water ?",0);
+        values.put("Any Existing History With Lung Diseases ?",0);
+        values.put("Are You Currently Pregnant ?",0);
+        values.put("Do You Currently Have Diarrhea ?",0);
+        values.put("Do You Do A Lot Of Physical Activity ?",0);
+        values.put("Is Your Meat Intake Regular ?",0);
+        values.put("Any Previous History With Muscle Diseases ?",0);
+        values.put( "Did You Vomit Recently ?",0);
+
 
         if (values.get("WBC") == 1) {
             questionsAsked.add(0);  //temperature

@@ -50,7 +50,6 @@ public class Treatment implements Initializable {
     private Button homeButton, signOutButton, returnButton, exportButton, infoButton, showButton;
     private static Stage stg;
     Hashtable<String, Integer> values = new Hashtable<>();
-    Set<Integer> indicator = new HashSet<>(Questions.questionsAsked);
     Patient p;
 
     @Override

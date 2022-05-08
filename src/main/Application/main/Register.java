@@ -67,7 +67,6 @@ public class Register implements Initializable {
             } catch (IOException | InvalidFormatException e) {
                 throw new RuntimeException(e);
             }
-
         }
     }
     public boolean isCurrentInput() {

@@ -51,7 +51,6 @@ public class Login implements Initializable {
         AnimationFX animateRegister = new Shake(registerButton);
         animateRegister.setDelay(Duration.seconds(5));
         animateRegister.play();
-
     }
     public void userLogin(ActionEvent e) throws IOException {
         validateLogin();
