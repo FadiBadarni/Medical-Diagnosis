@@ -1,5 +1,7 @@
 package main;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -7,38 +9,26 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Node;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.control.Label;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.*;
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import javafx.stage.Stage;
-import org.apache.poi.ss.formula.functions.T;
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.*;
-import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.*;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Treatment implements Initializable {
+    public ListView listview;
     @FXML
     private Label result1, result2, result3, result4, result5, result1Desc, result2Desc, result3Desc, result4Desc, result5Desc;
     public Label treatmentText;
@@ -51,6 +41,7 @@ public class Treatment implements Initializable {
     private static Stage stg;
     Hashtable<String, Integer> values = new Hashtable<>();
     Patient p;
+    Hashtable<String, String> data = new Hashtable<>();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -83,7 +74,7 @@ public class Treatment implements Initializable {
     }
     public void exportButton_Click(ActionEvent actionEvent){
 
-        Hashtable<String, String> data = new Hashtable<>();
+
         String path = null;
         DirectoryChooser directoryChooser = new DirectoryChooser();
         File selectedDirectory = directoryChooser.showDialog(null);
@@ -298,13 +289,19 @@ public class Treatment implements Initializable {
                     p.getBloodTest().get("HDL") + "",
                     p.getBloodTest().get("AP") + ""}, data);
 
-            treatmentText.setText(data.toString().replace("{", "").replace("}", "").replace("=", "\n").replace(",", "\n\n\n"));
-            treatmentText.setBackground(new Background(new BackgroundFill(Color.color(0.5F, 0.5F, 0.5F, 0.7F), CornerRadii.EMPTY, new Insets(3))));
-            treatmentText.setTextFill(Color.WHITE);
+
+            listview.getItems().addAll(data.keySet());
+            listview.setOnMouseClicked(new EventHandler<MouseEvent>(){
+                @Override
+                public void handle(MouseEvent arg0) {
+                       treatmentText.setText(data.get(listview.getSelectionModel().getSelectedItem()));
+                }
+            });
         } catch (IOException | InvalidFormatException e) {
             treatmentText.setText("Error");
         }
     }
+
 
     public void panePressed(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
@@ -325,5 +322,177 @@ public class Treatment implements Initializable {
         stage.setScene(scene);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.show();
+    }
+
+
+
+    public void paneDragged1(MouseEvent mouseEvent) {
+        if (values.get("WBC") == -1) {
+            data.put("Viral Disease",
+                    "Rest at home.");
+            if (values.get("Do You Drink Enough Water ?") == 1) {
+                data.put("Water Dehydration",
+                        "Drink More Water.");
+            }
+        }
+        if (values.get("WBC") == 1) {
+            data.put("Disruption of blood / blood cell formation", "10 MG pill of B12 a day for a month\n" +
+                    "5 MG pill of folic acid a day for a month");
+            if (values.get("Is Your Temperature Average ? [~ 37°C]") == 1) {
+                data.put("Infection", "Dedicated Antibiotics");
+            }
+            //TODO: if over 100k cancer
+        }
+        if (values.get("Neut") == -1) {
+            //TODO: in very rare cases this points to cancerous process.
+            data.put("Disruption of blood / blood cell formation", "10 MG pill of B12 a day for a month\n" +
+                    "5 MG pill of folic acid a day for a month");
+            data.put("Tendency to bacterial infections", "Dedicated Antibiotics");
+        }
+        if (values.get("Neut") == 1) {
+            data.put("Infection", "Dedicated Antibiotics");
+        }
+        if (values.get("Lymph") == -1) {
+            data.put("Disruption of blood / blood cell formation",
+                    "10 MG pill of B12 a day for a month\n" +
+                            "5 MG pill of folic acid a day for a month");
+        }
+        if (values.get("Lymph") == 1) {
+            data.put("Prolonged Bacterial Infection",
+                    "Dedicated Antibiotics");
+            data.put("Lymphoma Cancer",
+                    "Entrectinib");
+        }
+        if (values.get("RBC") == -1) {
+            data.put("Anemia",
+                    "Two 10 MG B12 pills a day for a month.");
+            data.put("Bleeding",
+                    "To be rushed to the hospital urgently.");
+        }
+        if (values.get("RBC") == 1) {
+            data.put("Infection",
+                    "Dedicated Antibiotics");
+            if (values.get("Are You A Smoker ?") == 1) {
+                data.put("Smoker",
+                        "Quit Smoking");
+            }
+            if (values.get("Any Existing History With Lung Diseases ?") == 1) {
+                data.put("Lung Diseases",
+                        "Stop smoking / Refer to an X-ray of the lungs");
+            }
+        }
+        if (values.get("HCT") == -1) {
+            data.put("Anemia",
+                    "Two 10 MG B12 pills a day for a month.");
+            data.put("Bleeding",
+                    "To be rushed to the hospital urgently.");
+        }
+        if (values.get("HCT") == 1) {
+            if (values.get("Are You A Smoker ?") == 1) {
+                data.put("Smoker",
+                        "Quit Smoking");
+            }
+        }
+        if (values.get("Urea") == -1) {
+            data.put("Malnutrition",
+                    "Schedule an appointment with a nutritionist.");
+            if (values.get("Are You Currently Pregnant ?") == 1) {
+                data.put("Pregnancy",
+                        "During Pregnancy The Urea Level Decreases.");
+            }
+        }
+        if (values.get("Urea") == 1) {
+            data.put("Kidney diseases",
+                    "Balance blood sugar levels.");
+            data.put("Malnutrition - A high-protein diet",
+                    "Schedule an appointment with a nutritionist.");
+            data.put("Dehydration",
+                    "Complete rest while lying down, increase fluids intake by drinking water more.");
+        }
+        if (values.get("Hb") == -1) {
+            data.put("Anemia",
+                    "Two 10 MG B12 pills a day for a month.");
+        }
+        if (values.get("Crtn") == -1) {
+            data.put("Muscle diseases - Poor Muscle Mass",
+                    "Two 5 MG pills of Altman C3 turmeric a day for a month.");
+            data.put("Malnutrition - A low-protein diet",
+                    "Schedule an appointment with a nutritionist.");
+        }
+        if (values.get("Crtn") == 1) {
+            data.put("Kidney diseases",
+                    "Balance blood sugar levels.");
+            if (values.get("Do You Currently Have Diarrhea ?") == 1) {
+                data.put("Diarrhea",
+                        "Diarrhea Cause");
+            }
+            if (values.get("Any Previous History With Muscle Diseases ?") == 1) {
+                data.put("Muscle diseases",
+                        "Two 5 MG pills of Altman C3 turmeric a day for a month.");
+            }
+            if (values.get("Did You Vomit Recently ?") == 1) {
+                data.put("Vomit",
+                        "Vomit Cause");
+            }
+            if (values.get("Is Your Meat Intake Regular ?") == 1) {
+                data.put("Increased consumption of meat",
+                        "Schedule an appointment with a nutritionist.");
+            }
+        }
+        if (values.get("Iron") == -1) {
+            if (values.get("Are You Currently Pregnant ?") == 1) {
+                data.put("Pregnancy",
+                        "During Pregnancy The Iron Level Decreases.");
+            }
+            data.put("Malnutrition - Inadequate nutrition",
+                    "Schedule an appointment with a nutritionist.");
+            data.put("Blood Loss",
+                    "To be rushed to the hospital urgently.");
+        }
+        if (values.get("Iron") == 1) {
+            data.put("Iron poisoning",
+                    "To be rushed to the hospital urgently.");
+        }
+        if (values.get("HDL") == -1) {
+            data.put("Heart Diseases",
+                    "Schedule an appointment with a nutritionist.");
+            data.put("Hyperlipidemia",
+                    "Schedule an appointment with a nutritionist. A 5 MG pill of Simobil daily for a week.");
+            data.put("Adult Diabetes",
+                    "Insulin adjustment for the patient.");
+        }
+        if (values.get("HDL") == 1) {
+            data.put("Harmless",
+                    "");
+        }
+        if (values.get("AP") == -1) {
+            data.put("Malnutrition - A low-protein diet",
+                    "Schedule an appointment with a nutritionist." +
+                            "");
+            data.put("Vitamin deficiency",
+                    "Referral for a blood test to identify the missing vitamins.");
+        }
+        if (values.get("AP") == 1) {
+            if (values.get("Are You Currently Pregnant ?") == 1) {
+                data.put("Pregnancy",
+                        "During Pregnancy The AP Level Increases.");
+            }
+            data.put("Liver disease",
+                    "Referral to a specific diagnosis for the purpose of determining treatment.");
+            data.put("Diseases of the biliary tract",
+                    "Referral to surgical treatment.");
+            data.put("Overactive thyroid gland",
+                    "Propylthiouracil To reduce thyroid activity.");
+            data.put("Use of various medications",
+                    "Referral to a family doctor for a match between medications.");
+
+        }
+        listview.getItems().addAll(data.keySet());
+        listview.setOnMouseClicked(new EventHandler<MouseEvent>(){
+            @Override
+            public void handle(MouseEvent arg0) {
+                treatmentText.setText(data.get(listview.getSelectionModel().getSelectedItem()));
+            }
+        });
     }
 }

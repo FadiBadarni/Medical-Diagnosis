@@ -105,7 +105,7 @@ public class ReadWriteXlsx {
                 Iterator<Cell> cellIterator = row.cellIterator();   //iterating over each column
                 Cell cell = cellIterator.next();
                 if (cell.getCellType() == CellType.STRING) {
-                    if(cell.getRow().getCell(fRow).getStringCellValue()==value)
+                    if(Objects.equals(cell.getRow().getCell(fRow).getStringCellValue(), value))
                         return true;
                 }
             }

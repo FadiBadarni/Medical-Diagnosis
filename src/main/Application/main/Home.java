@@ -18,17 +18,13 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.stage.WindowEvent;
-import javafx.util.Duration;
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
