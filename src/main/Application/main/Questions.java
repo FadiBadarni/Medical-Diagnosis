@@ -22,6 +22,7 @@ import java.util.*;
 public class Questions implements Initializable {
     public Text questionText;
     public Button noButton, ignoreButton, yes_Button, askButton, skipButton;
+    public Button infoButton;
     @FXML
     private Pane parentContainer;
     @FXML
@@ -69,18 +70,6 @@ public class Questions implements Initializable {
         m.changeScene("Main.fxml");
     }
 
-    public void submitButton_Click(ActionEvent actionEvent) throws IOException {
-        //TODO :SAVE QUESTION ANSWERS AND TAKE THEM INTO CONSIDERATION
-        Main m = new Main();
-        m.changeScene("Treatment.fxml");
-    }
-
-    public void skipButton_Click(ActionEvent actionEvent) throws IOException {
-        Main m = new Main();
-        m.changeScene("Treatment.fxml");
-    }
-
-
     public void returnButton_Click(ActionEvent actionEvent) throws IOException {
         Main m = new Main();
         m.changeScene("Diagnosis.fxml");
@@ -107,39 +96,33 @@ public class Questions implements Initializable {
         stage.show();
     }
 
-    public void yesButton_Click(ActionEvent actionEvent) throws IOException {
-        //   answer[q++]=1;
+    public void yesButton_Click(ActionEvent actionEvent) {
         values.put(question[qnumber[q++]], 1);
-        if (q == qnumber.length) {
-            Node node = (Node) actionEvent.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.setUserData(p);
-            Main m = new Main();
-            m.changeScene("Treatment.fxml");
+        if (q == qnumber.length) {goTo(actionEvent);
         } else questionText.setText(question[qnumber[q]]);
     }
 
-    public void noButton_Click(ActionEvent actionEvent) throws IOException {
-        //answer[q++]=-1;
+    public void goTo(ActionEvent actionEvent)
+    {
+        Node node = (Node) actionEvent.getSource();
+        Stage stage = (Stage) node.getScene().getWindow();
+        stage.setUserData(p);
+        Main m = new Main();
+        try {
+            m.changeScene("Treatment.fxml");
+        } catch (IOException e) {
+            questionText.setText(e.getMessage());
+        }
+    }
+    public void noButton_Click(ActionEvent actionEvent) {
         values.put(question[qnumber[q++]], -1);
-        if (q == qnumber.length) {
-            Node node = (Node) actionEvent.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.setUserData(p);
-            Main m = new Main();
-            m.changeScene("Treatment.fxml");
+        if (q == qnumber.length) {goTo(actionEvent);
         } else questionText.setText(question[qnumber[q]]);
     }
 
-    public void ignoreButton_Click(ActionEvent actionEvent) throws IOException {
-        //answer[q++]=0;
+    public void ignoreButton_Click(ActionEvent actionEvent) {
         values.put(question[qnumber[q++]], 0);
-        if (q == qnumber.length) {
-            Node node = (Node) actionEvent.getSource();
-            Stage stage = (Stage) node.getScene().getWindow();
-            stage.setUserData(p);
-            Main m = new Main();
-            m.changeScene("Treatment.fxml");
+        if (q == qnumber.length) {goTo(actionEvent);
         } else questionText.setText(question[qnumber[q]]);
     }
 
@@ -149,7 +132,6 @@ public class Questions implements Initializable {
         noButton.setVisible(true);
         ignoreButton.setVisible(true);
         askButton.setVisible(false);
-        skipButton.setVisible(false);
         Node node = (Node) actionEvent.getSource();
         Stage stage = (Stage) node.getScene().getWindow();
         p = (Patient) stage.getUserData();
@@ -200,14 +182,7 @@ public class Questions implements Initializable {
             m.changeScene("Treatment.fxml");
         }
         else {
-
             questionText.setText(question[qnumber[0]]);
         }
-    }
-    public static Set<Integer> getQuestionsAsked() {
-        return questionsAsked;
-    }
-    public void setQuestionsAsked(Set<Integer> questionsAsked) {
-        Questions.questionsAsked = questionsAsked;
     }
 }

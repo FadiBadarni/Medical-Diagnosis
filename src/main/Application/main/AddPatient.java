@@ -66,7 +66,7 @@ public class AddPatient implements Initializable {
         if (isCurrentInput()) {
             String[] data = {idField.getText(), firstNameField.getText(), lastNameField.getText(),
                     ageField.getText(), weightField.getText(), lengthField.getText(),
-                    phoneField.getText(), bloodTypeField.getText(), genderBox.getSelectionModel().getSelectedItem(), eastCheckBox.isSelected() + "", ethiopianCheckBox.isSelected() + ""};
+                    phoneField.getText(), bloodTypeField.getText(), genderBox.getSelectionModel().getSelectedItem(), (eastCheckBox.isSelected() ?1:0)+ "", (ethiopianCheckBox.isSelected()?1:0) + ""};
             try {
                 ReadWriteXlsx file = new ReadWriteXlsx("PatientList.xlsx");
                 file.add(data);

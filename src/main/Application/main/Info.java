@@ -55,11 +55,10 @@ public class Info implements Initializable {
         fadeTransition.play();
     }
 
-    public void exitButton_Click(ActionEvent actionEvent) throws IOException {
+    public void exitButton_Click(ActionEvent actionEvent)  {
         Stage stage = (Stage) exitButton2.getScene().getWindow();
         stage.close();
     }
-
 
     public void panePressed(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();

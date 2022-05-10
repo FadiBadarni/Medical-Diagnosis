@@ -1,6 +1,5 @@
 package main;
 
-import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -15,7 +14,6 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 
@@ -42,6 +40,9 @@ public class Register implements Initializable {
     private PasswordField password, repasswoed;
     public TextField username;
     public Button registerButton;
+
+
+
     @FXML
     private Label errorLabel;
     @Override
@@ -57,7 +58,8 @@ public class Register implements Initializable {
         m.changeScene("Main.fxml");
     }
     public void register() {
-        if (isCurrentInput()) {
+        String input=isCurrentInput(id.getText(), password.getText(), firstname.getText(), lastname.getText(), email.getText(), username.getText(),repasswoed.getText());
+        if (input.equals("true")) {
             String[] data = {id.getText(), password.getText(), firstname.getText(), lastname.getText(), email.getText(), username.getText()};
             try {
                 ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
@@ -67,39 +69,22 @@ public class Register implements Initializable {
             } catch (IOException | InvalidFormatException e) {
                 throw new RuntimeException(e);
             }
-        }
+        }else errorLabel.setText(input);
     }
-    public boolean isCurrentInput() {
+    public String isCurrentInput(String id, String passwordText,String firstnameText,String lastnameText ,String emailText, String usernameText,String rePasswordText) {
         try {
-            int number = Integer.parseInt(id.getText());
+            int number = Integer.parseInt(id);
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
             Iterator<Cell> cellIterator = file.getAllRow(number, 0);
-            if (cellIterator != null) {
-                errorLabel.setText("CELL ITERATOR ERROR");
-                return false;
-            }
-            if (file.found(5, username.getText())){
-                errorLabel.setText("USERNAME NOT FOUND");
-                return false;
-            }
-        } catch (NumberFormatException | IOException | InvalidFormatException e) {
-            errorLabel.setText("ID Must be a valid number");
-            return false;
-        }
-        if (id.getText().length() != 9) {
-            errorLabel.setText("ID is not within required length");
-            return false;
-        }
-        if (!password.getText().equals(repasswoed.getText())) {
-            errorLabel.setText("Passwords Do Not Match");
-            return false;
-        }
-        if (password.getText().length() < 8 || password.getText().length() > 10) {
-            errorLabel.setText("Password is not within required length");
-            return false;
-        }
+            if (cellIterator != null) {return "The Id is used";}
+            if(firstnameText.length()==0 || lastnameText.length()==0) {return "You must to add Firstname and Lastname";}
+            if (file.found(5, usernameText)){return "USERNAME IS USED";}
+        } catch (NumberFormatException | IOException | InvalidFormatException e) {return "ID Must be a valid number";}
+        if (id.length() != 9) {return "ID is not within required length";}
+        if (!passwordText.equals(rePasswordText)) {return "Passwords Do Not Match";}
+        if (passwordText.length() < 8 || passwordText.length() >10) {return"Password is not within required length";}
         int letters = 0, numbers = 0, specialChars = 0;
-        for (char c : password.getText().toCharArray()) {
+        for (char c : passwordText.toCharArray()) {
             if (Character.isLetter(c))
                 letters++;
             else if (Character.isDigit(c))
@@ -108,31 +93,26 @@ public class Register implements Initializable {
                 specialChars++;
         }
         if (letters < 1 || numbers < 1 || specialChars < 1) {
-            errorLabel.setText("Password Does Not Meat Minimum Requirements.");
-            return false;
+           return "Password Does Not Meat Minimum Requirements.";
         }
-        if (username.getText().length() < 6 || username.getText().length() > 9) {
-            errorLabel.setText("Username is not within required length");
-            return false;
+        if (usernameText.length() < 6 ||usernameText.length() > 9) {
+            return "Username is not within required length";
         }
-        if (!Pattern.matches("^[a-zA-Z0-9]+$", username.getText())) {
-            errorLabel.setText("Only alphanumeric characters are allowed.");
-            return false;
+        if (!Pattern.matches("^[a-zA-Z0-9]+$",usernameText)) {
+            return "Only alphanumeric characters are allowed.";
         }
         numbers = 0;
-        for (char c : username.getText().toCharArray()) {
+        for (char c : usernameText.toCharArray()) {
             if (Character.isDigit(c))
                 numbers++;
         }
         if (numbers > 2) {
-            errorLabel.setText("A Maximum of 2 digits is allowed in usernames.");
-            return false;
+          return "A Maximum of 2 digits is allowed in usernames.";
         }
-        if (!email.getText().contains("@")) {
-            errorLabel.setText("Please Enter A Valid Email Address");
-            return false;
+        if (!emailText.contains("@")) {
+           return "Please Enter A Valid Email Address";
         }
-        return true;
+        return "true";
     }
     public void panePressed(MouseEvent mouseEvent) {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
@@ -143,5 +123,13 @@ public class Register implements Initializable {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stg.setX(Delta.x + mouseEvent.getScreenX());
         stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
+
+    public Label getErrorLabel() {
+        return errorLabel;
+    }
+
+    public void setErrorLabel(Label errorLabel) {
+        this.errorLabel = errorLabel;
     }
 }

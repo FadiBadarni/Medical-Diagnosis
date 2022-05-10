@@ -31,8 +31,13 @@ public class Login implements Initializable {
     private Circle circle1;
     @FXML
     private Button loginButton, registerButton, returnButton;
+
+
+
     @FXML
     private Label wrongLogin;
+
+
     @FXML
     private TextField username;
     @FXML
@@ -52,15 +57,19 @@ public class Login implements Initializable {
         animateRegister.setDelay(Duration.seconds(5));
         animateRegister.play();
     }
-    public void userLogin(ActionEvent e) throws IOException {
+    public void userLogin(ActionEvent e)  {
         validateLogin();
     }
 
-    private void validateLogin() throws IOException {
+    private void validateLogin(){
         Main m = new Main();
-        if (isCorrectPassword(username.getText(), password.getText())) {
+       if (isCorrectPassword(username.getText(), password.getText())) {
             wrongLogin.setText("Success");
-            m.changeScene("Home.fxml");
+            try {
+                m.changeScene("Home.fxml");
+            } catch (IOException e) {
+                wrongLogin.setText("No file");
+            }
         } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
             wrongLogin.setText("Missing Credentials");
         } else {
@@ -100,6 +109,21 @@ public class Login implements Initializable {
         stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
         stg.setX(Delta.x + mouseEvent.getScreenX());
         stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
+    public Label getWrongLogin() {
+        return wrongLogin;
+    }
+
+
+
+    public void setUsername(TextField username) {
+        this.username=username;
+    }
+
+
+
+    public void setPassword(PasswordField password) {
+        this.password=password;
     }
 }
 

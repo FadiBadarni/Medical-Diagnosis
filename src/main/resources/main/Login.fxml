@@ -19,95 +19,105 @@
 <?import javafx.scene.shape.CubicCurve?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Login">
-   <children>
-      <ImageView fitHeight="454.0" fitWidth="771.0" layoutY="4.404216110706329" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@images/loginbg2.png" />
-         </image>
+<Pane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed"
+      style="-fx-background-color: transparent;" styleClass="start" stylesheets="@CSS/Main.css"
+      xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Login">
+   <ImageView fitHeight="454.0" fitWidth="771.0" layoutY="4.404216110706329" pickOnBounds="true"
+              preserveRatio="true">
+      <Image url="@images/loginbg2.png"/>
+   </ImageView>
+   <AnchorPane fx:id="anchorPane1" layoutY="1.2042160034179688" prefHeight="332.0" prefWidth="600.0"
+               style="-fx-background-color: transparent;">
+      <AmbientLight color="CHARTREUSE" layoutX="58.0" layoutY="61.0"/>
+      <Label fx:id="newLabel" alignment="CENTER" layoutX="458.0" layoutY="99.0" prefHeight="34.0" prefWidth="143.0"
+             rotate="14.4" text="New Here ?">
+         <font>
+            <Font name="Berlin Sans FB" size="27.0"/>
+         </font>
+         <textFill>
+            <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.35430797934532166" green="0.5938401818275452" blue="0.6736842393875122"/>
+                     </color>
+                  </Stop>
+                  <Stop offset="0.009421265141318979">
+                     <color>
+                        <Color red="0.13725490868091583" green="0.6313725709915161" blue="0.8156862854957581"/>
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.051656920462846756" green="0.2631579041481018" blue="0.2631579041481018"/>
+                     </color>
+                  </Stop>
+               </stops>
+            </RadialGradient>
+         </textFill>
+         <effect>
+            <DropShadow>
+               <color>
+                  <Color green="0.9666666388511658" blue="1.0"/>
+               </color>
+            </DropShadow>
+         </effect>
+      </Label>
+      <Button fx:id="returnButton" layoutX="28.0" layoutY="372.0" mnemonicParsing="false"
+              onAction="#returnButton_Click" prefHeight="26.0" prefWidth="95.0" style="-fx-cursor: hand;"
+              styleClass="returnButton" stylesheets="@CSS/Login.css" text="Return">
+         <font>
+            <Font name="Berlin Sans FB" size="18.0"/>
+         </font>
+      </Button>
+      <Circle fx:id="circle1" fill="#1f93ff00" layoutX="164.0" layoutY="99.0" radius="75.0" stroke="#56c596"
+              strokeType="INSIDE" strokeWidth="6.0" style="-fx-stroke-dash-array: 40;">
+         <effect>
+            <Shadow>
+               <color>
+                  <Color red="0.19607843458652496" green="0.6352941393852234" blue="0.7137255072593689"/>
+               </color>
+            </Shadow>
+         </effect>
+      </Circle>
+      <ImageView fitHeight="105.0" fitWidth="111.0" layoutX="112.0" layoutY="40.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@images/doctor.png"/>
       </ImageView>
-      <AnchorPane fx:id="anchorPane1" layoutY="1.2042160034179688" prefHeight="332.0" prefWidth="600.0" style="-fx-background-color: transparent;">
-         <children>
-            <AmbientLight color="CHARTREUSE" layoutX="58.0" layoutY="61.0" lightOn="true" />
-            <Label fx:id="newLabel" alignment="CENTER" layoutX="458.0" layoutY="99.0" prefHeight="34.0" prefWidth="143.0" rotate="14.4" text="New Here ?">
-               <font>
-                  <Font name="Berlin Sans FB" size="27.0" />
-               </font>
-               <textFill>
-                  <RadialGradient centerX="0.5" centerY="0.5" radius="0.5">
-                     <stops>
-                        <Stop>
-                           <color>
-                              <Color red="0.35430797934532166" green="0.5938401818275452" blue="0.6736842393875122" />
-                           </color>
-                        </Stop>
-                        <Stop offset="0.009421265141318979">
-                           <color>
-                              <Color red="0.13725490868091583" green="0.6313725709915161" blue="0.8156862854957581" />
-                           </color>
-                        </Stop>
-                        <Stop offset="1.0">
-                           <color>
-                              <Color red="0.051656920462846756" green="0.2631579041481018" blue="0.2631579041481018" />
-                           </color>
-                        </Stop>
-                     </stops>
-                  </RadialGradient>
-               </textFill>
-               <effect>
-                  <DropShadow>
-                     <color>
-                        <Color green="0.9666666388511658" blue="1.0" />
-                     </color>
-                  </DropShadow>
-               </effect>
-            </Label>
-            <Button fx:id="returnButton" layoutX="28.0" layoutY="372.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="26.0" prefWidth="95.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Login.css" text="Return">
-               <font>
-                  <Font name="Berlin Sans FB" size="18.0" />
-               </font>
-            </Button>
-            <Circle fx:id="circle1" fill="#1f93ff00" layoutX="164.0" layoutY="99.0" radius="75.0" stroke="#56c596" strokeType="INSIDE" strokeWidth="6.0" style="-fx-stroke-dash-array: 40;">
-               <effect>
-                  <Shadow>
-                     <color>
-                        <Color red="0.19607843458652496" green="0.6352941393852234" blue="0.7137255072593689" />
-                     </color>
-                  </Shadow>
-               </effect>
-            </Circle>
-            <ImageView fitHeight="105.0" fitWidth="111.0" layoutX="112.0" layoutY="40.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/doctor.png" />
-               </image>
-            </ImageView>
-            <TextField fx:id="username" layoutX="76.0" layoutY="218.0" prefHeight="26.0" prefWidth="176.0" promptText="Username" />
-            <Button fx:id="loginButton" layoutX="103.0" layoutY="302.0" mnemonicParsing="false" onAction="#userLogin" prefHeight="41.0" prefWidth="122.0" style="-fx-cursor: hand;" styleClass="loginButton" stylesheets="@CSS/Login.css" text="LOG IN">
-               <font>
-                  <Font name="Berlin Sans FB" size="16.0" />
-               </font>
-            </Button>
-            <Label fx:id="wrongLogin" layoutX="89.0" layoutY="183.0" prefHeight="26.0" prefWidth="158.0">
-               <font>
-                  <Font name="Eras Bold ITC" size="16.0" />
-               </font>
-            </Label>
-            <PasswordField fx:id="password" layoutX="76.0" layoutY="260.0" prefHeight="26.0" prefWidth="176.0" promptText="Password" />
-            <CubicCurve controlX1="266.199951171875" controlX2="30.999969482421875" controlY1="59.60017395019531" controlY2="101.20018005371094" endX="205.39999389648438" endY="-108.0" fill="#39b87400" layoutX="248.0" layoutY="108.0" startX="50.000030517578125" startY="328.8000183105469" stroke="#32a2b6" strokeWidth="3.0">
-               <effect>
-                  <GaussianBlur />
-               </effect></CubicCurve>
-            <ImageView fitHeight="211.0" fitWidth="252.0" layoutX="424.0" layoutY="145.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@images/register.png" />
-               </image>
-            </ImageView>
-            <Button fx:id="registerButton" layoutX="457.0" layoutY="229.0" mnemonicParsing="false" onAction="#registerButton_Click" prefHeight="50.0" prefWidth="140.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/Login.css" text="REGISTER" textFill="#28ae2a">
-               <font>
-                  <Font name="Berlin Sans FB" size="24.0" />
-               </font>
-            </Button>
-         </children>
-      </AnchorPane>
-   </children>
+      <TextField fx:id="username" layoutX="76.0" layoutY="218.0" prefHeight="26.0" prefWidth="176.0"
+                 promptText="Username"/>
+      <Button fx:id="loginButton" layoutX="103.0" layoutY="302.0" mnemonicParsing="false" onAction="#userLogin"
+              prefHeight="41.0" prefWidth="122.0" style="-fx-cursor: hand;" styleClass="loginButton"
+              stylesheets="@CSS/Login.css" text="LOG IN">
+         <font>
+            <Font name="Berlin Sans FB" size="16.0"/>
+         </font>
+      </Button>
+      <Label fx:id="wrongLogin" layoutX="89.0" layoutY="183.0" prefHeight="26.0" prefWidth="158.0">
+         <font>
+            <Font name="Eras Bold ITC" size="16.0"/>
+         </font>
+      </Label>
+      <PasswordField fx:id="password" id="#klk" layoutX="76.0" layoutY="260.0" prefHeight="26.0" prefWidth="176.0"
+                     promptText="Password"/>
+      <CubicCurve controlX1="266.199951171875" controlX2="30.999969482421875" controlY1="59.60017395019531"
+                  controlY2="101.20018005371094" endX="205.39999389648438" endY="-108.0" fill="#39b87400"
+                  layoutX="248.0" layoutY="108.0" startX="50.000030517578125" startY="328.8000183105469"
+                  stroke="#32a2b6" strokeWidth="3.0">
+         <effect>
+            <GaussianBlur/>
+         </effect>
+      </CubicCurve>
+      <ImageView fitHeight="211.0" fitWidth="252.0" layoutX="424.0" layoutY="145.0" pickOnBounds="true"
+                 preserveRatio="true">
+         <Image url="@images/register.png"/>
+      </ImageView>
+      <Button fx:id="registerButton" layoutX="457.0" layoutY="229.0" mnemonicParsing="false"
+              onAction="#registerButton_Click" prefHeight="50.0" prefWidth="140.0" style="-fx-cursor: hand;"
+              styleClass="registerButton" stylesheets="@CSS/Login.css" text="REGISTER" textFill="#28ae2a">
+         <font>
+            <Font name="Berlin Sans FB" size="24.0"/>
+         </font>
+      </Button>
+   </AnchorPane>
 </Pane>
