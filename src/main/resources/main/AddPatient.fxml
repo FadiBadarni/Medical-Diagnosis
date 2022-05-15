@@ -174,14 +174,19 @@
                      <Font name="Berlin Sans FB" size="19.0" />
                   </font>
                </Label>
-               <CubicCurve controlX1="-97.0" controlX2="-4.78778076171875" controlY1="-94.0" controlY2="107.98779296875" endX="272.4000244140625" endY="-18.800018310546875" fill="#45bbd900" layoutX="718.0" layoutY="348.0" startX="-256.7878112792969" startY="39.187774658203125" stroke="BLACK" strokeWidth="2.0">
+               <CubicCurve controlX1="-97.0" controlX2="-4.78778076171875" controlY1="-94.0" controlY2="107.98779296875" endX="272.4000244140625" endY="-18.800018310546875" fill="#45bbd900" layoutX="718.0" layoutY="378.0" startX="-256.7878112792969" startY="39.187774658203125" stroke="BLACK" strokeWidth="2.0">
                   <effect>
                      <MotionBlur />
                   </effect>
                </CubicCurve>
-               <Label layoutX="366.0" layoutY="403.0" prefHeight="28.0" prefWidth="321.0" text="AUTOMATIC PATIENT INFO INPUT">
+               <Label layoutX="364.0" layoutY="413.0" prefHeight="28.0" prefWidth="321.0" text="AUTOMATIC PATIENT INFO INPUT">
                   <font>
                      <Font name="Berlin Sans FB" size="21.0" />
+                  </font>
+               </Label>
+               <Label fx:id="errorLabel" layoutX="369.0" layoutY="326.0" prefHeight="26.0" prefWidth="417.0" textFill="#762a2a">
+                  <font>
+                     <Font name="Berlin Sans FB" size="15.0" />
                   </font>
                </Label>
          </children>

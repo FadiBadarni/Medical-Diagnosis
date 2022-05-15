@@ -92,8 +92,8 @@ public class ListPatient {
         return this.patients.get(x);
     }
 
-    public Set<String> getIdList() {
-        Set<String> ids = new HashSet<>();
+    public ArrayList<String> getIdList() {
+        ArrayList<String> ids = new ArrayList<>();
         for (Patient p : patients) {
             ids.add(p.getId() + "             " + p.getFirstName() + " " + p.getLastName());
         }

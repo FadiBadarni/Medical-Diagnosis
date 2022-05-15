@@ -319,22 +319,14 @@ public class Diagnosis implements Initializable {
     private void lowValue(ProgressBar progressBar, TextField testField) {
         progressBar.setStyle("-fx-accent: yellow;");
         testField.setText("Low Value");
-        testField.setDisable(true);
     }
     private void normalValue(ProgressBar progressBar, TextField testField) {
         progressBar.setStyle("-fx-accent: green;");
         testField.setText("Value within normal range.");
-        testField.setDisable(true);
     }
     private void highValue(ProgressBar progressBar, TextField testField) {
-        Tooltip tooltip = new Tooltip();
-        tooltip.setShowDelay(Duration.seconds(2));
-        tooltip.setHideDelay(Duration.seconds(5));
         progressBar.setStyle("-fx-accent: red;");
-        testField.setText("OVERFLOW");
-        tooltip.setText("OVERFLOW");
-        testField.setTooltip(tooltip);
-        testField.setDisable(true);
+        testField.setText("Value OverFlow");
     }
     public String returnStage(int age) {
         if (age > 0 && age <= 3) {
