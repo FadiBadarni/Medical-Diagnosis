@@ -1,28 +1,33 @@
 package main;
 
+import animatefx.animation.AnimationFX;
 import animatefx.animation.Bounce;
+import animatefx.animation.BounceIn;
 import animatefx.animation.RollIn;
 import javafx.animation.*;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Circle;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import javafx.stage.WindowEvent;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -33,7 +38,7 @@ import java.util.ResourceBundle;
 public class Main extends Application implements Initializable {
     private static Stage stg;
     @FXML
-    private StackPane parentContainer;
+    private Pane parentContainer;
     @FXML
     private Button loginButton, registerButton, infoButton, exitButton;
     @FXML
@@ -47,31 +52,41 @@ public class Main extends Application implements Initializable {
     public void start(Stage stage) throws IOException {
         stg = stage;
         stage.setResizable(false);
-        //stage.getIcons().add(new Image("appIcon.ico"));
-        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("main.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(Main.class.getResource("Main.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        //scene.getStylesheets().add("/CSS/main.css");
+        scene.setFill(Color.TRANSPARENT);
+        stage.initStyle(StageStyle.TRANSPARENT);
         stage.setTitle("Medical Diagnosis Application");
         stage.setScene(scene);
         stage.show();
-        Rectangle2D primScreenBounds = Screen.getPrimary().getVisualBounds();
-        stg.setX((primScreenBounds.getWidth() - stg.getWidth()) / 3);
-        stg.setY((primScreenBounds.getHeight() - stg.getHeight()) / 3);
-
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         parentContainer.setOpacity(0);
         makeFadeTransition();
-        new RotationAnimation(circle1, true, 360, 15);
-        new RotationAnimation(circle2, true, 360, 20);
-        new RotationAnimation(circle3, true, 360, 25);
-        new Bounce(label).play();
-        new RollIn(loginButton).play();
-        new RollIn(registerButton).play();
-        new RollIn(infoButton).play();
-        new RollIn(exitButton).play();
+        AnimationFX animateLogin = new BounceIn(loginButton);
+        AnimationFX animateRegister = new BounceIn(registerButton);
+        AnimationFX animateInfo = new BounceIn(infoButton);
+        AnimationFX animateExit = new BounceIn(exitButton);
+        registerButton.setVisible(false);
+        loginButton.setVisible(false);
+        infoButton.setVisible(false);
+        exitButton.setVisible(false);
+        animateLogin.setOnFinished(actionEvent -> {
+            animateRegister.setOnFinished(actionEvent1 -> {
+                animateInfo.setOnFinished(actionEvent2 -> {
+                    exitButton.setVisible(true);
+                    animateExit.play();
+                });
+                infoButton.setVisible(true);
+                animateInfo.play();
+            });
+            registerButton.setVisible(true);
+            animateRegister.play();
+        });
+        loginButton.setVisible(true);
+        animateLogin.play();
     }
 
     private void makeFadeTransition() {
@@ -90,31 +105,41 @@ public class Main extends Application implements Initializable {
     }
 
     public void loginButton_Click(ActionEvent e) throws IOException {
-        new slideTransitions(parentContainer, loginButton, anchorPane, "Login.fxml");
+        Main m = new Main();
+        m.changeScene("Login.fxml");
     }
 
     public void infoButton_Click(ActionEvent e) throws IOException {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.initStyle(StageStyle.UTILITY);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText("""
-                Final Project For The Course Quality And Software Testing
-                Made By
-                Fadi Badarni
-                Abdalla Sheikh Khalil
-                Abed Alrhman Abu Khiet
-                """);
-        alert.showAndWait();
+        Stage stage = new Stage();
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Info.fxml")));
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.UNDECORATED);
+        stage.show();
     }
 
     public void registerButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer, "Register.fxml");
+        Main m = new Main();
+        m.changeScene("Register.fxml");
     }
 
     public void exitButton_Click(ActionEvent e) throws IOException {
-        Main m = new Main();
-        m.changeScene("home.fxml");
+        System.exit(0);
     }
 
+    public void panePressed(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Delta.x = stg.getX() - mouseEvent.getScreenX();
+        Delta.y = stg.getY() - mouseEvent.getScreenY();
+    }
+
+    public void paneDragged(MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stg.setX(Delta.x + mouseEvent.getScreenX());
+        stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
+
+    public void terminateButton_Click(ActionEvent actionEvent) {
+        System.exit(0);
+    }
 }

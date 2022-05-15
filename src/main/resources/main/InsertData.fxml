@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
+
+<StackPane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.InsertData">
+   <children>
+      <AnchorPane>
+         <children>
+            <ImageView fitHeight="701.0" fitWidth="982.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+               <image>
+                  <Image url="@images/homeBG.jpg" />
+               </image>
+            </ImageView>
+            <Pane fx:id="pane" layoutX="-1.0" layoutY="-1.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="701.0" prefWidth="982.0">
+               <children>
+                  <ImageView fitHeight="718.0" fitWidth="765.0" layoutX="-170.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+                     <image>
+                        <Image url="@images/bar_line.png" />
+                     </image>
+                  </ImageView>
+                  <Pane fx:id="droppane" layoutX="618.0" layoutY="467.0" onDragDropped="#handleDrop" onDragOver="#handleDragOver" prefHeight="155.0" prefWidth="337.0" styleClass="pane" stylesheets="@CSS/InsertData.css">
+                     <children>
+                        <Text fx:id="drop_text" fill="#847b7b" layoutX="34.0" layoutY="84.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Drop Here" wrappingWidth="282.0">
+                           <font>
+                              <Font name="Times New Roman" size="22.0" />
+                           </font>
+                        </Text>
+                     </children>
+                  </Pane>
+                  <Label layoutX="716.0" layoutY="446.0" prefHeight="21.0" prefWidth="159.0" text="Only Excel Files Are Allowed" />
+                  <Button fx:id="homeButton" layoutX="-5.0" layoutY="165.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
+                  <Button fx:id="infoButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Info" />
+                  <Label layoutX="42.0" layoutY="58.0" text="Doctor Example">
+                     <font>
+                        <Font name="System Bold Italic" size="12.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="signOutButton" layoutX="-5.0" layoutY="625.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
+                  <Label layoutX="333.0" layoutY="54.0" prefHeight="28.0" prefWidth="132.0" text="White Blood Cells">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="379.0" layoutY="94.0" prefHeight="28.0" prefWidth="89.0" text="Neutrophil">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="367.0" layoutY="134.0" prefHeight="28.0" prefWidth="101.0" text="Lymphocytes">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="345.0" layoutY="174.0" prefHeight="28.0" prefWidth="121.0" text="Red Blood Cells">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="379.0" layoutY="214.0" prefHeight="28.0" prefWidth="89.0" text="Hematocrit">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="424.0" layoutY="254.0" prefHeight="28.0" prefWidth="43.0" text="Urea">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="714.0" layoutY="54.0" prefHeight="28.0" prefWidth="89.0" text="Hemoglobin">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="725.0" layoutY="94.0" prefHeight="28.0" prefWidth="80.0" text="Creatinine">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="770.0" layoutY="134.0" prefHeight="28.0" prefWidth="33.0" text="Iron">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="626.0" layoutY="174.0" prefHeight="28.0" prefWidth="185.0" text="High Density Lipoprotein">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="650.0" layoutY="214.0" prefHeight="28.0" prefWidth="159.0" text="Alkaline Phosphatase">
+                     <font>
+                        <Font name="Times New Roman Bold Italic" size="17.0" />
+                     </font>
+                  </Label>
+                  <TextField fx:id="whiteBloodCellsField" layoutX="469.0" layoutY="54.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="neutrophilField" layoutX="469.0" layoutY="94.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="lymphocytesField" layoutX="469.0" layoutY="134.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="redBloodCellsField" layoutX="469.0" layoutY="174.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="hematocritField" layoutX="469.0" layoutY="214.0" promptText="Percentage" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="ureaField" layoutX="469.0" layoutY="254.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="hemoglobinField" layoutX="810.0" layoutY="54.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="creatinineField" layoutX="810.0" layoutY="94.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="ironField" layoutX="810.0" layoutY="134.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="lipoproteinField" layoutX="810.0" layoutY="174.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <TextField fx:id="phophataseField" layoutX="810.0" layoutY="214.0" promptText="Number" styleClass="textFields" stylesheets="@CSS/InsertData.css" />
+                  <Button fx:id="saveButton" layoutX="684.0" layoutY="268.0" mnemonicParsing="false" onAction="#saveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton" text="Save &amp; Proceed To Results">
+                     <stylesheets>
+                        <URL value="@CSS/InsertData.css" />
+                        <URL value="@CSS/AddPatient.css" />
+                     </stylesheets></Button>
+                  <Label layoutX="548.0" layoutY="14.0" prefHeight="29.0" prefWidth="273.0" text="MANUAL LEVELS INPUT">
+                     <font>
+                        <Font name="Berlin Sans FB" size="25.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="354.0" layoutY="373.0" prefHeight="38.0" prefWidth="50.0" text="OR">
+                     <font>
+                        <Font name="Times New Roman Bold" size="33.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="saveButton2" layoutX="665.0" layoutY="639.0" mnemonicParsing="false" onAction="#dropSaveButton_Click" prefHeight="45.0" prefWidth="220.0" style="-fx-cursor: hand;" styleClass="saveButton" text="Save &amp; Proceed To Patient Choice">
+                     <stylesheets>
+                        <URL value="@CSS/InsertData.css" />
+                        <URL value="@CSS/AddPatient.css" />
+                     </stylesheets></Button>
+                  <Label layoutX="721.0" layoutY="421.0" prefHeight="25.0" prefWidth="132.0" text="Upload Levels">
+                     <font>
+                        <Font name="Times New Roman Bold" size="21.0" />
+                     </font>
+                  </Label>
+                  <CubicCurve controlX1="-97.0" controlX2="-4.78778076171875" controlY1="-94.0" controlY2="107.98779296875" endX="272.4000244140625" endY="-18.800018310546875" fill="#45bbd900" layoutX="706.0" layoutY="326.0" startX="-256.7878112792969" startY="39.187774658203125" stroke="BLACK" strokeWidth="2.0">
+                     <effect>
+                        <MotionBlur />
+                     </effect>
+                  </CubicCurve>
+                  <Label layoutX="379.0" layoutY="407.0" prefHeight="28.0" prefWidth="256.0" text="AUTOMATIC LEVELS INPUT">
+                     <font>
+                        <Font name="Berlin Sans FB" size="21.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="135.0" fitWidth="292.0" layoutX="189.0" layoutY="459.0" pickOnBounds="true" preserveRatio="true" rotate="9.6">
+                     <image>
+                        <Image url="@images/addPatient.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+         </children>
+      </AnchorPane>
+   </children>
+</StackPane>

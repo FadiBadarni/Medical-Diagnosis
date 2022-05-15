@@ -1,0 +1,18 @@
+
+.choice-box {
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #091f21 0%, rgb(12, 62, 70) 100%),
+    #103b41,
+    #BCE6FF,
+    #3895b0;
+    -fx-mark-color: #7393b3;
+}
+
+.choice-box > .label {
+    -fx-text-fill: #ffffff;
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 14px;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: rgba(139, 175, 213, 0.77);
+}

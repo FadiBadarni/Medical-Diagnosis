@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane onMouseDragged="#paneDragged" onMouseMoved="#mouseMoved" onMousePressed="#panePressed" prefHeight="762.0" prefWidth="1069.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Treatment">
+   <ImageView fitHeight="777.0" fitWidth="1069.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
+      <Image url="@images/homeBG.jpg" />
+   </ImageView>
+   <AnchorPane layoutX="-8.0" layoutY="-5.0" prefHeight="770.0" prefWidth="1075.0" />
+   <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="770.0" prefWidth="1069.0">
+      <ImageView fitHeight="1111.0" fitWidth="726.0" layoutX="-41.0" layoutY="-177.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@images/molecules.png" />
+      </ImageView>
+      <ImageView fitHeight="780.0" fitWidth="841.0" layoutX="-170.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+         <Image url="@images/bar_line.png" />
+      </ImageView>
+      <Button fx:id="exportButton" layoutX="833.0" layoutY="690.0" mnemonicParsing="false" onAction="#exportButton_Click" prefHeight="54.0" prefWidth="201.0" styleClass="diagnosisButton" text="Export Detailed Patient File">
+         <stylesheets>
+            <URL value="@CSS/Diagnosis.css" />
+            <URL value="@CSS/Home.css" />
+         </stylesheets>
+         <font>
+            <Font name="Berlin Sans FB" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="returnButton" layoutX="258.0" layoutY="699.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="34.0" prefWidth="134.0" styleClass="returnButton" text="return">
+         <stylesheets>
+            <URL value="@CSS/Questions.css" />
+            <URL value="@CSS/Diagnosis.css" />
+         </stylesheets>
+         <font>
+            <Font name="Berlin Sans FB" size="23.0" />
+         </font>
+      </Button>
+      <Label layoutX="256.0" layoutY="15.0" text="RESULTS ANALYSIS" textFill="#1b2930a0">
+         <font>
+            <Font name="Berlin Sans FB" size="64.0" />
+         </font>
+      </Label>
+      <Button fx:id="homeButton" layoutX="-5.0" layoutY="181.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="54.0" prefWidth="214.0" style="-fx-cursor: hand;" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="infoButton" contentDisplay="RIGHT" layoutX="-5.0" layoutY="530.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="54.0" prefWidth="214.0" style="-fx-cursor: hand;" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Info">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </Button>
+      <Button fx:id="signOutButton" layoutX="-5.0" layoutY="675.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="54.0" prefWidth="214.0" style="-fx-cursor: hand;" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out">
+         <font>
+            <Font name="Berlin Sans FB" size="20.0" />
+         </font>
+      </Button>
+      <Label layoutX="36.0" layoutY="54.0" prefHeight="26.0" prefWidth="141.0" text="Doctor Example">
+         <font>
+            <Font name="Berlin Sans FB" size="19.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="200.0" fitWidth="283.0" layoutX="445.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true">
+         <Image url="@images/medicine.png" />
+      </ImageView>
+      <Label fx:id="treatmentText" layoutX="366.0" layoutY="511.0" prefHeight="107.0" prefWidth="652.0">
+         <font>
+            <Font name="Berlin Sans FB" size="23.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listView" layoutX="369.0" layoutY="98.0" prefHeight="402.0" prefWidth="611.0" />
+   </Pane>
+</Pane>

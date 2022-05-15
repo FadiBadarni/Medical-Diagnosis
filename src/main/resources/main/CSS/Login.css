@@ -3,15 +3,16 @@
 }
 
 .loginButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
+    #56C596,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
+
 }
 
 .loginButton:hover {
@@ -19,15 +20,15 @@
 }
 
 .registerButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
+    #56C596,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
 }
 
 .registerButton:hover {
@@ -35,15 +36,15 @@
 }
 
 .returnButton {
-    -fx-background-color: rgba(63, 149, 251, 0.9279061966583508),
-    rgba(97, 70, 252, 0.9026961126247374),
-    rgba(155, 49, 204, 0.4096989137451855),
-    linear-gradient(to right, rgba(63, 149, 251, 0.9279061966583508) 0%, rgba(97, 70, 252, 0.9026961126247374) 50%, rgba(155, 49, 204, 0.4096989137451855) 100%);
-    -fx-background-insets: 0, 1, 2, 3, 0;
-    -fx-text-fill: #000000;
-    -fx-font-weight: bold;
-    -fx-font-size: 14px;
-    -fx-padding: 10 20 10 20;
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #329D9C 0%, rgba(70, 252, 225, 1) 100%),
+    #56C596,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
 }
 
 .returnButton:hover {

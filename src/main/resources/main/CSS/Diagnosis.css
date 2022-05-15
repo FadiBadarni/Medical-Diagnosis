@@ -1,0 +1,38 @@
+.advanceButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
+
+}
+.advanceButton:hover{
+    -fx-text-fill: #6cef0f;
+    -fx-cursor: hand;
+}
+.viewButton {
+
+}
+.viewButton:hover{
+    -fx-text-fill: #ff0000;
+}
+.returnButton{
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
+}
+.returnButton:hover{
+    -fx-cursor: hand;
+    -fx-text-fill: #ff0000;
+}
+

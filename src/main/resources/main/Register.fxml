@@ -1,62 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.BoxBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<StackPane fx:id="parentContainer" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="483.0" prefWidth="726.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Register">
+<Pane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" prefHeight="489.0" prefWidth="713.0" styleClass="registerScreen" stylesheets="@CSS/Register.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Register">
    <children>
-      <AnchorPane fx:id="anchorPane" prefHeight="494.0" prefWidth="574.0" styleClass="registerScreen" stylesheets="@CSS/Register.css">
+      <AnchorPane fx:id="anchorPane" layoutY="-1.0" prefHeight="476.0" prefWidth="713.0" style="-fx-background-color: transparent;">
          <children>
-            <Label layoutX="102.0" layoutY="114.0" prefHeight="34.0" prefWidth="173.0" text="Create New Account">
-               <font>
-                  <Font name="Consolas Bold Italic" size="16.0" />
-               </font>
-            </Label>
-            <TextField fx:id="firstname" layoutX="27.0" layoutY="148.0" prefHeight="34.0" prefWidth="156.0" promptText="First Name" />
-            <TextField fx:id="lastname" layoutX="193.0" layoutY="148.0" prefHeight="34.0" prefWidth="156.0" promptText="Last Name" />
-            <TextField fx:id="id" layoutX="27.0" layoutY="190.0" prefHeight="34.0" prefWidth="156.0" promptText="Identification Number" />
-            <TextField fx:id="age" layoutX="193.0" layoutY="192.0" prefHeight="34.0" prefWidth="156.0" promptText="Age" />
-            <TextField fx:id="weight" layoutX="27.0" layoutY="237.0" prefHeight="34.0" prefWidth="156.0" promptText="Weight (KG)" />
-            <TextField fx:id="length" layoutX="193.0" layoutY="237.0" prefHeight="34.0" prefWidth="156.0" promptText="Length (CM)" />
-            <TextField fx:id="email" layoutX="26.0" layoutY="283.0" prefHeight="34.0" prefWidth="323.0" promptText="Email" />
-            <Line endX="92.00003051757812" endY="-1.52587890625E-5" layoutX="3.0" layoutY="131.0" startX="27.199981689453125" startY="-1.52587890625E-5" />
-            <Line endX="100.0" layoutX="245.0" layoutY="131.0" startX="27.199981689453125" startY="-1.52587890625E-5" />
-            <ImageView fitHeight="140.0" fitWidth="215.0" layoutX="112.0" layoutY="-9.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="402.0" fitWidth="717.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@images/addDoctor.png" />
+                  <Image url="@images/registerScreen.png" />
                </image>
             </ImageView>
-            <Button fx:id="registerButton" layoutX="133.0" layoutY="375.0" mnemonicParsing="false" onAction="#register" prefHeight="36.0" prefWidth="120.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/Register.css" text="Register" textFill="#28ae2a">
+            <Label layoutX="84.0" layoutY="114.0" prefHeight="34.0" prefWidth="213.0" text="CREATE NEW ACCOUNT">
+               <font>
+                  <Font name="Berlin Sans FB" size="20.0" />
+               </font>
+            </Label>
+            <TextField fx:id="firstname" layoutX="27.0" layoutY="165.0" prefHeight="34.0" prefWidth="156.0" promptText="First Name" />
+            <TextField fx:id="lastname" layoutX="193.0" layoutY="165.0" prefHeight="34.0" prefWidth="156.0" promptText="Last Name" />
+            <TextField fx:id="id" layoutX="27.0" layoutY="215.0" prefHeight="34.0" prefWidth="156.0" promptText="Identification Number" />
+            <TextField fx:id="username" layoutX="193.0" layoutY="215.0" prefHeight="34.0" prefWidth="156.0" promptText="Username" />
+            <TextField fx:id="email" layoutX="26.0" layoutY="265.0" prefHeight="34.0" prefWidth="323.0" promptText="Email" />
+            <Line endX="74.19996643066406" endY="-1.52587890625E-5" layoutX="3.0" layoutY="131.0" startX="27.199981689453125" startY="-1.52587890625E-5" strokeWidth="2.0" />
+            <Line endX="100.0" layoutX="245.0" layoutY="131.0" startX="52.60003662109375" startY="0.1999969482421875" strokeWidth="2.0" />
+            <ImageView fitHeight="116.0" fitWidth="120.0" layoutX="125.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/register1.png" />
+               </image>
+            </ImageView>
+            <Button fx:id="registerButton" layoutX="129.0" layoutY="375.0" mnemonicParsing="false" onAction="#register" prefHeight="36.0" prefWidth="120.0" style="-fx-cursor: hand;" styleClass="registerButton" stylesheets="@CSS/Register.css" text="Register" textFill="#28ae2a">
                <font>
                   <Font name="Eras Bold ITC" size="13.0" />
                </font>
             </Button>
-            <Line endX="-99.99996948242188" endY="369.5999755859375" layoutX="464.0" layoutY="57.0" startX="-99.99996948242188" startY="-15.199993133544922" />
-            <Text layoutX="429.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username Should Be 6-8 Characters Maximum Of 2 Digits In Username" wrappingWidth="237.9215087890625" />
-            <Text layoutX="429.0" layoutY="216.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Password should be between 8-10 characters and contains atleast one letter and one digit and one special character [@#$]" wrappingWidth="237.9215087890625" />
-            <Button fx:id="returnButton" layoutX="9.0" layoutY="421.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="36.0" prefWidth="105.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Register.css" text="Return" textFill="RED">
+            <Text layoutX="463.0" layoutY="137.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username Should Be 6-8 Characters Maximum Of 2 Digits In Username" wrappingWidth="237.9215087890625">
                <font>
-                  <Font name="Eras Bold ITC" size="12.0" />
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Text layoutX="463.0" layoutY="218.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Password should be between 8-10 characters and contains atleast one letter and one digit and one special character [@#$]" wrappingWidth="237.9215087890625">
+               <font>
+                  <Font name="System Bold" size="12.0" />
+               </font>
+            </Text>
+            <Button fx:id="returnButton" layoutX="587.0" layoutY="413.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="41.0" prefWidth="114.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Register.css" text="Return" textFill="RED">
+               <font>
+                  <Font name="Berlin Sans FB" size="18.0" />
                </font>
             </Button>
-            <Text layoutX="398.0" layoutY="147.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!" wrappingWidth="12.21014404296875">
+            <Text layoutX="432.0" layoutY="149.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!" wrappingWidth="12.21014404296875">
                <font>
                   <Font name="System Bold Italic" size="23.0" />
                </font>
             </Text>
-            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="32.0" layoutX="389.0" layoutY="122.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="32.0" layoutX="392.0" layoutY="202.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
-            <Text layoutX="401.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!" wrappingWidth="12.21014404296875">
+            <Rectangle fx:id="rectangle2" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="32.0" layoutX="423.0" layoutY="124.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Rectangle fx:id="rectangle1" arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="32.0" layoutX="426.0" layoutY="204.0" stroke="BLACK" strokeType="INSIDE" width="30.0" />
+            <Text layoutX="435.0" layoutY="229.0" strokeType="OUTSIDE" strokeWidth="0.0" text="!" wrappingWidth="12.21014404296875">
                <font>
                   <Font name="System Bold Italic" size="23.0" />
                </font>
             </Text>
-            <PasswordField fx:id="password"  layoutX="27.0" layoutY="329.0" prefHeight="34.0" prefWidth="156.0" promptText="Password" />
-            <PasswordField fx:id="repasswoed"  layoutX="193.0" layoutY="329.0" prefHeight="34.0" prefWidth="156.0" promptText="Confirm Password" />
+            <PasswordField fx:id="password" layoutX="27.0" layoutY="315.0" prefHeight="34.0" prefWidth="156.0" promptText="Password" />
+            <PasswordField fx:id="repasswoed" layoutX="193.0" layoutY="315.0" prefHeight="34.0" prefWidth="156.0" promptText="Confirm Password" />
+            <CubicCurve controlX1="159.79998779296875" controlX2="-170.6000518798828" controlY1="65.90606689453125" controlY2="-388.49395751953125" endX="-18.000030517578125" endY="-338.6202392578125" fill="#21ffde00" layoutX="423.0" layoutY="413.0" startX="-53.200042724609375" startY="57.0" stroke="BLACK">
+               <effect>
+                  <BoxBlur />
+               </effect>
+            </CubicCurve>
+            <Label fx:id="errorLabel" layoutX="35.0" layoutY="431.0" prefHeight="31.0" prefWidth="345.0">
+               <font>
+                  <Font name="Berlin Sans FB" size="12.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
-</StackPane>
+</Pane>

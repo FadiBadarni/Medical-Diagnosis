@@ -1,0 +1,83 @@
+.panel {
+    -fx-background-color: linear-gradient(to right,
+    #6495ED 0%,
+    #56c596 25%,
+    #6495ED 100%);
+
+}
+
+.listview1 {
+    -fx-background-color:
+            linear-gradient(#4a707a 0%, #9fc9da 20%, #62a4cb 100%),
+    linear-gradient(#92aab7, #8ec7e0);
+    -fx-background-radius: 5, 4, 3, 5;
+    -fx-background-insets: 0, 1, 2, 0;
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+}
+
+.homeButton {
+    -fx-background-color: #090a0c,
+    linear-gradient(#4a707a 0%, #387f9d 20%, #015c92 100%),
+    linear-gradient(#65afda, #4599bd);
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.6), 5, 0.0, 0, 1);
+    -fx-text-fill: #000000;
+    -fx-padding: 10 20 10 20;
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 20px;
+}
+
+.homeButton:hover {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
+}
+
+.displayInfoButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
+    -fx-font-family: "Berlin Sans FB";
+    -fx-font-size: 20px;
+}
+
+.displayInfoButton:hover {
+    -fx-text-fill: #f18214;
+}
+
+.diagnosisButton {
+    -fx-padding: 8 15 15 15;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
+
+}
+
+.diagnosisButton:hover {
+    -fx-text-fill: #ff0000;
+    -fx-cursor: hand;
+}
+
+.questionsButton {
+
+}
+
+.questionsButton:hover {
+
+}

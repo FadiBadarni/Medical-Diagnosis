@@ -1,0 +1,28 @@
+.inputLabel {
+    -fx-font-size: 16px;
+    -fx-font-family: "Times New Roman";
+}
+.saveButton {
+    -fx-padding: 8 15 10 10;
+    -fx-background-insets: 0, 0 0 5 0, 0 0 6 0, 0 0 7 0;
+    -fx-background-radius: 8;
+    -fx-background-color: linear-gradient(from 0% 93% to 0% 100%, #56bcc5 0%, rgb(50, 162, 182) 100%),
+    #56b8c5,
+    #BCE6FF,
+    #7cbacb;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 4, 0, 0, 1);
+    -fx-text-fill: black;
+}
+
+/*PRESERVED*/
+
+/*.inputLabel2{*/
+/*    -fx-border-color: transparent transparent red transparent;*/
+/*    -fx-border-width: 3px;*/
+/*}*/
+/*.inputLabel2:focused{*/
+/*    -fx-content-display: top;*/
+/*    -fx-border-insets: 2 0 0 0;*/
+/*    -fx-border-color: -fx-text-box-border;*/
+/*    -fx-border-width: 2;*/
+/*}*/

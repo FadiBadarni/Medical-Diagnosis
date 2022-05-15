@@ -3,6 +3,7 @@ package main;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -12,22 +13,13 @@ import java.util.Hashtable;
 import java.util.Iterator;
 
 public class Patient {
+    private int id, age, weight, length, phone;
+    private String firstName, lastName, bloodType, gender;
+    private Hashtable<String, Double> bloodTest;
+    private int isEthiopian = 0, isEastern = 0;
+    private Hashtable<String, Integer> values;
 
-    private int id;
-    private String firstName;
-    private String lastName;
-
-    private int age;
-    private int weight;
-    private int length;
-    private String bloodType;
-    private int phone;
-
-    private Hashtable<String, Integer> bloodTest;
-
-
-
-    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone,String blood) {
+    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood, String gender, int iseast, int isethiopian) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -35,69 +27,52 @@ public class Patient {
         this.weight = weight;
         this.length = lenght;
         this.phone = phone;
-        this.bloodType=blood;
-        this.bloodTest =new Hashtable<>();
-    }
-
-
-
-    public void setPhone(int phone) {
-        this.phone = phone;
+        this.bloodType = blood;
+        this.gender = gender;
+        this.isEthiopian = isethiopian;
+        this.isEastern = iseast;
+        this.bloodTest = new Hashtable<>();
+        this.values = new Hashtable<>();
     }
 
     public Patient(Patient p) {
-
         this.id = p.getId();
-        this.firstName =p.getFirstName();
-        this.lastName =p.getLastName();
+        this.firstName = p.getFirstName();
+        this.lastName = p.getLastName();
         this.age = p.getAge();
         this.weight = p.getWeight();
-        this.length =p.getLength();
+        this.length = p.getLength();
         this.bloodType = p.getBloodType();
-        this.phone=p.getPhone();
-        this.bloodTest =new Hashtable<>(p.getBloodTest());
+        this.phone = p.getPhone();
+        this.bloodTest = new Hashtable<>(p.getBloodTest());
     }
 
-    public void addBloodTest(Hashtable<String,Integer> bloodTest)
-    {
-        this.bloodTest=new Hashtable<>(bloodTest);
+    public void addBloodTest(Hashtable<String, Double> bloodTest) {
+        this.bloodTest = new Hashtable<>(bloodTest);
     }
 
-    public void addBloodTest(String path)
-    {
+    public Boolean addBloodTest(String path) {
         bloodTest.clear();
         String key = null;
-        int value = 0;
-        try
-        {
+        double value = 0;
+        try {
             FileInputStream file = new FileInputStream(new File(path));
             XSSFWorkbook workbook = new XSSFWorkbook(file);
             XSSFSheet sheet = workbook.getSheetAt(0);
-            Iterator<Row> rowIterator = sheet.iterator();
-            while (rowIterator.hasNext())
-            {
-                Row row = rowIterator.next();
-                Iterator<Cell> cellIterator = row.cellIterator();
-
-                Cell cell = cellIterator.next();
-
-                if(cell.getCellType()== CellType.STRING)
-                    key=cell.getStringCellValue();
-
-                cell = cellIterator.next();
-                if(cell.getCellType()==CellType.NUMERIC) NUMERIC:
-                        value= (int) cell.getNumericCellValue();
-
-                if(key!=null && value!=0)
-                    bloodTest.put(key,value);
+            for (int i = 0; i < sheet.getRow(0).getLastCellNum(); i++) {
+                XSSFRow cell = sheet.getRow(0);
+                if (cell.getCell(i).getCellType() == CellType.STRING)
+                    key = (cell.getCell(i).getStringCellValue());
+                if (sheet.getRow(1).getCell(i).getCellType() == CellType.NUMERIC)
+                    value = (sheet.getRow(1).getCell(i).getNumericCellValue());
+                if (key != null && value != 0) bloodTest.put(key, value);
+                else return false;
             }
             file.close();
+        } catch (Exception e) {
+            return false;
         }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
+        return true;
     }
 
     public int getId() {
@@ -124,10 +99,16 @@ public class Patient {
         this.lastName = lastName;
     }
 
-
-
     public int getAge() {
         return age;
+    }
+
+    public Hashtable<String, Integer> getValues() {
+        return values;
+    }
+
+    public void setValues(Hashtable<String, Integer> values) {
+        this.values = values;
     }
 
     public void setAge(int age) {
@@ -150,13 +131,19 @@ public class Patient {
         this.length = length;
     }
 
+    public String getGender() {
+        return gender;
+    }
 
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
-    public Hashtable<String, Integer> getBloodTest() {
+    public Hashtable<String, Double> getBloodTest() {
         return bloodTest;
     }
 
-    public void setBloodTest(Hashtable<String, Integer> bloodTest) {
+    public void setBloodTest(Hashtable<String, Double> bloodTest) {
         this.bloodTest = bloodTest;
     }
 
@@ -171,4 +158,37 @@ public class Patient {
     public int getPhone() {
         return phone;
     }
+
+    public int getEthiopian() {
+        return isEthiopian;
+    }
+
+    public void setEthiopian(int ethiopian) {
+        isEthiopian = ethiopian;
+    }
+
+    public int getEastern() {
+        return isEastern;
+    }
+
+    public void setEastern(int eastern) {
+        isEastern = eastern;
+    }
+
+    public int getIsEthiopian() {
+        return isEthiopian;
+    }
+
+    public void setIsEthiopian(int isEthiopian) {
+        this.isEthiopian = isEthiopian;
+    }
+
+    public int getIsEastern() {
+        return isEastern;
+    }
+
+    public void setIsEastern(int isEastern) {
+        this.isEastern = isEastern;
+    }
+
 }

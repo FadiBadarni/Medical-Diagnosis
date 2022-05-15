@@ -1,24 +1,29 @@
 package main;
 
+import animatefx.animation.*;
+import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
+import javafx.stage.Stage;
+import javafx.util.Duration;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.w3c.dom.events.MouseEvent;
+import org.apache.poi.ss.usermodel.CellType;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class Login implements Initializable {
@@ -26,64 +31,99 @@ public class Login implements Initializable {
     private Circle circle1;
     @FXML
     private Button loginButton, registerButton, returnButton;
+
+
+
     @FXML
     private Label wrongLogin;
+
+
     @FXML
     private TextField username;
     @FXML
     private PasswordField password;
     @FXML
-    private StackPane parentContainer;
+    private Pane parentContainer;
     @FXML
     private AnchorPane anchorPane1, anchorPane2;
+    @FXML
+    private Label newLabel;
+    private static Stage stg;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         new RotationAnimation(circle1, true, 360, 10);
+        AnimationFX animateRegister = new Shake(registerButton);
+        animateRegister.setDelay(Duration.seconds(5));
+        animateRegister.play();
     }
-
-    public void userLogin(ActionEvent e) throws IOException {
+    public void userLogin(ActionEvent e)  {
         validateLogin();
     }
 
-    private void validateLogin() throws IOException {
+    private void validateLogin(){
         Main m = new Main();
-        if (isCorrectPassword(username.getText().toString(), password.getText().toString())) {
+       if (isCorrectPassword(username.getText(), password.getText())) {
             wrongLogin.setText("Success");
-            m.changeScene("home.fxml");
+            try {
+                m.changeScene("Home.fxml");
+            } catch (IOException e) {
+                wrongLogin.setText("No file");
+            }
         } else if (username.getText().isEmpty() && password.getText().isEmpty()) {
             wrongLogin.setText("Missing Credentials");
         } else {
             wrongLogin.setText("Wrong Credentials");
         }
     }
-
-    public void userRegister(ActionEvent e) throws IOException {
-
-    }
-
     public void returnButton_Click(ActionEvent e) throws IOException {
-        slideTransitions transition = new slideTransitions();
-        transition.rightToLeftTransition(parentContainer, returnButton, anchorPane1, anchorPane2);
-    }
+        Main m = new Main();
+        m.changeScene("Main.fxml");
 
+    }
     public void registerButton_Click(ActionEvent e) throws IOException {
-        new fadeTransitions(parentContainer, "Register.fxml");
+        Main m = new Main();
+        m.changeScene("Register.fxml");
     }
 
-
-    public boolean isCorrectPassword(String username, String password)
-    {
+    public boolean isCorrectPassword(String username, String password) {
         try {
             ReadWriteXlsx file = new ReadWriteXlsx("Users.xlsx");
-            Iterator<Cell>  cellIterator= file.getAllRow(username);
-            if(cellIterator!=null && cellIterator.hasNext())
-            return cellIterator.next().getStringCellValue().equals(password);
-            else return false;
-
-        } catch (IOException | InvalidFormatException e) {
-            throw new RuntimeException(e);
+            Iterator<Cell> cellIterator = file.getAllRow(username,5);
+            if (cellIterator != null && cellIterator.hasNext()) {
+                Cell cell = cellIterator.next();
+                return cell.getStringCellValue().equals(password);
+            }
+        } catch (IOException | InvalidFormatException ex) {
+            return false;
         }
+        return false;
     }
 
+    public void panePressed(javafx.scene.input.MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        Delta.x = stg.getX() - mouseEvent.getScreenX();
+        Delta.y = stg.getY() - mouseEvent.getScreenY();
+    }
+    public void paneDragged(javafx.scene.input.MouseEvent mouseEvent) {
+        stg = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+        stg.setX(Delta.x + mouseEvent.getScreenX());
+        stg.setY(Delta.y + mouseEvent.getScreenY());
+    }
+    public Label getWrongLogin() {
+        return wrongLogin;
+    }
+
+
+
+    public void setUsername(TextField username) {
+        this.username=username;
+    }
+
+
+
+    public void setPassword(PasswordField password) {
+        this.password=password;
+    }
 }
+
