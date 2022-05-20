@@ -65,17 +65,17 @@ public class InsertData implements Initializable {
 
     public void saveButton_Click(ActionEvent e) throws IOException {
 
-        if (checkField(whiteBloodCellsField) &&
-                checkField(neutrophilField) &&
-                checkField(lymphocytesField) &&
-                checkField(redBloodCellsField)&&
-                checkField(hematocritField) &&
-                checkField(ureaField) &&
-                checkField(hemoglobinField) &&
-                checkField(creatinineField) &&
-                checkField(ironField) &&
-                checkField(lipoproteinField) &&
-                checkField(phophataseField)) {
+        if (checkField(whiteBloodCellsField,1000,30000) &&
+                checkField(neutrophilField,0,100) &&
+                checkField(lymphocytesField,0,100) &&
+                checkField(redBloodCellsField,0,15)&&
+                checkField(hematocritField,0,100) &&
+                checkField(ureaField,0,150) &&
+                checkField(hemoglobinField,5,25) &&
+                checkField(creatinineField,0,3) &&
+                checkField(ironField,0,300) &&
+                checkField(lipoproteinField,0,150) &&
+                checkField(phophataseField,0,200)) {
             Hashtable<String, Double> bloodTest = new Hashtable<>();
                 bloodTest.put("WBC", Double.valueOf(whiteBloodCellsField.getText()));
                 bloodTest.put("Neut", Double.valueOf(neutrophilField.getText()));
@@ -94,15 +94,14 @@ public class InsertData implements Initializable {
                 p.setBloodTest(bloodTest);
                 Main m = new Main();
                 m.changeScene("Diagnosis.fxml");
-
         }
     }
 
-    public boolean checkField(TextField field) {
+    public boolean checkField(TextField field,int min,int max) {
         if (field.getText().length() != 0) {
             try{
                 double x=Double.parseDouble(field.getText());
-                if(x>=0) {
+                if(x>=min && x<=max) {
                     field.setStyle(null);
                     return true;
                 }
@@ -118,14 +117,12 @@ public class InsertData implements Initializable {
         return false;
     }
 
-
     public void handleDragOver(DragEvent dragEvent) {
         if (dragEvent.getDragboard().hasFiles())
             dragEvent.acceptTransferModes(TransferMode.ANY);
     }
 
-    public void handleDrop(DragEvent dragEvent) throws FileNotFoundException {
-
+    public void handleDrop(DragEvent dragEvent) {
         String pa = String.valueOf(dragEvent.getDragboard().getFiles());
         pa=pa.replace("[", "").replace("]", "");
         char[] xlsx = new char[5];
@@ -136,7 +133,6 @@ public class InsertData implements Initializable {
             this.path=pa;
         }
         else ulrTextField.setText("Error the file not xlsx");
-
     }
 
     public void dropSaveButton_Click(ActionEvent actionEvent) throws IOException {
@@ -145,9 +141,21 @@ public class InsertData implements Initializable {
             Stage stage = (Stage) node.getScene().getWindow();
             Patient p = (Patient) stage.getUserData();
             if (p.addBloodTest(path)) {
-                Main m = new Main();
-                m.changeScene("Diagnosis.fxml");
-            } else drop_text.setText("Error");
+                if (p.getBloodTest().get("WBC") > 1000 && p.getBloodTest().get("WBC") < 300000)
+                    if (p.getBloodTest().get("Neut") > 0 && p.getBloodTest().get("Neut") < 100)
+                        if (p.getBloodTest().get("Lymph") > 0 && p.getBloodTest().get("Lymph") < 100)
+                            if (p.getBloodTest().get("RBC") > 0 && p.getBloodTest().get("RBC") < 15)
+                                if (p.getBloodTest().get("HCT") > 0 && p.getBloodTest().get("HCT") < 100)
+                                    if (p.getBloodTest().get("Urea") > 0 && p.getBloodTest().get("Urea") < 120)
+                                        if (p.getBloodTest().get("Hb") > 5 && p.getBloodTest().get("Hb") < 25)
+                                            if (p.getBloodTest().get("Crtn") > 0 && p.getBloodTest().get("Crtn") < 3)
+                                                if (p.getBloodTest().get("Iron") > 0 && p.getBloodTest().get("Iron") < 300)
+                                                    if (p.getBloodTest().get("HDL") > 0 && p.getBloodTest().get("HDL") < 150)
+                                                        if (p.getBloodTest().get("AP") > 0 && p.getBloodTest().get("AP") < 200) {
+                                                            Main m = new Main();
+                                                            m.changeScene("Diagnosis.fxml");
+            }else message.setText("values error");
+            } else drop_text.setText("file Error");
         } else drop_text.setText("File Missing");
     }
 
