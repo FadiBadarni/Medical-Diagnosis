@@ -40,7 +40,7 @@ public class ReadWriteXlsx {
                 try {
                     double x = Double.parseDouble(field);
                     cell.setCellValue(x);
-                } catch (NumberFormatException e) {
+                } catch (RuntimeException e) {
                     cell.setCellValue(field);
                 }
             }

@@ -25,7 +25,7 @@ public class PatientInfo implements Initializable {
     @FXML
     public AnchorPane ap;
     @FXML
-    private TextField nameField, idField, ageField, phoneField, weightField, lengthField, bloodField, genderField;
+    private TextField nameField, idField, ageField, phoneField, weightField, lengthField, genderField;
     @FXML
     private Label nameLabel, idLabel, ageLabel, phoneLabel, weightLabel, lengthLabel, bloodLabel, genderLabel;
     @FXML
@@ -44,7 +44,6 @@ public class PatientInfo implements Initializable {
         new BounceIn(phoneField).play();
         new BounceIn(weightField).play();
         new BounceIn(lengthField).play();
-        new BounceIn(bloodField).play();
         new BounceIn(genderField).play();
         new JackInTheBox(nameLabel).play();
         new JackInTheBox(idLabel).play();
@@ -52,7 +51,6 @@ public class PatientInfo implements Initializable {
         new JackInTheBox(phoneLabel).play();
         new JackInTheBox(weightLabel).play();
         new JackInTheBox(lengthLabel).play();
-        new JackInTheBox(bloodLabel).play();
         new JackInTheBox(genderField).play();
         nameField.setEditable(false);
         idField.setEditable(false);
@@ -60,7 +58,6 @@ public class PatientInfo implements Initializable {
         phoneField.setEditable(false);
         weightField.setEditable(false);
         lengthField.setEditable(false);
-        bloodField.setEditable(false);
         genderField.setEditable(false);
     }
 

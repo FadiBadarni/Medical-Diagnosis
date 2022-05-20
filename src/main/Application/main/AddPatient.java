@@ -27,7 +27,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class AddPatient implements Initializable {
-    public TextField lastNameField, weightField, firstNameField, ageField, idField, lengthField, phoneField, bloodTypeField;
+    public TextField lastNameField, weightField, firstNameField, ageField, idField, lengthField, phoneField;
     public CheckBox eastCheckBox, ethiopianCheckBox;
     public ChoiceBox<String> genderBox;
     private static Stage stg;
@@ -70,7 +70,7 @@ public class AddPatient implements Initializable {
         if (isCurrentInput()) {
             String[] data = {idField.getText(), firstNameField.getText(), lastNameField.getText(),
                     ageField.getText(), weightField.getText(), lengthField.getText(),
-                    phoneField.getText(), bloodTypeField.getText(), genderBox.getSelectionModel().getSelectedItem(), (eastCheckBox.isSelected() ? 1 : 0) + "", (ethiopianCheckBox.isSelected() ? 1 : 0) + ""};
+                    phoneField.getText(), genderBox.getSelectionModel().getSelectedItem(), (eastCheckBox.isSelected() ? 1 : 0) + "", (ethiopianCheckBox.isSelected() ? 1 : 0) + ""};
             try {
                 ReadWriteXlsx file = new ReadWriteXlsx("PatientList.xlsx");
                 file.add(data);
@@ -83,64 +83,162 @@ public class AddPatient implements Initializable {
     }
 
     public boolean isCurrentInput() {
+        firstNameField.setStyle(null);
+        lastNameField.setStyle(null);
+        idField.setStyle(null);
+        ageField.setStyle(null);
+        weightField.setStyle(null);
+        lengthField.setStyle(null);
+        phoneField.setStyle(null);
+        genderBox.setStyle(null);
+        if (firstNameField.getText().length() == 0) {
+            firstNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+            new animatefx.animation.RubberBand(firstNameField).play();
+            errorLabel.setText("First name field is empty");
+            return false;
+        }
+        if (lastNameField.getText().length() == 0) {
+            lastNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+            new animatefx.animation.RubberBand(lastNameField).play();
+            errorLabel.setText("Last name field is empty");
+            return false;
+        }
+
         if (idField.getText().length() != 9) {
             idField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
             new animatefx.animation.RubberBand(idField).play();
             errorLabel.setText("ID is not within required length");
             return false;
         }
-        try {
-            int number = Integer.parseInt(idField.getText());
-            ReadWriteXlsx file = new ReadWriteXlsx("PatientList.xlsx");
-            Iterator<Cell> cellIterator = file.getAllRow(number, 0);
-            if (cellIterator != null) {
-                errorLabel.setText("Row does not exist");
+            try {
+                int number = Integer.parseInt(idField.getText());
+                ReadWriteXlsx file = new ReadWriteXlsx("PatientList.xlsx");
+                Iterator<Cell> cellIterator = file.getAllRow(number, 0);
+                if (cellIterator != null) {
+                    idField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                    new animatefx.animation.RubberBand(idField).play();
+                    errorLabel.setText("the id is exist");
+                    return false;
+                }
+            }catch (IOException |InvalidFormatException  e)
+            {
+                idField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                new animatefx.animation.RubberBand(idField).play();
+                errorLabel.setText("the id must to be number");
                 return false;
             }
-            if (firstNameField.getText().length() == 0) {
-                firstNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
-                new animatefx.animation.RubberBand(firstNameField).play();
-                errorLabel.setText("First name field is empty");
+
+
+            try {
+                    if (ageField.getText().length() == 0)
+                    {
+                        ageField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                        new animatefx.animation.RubberBand(ageField).play();
+                        errorLabel.setText("the age is empty");
+                        return false;
+                    }
+                    int age = Integer.parseInt(ageField.getText());
+                   if(age<0 || age>120) {
+                       ageField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                       new animatefx.animation.RubberBand(ageField).play();
+                       errorLabel.setText("the age must to be from 0 to 120 year");
+                       return false;
+                   }
+
+                }catch (NumberFormatException e)
+                {
+                    ageField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                    new animatefx.animation.RubberBand(ageField).play();
+                    errorLabel.setText("the age must to be number");
+                    return false;
+                }
+            try {
+                if (weightField.getText().length() == 0)
+                {
+                    weightField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                    new animatefx.animation.RubberBand(weightField).play();
+                    errorLabel.setText("the weight is empty");
+                    return false;
+                }
+                int  weight= Integer.parseInt(weightField.getText());
+                if(weight<10 || weight>300) {
+                    weightField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                    new animatefx.animation.RubberBand(weightField).play();
+                    errorLabel.setText("the weight must to be from 10 to 300kg");
+                    return false;
+                }
+
+            }catch (NumberFormatException ex)
+            {
+                weightField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                new animatefx.animation.RubberBand(weightField).play();
+                errorLabel.setText("the weight must to be number");
                 return false;
             }
-            if (lastNameField.getText().length() == 0) {
-                lastNameField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
-                new animatefx.animation.RubberBand(lastNameField).play();
-                errorLabel.setText("Last name field is empty");
+            try {
+                if (lengthField.getText()==null ||lengthField.getText().length()==0)
+                {
+                    lengthField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                    new animatefx.animation.RubberBand(lengthField).play();
+                    errorLabel.setText("the length is empty");
+                    return false;
+                }
+                int  length= Integer.parseInt(lengthField.getText());
+                if(length<50 || length>300) {
+                    lengthField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                    new animatefx.animation.RubberBand(lengthField).play();
+                    errorLabel.setText("the length must to be from 50 to 300cm ");
+                    return false;
+                }
+
+            }catch (NumberFormatException ex)
+            {
+                lengthField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                new animatefx.animation.RubberBand(lengthField).play();
+                errorLabel.setText("the length must to be number");
                 return false;
             }
-            Integer.parseInt(ageField.getText());
-            Integer.parseInt(weightField.getText());
-            Integer.parseInt(lengthField.getText());
-            Integer.parseInt(phoneField.getText());
-            if (phoneField.getText().length() != 10) {
+            try {
+                if (phoneField.getText().length() == 0)
+                {
+                    phoneField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                    new animatefx.animation.RubberBand(phoneField).play();
+                    errorLabel.setText("the phone is empty");
+                    return false;
+                }
+
+                if(phoneField.getText().length()!=10) {
+                    phoneField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                    new animatefx.animation.RubberBand(phoneField).play();
+                    errorLabel.setText("the phone must to be 10 number and start from 0 ");
+                    return false;
+                }
+                int  phone= Integer.parseInt(phoneField.getText());
+                if(phone>999999999||phone<99999999)
+                {
+                    phoneField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
+                    new animatefx.animation.RubberBand(phoneField).play();
+                    errorLabel.setText("the phone must to be 10 number and start from 0 ");
+                    return false;
+                }
+            }catch (NumberFormatException ex)
+            {
                 phoneField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
                 new animatefx.animation.RubberBand(phoneField).play();
-                errorLabel.setText("Phone is not within required length.");
+                errorLabel.setText("the length must to be 10 number");
                 return false;
             }
-            if (!genderBox.isScaleShape()) {
+           String s=genderBox.getValue();
+            if (s==null || s.length()==0) {
                 genderBox.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
                 new animatefx.animation.RubberBand(genderBox).play();
                 errorLabel.setText("Choose a gender");
                 return false;
             }
-        } catch (NumberFormatException | IOException | InvalidFormatException e) {
-            return false;
-        }
         return true;  //ADDED
     }
 
-    public boolean checkField(TextField field) {
-        if (field.getText().length() == 0) {
-            field.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
-            new animatefx.animation.RubberBand(field).play();
-            return false;
-        } else {
-            field.setStyle(null);
-            return true;
-        }
-    }
+
 
     public void handleDrop(DragEvent dragEvent) {
         path = String.valueOf(dragEvent.getDragboard().getFiles());

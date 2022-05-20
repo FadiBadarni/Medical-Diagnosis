@@ -26,12 +26,8 @@ class LoginTest{
     void isCorrectPassword() {
 
         Login p=new Login();
-        assertFalse(p.isCorrectPassword("username","password"));
-        assertTrue(p.isCorrectPassword("123sd","ssdfsd"));
-        assertFalse(p.isCorrectPassword("fadi","badarni"));
-        assertFalse(p.isCorrectPassword("123sd","password"));
-        assertFalse(p.isCorrectPassword("taylor","werbtrh"));
-        assertTrue(p.isCorrectPassword("gfhfg","asdfghasdfgh"));
+        assertTrue(p.isCorrectPassword("abada12","test123@"));
+        assertFalse(p.isCorrectPassword("fadi","test123@"));
 
 
     }

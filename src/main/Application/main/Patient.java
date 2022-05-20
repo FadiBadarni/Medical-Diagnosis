@@ -14,12 +14,12 @@ import java.util.Iterator;
 
 public class Patient {
     private int id, age, weight, length, phone;
-    private String firstName, lastName, bloodType, gender;
+    private String firstName, lastName, gender;
     private Hashtable<String, Double> bloodTest;
     private int isEthiopian = 0, isEastern = 0;
     private Hashtable<String, Integer> values;
 
-    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone, String blood, String gender, int iseast, int isethiopian) {
+    public Patient(int id, String firstName, String lastName, int age, int weight, int lenght, int phone,  String gender, int iseast, int isethiopian) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -27,7 +27,6 @@ public class Patient {
         this.weight = weight;
         this.length = lenght;
         this.phone = phone;
-        this.bloodType = blood;
         this.gender = gender;
         this.isEthiopian = isethiopian;
         this.isEastern = iseast;
@@ -42,7 +41,6 @@ public class Patient {
         this.age = p.getAge();
         this.weight = p.getWeight();
         this.length = p.getLength();
-        this.bloodType = p.getBloodType();
         this.phone = p.getPhone();
         this.bloodTest = new Hashtable<>(p.getBloodTest());
     }
@@ -54,7 +52,7 @@ public class Patient {
     public Boolean addBloodTest(String path) {
         bloodTest.clear();
         String key = null;
-        double value = 0;
+        double value = -1;
         try {
             FileInputStream file = new FileInputStream(new File(path));
             XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -65,6 +63,7 @@ public class Patient {
                     key = (cell.getCell(i).getStringCellValue());
                 if (sheet.getRow(1).getCell(i).getCellType() == CellType.NUMERIC)
                     value = (sheet.getRow(1).getCell(i).getNumericCellValue());
+                if(value<0) return false;
                 if (key != null && value != 0) bloodTest.put(key, value);
                 else return false;
             }
@@ -147,13 +146,6 @@ public class Patient {
         this.bloodTest = bloodTest;
     }
 
-    public String getBloodType() {
-        return bloodType;
-    }
-
-    public void setBloodType(String bloodType) {
-        this.bloodType = bloodType;
-    }
 
     public int getPhone() {
         return phone;

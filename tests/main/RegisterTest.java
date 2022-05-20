@@ -16,8 +16,6 @@ class RegisterTest {
         Register r=new Register();
         assertEquals(r.isCurrentInput("123456781","123$abQw","firstname","lastname","email@emial"
                 ,"user12q","123$abQw"),"true");
-        assertEquals(r.isCurrentInput("123456789","123$ab","firstname","lastname","email@emial"
-        ,"user12q","123$ab"),"The Id is used");
         assertEquals(r.isCurrentInput("12345678","123$ab","firstname","lastname","email@emial"
                 ,"user12q","123$ab"),"ID is not within required length");
         assertEquals(r.isCurrentInput("123456781","123$ab","firstname","lastname","email@emial"

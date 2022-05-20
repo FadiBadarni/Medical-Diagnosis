@@ -1,35 +1,29 @@
 package main;
-
-import animatefx.animation.Bounce;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import javafx.stage.WindowEvent;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 
-public class Home extends Application implements Initializable {
+public class Home implements Initializable {
     @FXML
     private Button homeButton, uploadDataButton, questionsButton, signOutButton, diagnosisButton, infoButton, displayInfoButton, addPatientButton;
     @FXML
@@ -42,6 +36,8 @@ public class Home extends Application implements Initializable {
     private ListView<String> listview1;
     private final ListPatient listPatient = new ListPatient();
     private static Stage stg;
+    @FXML
+    private Label warning;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -63,22 +59,15 @@ public class Home extends Application implements Initializable {
         });
     }
 
-    @Override
-    public void start(Stage stage) throws Exception {
-        stage.addEventHandler(WindowEvent.WINDOW_SHOWN, new EventHandler<WindowEvent>() {
-            @Override
-            public void handle(WindowEvent event) {
-                Rectangle2D screenBounds = Screen.getPrimary().getVisualBounds();
-                stage.setX((screenBounds.getWidth() - stage.getWidth()) / 2);
-                stage.setY((screenBounds.getHeight() - stage.getHeight()) / 2);
-            }
-        });
-        stage.show();
-    }
-
     private void updateData() {
-        listPatient.insertData("PatientList.xlsx");
+    String s=listPatient.insertData("PatientList.xlsx");
+    if(s.equals("ok"))
+    //System.out.println(s);
+    {
+        listview1.setStyle("-fx-control-inner-background: rgba(252,233,158,0.99);");
+        listview1.setStyle("-fx-font-size:19.0");
         listview1.getItems().addAll(listPatient.getIdList());
+    }else warning.setText(s);
     }
 
     public void homeButton_Click(ActionEvent e) throws IOException {
@@ -119,7 +108,6 @@ public class Home extends Application implements Initializable {
         TextField phoneField = (TextField) scene.lookup("#phoneField");
         TextField weightField = (TextField) scene.lookup("#weightField");
         TextField lengthField = (TextField) scene.lookup("#lengthField");
-        TextField bloodField = (TextField) scene.lookup("#bloodField");
         TextField genderField = (TextField) scene.lookup("#genderField");
         Patient p = listPatient.getPatient(listview1.getSelectionModel().getSelectedIndex());
         idField.setText(p.getId() + "");
@@ -128,7 +116,6 @@ public class Home extends Application implements Initializable {
         phoneField.setText("0" + p.getPhone());
         weightField.setText(p.getWeight() + "Kg");
         lengthField.setText(p.getLength() + "Cm");
-        bloodField.setText(p.getBloodType());
         genderField.setText(p.getGender());
     }
 

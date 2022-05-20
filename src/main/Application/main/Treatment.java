@@ -45,6 +45,7 @@ public class Treatment implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
+    public void start(){}
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
         Main m = new Main();
@@ -99,7 +100,6 @@ public class Treatment implements Initializable {
                     p.getWeight() + "",
                     p.getLength() + "",
                     p.getPhone() + "",
-                    p.getBloodType(),
                     p.getGender(),
                     p.getEthiopian() + "",
                     p.getEastern() + "",
