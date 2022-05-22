@@ -65,48 +65,47 @@ public class InsertData implements Initializable {
 
     public void saveButton_Click(ActionEvent e) throws IOException {
 
-        if (checkField(whiteBloodCellsField,1000,30000) &&
-                checkField(neutrophilField,0,100) &&
-                checkField(lymphocytesField,0,100) &&
-                checkField(redBloodCellsField,0,15)&&
-                checkField(hematocritField,0,100) &&
-                checkField(ureaField,0,150) &&
-                checkField(hemoglobinField,5,25) &&
-                checkField(creatinineField,0,3) &&
-                checkField(ironField,0,300) &&
-                checkField(lipoproteinField,0,150) &&
-                checkField(phophataseField,0,200)) {
+        if (checkField(whiteBloodCellsField, 1000, 30000) &&
+                checkField(neutrophilField, 0, 100) &&
+                checkField(lymphocytesField, 0, 100) &&
+                checkField(redBloodCellsField, 0, 15) &&
+                checkField(hematocritField, 0, 100) &&
+                checkField(ureaField, 0, 150) &&
+                checkField(hemoglobinField, 5, 25) &&
+                checkField(creatinineField, 0, 3) &&
+                checkField(ironField, 0, 300) &&
+                checkField(lipoproteinField, 0, 150) &&
+                checkField(phophataseField, 0, 200)) {
             Hashtable<String, Double> bloodTest = new Hashtable<>();
-                bloodTest.put("WBC", Double.valueOf(whiteBloodCellsField.getText()));
-                bloodTest.put("Neut", Double.valueOf(neutrophilField.getText()));
-                bloodTest.put("Lymph", Double.valueOf(lymphocytesField.getText()));
-                bloodTest.put("RBC", Double.valueOf(redBloodCellsField.getText()));
-                bloodTest.put("HCT", Double.valueOf(hematocritField.getText()));
-                bloodTest.put("Urea", Double.valueOf(ureaField.getText()));
-                bloodTest.put("Hb", Double.valueOf(hemoglobinField.getText()));
-                bloodTest.put("Crtn", Double.valueOf(creatinineField.getText()));
-                bloodTest.put("Iron", Double.valueOf(ironField.getText()));
-                bloodTest.put("HDL", Double.valueOf(lipoproteinField.getText()));
-                bloodTest.put("AP", Double.valueOf(phophataseField.getText()));
-                Node node = (Node) e.getSource();
-                Stage stage = (Stage) node.getScene().getWindow();
-                Patient p = (Patient) stage.getUserData();
-                p.setBloodTest(bloodTest);
-                Main m = new Main();
-                m.changeScene("Diagnosis.fxml");
+            bloodTest.put("WBC", Double.valueOf(whiteBloodCellsField.getText()));
+            bloodTest.put("Neut", Double.valueOf(neutrophilField.getText()));
+            bloodTest.put("Lymph", Double.valueOf(lymphocytesField.getText()));
+            bloodTest.put("RBC", Double.valueOf(redBloodCellsField.getText()));
+            bloodTest.put("HCT", Double.valueOf(hematocritField.getText()));
+            bloodTest.put("Urea", Double.valueOf(ureaField.getText()));
+            bloodTest.put("Hb", Double.valueOf(hemoglobinField.getText()));
+            bloodTest.put("Crtn", Double.valueOf(creatinineField.getText()));
+            bloodTest.put("Iron", Double.valueOf(ironField.getText()));
+            bloodTest.put("HDL", Double.valueOf(lipoproteinField.getText()));
+            bloodTest.put("AP", Double.valueOf(phophataseField.getText()));
+            Node node = (Node) e.getSource();
+            Stage stage = (Stage) node.getScene().getWindow();
+            Patient p = (Patient) stage.getUserData();
+            p.setBloodTest(bloodTest);
+            Main m = new Main();
+            m.changeScene("Diagnosis.fxml");
         }
     }
 
-    public boolean checkField(TextField field,int min,int max) {
+    public boolean checkField(TextField field, int min, int max) {
         if (field.getText().length() != 0) {
-            try{
-                double x=Double.parseDouble(field.getText());
-                if(x>=min && x<=max) {
+            try {
+                double x = Double.parseDouble(field.getText());
+                if (x >= min && x <= max) {
                     field.setStyle(null);
                     return true;
                 }
-            }catch (RuntimeException e)
-            {
+            } catch (RuntimeException e) {
                 field.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
                 new animatefx.animation.RubberBand(field).play();
                 return false;
@@ -124,15 +123,14 @@ public class InsertData implements Initializable {
 
     public void handleDrop(DragEvent dragEvent) {
         String pa = String.valueOf(dragEvent.getDragboard().getFiles());
-        pa=pa.replace("[", "").replace("]", "");
+        pa = pa.replace("[", "").replace("]", "");
         char[] xlsx = new char[5];
-        pa.getChars(pa.length()-5,pa.length(),xlsx,0);
-        if(xlsx[0]=='.' && xlsx[1]=='x' && xlsx[2]=='l'&& xlsx[3]=='s'&& xlsx[4]=='x'){
+        pa.getChars(pa.length() - 5, pa.length(), xlsx, 0);
+        if (xlsx[0] == '.' && xlsx[1] == 'x' && xlsx[2] == 'l' && xlsx[3] == 's' && xlsx[4] == 'x') {
             ulrTextField.setText(pa);
             drop_text.setText("File Uploaded - Hit Save Button");
-            this.path=pa;
-        }
-        else ulrTextField.setText("Error the file not xlsx");
+            this.path = pa;
+        } else ulrTextField.setText("Error the file not xlsx");
     }
 
     public void dropSaveButton_Click(ActionEvent actionEvent) throws IOException {
@@ -154,7 +152,7 @@ public class InsertData implements Initializable {
                                                         if (p.getBloodTest().get("AP") > 0 && p.getBloodTest().get("AP") < 200) {
                                                             Main m = new Main();
                                                             m.changeScene("Diagnosis.fxml");
-            }else message.setText("values error");
+                                                        } else message.setText("values error");
             } else drop_text.setText("file Error");
         } else drop_text.setText("File Missing");
     }
@@ -183,17 +181,15 @@ public class InsertData implements Initializable {
     public void browseFileButton_Click(ActionEvent actionEvent) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");
-        File file= fileChooser.showOpenDialog(new Stage());
-        if(file!=null)
-        {
+        File file = fileChooser.showOpenDialog(new Stage());
+        if (file != null) {
             char[] xlsx = new char[5];
-            String path=file.getAbsolutePath();
-            path.getChars(path.length()-5,path.length(),xlsx,0);
-            if(xlsx[0]=='.' && xlsx[1]=='x' && xlsx[2]=='l'&& xlsx[3]=='s'&& xlsx[4]=='x'){
-            ulrTextField.setText(file.getAbsolutePath());
-            this.path=file.getAbsolutePath();
-            }
-            else ulrTextField.setText("Error the file not xlsx");
+            String path = file.getAbsolutePath();
+            path.getChars(path.length() - 5, path.length(), xlsx, 0);
+            if (xlsx[0] == '.' && xlsx[1] == 'x' && xlsx[2] == 'l' && xlsx[3] == 's' && xlsx[4] == 'x') {
+                ulrTextField.setText(file.getAbsolutePath());
+                this.path = file.getAbsolutePath();
+            } else ulrTextField.setText("Error the file not xlsx");
         }
 
     }

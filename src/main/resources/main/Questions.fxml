@@ -20,11 +20,6 @@
             <Image url="@images/bar_line.png" />
          </ImageView>
          <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
-         <Label layoutX="48.0" layoutY="42.0" text="Doctor Example">
-            <font>
-               <Font name="System Bold Italic" size="12.0" />
-            </font>
-         </Label>
          <Button layoutX="-5.0" layoutY="622.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="39.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
          <Label layoutX="358.0" layoutY="16.0" prefHeight="52.0" prefWidth="280.0" text="Questionnaire" textFill="#49877da6">
             <font>

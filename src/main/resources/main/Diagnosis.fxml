@@ -162,11 +162,6 @@
                         <Image url="@images/question.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="21.0" layoutY="43.0" text="Doctor Example">
-                     <font>
-                        <Font name="Berlin Sans FB" size="19.0" />
-                     </font>
-                  </Label>
                   <ImageView fitHeight="216.0" fitWidth="209.0" layoutX="-12.0" layoutY="216.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@images/results.png" />

@@ -42,11 +42,6 @@
                   <Label layoutX="716.0" layoutY="446.0" prefHeight="21.0" prefWidth="159.0" text="Only Excel Files Are Allowed" />
                   <Button fx:id="homeButton" layoutX="-5.0" layoutY="165.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home" />
                   <Button fx:id="infoButton" contentDisplay="RIGHT" layoutX="-3.0" layoutY="482.0" mnemonicParsing="false" onAction="#infoButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Info" />
-                  <Label layoutX="42.0" layoutY="58.0" text="Doctor Example">
-                     <font>
-                        <Font name="System Bold Italic" size="12.0" />
-                     </font>
-                  </Label>
                   <Button fx:id="signOutButton" layoutX="-5.0" layoutY="625.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="45.0" prefWidth="179.0" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out" />
                   <Label layoutX="333.0" layoutY="54.0" prefHeight="28.0" prefWidth="132.0" text="White Blood Cells">
                      <font>

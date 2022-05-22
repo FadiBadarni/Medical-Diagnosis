@@ -163,11 +163,6 @@
                   </font>
                </Label>
                <ChoiceBox fx:id="genderBox" layoutX="749.0" layoutY="225.0" prefHeight="28.0" prefWidth="157.0" />
-               <Label layoutX="21.0" layoutY="42.0" text="Doctor Example">
-                  <font>
-                     <Font name="Berlin Sans FB" size="19.0" />
-                  </font>
-               </Label>
                <CubicCurve controlX1="-97.0" controlX2="-43.5009765625" controlY1="-94.0" controlY2="153.5009765625" endX="272.4000244140625" endY="-18.800018310546875" fill="#45bbd900" layoutX="718.0" layoutY="378.0" startX="-256.7878112792969" startY="39.187774658203125" stroke="BLACK" strokeWidth="2.0">
                   <effect>
                      <MotionBlur />

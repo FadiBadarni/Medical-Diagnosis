@@ -33,7 +33,7 @@
                   <Image url="@images/bar_line.png" />
                </image>
             </ImageView>
-            <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" style="-fx-cursor: hand;" styleClass="homeButtonClick" stylesheets="@CSS/Home.css" text="Home">
+            <Button fx:id="homeButton" layoutX="-5.0" layoutY="160.0" mnemonicParsing="false" onAction="#homeButton_Click" prefHeight="45.0" prefWidth="179.0" style="-fx-cursor: hand;" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Home">
                <font>
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
@@ -43,11 +43,6 @@
                   <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Button>
-            <Label layoutX="26.0" layoutY="49.0" text="Doctor Example">
-               <font>
-                  <Font name="Berlin Sans FB" size="19.0" />
-               </font>
-            </Label>
             <Button fx:id="signOutButton" layoutX="-5.0" layoutY="608.0" mnemonicParsing="false" onAction="#signOutButton_Click" prefHeight="45.0" prefWidth="179.0" style="-fx-cursor: hand;" styleClass="homeButton" stylesheets="@CSS/Home.css" text="Sign Out">
                <font>
                   <Font name="Berlin Sans FB" size="20.0" />
@@ -89,7 +84,7 @@
                   <Image url="@images/home_doctor.png" />
                </image>
             </ImageView>
-            <Label fx:id="warning" layoutX="362.0" layoutY="241.0" prefHeight="174.0" prefWidth="254.0" textFill="RED">
+            <Label fx:id="warning" layoutX="714.0" layoutY="302.0" prefHeight="153.0" prefWidth="254.0" textFill="RED">
                <font>
                   <Font name="Berlin Sans FB" size="12.0" />
                </font></Label>

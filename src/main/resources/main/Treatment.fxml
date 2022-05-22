@@ -60,11 +60,6 @@
             <Font name="Berlin Sans FB" size="20.0" />
          </font>
       </Button>
-      <Label layoutX="36.0" layoutY="54.0" prefHeight="26.0" prefWidth="141.0" text="Doctor Example">
-         <font>
-            <Font name="Berlin Sans FB" size="19.0" />
-         </font>
-      </Label>
       <ImageView fitHeight="200.0" fitWidth="283.0" layoutX="445.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@images/medicine.png" />
       </ImageView>

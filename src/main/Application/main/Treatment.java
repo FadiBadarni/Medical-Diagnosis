@@ -90,7 +90,7 @@ public class Treatment implements Initializable {
 
         try {
             ReadWriteXlsx readWriteXlsx = new ReadWriteXlsx(s);
-            readWriteXlsx.add(new String[]{"First name", "Last name", "Age", "weight", "length", "phone", "Blood Type", "gender", "Is Ethiopian", "Is Eastern", "WBC", "Neut", "Lymph", "RBC", "HCT",
+            readWriteXlsx.add(new String[]{"First name", "Last name", "Age", "weight", "length", "phone", "gender", "Is Ethiopian", "Is Eastern", "WBC", "Neut", "Lymph", "RBC", "HCT",
                     "Urea", "Hb", "Crtn", "Iron", "HDL", "AP", "Diagnosis", "Treatment"});
 
             readWriteXlsx.add(new String[]{
