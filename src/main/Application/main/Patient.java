@@ -49,7 +49,7 @@ public class Patient {
         this.bloodTest = new Hashtable<>(bloodTest);
     }
 
-    public Boolean addBloodTest(String path) {
+    public String addBloodTest(String path) {
         bloodTest.clear();
         String key = null;
         double value = -1;
@@ -61,17 +61,19 @@ public class Patient {
                 XSSFRow cell = sheet.getRow(0);
                 if (cell.getCell(i).getCellType() == CellType.STRING)
                     key = (cell.getCell(i).getStringCellValue());
+                else return "Error in column name :"+i;
                 if (sheet.getRow(1).getCell(i).getCellType() == CellType.NUMERIC)
                     value = (sheet.getRow(1).getCell(i).getNumericCellValue());
-                if(value<0) return false;
+                else  return "Error in column value :"+i;
+                if(value<0) return "the value must to be more then 0 in colum:"+i ;
                 if (key != null && value != 0) bloodTest.put(key, value);
-                else return false;
+                else return "Error int colum:" +i;
             }
             file.close();
         } catch (Exception e) {
-            return false;
+            return "Error";
         }
-        return true;
+        return "ok";
     }
 
     public int getId() {

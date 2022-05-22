@@ -138,22 +138,33 @@ public class InsertData implements Initializable {
             Node node = (Node) actionEvent.getSource();
             Stage stage = (Stage) node.getScene().getWindow();
             Patient p = (Patient) stage.getUserData();
-            if (p.addBloodTest(path)) {
-                if (p.getBloodTest().get("WBC") > 1000 && p.getBloodTest().get("WBC") < 300000)
-                    if (p.getBloodTest().get("Neut") > 0 && p.getBloodTest().get("Neut") < 100)
-                        if (p.getBloodTest().get("Lymph") > 0 && p.getBloodTest().get("Lymph") < 100)
-                            if (p.getBloodTest().get("RBC") > 0 && p.getBloodTest().get("RBC") < 15)
-                                if (p.getBloodTest().get("HCT") > 0 && p.getBloodTest().get("HCT") < 100)
-                                    if (p.getBloodTest().get("Urea") > 0 && p.getBloodTest().get("Urea") < 120)
-                                        if (p.getBloodTest().get("Hb") > 5 && p.getBloodTest().get("Hb") < 25)
-                                            if (p.getBloodTest().get("Crtn") > 0 && p.getBloodTest().get("Crtn") < 3)
-                                                if (p.getBloodTest().get("Iron") > 0 && p.getBloodTest().get("Iron") < 300)
-                                                    if (p.getBloodTest().get("HDL") > 0 && p.getBloodTest().get("HDL") < 150)
+            String s=p.addBloodTest(path);
+            if (s.equals("ok")) {
+                if (p.getBloodTest().get("WBC") > 1000 && p.getBloodTest().get("WBC") < 300000){
+                    if (p.getBloodTest().get("Neut") > 0 && p.getBloodTest().get("Neut") < 100){
+                        if (p.getBloodTest().get("Lymph") > 0 && p.getBloodTest().get("Lymph") < 100){
+                            if (p.getBloodTest().get("RBC") > 0 && p.getBloodTest().get("RBC") < 15){
+                                if (p.getBloodTest().get("HCT") > 0 && p.getBloodTest().get("HCT") < 100){
+                                    if (p.getBloodTest().get("Urea") > 0 && p.getBloodTest().get("Urea") < 120){
+                                        if (p.getBloodTest().get("Hb") > 5 && p.getBloodTest().get("Hb") < 25){
+                                            if (p.getBloodTest().get("Crtn") > 0 && p.getBloodTest().get("Crtn") < 3){
+                                                if (p.getBloodTest().get("Iron") > 0 && p.getBloodTest().get("Iron") < 300){
+                                                    if (p.getBloodTest().get("HDL") > 0 && p.getBloodTest().get("HDL") < 150){
                                                         if (p.getBloodTest().get("AP") > 0 && p.getBloodTest().get("AP") < 200) {
                                                             Main m = new Main();
                                                             m.changeScene("Diagnosis.fxml");
-                                                        } else message.setText("values error");
-            } else drop_text.setText("file Error");
+                                                        } else drop_text.setText("WBC values error");
+                                                    } else drop_text.setText("Neut values error");
+                                                } else drop_text.setText("Lymph values error");
+                                            } else drop_text.setText(" RBC values error");
+                                        } else drop_text.setText("HCT values error");
+                                    } else drop_text.setText("Urea values error");
+                                } else drop_text.setText("Hb values error");
+                            } else drop_text.setText("Crtn values error");
+                        } else drop_text.setText("Iron values error");
+                    } else drop_text.setText("HDL values error");
+                } else drop_text.setText("AP values error");
+            }  else drop_text.setText(s);
         } else drop_text.setText("File Missing");
     }
 
