@@ -45,7 +45,6 @@ public class Treatment implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
-    public void start(){}
 
     public void homeButton_Click(ActionEvent actionEvent) throws IOException {
         Main m = new Main();
@@ -148,14 +147,18 @@ public class Treatment implements Initializable {
             p = (Patient) stage.getUserData();
             values = p.getValues();
           data=  analysis(values);
-            listView.getItems().clear();
-            listView.getItems().addAll(data.keySet());
-            listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent arg0) {
-                    treatmentText.setText(data.get(listView.getSelectionModel().getSelectedItem()));
-                }
-            });
+          if(data.size()>0) {
+              listView.getItems().clear();
+              listView.getItems().addAll(data.keySet());
+              listView.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                  @Override
+                  public void handle(MouseEvent arg0) {
+                      if (listView.getItems().size() > 0)
+                          treatmentText.setText(data.get(listView.getSelectionModel().getSelectedItem()));
+                  }
+              });
+          }
+          else listView.setVisible(false);
             isdo=false;
         }
     }

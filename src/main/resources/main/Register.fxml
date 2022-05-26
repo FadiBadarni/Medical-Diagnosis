@@ -1,21 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.BoxBlur?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.shape.CubicCurve?>
-<?import javafx.scene.shape.Line?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<Pane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" prefHeight="489.0" prefWidth="713.0" styleClass="registerScreen" stylesheets="@CSS/Register.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Register">
+<Pane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" prefHeight="489.0" prefWidth="713.0" styleClass="registerScreen" stylesheets="@CSS/Register.css" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Register">
    <children>
       <AnchorPane fx:id="anchorPane" layoutY="-1.0" prefHeight="476.0" prefWidth="713.0" style="-fx-background-color: transparent;">
          <children>
@@ -56,7 +48,7 @@
                   <Font name="System Bold" size="12.0" />
                </font>
             </Text>
-            <Button fx:id="returnButton" layoutX="587.0" layoutY="413.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="41.0" prefWidth="114.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Register.css" text="Return" textFill="RED">
+            <Button fx:id="returnButton" layoutX="587.0" layoutY="413.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="41.0" prefWidth="114.0" style="-fx-cursor: hand;" styleClass="returnButton" stylesheets="@CSS/Register.css" text="BACK" textFill="RED">
                <font>
                   <Font name="Berlin Sans FB" size="18.0" />
                </font>

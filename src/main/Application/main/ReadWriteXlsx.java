@@ -159,7 +159,8 @@ public class ReadWriteXlsx {
             newWorkbook.write(new FileOutputStream(this.filePath));
             newWorkbook.close();
         } catch (Exception e) {
-            e.printStackTrace();
+           //
+            System.out.println("file cant close");
         }
     }
     private void setCellValue(XSSFCell cell, Object value) {

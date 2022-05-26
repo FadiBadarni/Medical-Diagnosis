@@ -19,7 +19,7 @@
       <ImageView fitHeight="1111.0" fitWidth="726.0" layoutX="-41.0" layoutY="-177.0" pickOnBounds="true" preserveRatio="true">
          <Image url="@images/molecules.png" />
       </ImageView>
-      <ImageView fitHeight="780.0" fitWidth="841.0" layoutX="-170.0" layoutY="-12.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
+      <ImageView fitHeight="780.0" fitWidth="841.0" layoutX="-249.0" layoutY="-30.0" pickOnBounds="true" preserveRatio="true" rotate="90.0">
          <Image url="@images/bar_line.png" />
       </ImageView>
       <Button fx:id="exportButton" layoutX="833.0" layoutY="690.0" mnemonicParsing="false" onAction="#exportButton_Click" prefHeight="54.0" prefWidth="201.0" styleClass="diagnosisButton" text="Export Detailed Patient File">
@@ -31,7 +31,7 @@
             <Font name="Berlin Sans FB" size="14.0" />
          </font>
       </Button>
-      <Button fx:id="returnButton" layoutX="258.0" layoutY="699.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="34.0" prefWidth="134.0" styleClass="returnButton" text="return">
+      <Button fx:id="returnButton" layoutX="258.0" layoutY="699.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="34.0" prefWidth="134.0" styleClass="returnButton" text="BACK">
          <stylesheets>
             <URL value="@CSS/Questions.css" />
             <URL value="@CSS/Diagnosis.css" />
@@ -68,6 +68,11 @@
             <Font name="Berlin Sans FB" size="23.0" />
          </font>
       </Label>
-      <ListView fx:id="listView" layoutX="369.0" layoutY="98.0" prefHeight="402.0" prefWidth="611.0" />
+      <Label layoutX="494.0" layoutY="295.0" text="There are no  diseases">
+         <font>
+            <Font size="37.0" />
+         </font>
+      </Label>
+      <ListView fx:id="listView" layoutX="322.0" layoutY="152.0" prefHeight="402.0" prefWidth="611.0" />
    </Pane>
 </Pane>

@@ -1,32 +1,26 @@
 package main;
 
 import animatefx.animation.*;
-import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
-import org.w3c.dom.events.MouseEvent;
-import org.apache.poi.ss.usermodel.CellType;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.Iterator;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
-public class Login implements Initializable {
+public class Login  implements Initializable {
     @FXML
     private Circle circle1;
     @FXML
@@ -49,6 +43,8 @@ public class Login implements Initializable {
     @FXML
     private Label newLabel;
     private static Stage stg;
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

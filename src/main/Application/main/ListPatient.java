@@ -2,15 +2,12 @@ package main;
 
 import java.io.FileInputStream;
 import java.util.*;
-
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.io.*;
 
 public class ListPatient {
     private ArrayList<Patient> patients;
@@ -20,16 +17,16 @@ public class ListPatient {
     }
 
     public String insertData(String path) {
-        int id = 0;
-        String firstName = "unknown";
-        String lastName = "unknown";
-        String gender = "unknown";
-        int iseast = 0;
-        int isethiopian = 0;
-        int age = 0;
-        int weight = 0;
-        int length = 0;
-        int phone = 0;
+        int id;
+        String firstName;
+        String lastName;
+        String gender;
+        int iseast;
+        int isethiopian;
+        int age;
+        int weight;
+        int length;
+        int phone;
         try {
             FileInputStream file = new FileInputStream(path);
             XSSFWorkbook workbook = new XSSFWorkbook(file);
@@ -104,7 +101,7 @@ public class ListPatient {
                                                                 return "problem in row" + i + "the  cell number 11\n must to be the is ethiopian\n and it must to be string";
 
                                                             if (id < 9999999 || id > 1000000000) return "the id must to be 8,9 number in row " + i;
-                                                            if (age < 0 || age > 120) return "the age in row " + i + " \nmust to be from 0 to 120";
+                                                            if (age < 1 || age > 120) return "the age in row " + i + " \nmust to be from 0 to 120";
                                                             if (length < 50 || length > 300) return "the length \nmust to be 50-300cm in row " + i;
                                                             if (weight < 10 || weight > 300)
                                                                 return "the weight must to be 10-300kg in row " + i;

@@ -138,7 +138,7 @@ public class AddPatient implements Initializable {
                         return false;
                     }
                     int age = Integer.parseInt(ageField.getText());
-                   if(age<0 || age>120) {
+                   if(age<1 || age>120) {
                        ageField.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
                        new animatefx.animation.RubberBand(ageField).play();
                        errorLabel.setText("the age must to be from 0 to 120 year");

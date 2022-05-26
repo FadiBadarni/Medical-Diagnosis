@@ -21,7 +21,7 @@ import java.util.*;
 
 public class Questions implements Initializable {
     public Text questionText;
-    public Button noButton, ignoreButton, yes_Button, askButton, skipButton;
+    public Button noButton, ignoreButton, yes_Button, askButton;
     public Button infoButton;
     @FXML
     private Pane parentContainer;

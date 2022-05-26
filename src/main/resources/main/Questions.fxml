@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.StackPane?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<StackPane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Questions">
+<StackPane fx:id="parentContainer" onMouseDragged="#paneDragged" onMousePressed="#panePressed" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="main.Questions">
    <AnchorPane fx:id="anchorPane">
       <ImageView fitHeight="701.0" fitWidth="982.0" pickOnBounds="true" preserveRatio="true" rotate="180.0">
          <Image url="@images/homeBG.jpg" />
@@ -46,7 +41,7 @@
                <Font name="Berlin Sans FB" size="28.0" />
             </font>
          </Text>
-         <Button fx:id="returnButton" layoutX="236.0" layoutY="629.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="45.0" prefWidth="122.0" styleClass="returnButton" stylesheets="@CSS/Diagnosis.css" text="return">
+         <Button fx:id="returnButton" layoutX="236.0" layoutY="629.0" mnemonicParsing="false" onAction="#returnButton_Click" prefHeight="45.0" prefWidth="122.0" styleClass="returnButton" stylesheets="@CSS/Diagnosis.css" text="BACK">
             <font>
                <Font name="Berlin Sans FB" size="20.0" />
             </font>

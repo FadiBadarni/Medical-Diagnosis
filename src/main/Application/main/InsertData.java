@@ -20,9 +20,7 @@ import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Hashtable;
@@ -108,11 +106,13 @@ public class InsertData implements Initializable {
             } catch (RuntimeException e) {
                 field.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
                 new animatefx.animation.RubberBand(field).play();
+                message.setText("it must to be from: "+min+" to:"+max);
                 return false;
             }
         }
         field.setStyle("-fx-border-color: red ; -fx-border-width: 2px");
         new animatefx.animation.RubberBand(field).play();
+        message.setText("it must to be from:"+min+" to:"+max);
         return false;
     }
 
@@ -153,17 +153,17 @@ public class InsertData implements Initializable {
                                                         if (p.getBloodTest().get("AP") > 0 && p.getBloodTest().get("AP") < 200) {
                                                             Main m = new Main();
                                                             m.changeScene("Diagnosis.fxml");
-                                                        } else drop_text.setText("WBC values error");
-                                                    } else drop_text.setText("Neut values error");
-                                                } else drop_text.setText("Lymph values error");
-                                            } else drop_text.setText(" RBC values error");
-                                        } else drop_text.setText("HCT values error");
-                                    } else drop_text.setText("Urea values error");
-                                } else drop_text.setText("Hb values error");
-                            } else drop_text.setText("Crtn values error");
-                        } else drop_text.setText("Iron values error");
-                    } else drop_text.setText("HDL values error");
-                } else drop_text.setText("AP values error");
+                                                        } else drop_text.setText("AP values error\n It must to be \n from 0 to 200");
+                                                    } else drop_text.setText("HDL values error\n It must to be \n from 0 to 150");
+                                                } else drop_text.setText("Iron values error\n It must to be \n from 0 to 300");
+                                            } else drop_text.setText(" Crtn values error\n It must to be \n from 0 to 3");
+                                        } else drop_text.setText("Hb values error\n It must to be \n from 5 to 25");
+                                    } else drop_text.setText("Urea values error\n It must to be \n from 0 to 100");
+                                } else drop_text.setText("HCT values error\n It must to be \n from 0 to 100");
+                            } else drop_text.setText("RBC values error\n It must to be \n from 0 to 15");
+                        } else drop_text.setText("Lymph values error\n It must to be \n from 0 to 100");
+                    } else drop_text.setText("Neut values error\n It must to be \n from 0 to 100");
+                } else drop_text.setText("WBC values error\n It must to be \n from 1000 to 300000");
             }  else drop_text.setText(s);
         } else drop_text.setText("File Missing");
     }
