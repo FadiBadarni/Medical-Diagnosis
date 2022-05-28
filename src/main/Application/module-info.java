@@ -1,16 +1,17 @@
 module com.example.project {
-    requires javafx.controls;
-    requires javafx.fxml;
-    requires javafx.web;
+//]    requires javafx.controls;
+//    requires javafx.fxml;
+//    requires javafx.web;
 
     requires org.controlsfx.controls;
-    requires com.dlsc.formsfx;
-    requires validatorfx;
+//    requires com.dlsc.formsfx;
+//    requires validatorfx;
     requires org.kordamp.ikonli.javafx;
     requires org.kordamp.bootstrapfx.core;
-    requires eu.hansolo.tilesfx;
+//    requires eu.hansolo.tilesfx;
     requires AnimateFX;
     requires org.apache.poi.ooxml;
+    requires javafx.fxml;
 
     opens main to javafx.fxml;
     exports main;

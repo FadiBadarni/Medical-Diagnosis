@@ -18,5 +18,6 @@
         <language minSize="46" name="Java" />
       </Languages>
     </inspection_tool>
+    <inspection_tool class="JdkProxiedBeanTypeInspection" enabled="false" level="ERROR" enabled_by_default="false" />
   </profile>
 </component>
